@@ -1,0 +1,39 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterPage.master.vb" Inherits="Muebla.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="/css/MiEstilo.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="top">
+            MUEBLA SYSTEM!!!
+            <a href="Login.aspx">Logout</a>
+        </div>
+        <div id="left">
+            <asp:TreeView ExpandDepth="1" runat="server">
+                <Nodes>
+                    <asp:TreeNode Text="Proveedor">
+                        <asp:TreeNode Text="Alta Proveedor" Value="p1" NavigateUrl="AltaProveedor.aspx" />
+                        <asp:TreeNode Text="Administrar Proveedores" Value="p2" NavigateUrl="AdministrarProveedores.aspx" />
+                    </asp:TreeNode>
+                    <asp:TreeNode Text="Producto">
+                        <asp:TreeNode Text="Alta Producto" Value="pp1" NavigateUrl="AltaProducto.aspx" />
+                        <asp:TreeNode Text="Administrar Producto" Value="pp2" NavigateUrl="AdministrarProductos.aspx" />
+                    </asp:TreeNode>
+                </Nodes>
+            </asp:TreeView>
+        </div>
+        <div id="right">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+</body>
+</html>

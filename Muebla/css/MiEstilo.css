@@ -1,0 +1,35 @@
+﻿#top {
+    border:2px solid black;
+    width:100%;
+    text-align:right;
+}
+
+#left {
+    border:2px solid black;
+    float:left;
+    width:30%;
+    height:100%;
+}
+
+#right {
+    border:2px solid black;
+    float:right;
+    width:69%;
+    height:100%;
+}
+
+#login {
+    border:2px solid black;
+    float:initial;
+    text-align:center;
+    height:600px;
+}
+
+#tableLogin{
+    margin: 0 auto;
+    padding-top: 200px;
+}
+
+#result{
+    border:1px solid black;
+}
