@@ -26,6 +26,14 @@
                     <asp:TreeNode Text="Producto">
                         <asp:TreeNode Text="Alta Producto" Value="pp1" NavigateUrl="AltaProducto.aspx" />
                         <asp:TreeNode Text="Administrar Producto" Value="pp2" NavigateUrl="AdministrarProductos.aspx" />
+                        <asp:TreeNode Text="Alta Lista Precio" Value="pp3" NavigateUrl="AltaListaPrecio.aspx" />
+                        <asp:TreeNode Text="Modificar Lista Precio" Value="pp4" NavigateUrl="ModificarListaPrecio.aspx" />
+                    </asp:TreeNode>
+                    <asp:TreeNode Text="Pedidos">
+                        <asp:TreeNode Text="MisPedidos" Value="ppp1" NavigateUrl="MisPedidos.aspx" />
+                    </asp:TreeNode>
+                    <asp:TreeNode Text="Ventas">
+                        <asp:TreeNode Text="A Comprar!" Value="pppp1" NavigateUrl="Ventas.aspx" />
                     </asp:TreeNode>
                 </Nodes>
             </asp:TreeView>

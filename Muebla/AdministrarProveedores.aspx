@@ -40,34 +40,33 @@
 
     <table id="result">
         <tr>
+            <td></td>
             <td>Nombre Organizacion o Fantasia</td>
             <td>CUIT</td>
             <td>Telefono</td>
             <td>Nombre de Contacto</td>
             <td>Activo</td>
-            <td>Accion</td>
         </tr>
         <tr>
+            <td> <input type="checkbox" /></td>
             <td class="auto-style1">Prueba 1</td>
             <td class="auto-style1">00000000000</td>
             <td class="auto-style1">66666666666</td>
             <td class="auto-style1">Jose Prueba</td>
             <td class="auto-style1">Si</td>
-            <td class="auto-style1">
-                <asp:Button Text="Modificar" runat="server" onclick="editarProveedor"/>
-                <asp:Button Text="Baja" runat="server" />
-            </td>
+
         </tr>
         <tr>
+            <td> <input type="checkbox" /></td>
             <td class="auto-style1">Prueba 2</td>
             <td class="auto-style1">00000000000</td>
             <td class="auto-style1">66666666666</td>
             <td class="auto-style1">pepe Prueba</td>
             <td class="auto-style1">No</td>
-            <td class="auto-style1">
-                <asp:Button Text="Modificar" runat="server" />
-                <asp:Button Text="Baja" runat="server" />
-            </td>
+
         </tr>
-     </table>
+
+    </table>
+    <asp:Button Text="Modificar" runat="server" />
+    <asp:Button Text="Baja" runat="server" />
 </asp:Content>

@@ -22,30 +22,30 @@
 
     <table id="result">
         <tr>
+            <td></td>
             <td>Producto</td>
             <td>Tipo</td>
             <td>Precio</td>
-            <td>Accion</td>
         </tr>
         <tr>
+            <td> <input type="checkbox" /></td>
             <td class="auto-style1">Mesa</td>
             <td class="auto-style1">Final</td>
             <td class="auto-style1">$1200</td>
-            <td class="auto-style1">
-                <asp:Button Text="Ver Detalle" runat="server" />
-                <asp:Button Text="Modificar" runat="server" />
-                <asp:Button Text="Borrar" runat="server" />
-            </td>
+
         </tr>
         <tr>
+            <td> <input type="checkbox" /></td>
             <td class="auto-style1">Tabla Madera Wengue</td>
             <td class="auto-style1">Materia Prima</td>
             <td class="auto-style1">$120</td>
-            <td class="auto-style1">
-                <asp:Button Text="Ver Detalle" runat="server" />
-                <asp:Button Text="Modificar" runat="server" />
-                <asp:Button Text="Borrar" runat="server" />
-            </td>
+
         </tr>
     </table>
+
+    <asp:Button Text="Ver Detalle" runat="server" />
+    <asp:Button Text="Modificar" runat="server" />
+    <asp:Button Text="Borrar" runat="server" />
+    <asp:Button Text="Orden de Compra" runat="server" />
+    <asp:Button Text="Comparacion Costos" runat="server" />
 </asp:Content>

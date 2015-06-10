@@ -83,11 +83,18 @@
   <ItemGroup>
     <Content Include="AdministrarProductos.aspx" />
     <Content Include="AdministrarProveedores.aspx" />
+    <Content Include="AltaListaPrecio.aspx" />
+    <Content Include="AltaProducto.aspx" />
     <Content Include="AltaProveedor.aspx" />
     <Content Include="css\MiEstilo.css" />
     <Content Include="EditarProveedor.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
+    <Content Include="MisPedidos.aspx" />
+    <Content Include="ModificacionListaPrecio.aspx" />
+    <Content Include="ModificarListaPrecio.aspx" />
+    <Content Include="Observaciones.aspx" />
+    <Content Include="Ventas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +110,20 @@
     </Compile>
     <Compile Include="AdministrarProveedores.aspx.vb">
       <DependentUpon>AdministrarProveedores.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AltaListaPrecio.aspx.designer.vb">
+      <DependentUpon>AltaListaPrecio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaListaPrecio.aspx.vb">
+      <DependentUpon>AltaListaPrecio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="AltaProducto.aspx.designer.vb">
+      <DependentUpon>AltaProducto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AltaProducto.aspx.vb">
+      <DependentUpon>AltaProducto.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="AltaProveedor.aspx.designer.vb">
@@ -140,6 +161,27 @@
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="MisPedidos.aspx.designer.vb">
+      <DependentUpon>MisPedidos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MisPedidos.aspx.vb">
+      <DependentUpon>MisPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ModificacionListaPrecio.aspx.designer.vb">
+      <DependentUpon>ModificacionListaPrecio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificacionListaPrecio.aspx.vb">
+      <DependentUpon>ModificacionListaPrecio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="ModificarListaPrecio.aspx.designer.vb">
+      <DependentUpon>ModificarListaPrecio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarListaPrecio.aspx.vb">
+      <DependentUpon>ModificarListaPrecio.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -158,6 +200,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Observaciones.aspx.designer.vb">
+      <DependentUpon>Observaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Observaciones.aspx.vb">
+      <DependentUpon>Observaciones.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Ventas.aspx.designer.vb">
+      <DependentUpon>Ventas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ventas.aspx.vb">
+      <DependentUpon>Ventas.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
