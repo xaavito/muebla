@@ -54,7 +54,7 @@
             <td class="auto-style1">jgonzalez</td>
             <td class="auto-style1">$12345,54</td>
             <td class="auto-style1">Concretada</td>
-            <asp:Button Text="Ver Detalle" runat="server" />
+            <td class="auto-style1"><asp:Button Text="Ver Detalle" runat="server" /></td>
 
         </tr>
         <tr>
@@ -64,9 +64,15 @@
             <td class="auto-style1">02/04/2013</td>
             <td class="auto-style1">$432</td>
             <td class="auto-style1">Post Venta</td>
-            <asp:Button Text="Ver Detalle" runat="server" />
+            <td class="auto-style1"><asp:Button Text="Ver Detalle" runat="server" /></td>
         </tr>
 
     </table>
     <asp:Button Text="Cancelar" runat="server" OnClick="cancelarVenta"/>
+    <asp:Button Text="Generar Hoja de ruta" runat="server" OnClick="hojaDeRuta"/>
+    <asp:Button Text="Generar Remito" runat="server" OnClick="remito"/>
+    <asp:Button Text="Generar Factura" runat="server" OnClick="factura"/>
+    <asp:Button Text="Generar Nota de Credito" runat="server" OnClick="notaCredito"/>
+    <asp:Button Text="Generar Comentarios" runat="server" OnClick="comentario"/>
+    <asp:Button Text="Servicio Post Venta" runat="server" OnClick="postVenta"/>
 </asp:Content>

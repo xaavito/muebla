@@ -63,6 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.vb" />
+    <Compile Include="GestorBitacoraDAL.vb" />
+    <Compile Include="GestorIdiomaDAL.vb" />
+    <Compile Include="GestorNotifDAL.vb" />
+    <Compile Include="GestorPedidoDAL.vb" />
+    <Compile Include="GestorResguardoDAL.vb" />
+    <Compile Include="GestorRolesDAL.vb" />
+    <Compile Include="GestorShowroomDAL.vb" />
+    <Compile Include="ListaPrecioDAL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -78,6 +86,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ProductoDAL.vb" />
+    <Compile Include="ProveedorDAL.vb" />
+    <Compile Include="UsuarioDAL.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -97,6 +108,16 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BE\BE.vbproj">
+      <Project>{e8d146f7-91fa-4675-a46f-b1145f22a4b2}</Project>
+      <Name>BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.vbproj">
+      <Project>{8db2cb02-def4-4792-a577-4980569cfe7c}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

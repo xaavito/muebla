@@ -5,4 +5,7 @@
 
     End Sub
 
+    Protected Sub Unnamed_Click(sender As Object, e As EventArgs)
+        Response.Redirect("OrdenCompra.aspx")
+    End Sub
 End Class

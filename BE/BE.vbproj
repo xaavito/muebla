@@ -62,7 +62,20 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsistenciaShowroomBE.vb" />
+    <Compile Include="BackupBE.vb" />
     <Compile Include="Class1.vb" />
+    <Compile Include="ComponenteBE.vb" />
+    <Compile Include="ComprobanteBE.vb" />
+    <Compile Include="ComprobanteDetalleBE.vb" />
+    <Compile Include="DomicilioBE.vb" />
+    <Compile Include="EstadoProveedorBE.vb" />
+    <Compile Include="EventoBE.vb" />
+    <Compile Include="IdiomaBE.vb" />
+    <Compile Include="ListaPrecioBE.vb" />
+    <Compile Include="ListaPrecioDetalleBE.vb" />
+    <Compile Include="LocalidadBE.vb" />
+    <Compile Include="MedioPagoBE.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -78,6 +91,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PedidoBE.vb" />
+    <Compile Include="ProductoBE.vb" />
+    <Compile Include="PromocionBE.vb" />
+    <Compile Include="ProveedorBE.vb" />
+    <Compile Include="ProvinciaBE.vb" />
+    <Compile Include="RolBE.vb" />
+    <Compile Include="TelefonoBE.vb" />
+    <Compile Include="TipoComprobanteBE.vb" />
+    <Compile Include="TipoEventoBE.vb" />
+    <Compile Include="TipoProductoBE.vb" />
+    <Compile Include="TipoUsuarioBE.vb" />
+    <Compile Include="TipoVentaBE.vb" />
+    <Compile Include="UsuarioBE.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

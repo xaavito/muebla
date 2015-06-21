@@ -15,17 +15,22 @@
                 <tr>
                     <td>Usuario</td>
                     <td class="auto-style1">
-                        <input id="Text1" type="text" /></td>
+
+                        <asp:TextBox runat="server" ID="usr" />
+                    </td>
                 </tr>
                 <tr>
                     <td>Contraseña</td>
                     <td class="auto-style1">
-                        <input id="Text2" type="text" /></td>
+                        <asp:TextBox runat="server" TextMode="Password" ID="pass" />
+                    </td>
+
                 </tr>
-                
+
             </table>
-            <asp:Button Text="Confirmar" runat="server" OnClick="login"/>
-            <a href="Login.aspx">Olivido su contraseña?</a>
+            <asp:Button Text="Confirmar" runat="server" OnClick="login" />
+            <a href="RecuperarContrasena.aspx">Olivido su contraseña?</a>
+            <a href="Registro.aspx">Registrarse!</a>
         </div>
     </form>
 </body>

@@ -26,7 +26,7 @@
         </tr>
 
         <tr>
-            <td>Tipo Producto</td>
+            <td>Productos</td>
             <td class="auto-style1">
                 <textarea id="TextArea1" name="S1" rows="2"></textarea></td>
             <td class="auto-style2">

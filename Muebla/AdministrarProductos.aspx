@@ -46,6 +46,6 @@
     <asp:Button Text="Ver Detalle" runat="server" />
     <asp:Button Text="Modificar" runat="server" />
     <asp:Button Text="Borrar" runat="server" />
-    <asp:Button Text="Orden de Compra" runat="server" />
+    <asp:Button Text="Orden de Compra" runat="server" OnClick="Unnamed_Click"/>
     <asp:Button Text="Comparacion Costos" runat="server" />
 </asp:Content>
