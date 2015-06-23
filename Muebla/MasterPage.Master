@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterPage.master.vb" Inherits="Muebla.MasterPage" %>
 
+<%@ Import Namespace="BE" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13,7 +15,9 @@
 <body>
     <form id="form1" runat="server">
         <div id="top">
-            MUEBLA SYSTEM!!!
+            Bienvenido!
+            
+            <asp:Label Text="" runat="server" id="usrText"/>
             <a href="Login.aspx">Logout</a>
         </div>
         <div id="left">

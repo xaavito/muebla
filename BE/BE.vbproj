@@ -45,6 +45,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,7 +65,6 @@
   <ItemGroup>
     <Compile Include="AsistenciaShowroomBE.vb" />
     <Compile Include="BackupBE.vb" />
-    <Compile Include="Class1.vb" />
     <Compile Include="ComponenteBE.vb" />
     <Compile Include="ComprobanteBE.vb" />
     <Compile Include="ComprobanteDetalleBE.vb" />

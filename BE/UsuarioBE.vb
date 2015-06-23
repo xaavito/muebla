@@ -20,7 +20,7 @@ Option Strict On
 
 Public Class UsuarioBE
 
-
+    Private _id As Integer
     Private _apellido As String
     Private _baja As Boolean
     Private _bloqueado As Boolean
@@ -40,6 +40,16 @@ Public Class UsuarioBE
     Public m_TelefonoBE As TelefonoBE
     Public m_IdiomaBE As IdiomaBE
     Public m_TipoUsuarioBE As TipoUsuarioBE
+
+
+    Public Property id() As Integer
+        Get
+            Return _id
+        End Get
+        Set(ByVal value As Integer)
+            _id = value
+        End Set
+    End Property
 
     Public Property apellido() As String
         Get

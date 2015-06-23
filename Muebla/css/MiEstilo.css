@@ -2,6 +2,7 @@
     border:2px solid black;
     width:100%;
     text-align:right;
+    background-color:beige;
 }
 
 #left {
@@ -9,6 +10,7 @@
     float:left;
     width:30%;
     height:100%;
+    background-color:beige;
 }
 
 #right {
@@ -16,6 +18,7 @@
     float:right;
     width:69%;
     height:100%;
+    background-color:beige;
 }
 
 #login {
@@ -23,11 +26,13 @@
     float:initial;
     text-align:center;
     height:600px;
+    background-color:beige;
 }
 
 #tableLogin{
     margin: 0 auto;
     padding-top: 200px;
+    background-color:beige;
 }
 
 #result{

@@ -53,7 +53,7 @@ Public Class UsuarioBLL
     ''' <param name="pass"></param>
     ''' <param name="usr"></param>
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
-        login = Nothing
+        Return DAL.UsuarioDAL.login(pass, usr)
     End Function
 
     ''' 

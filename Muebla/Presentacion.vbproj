@@ -231,6 +231,9 @@
       <DependentUpon>Factura.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="getImageHandler.ashx.vb">
+      <DependentUpon>getImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="HojaDeRuta.aspx.designer.vb">
       <DependentUpon>HojaDeRuta.aspx</DependentUpon>
     </Compile>
@@ -394,6 +397,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterPage.Master" />
+    <Content Include="getImageHandler.ashx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

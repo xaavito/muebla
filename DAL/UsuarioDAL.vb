@@ -14,8 +14,6 @@
 
 
 
-Option Explicit On
-Option Strict On
 
 Imports BE
 
@@ -64,9 +62,39 @@ Public Class UsuarioDAL
     ''' 
     ''' <param name="pass"></param>
     ''' <param name="usr"></param>
-    Public Shared Sub login(ByVal pass As String, ByVal usr As String)
+    Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
+        Dim table As DataTable
 
-    End Sub
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LOGIN_SP")
+        repository.addParam("@usr", usr)
+        repository.addParam("@pass", pass)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        For Each pepe As DataRow In table.Rows
+            Dim usuario As New BE.UsuarioBE
+            usuario.id = pepe.Item(0)
+            usuario.nombre = pepe.Item(1)
+            usuario.apellido = pepe.Item(2)
+            usuario.usuario = usr
+            usuario.password = pass
+            'usuario.activo = pepe.Item(4)
+            'Dim idioma As New BE.IdiomaBE
+            'idioma.identificador = pepe.Item(3)
+            'usuario.idioma = idioma
+            Return usuario
+        Next
+
+        'Catch ex As Exception
+        'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        'End Try
+
+        Return Nothing
+    End Function
 
     ''' 
     ''' <param name="usr"></param>

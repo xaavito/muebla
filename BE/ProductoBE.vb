@@ -1,3 +1,5 @@
+Imports System.Drawing
+
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ''
 ''  ProductoBE.vb
@@ -14,9 +16,6 @@
 
 
 
-Option Explicit On
-Option Strict On
-
 
 Public Class ProductoBE
 
@@ -24,8 +23,8 @@ Public Class ProductoBE
     Private _baja As Boolean
     Private _descripcion As String
     Private _id As Long
-    Private _image1 As Object
-    Private _image2 As Object
+    Private _image1 As Byte()
+    Private _image2 As Byte()
     Private _productos As ProductoBE
     Private _proveedores As ProveedorBE
     Private _tipoProducto As TipoProductoBE
@@ -51,19 +50,22 @@ Public Class ProductoBE
         End Set
     End Property
 
-    Public Property image1() As Object
+    Public Property image1() As Byte()
         Get
             Return _image1
         End Get
-        Set(ByVal Value As Object)
+        Set(ByVal Value As Byte())
             _image1 = Value
         End Set
     End Property
 
-    Public ReadOnly Property image2() As Object
+    Public Property image2() As Byte()
         Get
             Return _image2
         End Get
+        Set(ByVal Value As Byte())
+            _image2 = Value
+        End Set
     End Property
 
 

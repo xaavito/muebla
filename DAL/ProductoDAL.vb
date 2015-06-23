@@ -13,11 +13,10 @@
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 
-
-Option Explicit On
-Option Strict On
-
 Imports BE
+Imports System.Drawing.Imaging
+Imports System.IO
+Imports System.Drawing
 
 
 Public Class ProductoDAL
@@ -73,6 +72,30 @@ Public Class ProductoDAL
     Public Sub modificarProducto(ByVal producto As ProductoBE)
 
     End Sub
+
+    Shared Function listarProductos() As List(Of ProductoBE)
+        Dim table As DataTable
+        Dim list As New List(Of BE.ProductoBE)
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LISTAR_PRODUCTOS_SP")
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        For Each item As DataRow In table.Rows
+            Dim producto As New BE.ProductoBE
+            producto.id = item.Item(0)
+            producto.descripcion = item.Item(1)
+
+            producto.image1 = (DirectCast(item.Item(2), Byte()))
+            list.Add(producto)
+        Next
+
+        Return list
+    End Function
 
 
 End Class ' ProductoDAL
