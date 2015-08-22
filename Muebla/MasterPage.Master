@@ -16,13 +16,15 @@
     <form id="form1" runat="server">
         <div id="top">
             <a href="Login.aspx">Login</a>
-            <asp:ImageButton runat="server" ImageUrl="/images/shopping-cart-5.png" ID="shoppingCart" onClick="shoppingCart_Click"    />
+            <asp:DropDownList runat="server" ID="idiomasList" OnSelectedIndexChanged="idiomasList_SelectedIndexChanged"/>   
+
+            <asp:ImageButton runat="server" ImageUrl="/images/shopping_cart.png" ID="shoppingCart" OnClick="shoppingCart_Click" />
             Bienvenido!
             <asp:Label Text="" runat="server" ID="usrText" />
             <a href="Login.aspx">Logout</a>
         </div>
         <div id="left">
-            <asp:TreeView ExpandDepth="1" runat="server" ID ="mainTree">
+            <asp:TreeView ExpandDepth="1" runat="server" ID="mainTree">
                 <Nodes>
                     <asp:TreeNode Text="Ventas">
                         <asp:TreeNode Text="A Comprar!" Value="ven1" NavigateUrl="Ventas.aspx" />

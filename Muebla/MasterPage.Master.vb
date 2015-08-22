@@ -7,6 +7,7 @@ Public Class MasterPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         usr = Session("Usuario")
+
         If Not usr Is Nothing Then
             Me.usrText.Text = usr.apellido + " " + usr.nombre
             Me.mainTree.Nodes.Clear()
@@ -37,9 +38,17 @@ Public Class MasterPage
                 Next
             Next
         End If
+        Me.idiomasList.DataSource = BLL.GestorIdiomaBLL.buscarIdiomas
+        Me.idiomasList.DataTextField = "descripcion"
+        Me.idiomasList.DataValueField = "id"
+        Me.idiomasList.DataBind()
     End Sub
 
     Protected Sub shoppingCart_Click(sender As Object, e As ImageClickEventArgs)
         Response.Redirect("Carrito.aspx")
+    End Sub
+
+    Protected Sub idiomasList_SelectedIndexChanged(sender As Object, e As EventArgs)
+
     End Sub
 End Class

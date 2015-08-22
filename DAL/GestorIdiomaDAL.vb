@@ -14,9 +14,6 @@
 
 
 
-Option Explicit On
-Option Strict On
-
 Imports BE
 
 
@@ -26,21 +23,39 @@ Public Class GestorIdiomaDAL
     ''' 
     ''' <param name="componentes"></param>
     ''' <param name="idioma"></param>
-    Public Sub altaIdioma(ByVal componentes As ComponenteBE, ByVal idioma As String)
+    Public Shared Sub altaIdioma(ByVal componentes As ComponenteBE, ByVal idioma As String)
 
     End Sub
 
-    Public Function buscarComponentes() As List(Of ComponenteBE)
+    Public Shared Function buscarComponentes() As List(Of ComponenteBE)
         buscarComponentes = Nothing
     End Function
 
-    Public Function buscarIdiomas() As List(Of IdiomaBE)
-        buscarIdiomas = Nothing
+    Public Shared Function buscarIdiomas() As List(Of IdiomaBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LISTAR_IDIOMAS_SP")
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim idiomas As New List(Of BE.IdiomaBE)
+        For Each pepe As DataRow In table.Rows
+            Dim idioma As New BE.IdiomaBE
+            idioma.id = pepe.Item(0)
+            idioma.descripcion = pepe.Item(1)
+            idiomas.Add(idioma)
+        Next
+
+        Return idiomas
     End Function
 
     ''' 
     ''' <param name="idioma"></param>
-    Public Sub modificarIdioma(ByVal idioma As IdiomaBE)
+    Public Shared Sub modificarIdioma(ByVal idioma As IdiomaBE)
 
     End Sub
 

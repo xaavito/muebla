@@ -35,7 +35,7 @@ Public Class GestorIdiomaBLL
     End Function
 
     Public Shared Function buscarIdiomas() As List(Of IdiomaBE)
-        buscarIdiomas = Nothing
+        Return DAL.GestorIdiomaDAL.buscarIdiomas
     End Function
 
     ''' 

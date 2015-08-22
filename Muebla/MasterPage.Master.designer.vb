@@ -32,6 +32,15 @@ Partial Public Class MasterPage
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''Control idiomasList.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents idiomasList As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
     '''Control shoppingCart.
     '''</summary>
     '''<remarks>

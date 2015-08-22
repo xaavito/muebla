@@ -14,8 +14,6 @@
 
 
 
-Option Explicit On
-Option Strict On
 
 Public Class IdiomaBE
 
@@ -23,8 +21,7 @@ Public Class IdiomaBE
     Private _descripcion As String
     Private _id As Long
     Private _componentes As List(Of ComponenteBE)
-    Public m_ComponenteBE As ComponenteBE
-
+    
     Public Property descripcion() As String
         Get
             Return _descripcion
