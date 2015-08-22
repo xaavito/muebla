@@ -115,6 +115,41 @@ Public Class UsuarioDAL
 
     End Sub
 
+    Shared Function buscarPermisos(rol As RolBE) As List(Of BE.ComponenteBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("BUSCAR_PERMISOS_SP")
+        repository.addParam("@rol", rol.id)
+
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim listaComponentes As New List(Of BE.ComponenteBE)
+        For Each pepe As DataRow In table.Rows
+            Dim componente As New BE.ComponenteBE
+            componente.id = pepe.Item(0)
+            componente.nombre = pepe.Item(1)
+            componente.texto = pepe.Item(2)
+            If Not IsDBNull(pepe.Item(3)) Then
+                componente.pagina = pepe.Item(3)
+            End If
+
+            If Not IsDBNull(pepe.Item(4)) Then
+                componente.padre = New ComponenteBE
+                componente.padre.id = pepe.Item(4)
+                componente.padre.texto = pepe.Item(5)
+            End If
+
+            listaComponentes.Add(componente)
+        Next
+
+        Return listaComponentes
+    End Function
+
 
 End Class ' UsuarioDAL
 

@@ -73,9 +73,9 @@ Public Class ProductoDAL
 
     End Sub
 
-    Shared Function listarProductos() As List(Of ProductoBE)
+    Shared Function listarProductos() As List(Of ListaPrecioDetalleBE)
         Dim table As DataTable
-        Dim list As New List(Of BE.ProductoBE)
+        Dim list As New List(Of BE.ListaPrecioDetalleBE)
 
         Dim repository As New AccesoSQLServer
         'Try
@@ -87,14 +87,40 @@ Public Class ProductoDAL
         End If
         For Each item As DataRow In table.Rows
             Dim producto As New BE.ProductoBE
+            Dim lpd As New BE.ListaPrecioDetalleBE
+            Dim lp As New BE.ListaPrecioBE
             producto.id = item.Item(0)
             producto.descripcion = item.Item(1)
 
             producto.image1 = (DirectCast(item.Item(2), Byte()))
-            list.Add(producto)
+            lpd.precio = item.Item(3)
+            lpd.id = item.Item(4)
+            lp.id = item.Item(5)
+            lpd.listaPrecio = lp
+            lpd.producto = producto
+            list.Add(lpd)
         Next
 
         Return list
+    End Function
+
+    Shared Function getImagenProducto(idInt As Integer) As Byte()
+        Dim table As DataTable
+        Dim list As New List(Of BE.ListaPrecioDetalleBE)
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("GET_PRODUCTO_IMAGEN_SP")
+        repository.addParam("@ID", idInt)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        For Each item As DataRow In table.Rows
+            Return (DirectCast(item.Item(0), Byte()))
+        Next
+
     End Function
 
 

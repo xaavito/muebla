@@ -5,21 +5,17 @@ Imports System.IO
 Public Class getImageHandler
     Implements System.Web.IHttpHandler
 
-    Dim listaProductos As List(Of BE.ProductoBE)
+    'Dim listaProductos As List(Of BE.ProductoBE)
 
     Sub ProcessRequest(ByVal context As HttpContext) Implements IHttpHandler.ProcessRequest
-        listaProductos = BLL.ProductoBLL.listarProductos()
+        'listaProductos = BLL.ProductoBLL.listarProductos()
         Dim imagen As Byte()
 
         Dim request As HttpRequest = context.Request
         Dim id As String = request.QueryString("id")
         Dim idInt As Integer = Integer.Parse(id)
 
-        For Each pepe As BE.ProductoBE In listaProductos
-            If pepe.id = idInt Then
-                imagen = pepe.image1
-            End If
-        Next
+        imagen = BLL.ProductoBLL.getImagenProducto(idInt)
 
         context.Response.ContentType = "image/JPEG"
         context.Response.BinaryWrite(imagen)

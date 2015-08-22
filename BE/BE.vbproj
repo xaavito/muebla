@@ -92,6 +92,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PedidoBE.vb" />
+    <Compile Include="PedidoProducto.vb" />
     <Compile Include="ProductoBE.vb" />
     <Compile Include="PromocionBE.vb" />
     <Compile Include="ProveedorBE.vb" />

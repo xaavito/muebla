@@ -4,14 +4,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ListView runat="server" ID="lvProductos"
-        ItemType="BE.ProductoBE" SelectMethod="listarProductos">
+        ItemType="BE.ListaPrecioDetalleBE" SelectMethod="listarProductos" OnItemCommand="lvProductos_ItemCommand">
         <LayoutTemplate>
-            <div class="row">
-                <div class="btn-group">
-                    <asp:Button runat="server" CssClass="btn btn-default" Text="Ordenar por nombre" CommandName="Sort" CommandArgument="NombreCompleto" />
-                    <asp:Button runat="server" CssClass="btn btn-default" Text="Ordenar por fecha creación" CommandName="Sort" CommandArgument="CreadoFecha" />
-                </div>
-            </div>
             <div class="row">
                 <div runat="server" id="itemPlaceHolder" />
             </div>
@@ -19,17 +13,17 @@
         <ItemTemplate>
             <div runat="server" class="productos-container">
                 <div class="media">
-                    <asp:Image ImageUrl='<%#"getImageHandler.ashx?id=" + Convert.ToString(Eval("id"))%>' runat="server" GenerateEmptyAlternateText="False" />
+                    <asp:Image ImageUrl='<%#"getImageHandler.ashx?id=" + Convert.ToString(Eval("producto.id"))%>' runat="server" GenerateEmptyAlternateText="False" />
                     <div class="media-body">
-                        <h4 class="media-heading"><%# Item.descripcion %></h4>
-                        
-                        <asp:LinkButton runat="server" ID="btnAgregarAlCarrito" Text="Agregar al Carrito" CssClass="pull-right" CommandName="Agregar al Carrito" CommandArgument="<%# Item.id %>" />
+                        <h4 class="media-heading"><%# Item.producto.descripcion %></h4>
+                        <h4 class="media-heading"><%# Item.precio %></h4>
+                        <asp:LinkButton runat="server" ID="btnAgregarAlCarrito" Text="Agregar al Carrito" CssClass="pull-right" CommandName="addToCart" CommandArgument="<%# Item.producto.id %>" />
                     </div>
                 </div>
             </div>
         </ItemTemplate>
         <EmptyDataTemplate>
-            No hay usuarios para mostrar.
+            No hay Productos para mostrar.
         </EmptyDataTemplate>
     </asp:ListView>
 </asp:Content>

@@ -14,15 +14,33 @@
 
 
 
-Option Explicit On
-Option Strict On
-
 Public Class ComponenteBE
 
 
     Private _id As Long
     Private _nombre As String
     Private _texto As String
+    Private _padre As BE.ComponenteBE
+    Private _pagina As String
+
+    Public Property pagina() As String
+        Get
+            Return _pagina
+        End Get
+        Set(ByVal value As String)
+            _pagina = value
+        End Set
+    End Property
+
+
+    Public Property padre() As BE.ComponenteBE
+        Get
+            Return _padre
+        End Get
+        Set(ByVal value As BE.ComponenteBE)
+            _padre = value
+        End Set
+    End Property
 
     Public Property id() As Long
         Get

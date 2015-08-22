@@ -53,7 +53,15 @@ Public Class UsuarioBLL
     ''' <param name="pass"></param>
     ''' <param name="usr"></param>
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
-        Return DAL.UsuarioDAL.login(pass, usr)
+        Dim user As BE.UsuarioBE
+        user = DAL.UsuarioDAL.login(pass, usr)
+        If Not user Is Nothing Then
+            user.roles = BLL.GestorRolesBLL.getRoles(user)
+            For Each rol As BE.RolBE In user.roles
+                rol.componentes = DAL.UsuarioDAL.buscarPermisos(rol)
+            Next
+        End If
+        Return user
     End Function
 
     ''' 

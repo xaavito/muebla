@@ -15,43 +15,17 @@
 <body>
     <form id="form1" runat="server">
         <div id="top">
+            <a href="Login.aspx">Login</a>
+            <asp:ImageButton runat="server" ImageUrl="/images/shopping-cart-5.png" ID="shoppingCart" onClick="shoppingCart_Click"    />
             Bienvenido!
-            
-            <asp:Label Text="" runat="server" id="usrText"/>
+            <asp:Label Text="" runat="server" ID="usrText" />
             <a href="Login.aspx">Logout</a>
         </div>
         <div id="left">
-            <asp:TreeView ExpandDepth="1" runat="server">
+            <asp:TreeView ExpandDepth="1" runat="server" ID ="mainTree">
                 <Nodes>
-                    <asp:TreeNode Text="Proveedor">
-                        <asp:TreeNode Text="Alta Proveedor" Value="p1" NavigateUrl="AltaProveedor.aspx" />
-                        <asp:TreeNode Text="Administrar Proveedores" Value="p2" NavigateUrl="AdministrarProveedores.aspx" />
-                    </asp:TreeNode>
-                    <asp:TreeNode Text="Producto">
-                        <asp:TreeNode Text="Alta Producto" Value="pp1" NavigateUrl="AltaProducto.aspx" />
-                        <asp:TreeNode Text="Administrar Producto" Value="pp2" NavigateUrl="AdministrarProductos.aspx" />
-                        <asp:TreeNode Text="Alta Lista Precio" Value="pp3" NavigateUrl="AltaListaPrecio.aspx" />
-                        <asp:TreeNode Text="Modificar Lista Precio" Value="pp4" NavigateUrl="ModificarListaPrecio.aspx" />
-                        <asp:TreeNode Text="Promociones" Value="pp4" NavigateUrl="Promociones.aspx" />
-                    </asp:TreeNode>
-                    <asp:TreeNode Text="Pedidos">
-                        <asp:TreeNode Text="MisPedidos" Value="ppp1" NavigateUrl="MisPedidos.aspx" />
-                    </asp:TreeNode>
                     <asp:TreeNode Text="Ventas">
-                        <asp:TreeNode Text="A Comprar!" Value="pppp1" NavigateUrl="Ventas.aspx" />
-                        <asp:TreeNode Text="Solicitar Asistencia Showroom" Value="pppp1" NavigateUrl="solicitarShowroom.aspx" />
-                    </asp:TreeNode>
-                    <asp:TreeNode Text="Usuario">
-                        <asp:TreeNode Text="Alta Usuario" Value="pppp1" NavigateUrl="AltaUsuario.aspx" />
-                        <asp:TreeNode Text="Administrar Usuarios" Value="pppp1" NavigateUrl="AdministrarUsuarios.aspx" />
-                        <asp:TreeNode Text="Datos Personales" Value="pppp1" NavigateUrl="DatosPersonales.aspx" />
-                    </asp:TreeNode>
-                    <asp:TreeNode Text="Administrador">
-                        <asp:TreeNode Text="Bitacora" Value="pppp1" NavigateUrl="Bitacora.aspx" />
-                        <asp:TreeNode Text="Backup" Value="pppp1" NavigateUrl="Backup.aspx" />
-                        <asp:TreeNode Text="Restore" Value="pppp1" NavigateUrl="Restore.aspx" />
-                        <asp:TreeNode Text="Alta Idioma" Value="pppp1" NavigateUrl="AltaIdioma.aspx" />
-                        <asp:TreeNode Text="Administrar Idiomas" Value="pppp1" NavigateUrl="AdministrarIdiomas.aspx" />
+                        <asp:TreeNode Text="A Comprar!" Value="ven1" NavigateUrl="Ventas.aspx" />
                     </asp:TreeNode>
                 </Nodes>
             </asp:TreeView>

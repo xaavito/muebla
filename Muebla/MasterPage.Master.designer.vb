@@ -32,6 +32,15 @@ Partial Public Class MasterPage
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
+    '''Control shoppingCart.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents shoppingCart As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
     '''Control usrText.
     '''</summary>
     '''<remarks>
@@ -39,6 +48,15 @@ Partial Public Class MasterPage
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents usrText As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control mainTree.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents mainTree As Global.System.Web.UI.WebControls.TreeView
 
     '''<summary>
     '''Control ContentPlaceHolder1.

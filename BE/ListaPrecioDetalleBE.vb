@@ -24,8 +24,18 @@ Public Class ListaPrecioDetalleBE
     Private _id As Long
     Private _precio As Decimal
     Private _producto As ProductoBE
-    Public m_ProductoBE As ProductoBE
+    Private _listaPrecio As ListaPrecioBE
 
+    Public Property listaPrecio() As ListaPrecioBE
+        Get
+            Return _listaPrecio
+        End Get
+        Set(ByVal value As ListaPrecioBE)
+            _listaPrecio = value
+        End Set
+    End Property
+
+    
     Public Property id() As Long
         Get
             Return _id

@@ -14,8 +14,6 @@
 
 
 
-Option Explicit On
-Option Strict On
 
 
 Public Class PedidoBE
@@ -28,10 +26,17 @@ Public Class PedidoBE
     Private _medioPago As MedioPagoBE
     Private _pagado As Boolean
     Private _tipoVenta As TipoVentaBE
-    Public m_UsuarioBE As UsuarioBE
-    Public m_MedioPagoBE As MedioPagoBE
-    Public m_TipoVentaBE As TipoVentaBE
-    Public m_ComprobanteBE As ComprobanteBE
+    Private _productos As List(Of BE.ListaPrecioDetalleBE)
+
+    Public Property productos() As List(Of BE.ListaPrecioDetalleBE)
+        Get
+            Return _productos
+        End Get
+        Set(ByVal value As List(Of BE.ListaPrecioDetalleBE))
+            _productos = value
+        End Set
+    End Property
+
 
     Public Property comprobantes() As List(Of ComprobanteBE)
         Get

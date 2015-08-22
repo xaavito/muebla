@@ -14,9 +14,6 @@
 
 
 
-Option Explicit On
-Option Strict On
-
 Imports BE
 
 
@@ -36,8 +33,28 @@ Public Class GestorRolesDAL
 
     ''' 
     ''' <param name="usr"></param>
-    Public Function getRoles(ByVal usr As UsuarioBE) As List(Of RolBE)
-        getRoles = Nothing
+    Public Shared Function getRoles(ByVal usr As UsuarioBE) As List(Of RolBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+
+        repository.crearComando("BUSCAR_ROLES_SP")
+        repository.addParam("@usr", usr.id)
+
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+        End If
+        Dim listaRoles As New List(Of BE.RolBE)
+        For Each pepe As DataRow In table.Rows
+            Dim rol As New BE.RolBE
+            rol.id = pepe.Item(0)
+            rol.descripcion = pepe.Item(1)
+
+            listaRoles.Add(rol)
+        Next
+
+        Return listaRoles
     End Function
 
 

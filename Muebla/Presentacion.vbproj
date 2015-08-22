@@ -93,12 +93,15 @@
     <Content Include="AsignarShowroom.aspx" />
     <Content Include="Backup.aspx" />
     <Content Include="Bitacora.aspx" />
+    <Content Include="Carrito.aspx" />
     <Content Include="ConfirmarShowroom.aspx" />
     <Content Include="css\MiEstilo.css" />
     <Content Include="DatosPersonales.aspx" />
     <Content Include="EditarProveedor.aspx" />
     <Content Include="Factura.aspx" />
     <Content Include="HojaDeRuta.aspx" />
+    <Content Include="images\cart-add.png" />
+    <Content Include="images\shopping-cart-5.png" />
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
@@ -201,6 +204,13 @@
     </Compile>
     <Compile Include="Bitacora.aspx.vb">
       <DependentUpon>Bitacora.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Carrito.aspx.designer.vb">
+      <DependentUpon>Carrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Carrito.aspx.vb">
+      <DependentUpon>Carrito.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="ConfirmarShowroom.aspx.designer.vb">

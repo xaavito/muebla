@@ -37,7 +37,7 @@ Public Class GestorRolesBLL
     ''' 
     ''' <param name="usr"></param>
     Public Shared Function getRoles(ByVal usr As UsuarioBE) As List(Of RolBE)
-        getRoles = Nothing
+        Return DAL.GestorRolesDAL.getRoles(usr)
     End Function
 
 
