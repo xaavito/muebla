@@ -31,6 +31,31 @@ Public Class GestorIdiomaDAL
         buscarComponentes = Nothing
     End Function
 
+    Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("BUSCAR_IDIOMA_COMPONENTE_SP")
+        repository.addParam("@idioma", idioma.id)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim componentes As New List(Of BE.ComponenteBE)
+        For Each pepe As DataRow In table.Rows
+            Dim componente As New BE.ComponenteBE
+            componente.id = pepe.Item(0)
+            componente.nombre = pepe.Item(1)
+            componente.texto = pepe.Item(2)
+            componente.formulario = pepe.Item(4)
+            componentes.Add(componente)
+        Next
+
+        Return componentes
+    End Function
+
     Public Shared Function buscarIdiomas() As List(Of IdiomaBE)
         Dim table As DataTable
 

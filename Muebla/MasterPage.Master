@@ -16,7 +16,7 @@
     <form id="form1" runat="server">
         <div id="top">
             <a href="Login.aspx">Login</a>
-            <asp:DropDownList runat="server" ID="idiomasList" OnSelectedIndexChanged="idiomasList_SelectedIndexChanged"/>   
+            <asp:DropDownList runat="server" ID="idiomasList" AutoPostBack="True" OnSelectedIndexChanged="idiomasList_SelectedIndexChanged" />
 
             <asp:ImageButton runat="server" ImageUrl="/images/shopping_cart.png" ID="shoppingCart" OnClick="shoppingCart_Click" />
             Bienvenido!

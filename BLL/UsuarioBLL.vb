@@ -60,6 +60,7 @@ Public Class UsuarioBLL
             For Each rol As BE.RolBE In user.roles
                 rol.componentes = DAL.UsuarioDAL.buscarPermisos(rol)
             Next
+            user.idioma.componentes = BLL.GestorIdiomaBLL.buscarComponentes(user.idioma)
         End If
         Return user
     End Function

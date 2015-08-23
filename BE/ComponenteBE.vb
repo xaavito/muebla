@@ -22,6 +22,17 @@ Public Class ComponenteBE
     Private _texto As String
     Private _padre As BE.ComponenteBE
     Private _pagina As String
+    Private _formulario As String
+
+    Public Property formulario() As String
+        Get
+            Return _formulario
+        End Get
+        Set(ByVal value As String)
+            _formulario = value
+        End Set
+    End Property
+
 
     Public Property pagina() As String
         Get

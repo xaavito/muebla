@@ -34,6 +34,10 @@ Public Class GestorIdiomaBLL
         buscarComponentes = Nothing
     End Function
 
+    Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
+        Return DAL.GestorIdiomaDAL.buscarComponentes(idioma)
+    End Function
+
     Public Shared Function buscarIdiomas() As List(Of IdiomaBE)
         Return DAL.GestorIdiomaDAL.buscarIdiomas
     End Function

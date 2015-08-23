@@ -73,7 +73,6 @@ Public Class UsuarioDAL
         table = New DataTable
         table = repository.executeSearchWithAdapter()
         If (table.Rows.Count <> 1) Then
-            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
         End If
         For Each pepe As DataRow In table.Rows
             Dim usuario As New BE.UsuarioBE
@@ -82,16 +81,11 @@ Public Class UsuarioDAL
             usuario.apellido = pepe.Item(2)
             usuario.usuario = usr
             usuario.password = pass
-            'usuario.activo = pepe.Item(4)
-            'Dim idioma As New BE.IdiomaBE
-            'idioma.identificador = pepe.Item(3)
-            'usuario.idioma = idioma
+            Dim idioma As New BE.IdiomaBE
+            idioma.id = pepe.Item(3)
+            usuario.idioma = idioma
             Return usuario
         Next
-
-        'Catch ex As Exception
-        'Throw New Excepciones.UsuarioNoEncontradoExcepcion
-        'End Try
 
         Return Nothing
     End Function
@@ -142,6 +136,9 @@ Public Class UsuarioDAL
                 componente.padre = New ComponenteBE
                 componente.padre.id = pepe.Item(4)
                 componente.padre.texto = pepe.Item(5)
+            End If
+            If Not IsDBNull(pepe.Item(6)) Then
+                componente.formulario = pepe.Item(6)
             End If
 
             listaComponentes.Add(componente)
