@@ -39,9 +39,9 @@ Public Class UsuarioBLL
     ''' <param name="usuario"></param>
     ''' <param name="tipo"></param>
     ''' <param name="mail"></param>
-    Public Shared Sub buscarUsuarios(ByVal usuario As String, ByVal tipo As TipoUsuarioBE, ByVal mail As Single)
-
-    End Sub
+    Public Shared Function buscarUsuarios(ByVal usuario As String, ByVal tipo As Int16, ByVal mail As String) As List(Of BE.UsuarioBE)
+        Return DAL.UsuarioDAL.buscarUsuarios(tipo, usuario, mail)
+    End Function
 
     ''' 
     ''' <param name="usr"></param>
@@ -83,6 +83,10 @@ Public Class UsuarioBLL
     Public Shared Sub solicitarContraseña(ByVal mail As String, ByVal usuario As String)
 
     End Sub
+
+    Shared Function getTiposUsuarios() As List(Of BE.TipoUsuarioBE)
+        Return DAL.UsuarioDAL.getTiposUsuarios()
+    End Function
 
 
 End Class ' UsuarioBLL

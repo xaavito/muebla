@@ -49,7 +49,10 @@ Public Class GestorIdiomaDAL
             componente.id = pepe.Item(0)
             componente.nombre = pepe.Item(1)
             componente.texto = pepe.Item(2)
-            componente.formulario = pepe.Item(4)
+            If Not IsDBNull(pepe.Item(4)) Then
+                componente.formulario = pepe.Item(4)
+            End If
+
             componentes.Add(componente)
         Next
 

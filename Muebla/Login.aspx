@@ -15,7 +15,6 @@
                 <tr>
                     <td>Usuario</td>
                     <td class="auto-style1">
-
                         <asp:TextBox runat="server" ID="usr" />
                     </td>
                 </tr>

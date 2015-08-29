@@ -30,7 +30,7 @@ Public Class MasterPage
             Dim idioma As New BE.IdiomaBE
             idioma.id = Session("Idioma")
             loadSelectedIdioma(idioma)
-            
+
         End If
     End Sub
 
@@ -44,6 +44,18 @@ Public Class MasterPage
                     If children.Value.Equals(comp.nombre) Then
                         children.Text = comp.texto
                     End If
+                Next
+            Next
+        ElseIf TypeOf con Is Table Then
+            For Each c As TableRow In CType(con, Table).Rows
+                For Each cell As TableCell In c.Cells
+                    For Each Control As Control In cell.Controls
+                        If TypeOf Control Is Label Then
+                            If CType(Control, Label).ID.Equals(comp.nombre) Then
+                                CType(Control, Label).Text = comp.texto
+                            End If
+                        End If
+                    Next
                 Next
             Next
         Else

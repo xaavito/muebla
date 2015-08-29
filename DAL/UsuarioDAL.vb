@@ -37,8 +37,36 @@ Public Class UsuarioDAL
     ''' <param name="tipo"></param>
     ''' <param name="usuario"></param>
     ''' <param name="mail"></param>
-    Public Shared Function buscarUsuarios(ByVal tipo As TipoUsuarioBE, ByVal usuario As String, ByVal mail As String) As List(Of UsuarioBE)
-        buscarUsuarios = Nothing
+    Public Shared Function buscarUsuarios(ByVal tipo As Int16, ByVal usuario As String, ByVal mail As String) As List(Of UsuarioBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        Dim lista As New List(Of BE.UsuarioBE)
+        'Try
+        repository.crearComando("BUSCAR_USUARIOS_SP")
+        repository.addParam("@usr", usuario)
+        repository.addParam("@mail", mail)
+        repository.addParam("@tipo", tipo)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+        End If
+        For Each pepe As DataRow In table.Rows
+            Dim user As New BE.UsuarioBE
+            user.id = pepe.Item(0)
+            user.nombre = pepe.Item(1)
+            user.apellido = pepe.Item(2)
+            user.usuario = pepe.Item(3)
+            Dim tip As New BE.TipoUsuarioBE
+            tip.id = pepe.Item(4)
+            tip.descripcion = pepe.Item(5)
+            user.tipoUsuario = tip
+            user.bloqueado = pepe.Item(6)
+            user.mail = pepe.Item(7)
+            lista.Add(user)
+        Next
+
+        Return lista
     End Function
 
     ''' 
@@ -147,6 +175,31 @@ Public Class UsuarioDAL
         Return listaComponentes
     End Function
 
+    Shared Function getTiposUsuarios() As List(Of TipoUsuarioBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LISTAR_TIPOS_USUARIOS_SP")
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim tipos As New List(Of BE.TipoUsuarioBE)
+        Dim tipo As New BE.TipoUsuarioBE
+        tipo.id = Nothing
+        tipo.descripcion = "Todos"
+        tipos.Add(tipo)
+        For Each pepe As DataRow In table.Rows
+            tipo = New BE.TipoUsuarioBE
+            tipo.id = pepe.Item(0)
+            tipo.descripcion = pepe.Item(1)
+            tipos.Add(tipo)
+        Next
+
+        Return tipos
+    End Function
 
 End Class ' UsuarioDAL
 

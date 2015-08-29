@@ -100,6 +100,7 @@
     <Content Include="EditarProveedor.aspx" />
     <Content Include="Factura.aspx" />
     <Content Include="HojaDeRuta.aspx" />
+    <Content Include="images\addImage.png" />
     <Content Include="images\shopping_cart.png" />
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
