@@ -19,7 +19,7 @@ Public Class Mailer
             Dim MyMailMessage As New MailMessage()
 
             'From requires an instance of the MailAddress type
-            MyMailMessage.From = New MailAddress("ticketyasystem@gmail.com")
+            MyMailMessage.From = New MailAddress("mueblamuebles@gmail.com")
 
             'To is a collection of MailAddress types
             MyMailMessage.To.Add(para)
@@ -31,7 +31,7 @@ Public Class Mailer
             Dim SMTPServer As New SmtpClient("smtp.gmail.com")
             SMTPServer.Port = 587
             SMTPServer.UseDefaultCredentials = False
-            SMTPServer.Credentials = New System.Net.NetworkCredential("ticketyasystem@gmail.com", "@jodidA01")
+            SMTPServer.Credentials = New System.Net.NetworkCredential("mueblamuebles@gmail.com", "Mu3bl@mU38Les")
             SMTPServer.EnableSsl = True
 
             SMTPServer.Send(MyMailMessage)

@@ -8,12 +8,12 @@ Public Class Login
     End Sub
 
     Protected Sub login(sender As Object, e As EventArgs)
-        Dim usr As String = Me.usr.Text
-        Dim pass As String = Me.pass.Text
+        Dim usr As String = Me.usrTextBox.Text
+        Dim pass As String = Me.passTextBox.Text
         Dim usuario As New BE.UsuarioBE
         usuario = BLL.UsuarioBLL.login(pass, usr)
         If usuario Is Nothing Then
-
+            Me.loginFailed.Text = "Usuario/contraseña equivocada"
         Else
             Session("Usuario") = usuario
             Response.Redirect("Main.aspx")

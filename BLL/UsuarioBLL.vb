@@ -26,7 +26,7 @@ Public Class UsuarioBLL
     ''' 
     ''' <param name="usr"></param>
     Public Shared Sub altaCliente(ByVal usr As UsuarioBE)
-
+        DAL.UsuarioDAL.altaCliente(usr)
     End Sub
 
     ''' 
@@ -80,12 +80,28 @@ Public Class UsuarioBLL
     ''' 
     ''' <param name="mail"></param>
     ''' <param name="usuario"></param>
-    Public Shared Sub solicitarContraseña(ByVal mail As String, ByVal usuario As String)
-
-    End Sub
+    Public Shared Function solicitarContraseña(ByVal mail As String, ByVal usuario As String) As String
+        Dim pass As String = DAL.UsuarioDAL.solicitarContrasena(mail, usuario)
+        If Not pass Is Nothing Then
+            Util.Mailer.sendMail(mail, "Recuperar Contrasena Muebla", "Usuario su mail es " + pass)
+        End If
+        Return pass
+    End Function
 
     Shared Function getTiposUsuarios() As List(Of BE.TipoUsuarioBE)
         Return DAL.UsuarioDAL.getTiposUsuarios()
+    End Function
+
+    Shared Function getTiposDocumentos() As List(Of BE.TipoDocumentoBE)
+        Return DAL.UsuarioDAL.getTiposDocumentos
+    End Function
+
+    Shared Function getProvincias() As List(Of BE.ProvinciaBE)
+        Return DAL.UsuarioDAL.getProvincias
+    End Function
+
+    Shared Function getTiposLocalidades(p1 As Integer) As Object
+        Return DAL.UsuarioDAL.getLocalidades(p1)
     End Function
 
 

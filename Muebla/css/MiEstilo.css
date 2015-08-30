@@ -1,46 +1,56 @@
 ﻿#top {
-    border:2px solid black;
-    width:100%;
-    text-align:right;
-    background-color:beige;
+    border: 2px solid black;
+    width: 100%;
+    text-align: right;
+    background-color: beige;
 }
 
 #left {
-    border:2px solid black;
-    float:left;
-    width:30%;
-    height:100%;
-    background-color:beige;
+    border: 2px solid black;
+    float: left;
+    width: 30%;
+    height: 100%;
+    background-color: beige;
 }
 
 #right {
-    border:2px solid black;
-    float:right;
-    width:69%;
-    height:100%;
-    background-color:beige;
+    border: 2px solid black;
+    float: right;
+    width: 69%;
+    height: 100%;
+    background-color: beige;
 }
 
-#login {
-    border:2px solid black;
-    float:initial;
-    text-align:center;
-    height:600px;
-    background-color:beige;
+#login, #recuperarContrasena, #registro {
+    border: 2px solid black;
+    float: initial;
+    text-align: center;
+    height: 600px;
+    background-color: beige;
 }
 
-#tableLogin{
+#tableLogin, #tableRecuperarUsuario {
     margin: 0 auto;
     padding-top: 200px;
-    background-color:beige;
+    background-color: beige;
 }
 
-#result{
-    border:1px solid black;
+#tableRegistro{
+    margin: 0 auto;
+    padding-top: 50px;
+    background-color: beige;
+}
+
+#result {
+    border: 1px solid black;
 }
 
 .productos-container {
-    border:2px solid black;
+    border: 2px solid black;
     width: 40%;
     float: left;
+}
+
+#loginFailed {
+    color: red;
 }

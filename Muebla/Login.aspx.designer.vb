@@ -23,20 +23,56 @@ Partial Public Class Login
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Control usr.
+    '''Control tableLogin.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents usr As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents tableLogin As Global.System.Web.UI.WebControls.Table
 
     '''<summary>
-    '''Control pass.
+    '''Control usuarioLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents pass As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents usuarioLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control usrTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents usrTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control passLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents passLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control passTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents passTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control loginFailed.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents loginFailed As Global.System.Web.UI.WebControls.Label
 End Class

@@ -23,9 +23,33 @@ Public Class UsuarioDAL
 
     ''' 
     ''' <param name="usr"></param>
-    Public Shared Sub altaCliente(ByVal usr As UsuarioBE)
+    Public Shared Function altaCliente(ByVal usr As UsuarioBE)
+        Dim id As Int16
 
-    End Sub
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("ALTA_CLIENTE_SP")
+        repository.addParam("@usr", usr.usuario)
+        repository.addParam("@mail", usr.mail)
+        repository.addParam("@nom", usr.nombre)
+        repository.addParam("@ape", usr.apellido)
+        repository.addParam("@pass", usr.password)
+        repository.addParam("@dni", usr.dni)
+        repository.addParam("@cuil", usr.cuil)
+        repository.addParam("@tipo", usr.tipoDoc.id)
+        repository.addParam("@num", usr.telefono.numero)
+        repository.addParam("@int", usr.telefono.interno)
+        repository.addParam("@pre", usr.telefono.prefijo)
+        repository.addParam("@calle", usr.domicilio.calle)
+        repository.addParam("@nro", usr.domicilio.numero)
+        repository.addParam("@piso", usr.domicilio.piso)
+        repository.addParam("@dpto", usr.domicilio.dpto)
+        repository.addParam("@loc", usr.domicilio.m_LocalidadBE.id)
+        repository.addParam("@prov", usr.domicilio.m_LocalidadBE.m_ProvinciaBE.id)
+        id = repository.executeWithReturnValue
+
+        Return id
+    End Function
 
     ''' 
     ''' <param name="usr"></param>
@@ -133,9 +157,30 @@ Public Class UsuarioDAL
     ''' 
     ''' <param name="mail"></param>
     ''' <param name="usr"></param>
-    Public Shared Sub solicitarContrasena(ByVal mail As String, ByVal usr As String)
+    Public Shared Function solicitarContrasena(ByVal mail As String, ByVal usr As String) As String
+        Dim table As DataTable
 
-    End Sub
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("SOLICITAR_CONTRASENA_SP")
+        repository.addParam("@mail", mail)
+        repository.addParam("@usr", usr)
+
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        'Dim listaComponentes As New List(Of BE.ComponenteBE)
+        For Each pepe As DataRow In table.Rows
+            'Dim pass As String
+            If IsDBNull(pepe.Item(0)) Then
+                Return Nothing
+            Else
+                Return pepe.Item(0)
+            End If
+        Next
+    End Function
 
     Shared Function buscarPermisos(rol As RolBE) As List(Of BE.ComponenteBE)
         Dim table As DataTable
@@ -193,6 +238,76 @@ Public Class UsuarioDAL
         tipos.Add(tipo)
         For Each pepe As DataRow In table.Rows
             tipo = New BE.TipoUsuarioBE
+            tipo.id = pepe.Item(0)
+            tipo.descripcion = pepe.Item(1)
+            tipos.Add(tipo)
+        Next
+
+        Return tipos
+    End Function
+
+    Shared Function getTiposDocumentos() As List(Of TipoDocumentoBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LISTAR_TIPOS_DOCUMENTOS_SP")
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim tipos As New List(Of BE.TipoDocumentoBE)
+        Dim tipo As BE.TipoDocumentoBE
+        For Each pepe As DataRow In table.Rows
+            tipo = New BE.TipoDocumentoBE
+            tipo.id = pepe.Item(0)
+            tipo.descripcion = pepe.Item(1)
+            tipos.Add(tipo)
+        Next
+
+        Return tipos
+    End Function
+
+    Shared Function getProvincias() As List(Of ProvinciaBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LISTAR_PROVINCIAS_SP")
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim tipos As New List(Of BE.ProvinciaBE)
+        Dim tipo As BE.ProvinciaBE
+        For Each pepe As DataRow In table.Rows
+            tipo = New BE.ProvinciaBE
+            tipo.id = pepe.Item(0)
+            tipo.descripcion = pepe.Item(1)
+            tipos.Add(tipo)
+        Next
+
+        Return tipos
+    End Function
+
+    Shared Function getLocalidades(p1 As Integer) As Object
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("BUSCAR_LOCALIDADES_SP")
+        repository.addParam("@prov", p1)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim tipos As New List(Of BE.LocalidadBE)
+        Dim tipo As BE.LocalidadBE
+        For Each pepe As DataRow In table.Rows
+            tipo = New BE.LocalidadBE
             tipo.id = pepe.Item(0)
             tipo.descripcion = pepe.Item(1)
             tipos.Add(tipo)

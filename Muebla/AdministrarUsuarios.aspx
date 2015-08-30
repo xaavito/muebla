@@ -3,7 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Table runat="server" ID="tableAdministrarUsuariosCriteria">
-        <asp:TableHeaderRow></asp:TableHeaderRow>
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" /></asp:TableCell>
@@ -22,7 +21,6 @@
             <asp:TableCell>
                 <asp:DropDownList runat="server" ID="tipoUsuarioDropDownList" /></asp:TableCell>
         </asp:TableRow>
-        <asp:TableFooterRow></asp:TableFooterRow>
     </asp:Table>
     <asp:Button runat="server" ID="buscarUsuariosButton" Text="Buscar" OnClick="buscarUsuariosButton_Click"/> 
     <asp:Table runat="server" ID="tablaAdministrarUsuariosResultados">

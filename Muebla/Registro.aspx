@@ -10,102 +10,146 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <table id="tableLogin">
-                <tr>
-                    <td>Nombre</td>
-                    <td class="auto-style1">
-                        <input id="Text1" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Apellido</td>
-                    <td class="auto-style1">
-                        <input id="Text2" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Tipo Documento</td>
-                    <td class="auto-style1">
-                        <select name="ad">
-                            <option value="1.htm">DNI</option>
-                            <option value="2.htm">CI</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>Nro Documento</td>
-                    <td class="auto-style1">
-                        <input id="Text3" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>CUIL</td>
-                    <td class="auto-style1">
-                        <input id="Text4" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Mail</td>
-                    <td class="auto-style1">
-                        <input id="Text5" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Calle</td>
-                    <td class="auto-style1">
-                        <input id="Text6" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Numero</td>
-                    <td class="auto-style1">
-                        <input id="Text7" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Dpto</td>
-                    <td class="auto-style1">
-                        <input id="Text8" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Piso</td>
-                    <td class="auto-style1">
-                        <input id="Text21" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Localidad</td>
-                    <td class="auto-style1">
-                        <select name="ad">
-                            <option value="1.htm">CABA</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>Provincia</td>
-                    <td class="auto-style1">
-                        <select name="ad">
-                            <option value="1.htm">CABA</option>
-                        </select></td>
-                </tr>
-                <tr>
-                    <td>Telefono</td>
-                    <td class="auto-style1">
-                        <input id="Text22" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Prefijo</td>
-                    <td class="auto-style1">
-                        <input id="Text2" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Interno</td>
-                    <td class="auto-style1">
-                        <input id="Text23" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Nombre de Usuario</td>
-                    <td class="auto-style1">
-                        <input id="Text24" type="text" /></td>
-                </tr>
-                <tr>
-                    <td>Password</td>
-                    <td class="auto-style1">
-                        <input id="Text25" type="text" /></td>
-                </tr>
-            </table>
-            <asp:Button Text="Registrarse" runat="server" />
+        <div id="registro">
+            <asp:Table runat="server" ID="tableRegistro">
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="nombreLabel" Text="Nombre" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="nombreTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="apellidoLabel" Text="Apellido" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="apellidoTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="tipoDocLabel" Text="Tipo Documento" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:DropDownList runat="server" ID="tipoDocDropDownList" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="documentoLabel" Text="Nro Documento" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="documentoTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="cuilLabel" Text="CUIL" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="cuilTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="mailLabel" Text="Mail" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="mailTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="calleLabel" Text="Calle" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="calleTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="nroCalleLabel" Text="Nro" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="nroTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="pisoLabel" Text="Piso" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="pisoTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="dptoLabel" Text="Dpto" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="dptoTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="provinciaLabel" Text="Provincia" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:DropDownList runat="server" ID="provinciaDropDownList" OnSelectedIndexChanged="provinciaDropDownList_SelectedIndexChanged" AutoPostBack="true"/>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="localidadLabel" Text="Localidad" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:DropDownList runat="server" ID="localidadDropDownList" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="telefonoLabel" Text="Telefono" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="telefonoTextBox" TextMode="Phone"/>
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="prefijoLabel" Text="Prefijo" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="prefijoTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="internoLabel" Text="Interno" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="internoTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="usuarioTextBox" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>
+                        <asp:Label runat="server" ID="passLabel" Text="Contraseña" />
+                    </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="passTextBox" TextMode="Password"/>
+                    </asp:TableCell>
+                </asp:TableRow>
+            </asp:Table>
+            <asp:Button Text="Registrarse" runat="server" id="registrarseButton" OnClick="registrarseButton_Click"/>
         </div>
     </form>
 </body>

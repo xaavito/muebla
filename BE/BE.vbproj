@@ -102,6 +102,7 @@
     <Compile Include="TipoComprobanteBE.vb" />
     <Compile Include="TipoEventoBE.vb" />
     <Compile Include="TipoProductoBE.vb" />
+    <Compile Include="TipoDocumentoBE.vb" />
     <Compile Include="TipoUsuarioBE.vb" />
     <Compile Include="TipoVentaBE.vb" />
     <Compile Include="UsuarioBE.vb" />

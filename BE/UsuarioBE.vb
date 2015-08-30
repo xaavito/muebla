@@ -12,19 +12,12 @@
 ''
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
-
-Option Explicit On
-Option Strict On
-
-
 Public Class UsuarioBE
 
     Private _id As Integer
     Private _apellido As String
     Private _baja As Boolean
     Private _bloqueado As Boolean
-    Private _cuil As Long
     Private _dni As Long
     Private _domicilio As DomicilioBE
     Private _idioma As IdiomaBE
@@ -40,6 +33,25 @@ Public Class UsuarioBE
     Public m_TelefonoBE As TelefonoBE
     Public m_IdiomaBE As IdiomaBE
     Public m_TipoUsuarioBE As TipoUsuarioBE
+    Private _cuil As String
+    Public Property cuil() As String
+        Get
+            Return _cuil
+        End Get
+        Set(ByVal value As String)
+            _cuil = value
+        End Set
+    End Property
+
+    Private _tipoDoc As BE.TipoDocumentoBE
+    Public Property tipoDoc() As BE.TipoDocumentoBE
+        Get
+            Return _tipoDoc
+        End Get
+        Set(ByVal value As BE.TipoDocumentoBE)
+            _tipoDoc = value
+        End Set
+    End Property
 
 
     Public Property id() As Integer
