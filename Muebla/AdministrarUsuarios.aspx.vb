@@ -1,6 +1,10 @@
 ﻿Public Class AdministrarUsuarios
     Inherits System.Web.UI.Page
-    Dim detalle As ImageButton
+
+    Dim check As CheckBox
+    Dim row As TableRow
+    Dim cell As TableCell
+    Dim label As Label
 
     Protected Sub Page_init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
 
@@ -14,16 +18,19 @@
 
     Protected Sub buscarUsuariosButton_Click(sender As Object, e As EventArgs)
         Dim listaUsrs As List(Of BE.UsuarioBE)
-        Dim row As TableRow
-        Dim cell As TableCell
-        Dim label As Label
-
+       
         listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Int16.Parse(tipoUsuarioDropDownList.SelectedValue), Me.mailTextBox.Text)
         For Each usr As BE.UsuarioBE In listaUsrs
             row = New TableRow
+            
+            'seleccion
+            cell = New TableCell
+            check = New CheckBox
+            cell.Controls.Add(check)
+            row.Cells.Add(cell)
+            'usuario
             cell = New TableCell
             label = New Label
-            'usuario
             label.Text = usr.usuario
             cell.Controls.Add(label)
             row.Cells.Add(cell)
@@ -45,23 +52,24 @@
             label.Text = usr.bloqueado
             cell.Controls.Add(label)
             row.Cells.Add(cell)
-            'detalle
-            cell = New TableCell
-            detalle = New ImageButton
-            detalle.ImageUrl = "/images/addImage.png"
-            detalle.ImageAlign = ImageAlign.Middle
-            detalle.ID = "detailUsr" + usr.id.ToString
-            ' esto es iiiiiincreible, que alguien me explique esta sintaxis que no tiene nada que ver con nada
-            'AddHandler detalle.Click, AddressOf btn_Click
-            ' fin de la magia
-            cell.Controls.Add(detalle)
-            row.Cells.Add(cell)
 
             Me.tablaAdministrarUsuariosResultados.Rows.Add(row)
         Next
     End Sub
 
-    Private Sub btn_Click(sender As Object, e As EventArgs)
-        Debug.WriteLine("llegue")
+    Protected Sub modificarUsuarioButton_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub verDetalleUsuarioButton_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub bajaUsuarioButton_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub desbloquearUsuarioButton_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

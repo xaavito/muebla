@@ -39,14 +39,12 @@
             <asp:TableHeaderCell>
                 <asp:Label runat="server" ID="estadoTableLabel" Text="Estado" />
                 </asp:TableHeaderCell>
-            <asp:TableHeaderCell>
-                <asp:Label runat="server" ID="detalleTableLabel" Text="Detalle" />
-                </asp:TableHeaderCell>
         </asp:TableHeaderRow>
         <asp:TableFooterRow></asp:TableFooterRow>
     </asp:Table>
     
-    <asp:Button Text="Modificar" runat="server" />
-    <asp:Button Text="Baja" runat="server" />
-    <asp:Button Text="Desbloquear" runat="server" />
+    <asp:Button id="modificarUsuarioButton" Text="Modificar" runat="server" OnClick="modificarUsuarioButton_Click"/>
+    <asp:Button id="verDetalleUsuarioButton" Text="Ver Detalle" runat="server" OnClick="verDetalleUsuarioButton_Click" />
+    <asp:Button id="bajaUsuarioButton" Text="Baja" runat="server" OnClick="bajaUsuarioButton_Click"/>
+    <asp:Button id="desbloquearUsuarioButton" Text="Desbloquear" runat="server" OnClick="desbloquearUsuarioButton_Click"/>
 </asp:Content>

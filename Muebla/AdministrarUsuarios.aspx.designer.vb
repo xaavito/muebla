@@ -131,11 +131,38 @@ Partial Public Class AdministrarUsuarios
     Protected WithEvents estadoTableLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control detalleTableLabel.
+    '''Control modificarUsuarioButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents detalleTableLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents modificarUsuarioButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control verDetalleUsuarioButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents verDetalleUsuarioButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control bajaUsuarioButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents bajaUsuarioButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control desbloquearUsuarioButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents desbloquearUsuarioButton As Global.System.Web.UI.WebControls.Button
 End Class
