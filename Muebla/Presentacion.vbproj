@@ -101,6 +101,9 @@
     <Content Include="Factura.aspx" />
     <Content Include="HojaDeRuta.aspx" />
     <Content Include="images\addImage.png" />
+    <Content Include="images\addToCart.png" />
+    <Content Include="images\arrowLeft.png" />
+    <Content Include="images\arrowRight.png" />
     <Content Include="images\deleteItem.png" />
     <Content Include="images\editItem.png" />
     <Content Include="images\shopping_cart.png" />

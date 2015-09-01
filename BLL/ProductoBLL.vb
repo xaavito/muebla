@@ -36,16 +36,14 @@ Public Class ProductoBLL
 
     End Sub
 
-    ''' 
-    ''' <param name="producto"></param>
-    Public Shared Sub bajaProducto(ByVal producto As ProductoBE)
+    Public Shared Function bajaProducto(ByVal id As Integer) As Integer
+        Return DAL.ProductoDAL.bajaProducto(id)
+    End Function
 
-    End Sub
+    Public Shared Function buscarProducto(ByVal id As Integer) As BE.ProductoBE
+        Return DAL.ProductoDAL.buscarProducto(id)
+    End Function
 
-    ''' 
-    ''' <param name="stockMin"></param>
-    ''' <param name="tipo"></param>
-    ''' <param name="nombre"></param>
     Public Shared Function buscarProductos(ByVal tipo As Integer, ByVal nombre As String) As List(Of ProductoBE)
         Return DAL.ProductoDAL.buscarProductos(tipo, nombre)
     End Function

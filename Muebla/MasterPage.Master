@@ -15,6 +15,7 @@
 <body>
     <form id="form1" runat="server">
         <div id="top">
+            <asp:Label id="messageLogger" runat="server" />
             <a href="Login.aspx">Login</a>
             <asp:DropDownList runat="server" ID="idiomasList" AutoPostBack="True" OnSelectedIndexChanged="idiomasList_SelectedIndexChanged" />
 

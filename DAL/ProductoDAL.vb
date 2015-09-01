@@ -31,15 +31,27 @@ Public Class ProductoDAL
 
     ''' 
     ''' <param name="producto"></param>
-    Public Sub altaProducto(ByVal producto As ProductoBE)
+    Public Shared Function altaProducto(ByVal producto As ProductoBE)
 
-    End Sub
+    End Function
 
     ''' 
     ''' <param name="producto"></param>
-    Public Sub bajaProducto(ByVal producto As ProductoBE)
+    Public Shared Function bajaProducto(ByVal producto As Integer) As Integer
+        Dim ret As Integer
+        Dim list As New List(Of BE.ProductoBE)
 
-    End Sub
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BAJA_PRODUCTO_SP")
+            repository.addParam("@id", producto)
+            ret = repository.executeSearchWithStatus
+        Catch ex As Exception
+
+        End Try
+
+        Return ret
+    End Function
 
     Public Shared Function buscarProductos(ByVal tipo As Integer, ByVal nombre As String) As List(Of BE.ProductoBE)
         Dim table As DataTable
@@ -69,6 +81,31 @@ Public Class ProductoDAL
         Return list
     End Function
 
+    Public Shared Function buscarProducto(ByVal id As Integer) As BE.ProductoBE
+        Dim table As DataTable
+        Dim producto As New BE.ProductoBE
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("BUSCAR_PRODUCTO_SP")
+        repository.addParam("@id", id)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        For Each item As DataRow In table.Rows
+            producto.id = item.Item(0)
+            producto.descripcion = item.Item(1)
+            Dim tipoProd As New BE.TipoProductoBE
+            tipoProd.id = item.Item(2)
+            tipoProd.descripcion = item.Item(3)
+            producto.tipoProducto = tipoProd
+        Next
+
+        Return producto
+    End Function
+
     ''' 
     ''' <param name="producto"></param>
     Public Shared Function checkProductoEnPedidos(ByVal producto As ProductoBE) As Boolean
@@ -83,13 +120,13 @@ Public Class ProductoDAL
 
     ''' 
     ''' <param name="prod"></param>
-    Public Sub generarOrdenCompra(ByVal prod As ProductoBE)
+    Public Shared Sub generarOrdenCompra(ByVal prod As ProductoBE)
 
     End Sub
 
     ''' 
     ''' <param name="producto"></param>
-    Public Sub modificarProducto(ByVal producto As ProductoBE)
+    Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
 
     End Sub
 

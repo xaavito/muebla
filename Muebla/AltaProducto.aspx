@@ -22,15 +22,7 @@
                 <asp:DropDownList runat="server" ID="proveedorDropDown" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Button runat="server" ID="addProveedorButton" Text="Agregar Proveedor" OnClick="addProveedorButton_Click"/>
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <asp:Label runat="server" ID="precioLabel" Text="Precio" />
-            </asp:TableCell>
-            <asp:TableCell>
-                <asp:TextBox runat="server" ID="precioTextBox" />
+                <asp:Button runat="server" ID="addProveedorButton" Text="Agregar Proveedor" OnClick="addProveedorButton_Click" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -62,10 +54,16 @@
                 <asp:Label runat="server" ID="productosLabel" Text="Productos" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:ListBox runat="server" ID="productosListBox" />
+                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Button runat="server" ID="addProductoButton" Text="Manejar Productos" />
+                <asp:ImageButton runat="server" ID="removerProductoButton" ImageUrl="/images/arrowRight.png" OnClick="removerProductoButton_Click" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:ImageButton runat="server" ID="agregarProductoButton" ImageUrl="/images/arrowLeft.png" OnClick="agregarProductoButton_Click" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableFooterRow></asp:TableFooterRow>

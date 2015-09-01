@@ -68,24 +68,6 @@ Partial Public Class AltaProducto
     Protected WithEvents addProveedorButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control precioLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents precioLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control precioTextBox.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents precioTextBox As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
     '''Control stockLabel.
     '''</summary>
     '''<remarks>
@@ -149,22 +131,40 @@ Partial Public Class AltaProducto
     Protected WithEvents productosLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control productosListBox.
+    '''Control productosPropiosListBox.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents productosListBox As Global.System.Web.UI.WebControls.ListBox
+    Protected WithEvents productosPropiosListBox As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
-    '''Control addProductoButton.
+    '''Control removerProductoButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents addProductoButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents removerProductoButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control agregarProductoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents agregarProductoButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control allProductosListBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents allProductosListBox As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
     '''Control confirmarAltaProductoButton.

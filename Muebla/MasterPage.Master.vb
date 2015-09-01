@@ -30,11 +30,25 @@ Public Class MasterPage
             Dim idioma As New BE.IdiomaBE
             idioma.id = Session("Idioma")
             loadSelectedIdioma(idioma)
-
         End If
     End Sub
 
     Private Sub getItems(comp As BE.ComponenteBE, con As Control)
+        If TypeOf con Is GridView Then
+            If Not CType(con, GridView).HeaderRow Is Nothing Then
+                For Each cel As TableCell In CType(con, GridView).HeaderRow.Cells
+                    For Each c As Control In cel.Controls
+                        If TypeOf c Is LinkButton Then
+                            Debug.WriteLine(CType(c, LinkButton).Text)
+                            'aca me voy a tener que mandar un reverse search, o sea por el nombre en un idioma busco el equivalente en el otro...
+                            'If CType(c, LinkButton).ID.Equals(comp.nombre) Then
+                            'CType(c, LinkButton).Text = comp.texto
+                            'End If
+                        End If
+                    Next
+                Next
+            End If
+        End If
         If TypeOf con Is TreeView Then
             For Each c As TreeNode In CType(con, TreeView).Nodes
                 If c.Value.Equals(comp.nombre) Then

@@ -17,7 +17,7 @@
                     <div class="media-body">
                         <h4 class="media-heading"><%# Item.producto.descripcion %></h4>
                         <h4 class="media-heading"><%# Item.precio %></h4>
-                        <asp:LinkButton runat="server" ID="btnAgregarAlCarrito" Text="Agregar al Carrito" CssClass="pull-right" CommandName="addToCart" CommandArgument="<%# Item.producto.id %>" />
+                        <asp:ImageButton runat="server" ID="btnAgregarAlCarrito" ImageUrl="/images/addToCart.png" CssClass="pull-right" CommandName="addToCart" CommandArgument="<%# Item.producto.id %>" />
                     </div>
                 </div>
             </div>

@@ -35,7 +35,7 @@
     background-color: beige;
 }
 
-#tableRegistro{
+#tableRegistro {
     margin: 0 auto;
     padding-top: 50px;
     background-color: beige;
@@ -53,4 +53,8 @@
 
 #loginFailed {
     color: red;
+}
+
+#ContentPlaceHolder1_editDataDiv {
+    border: 2px solid red;
 }
