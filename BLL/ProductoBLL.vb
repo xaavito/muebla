@@ -32,9 +32,9 @@ Public Class ProductoBLL
 
     ''' 
     ''' <param name="producto"></param>
-    Public Shared Sub altaProducto(ByVal producto As ProductoBE)
-
-    End Sub
+    Public Shared Function altaProducto(ByVal producto As ProductoBE) As Integer
+        Return DAL.ProductoDAL.altaProducto(producto)
+    End Function
 
     Public Shared Function bajaProducto(ByVal id As Integer) As Integer
         Return DAL.ProductoDAL.bajaProducto(id)

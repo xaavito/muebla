@@ -31,8 +31,25 @@ Public Class ProductoDAL
 
     ''' 
     ''' <param name="producto"></param>
-    Public Shared Function altaProducto(ByVal producto As ProductoBE)
+    Public Shared Function altaProducto(ByVal producto As ProductoBE) As Integer
+        Dim id As Integer
+        Dim list As New List(Of BE.ProductoBE)
 
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_PRODUCTO_SP")
+            repository.addParam("@des", producto.descripcion)
+            repository.addParam("@tipo", producto.tipoProducto.id)
+            repository.addParam("@sto", producto.stock)
+            repository.addParam("@stomin", producto.stockMin)
+            repository.addParam("@prov", producto.proveedor.id)
+            repository.addParam("@img", producto.image1)
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+
+        End Try
+
+        Return id
     End Function
 
     ''' 

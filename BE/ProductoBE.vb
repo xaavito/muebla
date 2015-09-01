@@ -25,12 +25,29 @@ Public Class ProductoBE
     Private _id As Long
     Private _image1 As Byte()
     Private _image2 As Byte()
-    Private _productos As ProductoBE
-    Private _proveedores As ProveedorBE
+    Private _productos As List(Of BE.ProductoBE)
+    Private _proveedor As ProveedorBE
     Private _tipoProducto As TipoProductoBE
-    Public m_TipoProductoBE As TipoProductoBE
-    Public m_ProveedorBE As ProveedorBE
-    Public m_ProductoBE As ProductoBE
+    Private _stock As Integer
+    Private _stockMin As Integer
+
+    Public Property stockMin() As Integer
+        Get
+            Return _stockMin
+        End Get
+        Set(ByVal value As Integer)
+            _stockMin = value
+        End Set
+    End Property
+
+    Public Property stock() As Integer
+        Get
+            Return _stock
+        End Get
+        Set(ByVal value As Integer)
+            _stock = value
+        End Set
+    End Property
 
     Public Property descripcion() As String
         Get
@@ -69,21 +86,21 @@ Public Class ProductoBE
     End Property
 
 
-    Public Property productos() As ProductoBE
+    Public Property productos() As List(Of BE.ProductoBE)
         Get
             Return _productos
         End Get
-        Set(ByVal Value As ProductoBE)
+        Set(ByVal Value As List(Of BE.ProductoBE))
             _productos = Value
         End Set
     End Property
 
-    Public Property proveedores() As ProveedorBE
+    Public Property proveedor() As ProveedorBE
         Get
-            Return _proveedores
+            Return _proveedor
         End Get
         Set(ByVal Value As ProveedorBE)
-            _proveedores = Value
+            _proveedor = Value
         End Set
     End Property
 

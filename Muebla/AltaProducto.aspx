@@ -12,6 +12,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="descripcionTextBox" />
+                <asp:RequiredFieldValidator ErrorMessage="errormessage" ControlToValidate="descripcionTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -31,6 +32,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="stockTextBox" />
+                <asp:RequiredFieldValidator ErrorMessage="errormessage" ControlToValidate="stockTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -39,6 +41,15 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="stockMinimoTextBox" />
+                <asp:RequiredFieldValidator ErrorMessage="errormessage" ControlToValidate="stockMinimoTextBox" runat="server" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="fotoLabel" Text="Foto" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:FileUpload runat="server" id="fileUpload" />    
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>

@@ -28,7 +28,17 @@
     Protected Sub confirmarAltaProductoButton_Click(sender As Object, e As EventArgs)
         Dim prod As New BE.ProductoBE
         prod.descripcion = Me.descripcionTextBox.Text
-
+        Dim tipo As New BE.TipoProductoBE
+        tipo.id = Me.tipoProductoDropDown.SelectedValue
+        prod.tipoProducto = tipo
+        prod.productos = Me.productosPropiosListBox.DataSource
+        Dim prov As New BE.ProveedorBE
+        prov.id = Me.proveedorDropDown.SelectedValue
+        prod.proveedor = prov
+        prod.image1 = Me.fileUpload.FileBytes
+        prod.stock = Integer.Parse(Me.stockTextBox.Text)
+        prod.stockMin = Integer.Parse(Me.stockMinimoTextBox.Text)
+        BLL.ProductoBLL.altaProducto(prod)
     End Sub
 
     Protected Sub cancelarAltaProductoButton_Click(sender As Object, e As EventArgs)
@@ -43,7 +53,6 @@
         If Not productosPropiosListBox.SelectedItem Is Nothing Then
             productosPropiosListBox.Items.RemoveAt(productosPropiosListBox.SelectedIndex)
         End If
-
     End Sub
 
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
