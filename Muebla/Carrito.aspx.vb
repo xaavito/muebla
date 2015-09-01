@@ -1,5 +1,5 @@
 ﻿Public Class Carrito
-    Inherits System.Web.UI.Page
+    Inherits ExtendedPage
     Dim carrito As List(Of BE.ListaPrecioDetalleBE)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

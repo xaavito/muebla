@@ -114,15 +114,14 @@ Public Class GestorResguardoDAL
             table = repository.executeSearchWithAdapter()
             If (table.Rows.Count <= 0) Then
                 Throw New BackupsNoEncontrados
-                'shvjksdbgjfxdb()
             End If
             For Each pepe As DataRow In table.Rows
                 Dim bu As New BE.BackupBE
                 bu.id = pepe.Item(0)
-                bu.descripcion = pepe.Item(1)
-                bu.fecha = pepe.Item(2)
-                bu.path = pepe.Item(3)
-                bu.activo = pepe.Item(4)
+                bu.descripcion = pepe.Item(2)
+                'bu.fecha = pepe.Item(2)
+                bu.path = pepe.Item(1)
+                'bu.activo = pepe.Item(4)
                 backups.Add(bu)
             Next
 

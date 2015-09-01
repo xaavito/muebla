@@ -24,7 +24,7 @@ Public Class GestorResguardoBLL
 
 
     Public Shared Function buscarBackups() As List(Of BackupBE)
-        buscarBackups = Nothing
+        Return DAL.GestorResguardoDAL.listarBackups()
     End Function
 
     ''' 

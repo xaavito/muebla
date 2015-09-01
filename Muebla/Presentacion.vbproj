@@ -132,119 +132,122 @@
     </Compile>
     <Compile Include="AdministrarIdiomas.aspx.vb">
       <DependentUpon>AdministrarIdiomas.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdministrarProductos.aspx.designer.vb">
       <DependentUpon>AdministrarProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministrarProductos.aspx.vb">
       <DependentUpon>AdministrarProductos.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdministrarProveedores.aspx.designer.vb">
       <DependentUpon>AdministrarProveedores.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministrarProveedores.aspx.vb">
       <DependentUpon>AdministrarProveedores.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdministrarUsuarios.aspx.designer.vb">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="AdministrarUsuarios.aspx.vb">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AltaIdioma.aspx.designer.vb">
       <DependentUpon>AltaIdioma.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaIdioma.aspx.vb">
       <DependentUpon>AltaIdioma.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AltaListaPrecio.aspx.designer.vb">
       <DependentUpon>AltaListaPrecio.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaListaPrecio.aspx.vb">
       <DependentUpon>AltaListaPrecio.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AltaProducto.aspx.designer.vb">
       <DependentUpon>AltaProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaProducto.aspx.vb">
       <DependentUpon>AltaProducto.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AltaProveedor.aspx.designer.vb">
       <DependentUpon>AltaProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaProveedor.aspx.vb">
       <DependentUpon>AltaProveedor.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AltaUsuario.aspx.designer.vb">
       <DependentUpon>AltaUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="AltaUsuario.aspx.vb">
       <DependentUpon>AltaUsuario.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AsignarShowroom.aspx.designer.vb">
       <DependentUpon>AsignarShowroom.aspx</DependentUpon>
     </Compile>
     <Compile Include="AsignarShowroom.aspx.vb">
       <DependentUpon>AsignarShowroom.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Backup.aspx.designer.vb">
       <DependentUpon>Backup.aspx</DependentUpon>
     </Compile>
     <Compile Include="Backup.aspx.vb">
       <DependentUpon>Backup.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Bitacora.aspx.designer.vb">
       <DependentUpon>Bitacora.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bitacora.aspx.vb">
       <DependentUpon>Bitacora.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Carrito.aspx.designer.vb">
       <DependentUpon>Carrito.aspx</DependentUpon>
     </Compile>
     <Compile Include="Carrito.aspx.vb">
       <DependentUpon>Carrito.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ConfirmarShowroom.aspx.designer.vb">
       <DependentUpon>ConfirmarShowroom.aspx</DependentUpon>
     </Compile>
     <Compile Include="ConfirmarShowroom.aspx.vb">
       <DependentUpon>ConfirmarShowroom.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="DatosPersonales.aspx.designer.vb">
       <DependentUpon>DatosPersonales.aspx</DependentUpon>
     </Compile>
     <Compile Include="DatosPersonales.aspx.vb">
       <DependentUpon>DatosPersonales.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="EditarProveedor.aspx.designer.vb">
       <DependentUpon>EditarProveedor.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditarProveedor.aspx.vb">
       <DependentUpon>EditarProveedor.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="controls\ExtendedPage.vb">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Factura.aspx.designer.vb">
       <DependentUpon>Factura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Factura.aspx.vb">
       <DependentUpon>Factura.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="getImageHandler.ashx.vb">
       <DependentUpon>getImageHandler.ashx</DependentUpon>
@@ -254,21 +257,21 @@
     </Compile>
     <Compile Include="HojaDeRuta.aspx.vb">
       <DependentUpon>HojaDeRuta.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.vb">
       <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Main.aspx.designer.vb">
       <DependentUpon>Main.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main.aspx.vb">
       <DependentUpon>Main.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="MasterPage.Master.designer.vb">
       <DependentUpon>MasterPage.Master</DependentUpon>
@@ -282,21 +285,21 @@
     </Compile>
     <Compile Include="MisPedidos.aspx.vb">
       <DependentUpon>MisPedidos.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ModificacionListaPrecio.aspx.designer.vb">
       <DependentUpon>ModificacionListaPrecio.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificacionListaPrecio.aspx.vb">
       <DependentUpon>ModificacionListaPrecio.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ModificarListaPrecio.aspx.designer.vb">
       <DependentUpon>ModificarListaPrecio.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModificarListaPrecio.aspx.vb">
       <DependentUpon>ModificarListaPrecio.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -322,84 +325,84 @@
     </Compile>
     <Compile Include="NotaCredito.aspx.vb">
       <DependentUpon>NotaCredito.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="NuevaPromo.aspx.designer.vb">
       <DependentUpon>NuevaPromo.aspx</DependentUpon>
     </Compile>
     <Compile Include="NuevaPromo.aspx.vb">
       <DependentUpon>NuevaPromo.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Observaciones.aspx.designer.vb">
       <DependentUpon>Observaciones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Observaciones.aspx.vb">
       <DependentUpon>Observaciones.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="OrdenCompra.aspx.designer.vb">
       <DependentUpon>OrdenCompra.aspx</DependentUpon>
     </Compile>
     <Compile Include="OrdenCompra.aspx.vb">
       <DependentUpon>OrdenCompra.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PostVenta.aspx.designer.vb">
       <DependentUpon>PostVenta.aspx</DependentUpon>
     </Compile>
     <Compile Include="PostVenta.aspx.vb">
       <DependentUpon>PostVenta.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Promociones.aspx.designer.vb">
       <DependentUpon>Promociones.aspx</DependentUpon>
     </Compile>
     <Compile Include="Promociones.aspx.vb">
       <DependentUpon>Promociones.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RecuperarContrasena.aspx.designer.vb">
       <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
     </Compile>
     <Compile Include="RecuperarContrasena.aspx.vb">
       <DependentUpon>RecuperarContrasena.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Registro.aspx.designer.vb">
       <DependentUpon>Registro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Registro.aspx.vb">
       <DependentUpon>Registro.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Remito.aspx.designer.vb">
       <DependentUpon>Remito.aspx</DependentUpon>
     </Compile>
     <Compile Include="Remito.aspx.vb">
       <DependentUpon>Remito.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Restore.aspx.designer.vb">
       <DependentUpon>Restore.aspx</DependentUpon>
     </Compile>
     <Compile Include="Restore.aspx.vb">
       <DependentUpon>Restore.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="solicitarShowroom.aspx.designer.vb">
       <DependentUpon>solicitarShowroom.aspx</DependentUpon>
     </Compile>
     <Compile Include="solicitarShowroom.aspx.vb">
       <DependentUpon>solicitarShowroom.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Ventas.aspx.designer.vb">
       <DependentUpon>Ventas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ventas.aspx.vb">
       <DependentUpon>Ventas.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>

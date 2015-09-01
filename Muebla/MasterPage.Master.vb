@@ -34,24 +34,20 @@ Public Class MasterPage
     End Sub
 
     Private Sub getItems(comp As BE.ComponenteBE, con As Control)
-        'If TypeOf con Is GridView Then
-        '    If Not CType(con, GridView).HeaderRow Is Nothing Then
-        '        For Each cel As TableCell In CType(con, GridView).HeaderRow.Cells
-        '            For Each c As Control In cel.Controls
-        '                If TypeOf c Is LinkButton Then
-        '                    Debug.WriteLine(CType(c, LinkButton).Text)
-        '                    idioma = New BE.IdiomaBE
-        '                    idioma.id = Session("Idioma")
-        '                    'CType(c, LinkButton).Text = BLL.GestorIdiomaBLL.getTranslation(CType(c, LinkButton).Text, idioma.id)
-        '                    'aca me voy a tener que mandar un reverse search, o sea por el nombre en un idioma busco el equivalente en el otro...
-        '                    'If CType(c, LinkButton).ID.Equals(comp.nombre) Then
-        '                    'CType(c, LinkButton).Text = comp.texto
-        '                    'End If
-        '                End If
-        '            Next
-        '        Next
-        '    End If
-        'End If
+        If TypeOf con Is GridView Then
+            If Not CType(con, GridView).HeaderRow Is Nothing Then
+                For Each cel As TableCell In CType(con, GridView).HeaderRow.Cells
+                    For Each c As Control In cel.Controls
+                        If TypeOf c Is LinkButton Then
+                            Debug.WriteLine(CType(c, LinkButton).Text)
+                            idioma = New BE.IdiomaBE
+                            idioma.id = Session("Idioma")
+                            CType(c, LinkButton).Text = BLL.GestorIdiomaBLL.getTranslation(CType(c, LinkButton).Text, idioma.id)
+                        End If
+                    Next
+                Next
+            End If
+        End If
         If TypeOf con Is TreeView Then
             For Each c As TreeNode In CType(con, TreeView).Nodes
                 If c.Value.Equals(comp.nombre) Then
@@ -68,13 +64,21 @@ Public Class MasterPage
                 For Each cell As TableCell In c.Cells
                     For Each Control As Control In cell.Controls
                         If TypeOf Control Is Label Then
-                            If CType(Control, Label).ID.Equals(comp.nombre) Then
-                                CType(Control, Label).Text = comp.texto
+                            If Not CType(Control, Label).ID Is Nothing Then
+                                If CType(Control, Label).ID.Equals(comp.nombre) Then
+                                    CType(Control, Label).Text = comp.texto
+                                End If
                             End If
                         End If
                     Next
                 Next
             Next
+        ElseIf TypeOf con Is Button Then
+            If Not CType(con, Button).ID Is Nothing Then
+                If CType(con, Button).ID.Equals(comp.nombre) Then
+                    CType(con, Button).Text = comp.texto
+                End If
+            End If
         Else
             If con.HasControls Then
                 For Each c As Control In con.Controls

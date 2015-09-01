@@ -58,3 +58,8 @@
 #ContentPlaceHolder1_editDataDiv {
     border: 2px solid red;
 }
+
+#messageLogger{
+    font: bold 20px arial;
+    color: red;
+}

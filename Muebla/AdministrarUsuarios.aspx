@@ -22,7 +22,7 @@
                 <asp:DropDownList runat="server" ID="tipoUsuarioDropDownList" /></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Button runat="server" ID="buscarUsuariosButton" Text="Buscar" OnClick="buscarUsuariosButton_Click"/> 
+    <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarUsuariosButton_Click"/> 
 
     <asp:Table runat="server" ID="tablaAdministrarUsuariosResultados">
         <asp:TableHeaderRow>

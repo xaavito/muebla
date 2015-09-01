@@ -59,13 +59,13 @@ Partial Public Class AdministrarProductos
     Protected WithEvents tipoProductoDropDownList As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control buscarProductosButton.
+    '''Control buscarButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents buscarProductosButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents buscarButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control productosResultadosDataGrid.
@@ -239,22 +239,13 @@ Partial Public Class AdministrarProductos
     Protected WithEvents addProductoButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control confirmarEditProductoButton.
+    '''Control confirmarButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents confirmarEditProductoButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control cancelarEditProductoButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents cancelarEditProductoButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control verDetalleButton.

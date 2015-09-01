@@ -1,5 +1,5 @@
 ﻿Public Class AdministrarUsuarios
-    Inherits System.Web.UI.Page
+    Inherits ExtendedPage
 
     Dim check As CheckBox
     Dim row As TableRow

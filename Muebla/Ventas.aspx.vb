@@ -2,7 +2,7 @@
 Imports BE
 Public Class Ventas
 
-    Inherits System.Web.UI.Page
+    Inherits ExtendedPage
 
     Dim listaProductos As New List(Of ListaPrecioDetalleBE)
 

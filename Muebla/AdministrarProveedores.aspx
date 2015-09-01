@@ -3,6 +3,47 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria">
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="nombreProveedorLabel" Text="Organizacion/Nombre de fantasia" />
+            </asp:TableCell><asp:TableCell>
+                <asp:TextBox runat="server" ID="nombreProveedorTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="cuitLabel" Text="CUIT" />
+            </asp:TableCell><asp:TableCell>
+                <asp:TextBox runat="server" ID="cuitTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="telefonoLabel" Text="Telefono" />
+            </asp:TableCell><asp:TableCell>
+                <asp:TextBox runat="server" ID="telefonoTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="contactoLabel" Text="Contacto" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="contactoTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="tipoProductoLabel" Text="Tipo Producto" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:DropDownList runat="server" ID="tipoProductoDropDownList" />
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+
+    <asp:Button ID="buscarButton" Text="Buscar" runat="server" OnClick="buscarButton_Click" />
     <table>
         <tr>
             <td>Nombre Organizacion o Fantasia</td>
@@ -48,7 +89,8 @@
             <td>Activo</td>
         </tr>
         <tr>
-            <td> <input type="checkbox" /></td>
+            <td>
+                <input type="checkbox" /></td>
             <td class="auto-style1">Prueba 1</td>
             <td class="auto-style1">00000000000</td>
             <td class="auto-style1">66666666666</td>
@@ -57,7 +99,8 @@
 
         </tr>
         <tr>
-            <td> <input type="checkbox" /></td>
+            <td>
+                <input type="checkbox" /></td>
             <td class="auto-style1">Prueba 2</td>
             <td class="auto-style1">00000000000</td>
             <td class="auto-style1">66666666666</td>

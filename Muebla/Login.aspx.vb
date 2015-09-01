@@ -1,12 +1,9 @@
-﻿Imports BLL
-Imports Util
-Public Class Login
-    Inherits System.Web.UI.Page
+﻿Public Class Login
+    Inherits ExtendedPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 
     End Sub
-
     Protected Sub login(sender As Object, e As EventArgs)
         Dim usr As String = Me.usrTextBox.Text
         Dim pass As String = Me.passTextBox.Text

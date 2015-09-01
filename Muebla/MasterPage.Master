@@ -1,5 +1,4 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterPage.master.vb" Inherits="Muebla.MasterPage" %>
-
 <%@ Import Namespace="BE" %>
 
 <!DOCTYPE html>

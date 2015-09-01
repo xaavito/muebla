@@ -19,15 +19,15 @@
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Button runat="server" ID="buscarProductosButton" Text="Buscar" OnClick="buscarProductosButton_Click" />
+    <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarProductosButton_Click" />
     <asp:GridView runat="server" ID="productosResultadosDataGrid"
         AutoGenerateColumns="false"
         AllowPaging="true" PageSize="12"
         ItemType="BE.ProductoBE"
         ShowFooter="false" CssClass="table table-bordered table-condensed"
-        EmptyDataText="No record found!"
         EmptyDataRowStyle-CssClass="gvEmpty"
-        OnRowDataBound="productosResultadosDataGrid_RowDataBound">
+        OnRowDataBound="productosResultadosDataGrid_RowDataBound"
+        OnPreRender="productosResultadosDataGrid_PreRender" >
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
@@ -130,8 +130,7 @@
             <asp:TableFooterRow></asp:TableFooterRow>
         </asp:Table>
 
-        <asp:Button runat="server" ID="confirmarEditProductoButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
-        <asp:Button runat="server" ID="cancelarEditProductoButton" Text="Cancelar" OnClick="cancelarEditProductoButton_Click" />
+        <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
     </div>
     <asp:Button Text="Ver Detalle" runat="server" ID="verDetalleButton" OnClick="verDetalleButton_Click" />
     <asp:Button Text="Orden de Compra" ID="generarOrdenCompraButton" runat="server" OnClick="generarOrdenCompraButton_Click" />

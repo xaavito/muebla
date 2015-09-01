@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class Backup
 
     '''<summary>
+    '''Control backupDataGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents backupDataGrid As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
     '''Control nombreLabel.
     '''</summary>
     '''<remarks>
