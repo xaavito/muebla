@@ -59,6 +59,15 @@ Partial Public Class MasterPage
     Protected WithEvents shoppingCart As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
+    '''Control greetingsLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents greetingsLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control usrText.
     '''</summary>
     '''<remarks>
@@ -66,6 +75,15 @@ Partial Public Class MasterPage
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents usrText As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control logoutButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents logoutButton As Global.System.Web.UI.WebControls.LinkButton
 
     '''<summary>
     '''Control mainTree.

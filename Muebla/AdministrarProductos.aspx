@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="AdministrarProductos.aspx.vb" Inherits="Muebla.AdministrarProductos" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -20,6 +21,7 @@
         </asp:TableRow>
     </asp:Table>
     <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarProductosButton_Click" />
+    
     <asp:GridView runat="server" ID="productosResultadosDataGrid"
         AutoGenerateColumns="false"
         AllowPaging="true" PageSize="12"
@@ -31,17 +33,17 @@
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" class="pull-right" Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID"  Text="<%# Item.id %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Descripcion">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemDescripcion" class="pull-right" Text="<%# Item.descripcion %>" />
+                    <asp:Label runat="server" ID="itemDescripcion" Text="<%# Item.descripcion %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Tipo Producto">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemTipo" class="pull-right" Text="<%# Item.tipoProducto.descripcion %>" />
+                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.tipoProducto.descripcion %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">

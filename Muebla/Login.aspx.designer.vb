@@ -41,6 +41,15 @@ Partial Public Class Login
     Protected WithEvents usrTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control usrTextBoxReqVal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents usrTextBoxReqVal As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''Control passLabel.
     '''</summary>
     '''<remarks>
@@ -59,6 +68,15 @@ Partial Public Class Login
     Protected WithEvents passTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control passTextBoxReqVal.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents passTextBoxReqVal As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''Control loginFailed.
     '''</summary>
     '''<remarks>
@@ -75,4 +93,22 @@ Partial Public Class Login
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control recuperarPassButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents recuperarPassButton As Global.System.Web.UI.WebControls.LinkButton
+
+    '''<summary>
+    '''Control registroButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents registroButton As Global.System.Web.UI.WebControls.LinkButton
 End Class

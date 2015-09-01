@@ -1,8 +1,8 @@
 ﻿Imports BE
 
 Public Class MasterPage
-
     Inherits System.Web.UI.MasterPage
+
     Dim usr As UsuarioBE
     Dim idioma As IdiomaBE
 
@@ -18,6 +18,9 @@ Public Class MasterPage
         idioma.id = Session("Idioma")
         loadSelectedIdioma(idioma)
         Me.idiomasList.SelectedValue = idioma.id
+        If usr Is Nothing Then
+            'Response.Redirect("Ventas.aspx")
+        End If
     End Sub
 
     Protected Sub shoppingCart_Click(sender As Object, e As ImageClickEventArgs)
@@ -79,8 +82,31 @@ Public Class MasterPage
                     CType(con, Button).Text = comp.texto
                 End If
             End If
+        ElseIf TypeOf con Is LinkButton Then
+            If Not CType(con, LinkButton).ID Is Nothing Then
+                Debug.WriteLine("Link button: " + CType(con, LinkButton).ID.ToString)
+                If CType(con, LinkButton).ID.Equals(comp.nombre) Then
+                    CType(con, LinkButton).Text = comp.texto
+                End If
+            End If
+        ElseIf TypeOf con Is Label Then
+            If Not CType(con, Label).ID Is Nothing Then
+                Debug.WriteLine("label: " + CType(con, Label).ID.ToString)
+                If CType(con, Label).ID.Equals(comp.nombre) Then
+                    CType(con, Label).Text = comp.texto
+                End If
+            End If
+        ElseIf TypeOf con Is RequiredFieldValidator Then
+            'BLL.GestorIdiomaBLL.getTranslation(CType(con, RequiredFieldValidator).ErrorMessage, idioma.id)
+            If Not CType(con, RequiredFieldValidator).ID Is Nothing Then
+                Debug.WriteLine("required field validator: " + CType(con, RequiredFieldValidator).ID.ToString)
+                If CType(con, RequiredFieldValidator).ID.Equals(comp.nombre) Then
+                    CType(con, RequiredFieldValidator).ErrorMessage = comp.texto
+                End If
+            End If
         Else
             If con.HasControls Then
+                Debug.WriteLine("generico: " + con.ID)
                 For Each c As Control In con.Controls
                     getItems(comp, c)
                 Next
@@ -118,6 +144,8 @@ Public Class MasterPage
                     End If
                 Next
             Next
+        Else
+            loadBasic()
         End If
     End Sub
 
@@ -131,9 +159,33 @@ Public Class MasterPage
     Private Sub loadSelectedIdioma(idioma As IdiomaBE)
         For Each comp As BE.ComponenteBE In BLL.GestorIdiomaBLL.buscarComponentes(idioma)
             For Each con As Control In Page.Controls
+                If Not con.ID Is Nothing Then
+                    Debug.WriteLine(con.ID.ToString)
+                End If
                 getItems(comp, con)
+            Next
+            For Each val As RequiredFieldValidator In Page.Validators
+                If Not val.ErrorMessage Is Nothing Then
+                    Debug.WriteLine("Validator: " + val.ErrorMessage)
+                    val.ErrorMessage = BLL.GestorIdiomaBLL.getTranslation(val.ErrorMessage, idioma.id)
+                End If
             Next
         Next
     End Sub
 
+    Protected Sub logout_Click(sender As Object, e As EventArgs)
+        Debug.WriteLine("llegue")
+        Me.mainTree.Nodes.Clear()
+        Session("Usuario") = Nothing
+        usr = Nothing
+        loadBasic()
+        Response.Redirect("Main.aspx")
+    End Sub
+
+    Private Sub loadBasic()
+        Dim t As New TreeNode
+        t.Text = "Shop!"
+        t.NavigateUrl = "Ventas.aspx"
+        Me.mainTree.Nodes.Add(t)
+    End Sub
 End Class

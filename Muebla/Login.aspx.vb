@@ -18,4 +18,12 @@
         End If
 
     End Sub
+
+    Protected Sub recuperarPass_Click(sender As Object, e As EventArgs)
+        Response.Redirect("RecuperarContrasena.aspx")
+    End Sub
+
+    Protected Sub registroButton_Click(sender As Object, e As EventArgs)
+        Response.Redirect("Registro.aspx")
+    End Sub
 End Class

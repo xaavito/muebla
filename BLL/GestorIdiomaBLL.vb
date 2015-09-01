@@ -12,16 +12,12 @@
 ''
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
-
-Option Explicit On
-Option Strict On
-
 Imports BE
 
 
 Public Class GestorIdiomaBLL
 
+    Private Shared _comps As List(Of BE.IdiomaBE)
 
     ''' 
     ''' <param name="componentes"></param>
@@ -35,7 +31,16 @@ Public Class GestorIdiomaBLL
     End Function
 
     Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
-        Return DAL.GestorIdiomaDAL.buscarComponentes(idioma)
+        For Each id As BE.IdiomaBE In getComponentesIdiomaticos()
+            If id.id = idioma.id Then
+                Return id.componentes
+            End If
+        Next
+        Dim nuevoIdioma = New BE.IdiomaBE
+        nuevoIdioma.id = idioma.id
+        nuevoIdioma.componentes = DAL.GestorIdiomaDAL.buscarComponentes(nuevoIdioma)
+        _comps.Add(nuevoIdioma)
+        Return nuevoIdioma.componentes
     End Function
 
     Public Shared Function buscarIdiomas() As List(Of IdiomaBE)
@@ -52,5 +57,11 @@ Public Class GestorIdiomaBLL
         Return DAL.GestorIdiomaDAL.getTranslation(p1, p2)
     End Function
 
+    Shared Function getComponentesIdiomaticos()
+        If _comps Is Nothing Then
+            _comps = New List(Of IdiomaBE)
+        End If
+        Return _comps
+    End Function
 
 End Class ' GestorIdiomaBLL

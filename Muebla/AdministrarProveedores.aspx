@@ -1,8 +1,12 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="AdministrarProveedores.aspx.vb" Inherits="Muebla.AdministrarProveedores" %>
 
+<%@ Register Src="~/controls/ExtendedDataGrid.ascx" TagPrefix="uc1" TagName="ExtendedDataGrid" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <uc1:ExtendedDataGrid runat="server" id="ExtendedDataGrid" />
     <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria">
         <asp:TableRow>
             <asp:TableCell>

@@ -19,17 +19,13 @@
             <asp:DropDownList runat="server" ID="idiomasList" AutoPostBack="True" OnSelectedIndexChanged="idiomasList_SelectedIndexChanged" />
 
             <asp:ImageButton runat="server" ImageUrl="/images/shopping_cart.png" ID="shoppingCart" OnClick="shoppingCart_Click" />
-            Bienvenido!
+            <asp:Label Text="Bienvenido!" id="greetingsLabel" runat="server" />
+                
             <asp:Label Text="" runat="server" ID="usrText" />
-            <a href="Login.aspx">Logout</a>
+            <asp:LinkButton id="logoutButton" Text="Logout" runat="server" OnClick="logout_Click" />
         </div>
         <div id="left">
             <asp:TreeView ExpandDepth="1" runat="server" ID="mainTree">
-                <Nodes>
-                    <asp:TreeNode Text="Ventas">
-                        <asp:TreeNode Text="A Comprar!" Value="ven1" NavigateUrl="Ventas.aspx" />
-                    </asp:TreeNode>
-                </Nodes>
             </asp:TreeView>
         </div>
         <div id="right">
