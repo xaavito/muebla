@@ -22,23 +22,24 @@
     <asp:Button runat="server" ID="buscarProductosButton" Text="Buscar" OnClick="buscarProductosButton_Click" />
     <asp:GridView runat="server" ID="productosResultadosDataGrid"
         AutoGenerateColumns="false"
-        AllowPaging="true" PageSize="12" AllowSorting="true"
+        AllowPaging="true" PageSize="12"
         ItemType="BE.ProductoBE"
         ShowFooter="false" CssClass="table table-bordered table-condensed"
         EmptyDataText="No record found!"
-        EmptyDataRowStyle-CssClass="gvEmpty">
+        EmptyDataRowStyle-CssClass="gvEmpty"
+        OnRowDataBound="productosResultadosDataGrid_RowDataBound">
         <Columns>
-            <asp:TemplateField HeaderText="ID" SortExpression="ID">
+            <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
                     <asp:Label runat="server" ID="itemID" class="pull-right" Text="<%# Item.id %>" />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Descripcion" SortExpression="Descripcion">
+            <asp:TemplateField HeaderText="Descripcion">
                 <ItemTemplate>
                     <asp:Label runat="server" ID="itemDescripcion" class="pull-right" Text="<%# Item.descripcion %>" />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Tipo Producto" SortExpression="Tipo Producto">
+            <asp:TemplateField HeaderText="Tipo Producto">
                 <ItemTemplate>
                     <asp:Label runat="server" ID="itemTipo" class="pull-right" Text="<%# Item.tipoProducto.descripcion %>" />
                 </ItemTemplate>
@@ -80,7 +81,7 @@
                     <asp:DropDownList runat="server" ID="proveedorDropDown" />
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:Button runat="server" ID="addProveedorButton" Text="Agregar Proveedor" OnClick="addProveedorButton_Click"  />
+                    <asp:Button runat="server" ID="addProveedorButton" Text="Agregar Proveedor" OnClick="addProveedorButton_Click" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

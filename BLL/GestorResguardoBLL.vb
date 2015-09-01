@@ -30,7 +30,7 @@ Public Class GestorResguardoBLL
     ''' 
     ''' <param name="nombre"></param>
     Public Shared Sub realizarBackup(ByVal nombre As String)
-
+        DAL.GestorResguardoDAL.BackUp(nombre)
     End Sub
 
     ''' 

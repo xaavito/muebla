@@ -25,6 +25,7 @@ Public Class BackupBE
     Private _id As Long
     Private _path As String
     Private _activo As Integer
+
     Public Property activo() As Integer
         Get
             Return _activo

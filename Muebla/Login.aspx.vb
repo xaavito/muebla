@@ -17,6 +17,7 @@ Public Class Login
         Else
             Session("Usuario") = usuario
             Response.Redirect("Main.aspx")
+            Session("Idioma") = usuario.idioma.id
         End If
 
     End Sub

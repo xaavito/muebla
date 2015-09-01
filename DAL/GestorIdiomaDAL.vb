@@ -87,6 +87,29 @@ Public Class GestorIdiomaDAL
 
     End Sub
 
+    Shared Function getTranslation(p1 As String, p2 As Integer) As String
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("BUSCAR_TRADUCCION_SP")
+        repository.addParam("@comp", p1)
+        repository.addParam("@idioma", p2)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        Dim componentes As New List(Of BE.ComponenteBE)
+        For Each pepe As DataRow In table.Rows
+            Dim traduccion As String
+            traduccion = pepe.Item(0)
+           
+            Return traduccion
+        Next
+        Return Nothing
+    End Function
+
 
 End Class ' GestorIdiomaDAL
 

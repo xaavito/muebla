@@ -82,4 +82,16 @@
     Protected Sub confirmarEditProductoButton_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+    Protected Sub productosResultadosDataGrid_RowDataBound(sender As Object, e As GridViewRowEventArgs)
+        Dim id As Integer = Session("Idioma")
+        If (e.Row.RowType = DataControlRowType.Header) Then
+            For index = 0 To e.Row.Cells.Count - 1
+                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(e.Row.Cells(index).Text, id)
+                If (Not traduccion Is Nothing) Then
+                    e.Row.Cells(index).Text = traduccion
+                End If
+            Next
+        End If
+    End Sub
 End Class

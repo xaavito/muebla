@@ -48,5 +48,9 @@ Public Class GestorIdiomaBLL
 
     End Sub
 
+    Shared Function getTranslation(p1 As String, p2 As Integer) As String
+        Return DAL.GestorIdiomaDAL.getTranslation(p1, p2)
+    End Function
+
 
 End Class ' GestorIdiomaBLL

@@ -12,12 +12,6 @@
 ''
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
-
-Option Explicit On
-Option Strict On
-
-
 Public Class ListaPrecioDetalleBE
 
 
@@ -35,7 +29,7 @@ Public Class ListaPrecioDetalleBE
         End Set
     End Property
 
-    
+
     Public Property id() As Long
         Get
             Return _id

@@ -27,7 +27,7 @@ Public Class GestorResguardoDAL
 
     'TODO buscar path relativo
     Public Shared Sub BackUp(ByVal description As String)
-        Dim path As String = "D:\\Prueba"
+        Dim path As String = "C:\\Prueba"
         Dim fecha As String = DateTime.Now.Day.ToString + "-" + DateTime.Now.Month.ToString + "-" + DateTime.Now.Year.ToString + "-" +
                 DateTime.Now.Hour.ToString + "-" + DateTime.Now.Minute.ToString + "-" + DateTime.Now.Second.ToString
 
