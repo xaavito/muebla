@@ -13,11 +13,6 @@
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 
-
-Option Explicit On
-Option Strict On
-
-
 Public Class ProveedorBE
 
 
@@ -27,6 +22,17 @@ Public Class ProveedorBE
     Private _mail As String
     Private _razonSocial As String
     Public m_EstadoProveedorBE As EstadoProveedorBE
+
+    Private _tel As String
+    Public Property tel() As String
+        Get
+            Return _tel
+        End Get
+        Set(ByVal value As String)
+            _tel = value
+        End Set
+    End Property
+
 
     Public Property cuit() As Long
         Get

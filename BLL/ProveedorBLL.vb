@@ -25,9 +25,9 @@ Public Class ProveedorBLL
 
     ''' 
     ''' <param name="prov"></param>
-    Public Shared Sub altaProveedor(ByVal prov As ProveedorBE)
-
-    End Sub
+    Public Shared Function altaProveedor(ByVal prov As ProveedorBE) As Integer
+        Return DAL.ProveedorDAL.altaProveedor(prov)
+    End Function
 
     ''' 
     ''' <param name="proveedor"></param>
@@ -46,6 +46,14 @@ Public Class ProveedorBLL
     Public Shared Sub modifcarProveedor(ByVal proveedor As ProveedorBE)
 
     End Sub
+
+    Shared Function getTipoProductos() As List(Of BE.TipoProductoBE)
+        Return DAL.ProductoDAL.getTipoProductos
+    End Function
+
+    Shared Function listarProveedores() As List(Of BE.ProveedorBE)
+        Return DAL.ProveedorDAL.listarProveedores()
+    End Function
 
 
 End Class ' ProveedorBLL

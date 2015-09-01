@@ -23,6 +23,7 @@
         </asp:TableRow>
     </asp:Table>
     <asp:Button runat="server" ID="buscarUsuariosButton" Text="Buscar" OnClick="buscarUsuariosButton_Click"/> 
+
     <asp:Table runat="server" ID="tablaAdministrarUsuariosResultados">
         <asp:TableHeaderRow>
             <asp:TableHeaderCell>

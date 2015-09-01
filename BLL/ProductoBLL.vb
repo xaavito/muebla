@@ -46,8 +46,8 @@ Public Class ProductoBLL
     ''' <param name="stockMin"></param>
     ''' <param name="tipo"></param>
     ''' <param name="nombre"></param>
-    Public Shared Function buscarProductos(ByVal stockMin As Boolean, ByVal tipo As TipoProductoBE, ByVal nombre As String) As List(Of ProductoBE)
-        Return Nothing
+    Public Shared Function buscarProductos(ByVal tipo As Integer, ByVal nombre As String) As List(Of ProductoBE)
+        Return DAL.ProductoDAL.buscarProductos(tipo, nombre)
     End Function
 
     Public Shared Function listarProductos() As List(Of ListaPrecioDetalleBE)

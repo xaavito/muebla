@@ -41,13 +41,33 @@ Public Class ProductoDAL
 
     End Sub
 
-    ''' 
-    ''' <param name="stockMin"></param>
-    ''' <param name="tipo"></param>
-    ''' <param name="nombre"></param>
-    Public Sub buscarProductos(ByVal stockMin As Boolean, ByVal tipo As TipoProductoBE, ByVal nombre As String)
+    Public Shared Function buscarProductos(ByVal tipo As Integer, ByVal nombre As String) As List(Of BE.ProductoBE)
+        Dim table As DataTable
+        Dim list As New List(Of BE.ProductoBE)
 
-    End Sub
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("BUSCAR_PRODUCTOS_SP")
+        repository.addParam("@tipo", tipo)
+        repository.addParam("@nom", nombre)
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        For Each item As DataRow In table.Rows
+            Dim producto As New BE.ProductoBE
+            producto.id = item.Item(0)
+            producto.descripcion = item.Item(1)
+            Dim tipoProd As New BE.TipoProductoBE
+            tipoProd.id = item.Item(2)
+            tipoProd.descripcion = item.Item(3)
+            producto.tipoProducto = tipoProd
+            list.Add(producto)
+        Next
+
+        Return list
+    End Function
 
     ''' 
     ''' <param name="producto"></param>
@@ -121,6 +141,29 @@ Public Class ProductoDAL
             Return (DirectCast(item.Item(0), Byte()))
         Next
 
+    End Function
+
+    Shared Function getTipoProductos() As List(Of TipoProductoBE)
+        Dim table As DataTable
+        Dim list As New List(Of BE.TipoProductoBE)
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LISTAR_TIPO_PRODUCTOS_SP")
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        For Each item As DataRow In table.Rows
+            Dim producto As New BE.TipoProductoBE
+            producto.id = item.Item(0)
+            producto.descripcion = item.Item(1)
+
+            list.Add(producto)
+        Next
+
+        Return list
     End Function
 
 

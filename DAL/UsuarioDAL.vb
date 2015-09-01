@@ -42,7 +42,6 @@ Public Class UsuarioDAL
             'Throw Exception
         End Try
         
-
         Return id
     End Function
 

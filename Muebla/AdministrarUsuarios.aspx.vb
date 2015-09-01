@@ -6,9 +6,6 @@
     Dim cell As TableCell
     Dim label As Label
 
-    Protected Sub Page_init(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Init
-
-    End Sub
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.tipoUsuarioDropDownList.DataSource = BLL.UsuarioBLL.getTiposUsuarios()
         Me.tipoUsuarioDropDownList.DataTextField = "descripcion"

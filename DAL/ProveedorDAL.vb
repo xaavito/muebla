@@ -12,11 +12,6 @@
 ''
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
-
-Option Explicit On
-Option Strict On
-
 Imports BE
 
 
@@ -25,9 +20,25 @@ Public Class ProveedorDAL
 
     ''' 
     ''' <param name="prov"></param>
-    Public Shared Sub altaProveedor(ByVal prov As ProveedorBE)
+    Public Shared Function altaProveedor(ByVal prov As ProveedorBE) As Integer
+        Dim id As Int16
 
-    End Sub
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_PROVEEDOR_SP")
+            repository.addParam("@raz", prov.razonSocial)
+            repository.addParam("@mail", prov.mail)
+            repository.addParam("@tel", prov.tel)
+            repository.addParam("@cuit", prov.cuit)
+            repository.addParam("@dir", prov.direccion)
+            
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+            'Throw Exception
+        End Try
+
+        Return id
+    End Function
 
     ''' 
     ''' <param name="prod"></param>
@@ -65,6 +76,29 @@ Public Class ProveedorDAL
     Public Shared Sub modificarProveedor(ByVal proveedor As ProveedorBE)
 
     End Sub
+
+    Shared Function listarProveedores() As List(Of BE.ProveedorBE)
+        Dim table As DataTable
+        Dim list As New List(Of BE.ProveedorBE)
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("LISTAR_PROVEEDORES_SP")
+        table = New DataTable
+        table = repository.executeSearchWithAdapter()
+        If (table.Rows.Count <> 1) Then
+            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        End If
+        For Each item As DataRow In table.Rows
+            Dim prov As New BE.ProveedorBE
+            prov.id = item.Item(0)
+            prov.razonSocial = item.Item(1)
+
+            list.Add(prov)
+        Next
+
+        Return list
+    End Function
 
 
 End Class ' ProveedorDAL

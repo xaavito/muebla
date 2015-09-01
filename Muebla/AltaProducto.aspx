@@ -3,44 +3,74 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table>
-        <tr>
-            <td>Descripcion</td>
-            <td class="auto-style1">
-                <input id="Text1" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Precio</td>
-            <td class="auto-style1">
-                <input id="Text2" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Stock</td>
-            <td class="auto-style1">
-                <input id="Text3" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Stock Minimo</td>
-            <td class="auto-style1">
-                <input id="Text4" type="text" /></td>
-        </tr>
 
-        <tr>
-            <td>Productos</td>
-            <td class="auto-style1">
-                <textarea id="TextArea1" name="S1" rows="2"></textarea></td>
-            <td class="auto-style2">
-                <input id="Button1" type="button" value="Agregar Producto" /></td>
-        </tr>
-        <tr>
-            <td>Tipo Producto</td>
-            <td class="auto-style1">
-                <select name="ad">
-                    <option value="1.htm">Final</option>
-                    <option value="2.htm">Materia Prima</option>
-                </select></td>
-        </tr>
-    </table>
-    <input id="Button2" type="button" value="Confirmar" />
-    <input id="Button3" type="button" value="Cancelar" />
+    <asp:Table runat="server" ID="tableAltaProducto">
+        <asp:TableHeaderRow></asp:TableHeaderRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="descripcionLabel" Text="Descripcion" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="descripcionTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="proveedorLabel" Text="Proveedor" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:DropDownList runat="server" ID="proveedorDropDown" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:Button runat="server" ID="addProveedorButton" Text="Agregar Proveedor" OnClick="addProveedorButton_Click"/>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="precioLabel" Text="Precio" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="precioTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="stockLabel" Text="Stock" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="stockTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="stockMinimoLabel" Text="Stock Minimo" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="stockMinimoTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="tipoProductoLabel" Text="Tipo Producto" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:DropDownList runat="server" ID="tipoProductoDropDown" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="productosLabel" Text="Productos" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:ListBox runat="server" ID="productosListBox" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:Button runat="server" ID="addProductoButton" Text="Manejar Productos" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableFooterRow></asp:TableFooterRow>
+    </asp:Table>
+
+    <asp:Button runat="server" ID="confirmarAltaProductoButton" Text="Confirmar" OnClick="confirmarAltaProductoButton_Click" />
+    <asp:Button runat="server" ID="cancelarAltaProductoButton" Text="Cancelar" OnClick="cancelarAltaProductoButton_Click" />
 </asp:Content>

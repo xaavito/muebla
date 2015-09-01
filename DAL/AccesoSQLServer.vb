@@ -1,4 +1,5 @@
 ﻿Imports System.Data.SqlClient
+Imports Util
 
 Public Class AccesoSQLServer
     Implements Acceso
@@ -11,17 +12,17 @@ Public Class AccesoSQLServer
     Dim result As Integer
     Dim tx As SqlTransaction
     Dim r As String
-    Private _conString As String = "Server=localhost;Database=Muebla; Trusted_Connection=True"
+    Private _conString As String = My.Resources.MueblaSettings.connectionString
 
     Public Sub New()
-        'Try
-        Dim objConn As SqlConnection = New SqlConnection(_conString)
-        objConn.Open()
-        objConn.Close()
+        Try
+            Dim objConn As SqlConnection = New SqlConnection(_conString)
+            objConn.Open()
+            objConn.Close()
 
-        'Catch ex As Exception
-        'Throw New Excepciones.ConexionImposibleExcepcion
-        'End Try
+        Catch ex As Exception
+            Throw New ConexionImposibleExcepcion
+        End Try
 
     End Sub
 
@@ -75,11 +76,11 @@ Public Class AccesoSQLServer
         adapter = New SqlDataAdapter
         table = New DataTable
         adapter.SelectCommand = cmd
-        'Try
-        adapter.Fill(table)
-        'Catch ex As Exception
-        'Throw New Excepciones.ConexionImposibleExcepcion
-        'End Try
+        Try
+            adapter.Fill(table)
+        Catch ex As Exception
+            Throw New ConexionImposibleExcepcion
+        End Try
         clearParams()
         Return table
     End Function
@@ -89,11 +90,11 @@ Public Class AccesoSQLServer
             conectar()
         End If
 
-        'Try
-        result = cmd.ExecuteScalar()
-        'Catch ex As Exception
-        'Throw New Excepciones.ConexionImposibleExcepcion
-        'End Try
+        Try
+            result = cmd.ExecuteScalar()
+        Catch ex As Exception
+            Throw New ConexionImposibleExcepcion
+        End Try
         clearParams()
         If tx Is Nothing Then
             desconectar()
@@ -108,11 +109,11 @@ Public Class AccesoSQLServer
             conectar()
         End If
 
-        'Try
-        status = cmd.ExecuteNonQuery()
-        'Catch ex As Exception
-        'Throw New Excepciones.ConexionImposibleExcepcion
-        'End Try
+        Try
+            status = cmd.ExecuteNonQuery()
+        Catch ex As Exception
+            Throw New ConexionImposibleExcepcion
+        End Try
         clearParams()
 
         If tx Is Nothing Then
@@ -138,16 +139,16 @@ Public Class AccesoSQLServer
         If tx Is Nothing Then
             conectar()
         End If
-        'Try
-        Dim returnValue As SqlParameter = New SqlParameter
-        returnValue.ParameterName = "@Return_Value"
-        returnValue.Direction = ParameterDirection.ReturnValue
-        cmd.Parameters.Add(returnValue)
-        result = cmd.ExecuteNonQuery()
-        r = cmd.Parameters("@Return_Value").Value
-        'Catch ex As Exception
-        'Throw New Excepciones.ConexionImposibleExcepcion
-        'End Try
+        Try
+            Dim returnValue As SqlParameter = New SqlParameter
+            returnValue.ParameterName = "@Return_Value"
+            returnValue.Direction = ParameterDirection.ReturnValue
+            cmd.Parameters.Add(returnValue)
+            result = cmd.ExecuteNonQuery()
+            r = cmd.Parameters("@Return_Value").Value
+        Catch ex As Exception
+            Throw New ConexionImposibleExcepcion
+        End Try
         clearParams()
         If tx Is Nothing Then
             desconectar()

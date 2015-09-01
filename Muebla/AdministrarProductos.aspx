@@ -3,49 +3,67 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table>
-        <tr>
-            <td>Nombre Producto</td>
-            <td class="auto-style1">
-                <input id="Text1" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Tipo Producto</td>
-            <td class="auto-style1">
-                <select name="ad">
-                    <option value="1.htm">Final</option>
-                    <option value="2.htm">Materia Prima</option>
-                </select></td>
-        </tr>
-    </table>
-    <input id="Button2" type="button" value="Buscar" />
-
-    <table id="result">
-        <tr>
-            <td></td>
-            <td>Producto</td>
-            <td>Tipo</td>
-            <td>Precio</td>
-        </tr>
-        <tr>
-            <td> <input type="checkbox" /></td>
-            <td class="auto-style1">Mesa</td>
-            <td class="auto-style1">Final</td>
-            <td class="auto-style1">$1200</td>
-
-        </tr>
-        <tr>
-            <td> <input type="checkbox" /></td>
-            <td class="auto-style1">Tabla Madera Wengue</td>
-            <td class="auto-style1">Materia Prima</td>
-            <td class="auto-style1">$120</td>
-
-        </tr>
-    </table>
-
-    <asp:Button Text="Ver Detalle" runat="server" />
-    <asp:Button Text="Modificar" runat="server" />
-    <asp:Button Text="Borrar" runat="server" />
-    <asp:Button Text="Orden de Compra" runat="server" OnClick="Unnamed_Click"/>
-    <asp:Button Text="Comparacion Costos" runat="server" />
+    <asp:Table runat="server" ID="tableAdministrarProductosCriteria">
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="nombreProductoLabel" Text="Nombre Producto" />
+            </asp:TableCell><asp:TableCell>
+                <asp:TextBox runat="server" ID="nombreProductoTextBox" />
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="tipoProductoLabel" Text="Tipo Producto" />
+            </asp:TableCell><asp:TableCell>
+                <asp:DropDownList runat="server" ID="tipoProductoDropDownList" />
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
+    <asp:Button runat="server" ID="buscarProductosButton" Text="Buscar" OnClick="buscarProductosButton_Click" />
+    <asp:GridView runat="server" ID="productosResultadosDataGrid"
+        AutoGenerateColumns="false"
+        AllowPaging="true" PageSize="12" AllowSorting="true"
+        ItemType="BE.ProductoBE"
+        ShowFooter="false" CssClass="table table-bordered table-condensed"
+        EmptyDataText="No record found!"
+        EmptyDataRowStyle-CssClass="gvEmpty">
+        <Columns>
+            <asp:TemplateField HeaderText="ID" SortExpression="Descripcion">
+                <ItemTemplate>
+                    <asp:Label runat="server" id="itemID" class="pull-right" Text="<%# Item.id %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Descripcion" SortExpression="Descripcion">
+                <ItemTemplate>
+                    <asp:Label runat="server" id="itemDescripcion" class="pull-right" Text="<%# Item.descripcion %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Tipo Producto" SortExpression="Tipo Producto">
+                <ItemTemplate>
+                    <asp:Label runat="server" id="itemTipo" class="pull-right" Text="<%# Item.tipoProducto.descripcion %>"/>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Action">
+                <ItemTemplate>
+                    <asp:ImageButton ID="ibtnEdit" runat="server"
+                        ImageUrl="/images/editItem.png" OnClick="ibtnEdit_Click" />
+                    <asp:ImageButton ID="ibtnDelete" runat="server"
+                        ImageUrl="/images/deleteItem.png"
+                        OnClientClick="javascript:return confirm('Do you want to delete it?');"
+                        OnClick="ibtnDelete_Click" />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+        <SortedAscendingHeaderStyle CssClass="asc" />
+        <SortedDescendingHeaderStyle CssClass="desc" />
+        <SortedAscendingCellStyle CssClass="asc" />
+        <SortedDescendingCellStyle CssClass="desc" />
+        <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
+        <PagerStyle CssClass="grid-pager" />
+    </asp:GridView>
+    <asp:Button Text="Ver Detalle" runat="server" ID="verDetalleButton" OnClick="verDetalleButton_Click" />
+    <asp:Button Text="Modificar" runat="server" ID="modificarButton" OnClick="modificarButton_Click" />
+    <asp:Button Text="Borrar" runat="server" ID="eliminarButton" OnClick="eliminarButton_Click" />
+    <asp:Button Text="Orden de Compra" ID="generarOrdenCompraButton" runat="server" OnClick="generarOrdenCompraButton_Click" />
+    <asp:Button Text="Comparacion Costos" runat="server" ID="compararCostoButton" OnClick="compararCostoButton_Click" />
 </asp:Content>
