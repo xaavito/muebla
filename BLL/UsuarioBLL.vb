@@ -12,11 +12,6 @@
 ''
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
-
-Option Explicit On
-Option Strict On
-
 Imports BE
 
 
@@ -25,9 +20,13 @@ Public Class UsuarioBLL
 
     ''' 
     ''' <param name="usr"></param>
-    Public Shared Sub altaCliente(ByVal usr As UsuarioBE)
-        DAL.UsuarioDAL.altaCliente(usr)
-    End Sub
+    Public Shared Function altaCliente(ByVal usr As UsuarioBE)
+        usr.id = DAL.UsuarioDAL.altaCliente(usr)
+        usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
+        usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
+        Util.Mailer.sendMail(usr.mail, "Alta de Usuario en el sistema", "Bienvenido/a" + usr.usuario + " ya puede empezar a operar con Muebla")
+        Return usr
+    End Function
 
     ''' 
     ''' <param name="usr"></param>

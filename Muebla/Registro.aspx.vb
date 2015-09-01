@@ -14,10 +14,12 @@
         Me.provinciaDropDownList.DataTextField = "descripcion"
         Me.provinciaDropDownList.DataValueField = "id"
         Me.provinciaDropDownList.DataBind()
+
+        provinciaDropDownList_SelectedIndexChanged(sender, e)
     End Sub
 
     Protected Sub provinciaDropDownList_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Me.localidadDropDownList.DataSource = BLL.UsuarioBLL.getTiposLocalidades(Me.provinciaDropDownList.SelectedIndex)
+        Me.localidadDropDownList.DataSource = BLL.UsuarioBLL.getTiposLocalidades(Integer.Parse(Me.provinciaDropDownList.SelectedValue))
         Me.localidadDropDownList.DataTextField = "descripcion"
         Me.localidadDropDownList.DataValueField = "id"
         Me.localidadDropDownList.DataBind()
@@ -32,15 +34,18 @@
         usr.usuario = Me.usuarioTextBox.Text
         usr.dni = Me.documentoTextBox.Text
         usr.cuil = Me.cuilTextBox.Text
+        Dim tipo As New BE.TipoDocumentoBE
+        usr.tipoDoc = tipo
+        usr.tipoDoc.id = Integer.Parse(Me.tipoDocDropDownList.SelectedValue)
         Dim reg As New BE.DomicilioBE
         reg.calle = Me.calleTextBox.Text
         reg.numero = Me.nroTextBox.Text
         reg.piso = Me.pisoTextBox.Text
         reg.dpto = Me.dptoTextBox.Text
         Dim loc As New BE.LocalidadBE
-        loc.id = Me.localidadDropDownList.SelectedIndex
+        loc.id = Integer.Parse(Me.localidadDropDownList.SelectedValue)
         Dim prov As New BE.ProvinciaBE
-        prov.id = Me.provinciaDropDownList.SelectedIndex
+        prov.id = Integer.Parse(Me.provinciaDropDownList.SelectedValue)
         loc.m_ProvinciaBE = prov
         reg.m_LocalidadBE = loc
         usr.domicilio = reg
@@ -50,6 +55,6 @@
         tel.prefijo = Me.prefijoTextBox.Text
         usr.telefono = tel
 
-        BLL.UsuarioBLL.altaCliente(usr)
+        usr = BLL.UsuarioBLL.altaCliente(usr)
     End Sub
 End Class

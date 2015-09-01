@@ -62,8 +62,20 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackupExcepcion.vb" />
+    <Compile Include="BitacoraExcepcion.vb" />
+    <Compile Include="CompradorExcepcion.vb" />
+    <Compile Include="ConexionExcepcion.vb" />
+    <Compile Include="DatosExcepcion.vb" />
     <Compile Include="Encrypter.vb" />
+    <Compile Include="Enumeradores.vb" />
+    <Compile Include="ExceptionManager.vb" />
+    <Compile Include="ExExcepcion.vb" />
+    <Compile Include="FamiliaExcepcion.vb" />
+    <Compile Include="FechaExcepcion.vb" />
+    <Compile Include="IdiomaExcepcion.vb" />
     <Compile Include="Mailer.vb" />
+    <Compile Include="MensajeExcepcion.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -79,7 +91,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="PermisoExcepcion.vb" />
+    <Compile Include="UsuarioExcepcion.vb" />
     <Compile Include="Util.vb" />
+    <Compile Include="VentaExcepcion.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

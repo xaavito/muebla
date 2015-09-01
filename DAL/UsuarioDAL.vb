@@ -23,30 +23,25 @@ Public Class UsuarioDAL
 
     ''' 
     ''' <param name="usr"></param>
-    Public Shared Function altaCliente(ByVal usr As UsuarioBE)
+    Public Shared Function altaCliente(ByVal usr As UsuarioBE) As Int16
         Dim id As Int16
 
         Dim repository As New AccesoSQLServer
-        'Try
-        repository.crearComando("ALTA_CLIENTE_SP")
-        repository.addParam("@usr", usr.usuario)
-        repository.addParam("@mail", usr.mail)
-        repository.addParam("@nom", usr.nombre)
-        repository.addParam("@ape", usr.apellido)
-        repository.addParam("@pass", usr.password)
-        repository.addParam("@dni", usr.dni)
-        repository.addParam("@cuil", usr.cuil)
-        repository.addParam("@tipo", usr.tipoDoc.id)
-        repository.addParam("@num", usr.telefono.numero)
-        repository.addParam("@int", usr.telefono.interno)
-        repository.addParam("@pre", usr.telefono.prefijo)
-        repository.addParam("@calle", usr.domicilio.calle)
-        repository.addParam("@nro", usr.domicilio.numero)
-        repository.addParam("@piso", usr.domicilio.piso)
-        repository.addParam("@dpto", usr.domicilio.dpto)
-        repository.addParam("@loc", usr.domicilio.m_LocalidadBE.id)
-        repository.addParam("@prov", usr.domicilio.m_LocalidadBE.m_ProvinciaBE.id)
-        id = repository.executeWithReturnValue
+        Try
+            repository.crearComando("ALTA_CLIENTE_SP")
+            repository.addParam("@usr", usr.usuario)
+            repository.addParam("@mail", usr.mail)
+            repository.addParam("@nom", usr.nombre)
+            repository.addParam("@ape", usr.apellido)
+            repository.addParam("@pass", usr.password)
+            repository.addParam("@dni", usr.dni)
+            repository.addParam("@cuil", usr.cuil)
+            repository.addParam("@tipo", usr.tipoDoc.id)
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+            'Throw Exception
+        End Try
+        
 
         Return id
     End Function
@@ -314,6 +309,38 @@ Public Class UsuarioDAL
         Next
 
         Return tipos
+    End Function
+
+    Shared Function altaDomicilio(usr As UsuarioBE) As Int16
+        Dim id As Int16
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("ALTA_DOMICILIO_SP")
+        repository.addParam("@usr", usr.id)
+        repository.addParam("@calle", usr.domicilio.calle)
+        repository.addParam("@nro", usr.domicilio.numero)
+        repository.addParam("@piso", usr.domicilio.piso)
+        repository.addParam("@dpto", usr.domicilio.dpto)
+        repository.addParam("@loc", usr.domicilio.m_LocalidadBE.id)
+        id = repository.executeWithReturnValue
+
+        Return id
+    End Function
+
+    Shared Function altaTelefono(usr As UsuarioBE) As Int16
+        Dim id As Int16
+
+        Dim repository As New AccesoSQLServer
+        'Try
+        repository.crearComando("ALTA_TELEFONO_SP")
+        repository.addParam("@usr", usr.id)
+        repository.addParam("@num", usr.telefono.numero)
+        repository.addParam("@int", usr.telefono.interno)
+        repository.addParam("@pre", usr.telefono.prefijo)
+        id = repository.executeWithReturnValue
+
+        Return id
     End Function
 
 End Class ' UsuarioDAL

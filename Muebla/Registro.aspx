@@ -33,7 +33,7 @@
                         <asp:Label runat="server" ID="tipoDocLabel" Text="Tipo Documento" />
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:DropDownList runat="server" ID="tipoDocDropDownList" />
+                        <asp:DropDownList EnableViewState="True" runat="server" ID="tipoDocDropDownList" AutoPostBack="true"/>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -97,7 +97,7 @@
                         <asp:Label runat="server" ID="provinciaLabel" Text="Provincia" />
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:DropDownList runat="server" ID="provinciaDropDownList" OnSelectedIndexChanged="provinciaDropDownList_SelectedIndexChanged" AutoPostBack="true"/>
+                        <asp:DropDownList EnableViewState="True" runat="server" ID="provinciaDropDownList" OnSelectedIndexChanged="provinciaDropDownList_SelectedIndexChanged" AutoPostBack="true"/>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -105,7 +105,7 @@
                         <asp:Label runat="server" ID="localidadLabel" Text="Localidad" />
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:DropDownList runat="server" ID="localidadDropDownList" />
+                        <asp:DropDownList AutoPostBack="true" EnableViewState="True" runat="server" ID="localidadDropDownList" />
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
