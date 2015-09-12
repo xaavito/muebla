@@ -1,4 +1,6 @@
-﻿Public Class AdministrarProductos
+﻿Imports Util
+
+Public Class AdministrarProductos
     Inherits ExtendedPage
 
     Dim check As CheckBox
@@ -68,9 +70,13 @@
         Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
         Dim con As Label = CType(Me.productosResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)
-        BLL.ProductoBLL.bajaProducto(id)
-        logMessage("Borrado exitosamente!")
-        gvRow.Visible = False
+        Try
+            BLL.ProductoBLL.bajaProducto(id)
+            gvRow.Visible = False
+            logMessage(New EliminacionExitosaException)
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub addProveedorButton_Click(sender As Object, e As EventArgs)

@@ -82,6 +82,7 @@
     <Compile Include="Acceso.vb" />
     <Compile Include="AccesoSQLServer.vb" />
     <Compile Include="GestorBitacoraDAL.vb" />
+    <Compile Include="GestorExcepcionesDAL.vb" />
     <Compile Include="GestorIdiomaDAL.vb" />
     <Compile Include="GestorNotifDAL.vb" />
     <Compile Include="GestorPedidoDAL.vb" />
@@ -151,7 +152,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BD\BDMuebla23082015.sql" />
+    <Content Include="BD\BDMuebla20150823.sql" />
+    <Content Include="BD\BDMuebla20150913.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -14,10 +14,6 @@
 
 
 
-Option Explicit On
-Option Strict On
-
-
 Public Class EventoBE
 
 
@@ -26,8 +22,6 @@ Public Class EventoBE
     Private _id As Long
     Private _tipoEvento As TipoEventoBE
     Private _usr As UsuarioBE
-    Public m_UsuarioBE As UsuarioBE
-    Public m_TipoEventoBE As TipoEventoBE
 
     Public Property descripcion() As String
         Get

@@ -1,10 +1,6 @@
 ﻿Public Class AltaProveedor1
     Inherits ExtendedPage
 
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-
-    End Sub
-
     Protected Sub cancelarAltaProveedorButton_Click(sender As Object, e As EventArgs)
 
     End Sub

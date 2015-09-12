@@ -20,7 +20,7 @@ Partial Public Class AdministrarProveedores
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ExtendedDataGrid As Global.Muebla.ExtendedDataGrid
+    Protected WithEvents ExtendedDataGrid As System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''Control tableAdministrarProveedoresCriteria.

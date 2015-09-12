@@ -75,4 +75,13 @@ Partial Public Class RecuperarContrasena
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents recuperarPassButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control loginButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents loginButton As Global.System.Web.UI.WebControls.LinkButton
 End Class

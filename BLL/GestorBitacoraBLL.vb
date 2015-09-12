@@ -14,30 +14,17 @@
 
 
 
-Option Explicit On
-Option Strict On
-
 Imports BE
 
 
 Public Class GestorBitacoraBLL
 
-
-    ''' 
-    ''' <param name="fechahasta"></param>
-    ''' <param name="fechadesde"></param>
-    ''' <param name="tipo"></param>
-    ''' <param name="usr"></param>
     Public Shared Function buscarBitacoras(ByVal fechahasta As DateTime, ByVal fechadesde As DateTime, ByVal tipo As BE.TipoEventoBE, ByVal usr As BE.UsuarioBE) As List(Of EventoBE)
         buscarBitacoras = Nothing
     End Function
 
-    ''' 
-    ''' <param name="fecha"></param>
-    ''' <param name="usuario"></param>
-    ''' <param name="tipo"></param>
-    Public Shared Sub registrarEvento(ByVal fecha As DateTime, ByVal usuario As UsuarioBE, ByVal tipo As TipoEventoBE)
-
+    Public Shared Sub registrarEvento(ByVal usuario As UsuarioBE, ByVal tipo As Integer)
+        DAL.GestorBitacoraDAL.registrarEvento(usuario, tipo)
     End Sub
 
 

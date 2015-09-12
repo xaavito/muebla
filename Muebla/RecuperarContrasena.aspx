@@ -10,6 +10,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="usrTextBox" />
+                <asp:RequiredFieldValidator ValidationGroup='recuperarPass' ErrorMessage="Requerido" ControlToValidate="usrTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -18,12 +19,17 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="mailTextBox" />
+                <asp:RequiredFieldValidator ValidationGroup='recuperarPass' ErrorMessage="Requerido" ControlToValidate="mailTextBox" runat="server" />
+                <asp:RegularExpressionValidator runat="server"
+                    ErrorMessage="Email Invalido"
+                    ControlToValidate="mailTextBox"
+                    ValidationExpression="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"
+                    ValidationGroup='recuperarPass' />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
     <asp:Label Text="" runat="server" ID="mailEnviandose" />
-    <asp:Button Text="Recuperar" runat="server" ID="recuperarPassButton" OnClick="recuperarPassButton_Click" />
-    <a href="Login.aspx">Login</a>
-
+    <asp:Button ValidationGroup='recuperarPass' Text="Recuperar" runat="server" ID="recuperarPassButton" OnClick="recuperarPassButton_Click" />
+    <asp:LinkButton ID="loginButton" Text="Login" runat="server" OnClick="loginButton_Click" />
 
 </asp:Content>

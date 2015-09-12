@@ -65,13 +65,11 @@ Public Class GestorResguardoDAL
             repository.addParam("@descripcion", description)
             result = repository.executeSearchWithStatus()
             If (result <= 0) Then
-                Throw New FalloAlCrearBackup
-            Else
-                Throw New BackupRealizadoExitosamente
+                Throw New CreacionException
             End If
 
-        Catch ex As InsertExcepcion
-            Throw New InsertExcepcion
+        Catch ex As CreacionException
+            Throw New CreacionException
         Catch ex As ConexionImposibleExcepcion
             Throw New ConexionImposibleExcepcion
         End Try
@@ -97,10 +95,8 @@ Public Class GestorResguardoDAL
         Try
             rs.SqlRestore(sqlServer)
         Catch ex As Exception
-            Throw New FalloAlRealizarRestore
+            Throw New CreacionException
         End Try
-
-        Throw New RestoreRealizadoExitosamente
     End Sub
 
     Shared Function listarBackups() As List(Of BE.BackupBE)
@@ -113,20 +109,21 @@ Public Class GestorResguardoDAL
             table = New DataTable
             table = repository.executeSearchWithAdapter()
             If (table.Rows.Count <= 0) Then
-                Throw New BackupsNoEncontrados
+                Throw New BusquedaSinResultadosException
             End If
             For Each pepe As DataRow In table.Rows
                 Dim bu As New BE.BackupBE
                 bu.id = pepe.Item(0)
                 bu.descripcion = pepe.Item(2)
-                'bu.fecha = pepe.Item(2)
+                If Not IsDBNull(pepe.Item(3)) Then
+                    bu.fecha = pepe.Item(3)
+                End If
                 bu.path = pepe.Item(1)
-                'bu.activo = pepe.Item(4)
                 backups.Add(bu)
             Next
 
-        Catch ex As DeleteExcepcion
-            Throw New DeleteExcepcion
+        Catch ex As EliminarException
+            Throw New EliminarException
         Catch ex As ConexionImposibleExcepcion
             Throw New ConexionImposibleExcepcion
         End Try
@@ -143,13 +140,11 @@ Public Class GestorResguardoDAL
             repository.addParam("@idBackup", backup.id)
             resultado = repository.executeSearchWithStatus
             If (resultado <= 0) Then
-                Throw New FalloAlEliminarBackup
-            Else
-                Throw New BackupEliminadoExitosamente
+                Throw New EliminarException
             End If
 
-        Catch ex As DeleteExcepcion
-            Throw New DeleteExcepcion
+        Catch ex As EliminarException
+            Throw New EliminarException
         Catch ex As ConexionImposibleExcepcion
             Throw New ConexionImposibleExcepcion
         End Try

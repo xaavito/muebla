@@ -10,8 +10,8 @@
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="usrTextBox" />
-                <asp:RequiredFieldValidator ValidationGroup='login' id="usrTextBoxReqVal" ErrorMessage="Requerido" ControlToValidate="usrTextBox" runat="server" />
+                <asp:TextBox runat="server" ID="usrTextBox"/>
+                <asp:RequiredFieldValidator ValidationGroup='login' ErrorMessage="Requerido" ControlToValidate="usrTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -20,7 +20,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="passTextBox" TextMode="Password" />
-                <asp:RequiredFieldValidator ValidationGroup='login' id="passTextBoxReqVal" ErrorMessage="Requerido" ControlToValidate="passTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup='login' ErrorMessage="Requerido" ControlToValidate="passTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
