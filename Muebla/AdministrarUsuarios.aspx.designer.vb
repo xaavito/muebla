@@ -95,20 +95,119 @@ Partial Public Class AdministrarUsuarios
     Protected WithEvents usuariosResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control verDetalleUsuarioButton.
+    '''Control editDataDiv.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents verDetalleUsuarioButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents editDataDiv As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control desbloquearUsuarioButton.
+    '''Control tableAdminUsuario.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents desbloquearUsuarioButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents tableAdminUsuario As Global.System.Web.UI.WebControls.Table
+
+    '''<summary>
+    '''Control userLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents userLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control userTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents userTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control estadoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents estadoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control estadoUsuarioDropDown.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents estadoUsuarioDropDown As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control permisosLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents permisosLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control permisosPropiosListBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents permisosPropiosListBox As Global.System.Web.UI.WebControls.ListBox
+
+    '''<summary>
+    '''Control removerPermisoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents removerPermisoButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control agregarPermisoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents agregarPermisoButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control allPermisosListBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents allPermisosListBox As Global.System.Web.UI.WebControls.ListBox
+
+    '''<summary>
+    '''Control confirmarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control cancelarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cancelarButton As Global.System.Web.UI.WebControls.Button
 End Class

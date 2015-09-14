@@ -3,10 +3,6 @@
 Public Class AdministrarProductos
     Inherits ExtendedPage
 
-    Dim check As CheckBox
-    Dim row As TableRow
-    Dim cell As TableCell
-    Dim label As Label
     Dim listaProductos As New List(Of BE.ProductoBE)
     Dim selected As BE.ProductoBE
 
@@ -22,8 +18,7 @@ Public Class AdministrarProductos
     Protected Sub buscarProductosButton_Click(sender As Object, e As EventArgs)
         listaProductos = BLL.ProductoBLL.buscarProductos(Int16.Parse(tipoProductoDropDownList.SelectedValue), Me.nombreProductoTextBox.Text)
         Session("listaProductos") = listaProductos
-        'Dim id As Integer = Session("Idioma")
-
+    
         Me.productosResultadosDataGrid.DataSource = listaProductos
         Me.productosResultadosDataGrid.DataBind()
     End Sub

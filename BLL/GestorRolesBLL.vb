@@ -31,7 +31,7 @@ Public Class GestorRolesBLL
     End Sub
 
     Public Shared Function buscarRoles() As List(Of RolBE)
-        buscarRoles = Nothing
+        Return DAL.GestorRolesDAL.buscarRoles()
     End Function
 
     ''' 
