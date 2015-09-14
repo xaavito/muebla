@@ -12,6 +12,9 @@
         ExitoAlModificar = 8
         'Alta Registro
         ExitoAlCrearUsuario = 9
+        'Login Fallido
+        UsuarioYOPassIncorrecto = 10
+
     End Enum
 
     Enum Bitacora

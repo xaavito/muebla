@@ -14,15 +14,6 @@ Option Explicit On
 Partial Public Class AdministrarProveedores
 
     '''<summary>
-    '''Control ExtendedDataGrid.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ExtendedDataGrid As System.Web.UI.WebControls.GridView
-
-    '''<summary>
     '''Control tableAdministrarProveedoresCriteria.
     '''</summary>
     '''<remarks>
@@ -104,22 +95,22 @@ Partial Public Class AdministrarProveedores
     Protected WithEvents contactoTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control tipoProductoLabel.
+    '''Control activoLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tipoProductoLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents activoLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control tipoProductoDropDownList.
+    '''Control activoDropDownList.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tipoProductoDropDownList As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents activoDropDownList As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control buscarButton.
@@ -129,4 +120,13 @@ Partial Public Class AdministrarProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents buscarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control proveedoresResultadosDataGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents proveedoresResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
 End Class

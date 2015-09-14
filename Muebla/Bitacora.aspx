@@ -43,7 +43,7 @@
 
     <asp:GridView runat="server" ID="bitacoraResultadosDataGrid"
         AutoGenerateColumns="false"
-        AllowPaging="true" PageSize="12"
+        AllowPaging="false" PageSize="12"
         ItemType="BE.EventoBE"
         ShowFooter="false" CssClass="table table-bordered table-condensed"
         EmptyDataRowStyle-CssClass="gvEmpty"

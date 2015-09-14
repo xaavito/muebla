@@ -63,4 +63,28 @@ Public Class ExtendedPage
             messageLogger.Text = ex.Message
         End If
     End Sub
+
+    Public Function getSelectedIdioma() As Integer
+        Dim idiomaDropDown As DropDownList
+        idiomaDropDown = CType(Me.Master.FindControl("idiomasList"), DropDownList)
+        Debug.WriteLine("Idioma seleccionado: " + idiomaDropDown.SelectedValue)
+        If idiomaDropDown.SelectedValue <> "" Then
+            Return idiomaDropDown.SelectedValue
+        Else
+            Return Session("Idioma")
+        End If
+    End Function
+
+    Public Sub translateGrid(ByRef grid As GridView)
+        Dim id As Integer = getSelectedIdioma()
+
+        If Not grid.HeaderRow Is Nothing Then
+            For index = 0 To grid.HeaderRow.Cells.Count - 1
+                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(grid.HeaderRow.Cells(index).Text, id)
+                If (Not traduccion Is Nothing) Then
+                    grid.HeaderRow.Cells(index).Text = traduccion
+                End If
+            Next
+        End If
+    End Sub
 End Class

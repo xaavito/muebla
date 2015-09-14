@@ -248,15 +248,6 @@ Partial Public Class AdministrarProductos
     Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control verDetalleButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents verDetalleButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
     '''Control generarOrdenCompraButton.
     '''</summary>
     '''<remarks>

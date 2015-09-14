@@ -23,6 +23,15 @@ Partial Public Class Carrito
     Protected WithEvents lvProductos As Global.System.Web.UI.WebControls.ListView
 
     '''<summary>
+    '''Control tipoEnvioLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents tipoEnvioLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control tipoEnvio.
     '''</summary>
     '''<remarks>
@@ -32,6 +41,15 @@ Partial Public Class Carrito
     Protected WithEvents tipoEnvio As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
+    '''Control modoPagoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents modoPagoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control modoPago.
     '''</summary>
     '''<remarks>
@@ -39,4 +57,13 @@ Partial Public Class Carrito
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents modoPago As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control comprarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comprarButton As Global.System.Web.UI.WebControls.Button
 End Class

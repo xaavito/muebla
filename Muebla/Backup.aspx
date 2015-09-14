@@ -6,13 +6,17 @@
     
     <asp:GridView runat="server" ID="backupDataGrid"
         AutoGenerateColumns="false"
-        AllowPaging="true" PageSize="12"
+        AllowPaging="false" PageSize="12"
         ItemType="BE.BackupBE"
         ShowFooter="false" CssClass="table table-bordered table-condensed"
-        EmptyDataText="No record found!"
         EmptyDataRowStyle-CssClass="gvEmpty"
-        OnRowDataBound="bitacoraDataGrid_RowDataBound"  >
+        OnPreRender="backupDataGrid_PreRender"   >
         <Columns>
+            <asp:TemplateField HeaderText="ID">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemID" class="pull-right" Text="<%# Item.id%>" />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Descripcion">
                 <ItemTemplate>
                     <asp:Label runat="server" ID="itemDescripcion" class="pull-right" Text="<%# Item.descripcion%>" />
@@ -32,7 +36,6 @@
                 <ItemTemplate>
                     <asp:ImageButton ID="ibtnDelete" runat="server"
                         ImageUrl="/images/deleteItem.png"
-                        OnClientClick="javascript:return confirm('Do you want to delete it?');"
                         OnClick="ibtnDelete_Click"   />
                 </ItemTemplate>
             </asp:TemplateField>

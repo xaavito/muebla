@@ -17,41 +17,9 @@
         Dim listaUsrs As List(Of BE.UsuarioBE)
        
         listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Int16.Parse(tipoUsuarioDropDownList.SelectedValue), Me.mailTextBox.Text)
-        For Each usr As BE.UsuarioBE In listaUsrs
-            row = New TableRow
-            
-            'seleccion
-            cell = New TableCell
-            check = New CheckBox
-            cell.Controls.Add(check)
-            row.Cells.Add(cell)
-            'usuario
-            cell = New TableCell
-            label = New Label
-            label.Text = usr.usuario
-            cell.Controls.Add(label)
-            row.Cells.Add(cell)
-            'tipo Usuario
-            cell = New TableCell
-            label = New Label
-            label.Text = usr.tipoUsuario.descripcion
-            cell.Controls.Add(label)
-            row.Cells.Add(cell)
-            'mail
-            cell = New TableCell
-            label = New Label
-            label.Text = usr.mail
-            cell.Controls.Add(label)
-            row.Cells.Add(cell)
-            'estado
-            cell = New TableCell
-            label = New Label
-            label.Text = usr.bloqueado
-            cell.Controls.Add(label)
-            row.Cells.Add(cell)
+        usuariosResultadosDataGrid.DataSource = listaUsrs
+        usuariosResultadosDataGrid.DataBind()
 
-            Me.tablaAdministrarUsuariosResultados.Rows.Add(row)
-        Next
     End Sub
 
     Protected Sub modificarUsuarioButton_Click(sender As Object, e As EventArgs)
@@ -67,6 +35,22 @@
     End Sub
 
     Protected Sub desbloquearUsuarioButton_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    Protected Sub usuariosResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
+        translateGrid(usuariosResultadosDataGrid)
+    End Sub
+
+    Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
+
+    End Sub
+
+    Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
+
+    End Sub
+
+    Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
 
     End Sub
 End Class

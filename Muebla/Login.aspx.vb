@@ -7,7 +7,7 @@
             Dim pass As String = Me.passTextBox.Text
             usuario = BLL.UsuarioBLL.login(pass, usr)
             If usuario Is Nothing Then
-                Me.loginFailed.Text = "Usuario/contraseña equivocada"
+                logMessage(New Util.UsuarioNoEncontradoException)
             Else
                 Session("Usuario") = usuario
                 Response.Redirect("Main.aspx", False)

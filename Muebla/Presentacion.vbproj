@@ -104,9 +104,12 @@
     <Content Include="images\addToCart.png" />
     <Content Include="images\arrowLeft.png" />
     <Content Include="images\arrowRight.png" />
+    <Content Include="images\bigMuebla.jpg" />
     <Content Include="images\deleteItem.png" />
+    <Content Include="images\detail.png" />
     <Content Include="images\editItem.png" />
     <Content Include="images\shopping_cart.png" />
+    <Content Include="images\smallMuebla.png" />
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />

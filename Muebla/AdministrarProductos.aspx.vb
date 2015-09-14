@@ -91,29 +91,11 @@ Public Class AdministrarProductos
 
     End Sub
 
-    Protected Sub productosResultadosDataGrid_RowDataBound(sender As Object, e As GridViewRowEventArgs)
-        Dim id As Integer = Session("Idioma")
-
-        If (e.Row.RowType = DataControlRowType.Header) Then
-            For index = 0 To e.Row.Cells.Count - 1
-                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(e.Row.Cells(index).Text, id)
-                If (Not traduccion Is Nothing) Then
-                    e.Row.Cells(index).Text = traduccion
-                End If
-            Next
-        End If
+    Protected Sub productosResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
+        translateGrid(productosResultadosDataGrid)
     End Sub
 
-    Protected Sub productosResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
-        Dim id As Integer = Session("Idioma")
+    Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
 
-        If Not Me.productosResultadosDataGrid.HeaderRow Is Nothing Then
-            For index = 0 To Me.productosResultadosDataGrid.HeaderRow.Cells.Count - 1
-                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(Me.productosResultadosDataGrid.HeaderRow.Cells(index).Text, id)
-                If (Not traduccion Is Nothing) Then
-                    Me.productosResultadosDataGrid.HeaderRow.Cells(index).Text = traduccion
-                End If
-            Next
-        End If
     End Sub
 End Class

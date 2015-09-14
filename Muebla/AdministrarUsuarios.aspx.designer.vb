@@ -86,58 +86,13 @@ Partial Public Class AdministrarUsuarios
     Protected WithEvents buscarButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control tablaAdministrarUsuariosResultados.
+    '''Control usuariosResultadosDataGrid.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tablaAdministrarUsuariosResultados As Global.System.Web.UI.WebControls.Table
-
-    '''<summary>
-    '''Control usuarioTableLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents usuarioTableLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control tipoUsuarioTableLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents tipoUsuarioTableLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control mailTableLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents mailTableLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control estadoTableLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents estadoTableLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control modificarUsuarioButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents modificarUsuarioButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents usuariosResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''Control verDetalleUsuarioButton.
@@ -147,15 +102,6 @@ Partial Public Class AdministrarUsuarios
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents verDetalleUsuarioButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control bajaUsuarioButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents bajaUsuarioButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control desbloquearUsuarioButton.

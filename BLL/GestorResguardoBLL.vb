@@ -12,11 +12,6 @@
 ''
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-
-
-Option Explicit On
-Option Strict On
-
 Imports BE
 
 
@@ -36,7 +31,7 @@ Public Class GestorResguardoBLL
     ''' 
     ''' <param name="backup"></param>
     Public Shared Sub realizarRestore(ByVal backup As BackupBE)
-
+        DAL.GestorResguardoDAL.Restore(backup.path)
     End Sub
 
 

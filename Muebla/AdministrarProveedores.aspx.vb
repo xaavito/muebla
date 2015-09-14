@@ -12,4 +12,20 @@
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
 
     End Sub
+
+    Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
+
+    End Sub
+
+    Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
+
+    End Sub
+
+    Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
+
+    End Sub
+
+    Protected Sub proveedoresResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
+        translateGrid(Me.proveedoresResultadosDataGrid)
+    End Sub
 End Class

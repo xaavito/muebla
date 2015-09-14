@@ -88,10 +88,14 @@ Public Class MasterPage
             End If
         ElseIf TypeOf con Is Label Then
             If Not CType(con, Label).ID Is Nothing Then
-                Debug.WriteLine("label: " + CType(con, Label).ID.ToString)
+                Debug.WriteLine("Label: " + CType(con, Label).ID.ToString)
                 If CType(con, Label).ID.Equals(comp.nombre) Then
                     CType(con, Label).Text = comp.texto
                 End If
+            End If
+        ElseIf TypeOf con Is DropDownList Then
+            If Not CType(con, DropDownList).ID Is Nothing Then
+                Debug.WriteLine("DropDownList: " + CType(con, DropDownList).ID.ToString)
             End If
         Else
             If con.HasControls Then

@@ -10,3 +10,14 @@ Public Class BusquedaSinResultadosException
     End Sub
 End Class
 
+Public Class UsuarioNoEncontradoException
+    Inherits ExceptionManager
+
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.UsuarioYOPassIncorrecto
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+

@@ -21,19 +21,18 @@
         </asp:TableRow>
     </asp:Table>
     <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarProductosButton_Click" />
-    
+
     <asp:GridView runat="server" ID="productosResultadosDataGrid"
         AutoGenerateColumns="false"
-        AllowPaging="true" PageSize="12"
+        AllowPaging="false" PageSize="12"
         ItemType="BE.ProductoBE"
         ShowFooter="false" CssClass="table table-bordered table-condensed"
         EmptyDataRowStyle-CssClass="gvEmpty"
-        OnRowDataBound="productosResultadosDataGrid_RowDataBound"
-        OnPreRender="productosResultadosDataGrid_PreRender" >
+        OnPreRender="productosResultadosDataGrid_PreRender">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID"  Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Descripcion">
@@ -43,17 +42,19 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Tipo Producto">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.tipoProducto.descripcion %>" />
+                    <asp:Label runat="server" ID="itemTipo" Text="<%# Item.tipoProducto.descripcion %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
                     <asp:ImageButton ID="ibtnEdit" runat="server"
-                        ImageUrl="/images/editItem.png" OnClick="ibtnEdit_Click" CommandArgument="<%# Item.id %>" CommandName="editProducto" />
+                        ImageUrl="/images/editItem.png" OnClick="ibtnEdit_Click" />
                     <asp:ImageButton ID="ibtnDelete" runat="server"
                         ImageUrl="/images/deleteItem.png"
-                        OnClientClick="javascript:return confirm('Do you want to delete it?');"
                         OnClick="ibtnDelete_Click" />
+                    <asp:ImageButton ID="ibtnDetails" runat="server"
+                        ImageUrl="/images/detail.png"
+                        OnClick="ibtnDetails_Click" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -134,7 +135,6 @@
 
         <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
     </div>
-    <asp:Button Text="Ver Detalle" runat="server" ID="verDetalleButton" OnClick="verDetalleButton_Click" />
     <asp:Button Text="Orden de Compra" ID="generarOrdenCompraButton" runat="server" OnClick="generarOrdenCompraButton_Click" />
     <asp:Button Text="Comparacion Costos" runat="server" ID="compararCostoButton" OnClick="compararCostoButton_Click" />
 </asp:Content>

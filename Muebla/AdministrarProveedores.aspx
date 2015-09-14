@@ -1,12 +1,8 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="AdministrarProveedores.aspx.vb" Inherits="Muebla.AdministrarProveedores" %>
 
-<%@ Register Src="~/controls/ExtendedDataGrid.ascx" TagPrefix="uc1" TagName="ExtendedDataGrid" %>
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <uc1:ExtendedDataGrid runat="server" id="ExtendedDataGrid" />
     <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria">
         <asp:TableRow>
             <asp:TableCell>
@@ -39,81 +35,72 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                <asp:Label runat="server" ID="tipoProductoLabel" Text="Tipo Producto" />
+                <asp:Label runat="server" ID="activoLabel" Text="Activo" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList runat="server" ID="tipoProductoDropDownList" />
+                <asp:DropDownList runat="server" ID="activoDropDownList" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
 
     <asp:Button ID="buscarButton" Text="Buscar" runat="server" OnClick="buscarButton_Click" />
-    <table>
-        <tr>
-            <td>Nombre Organizacion o Fantasia</td>
-            <td class="auto-style1">
-                <input id="Text1" type="text" /></td>
-        </tr>
-        <tr>
-            <td>CUIT</td>
-            <td class="auto-style1">
-                <input id="Text2" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Telefono</td>
-            <td class="auto-style1">
-                <input id="Text3" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Nombre de Contacto</td>
-            <td class="auto-style1">
-                <input id="Text4" type="text" /></td>
-        </tr>
 
-        <tr>
-            <td>Activo</td>
-            <td class="auto-style1">
-                <select name="ad">
-                    <option value="1.htm">Si</option>
-                    <option value="2.htm">No</option>
-                    <option value="3.htm">Todos</option>
-                </select></td>
-        </tr>
-
-    </table>
-    <input id="Button2" type="button" value="Buscar" />
-
-    <table id="result">
-        <tr>
-            <td></td>
-            <td>Nombre Organizacion o Fantasia</td>
-            <td>CUIT</td>
-            <td>Telefono</td>
-            <td>Nombre de Contacto</td>
-            <td>Activo</td>
-        </tr>
-        <tr>
-            <td>
-                <input type="checkbox" /></td>
-            <td class="auto-style1">Prueba 1</td>
-            <td class="auto-style1">00000000000</td>
-            <td class="auto-style1">66666666666</td>
-            <td class="auto-style1">Jose Prueba</td>
-            <td class="auto-style1">Si</td>
-
-        </tr>
-        <tr>
-            <td>
-                <input type="checkbox" /></td>
-            <td class="auto-style1">Prueba 2</td>
-            <td class="auto-style1">00000000000</td>
-            <td class="auto-style1">66666666666</td>
-            <td class="auto-style1">pepe Prueba</td>
-            <td class="auto-style1">No</td>
-
-        </tr>
-
-    </table>
-    <asp:Button Text="Modificar" runat="server" />
-    <asp:Button Text="Baja" runat="server" />
+    <asp:GridView runat="server" ID="proveedoresResultadosDataGrid"
+        AutoGenerateColumns="false"
+        AllowPaging="false" PageSize="12"
+        ItemType="BE.ProveedorBE"
+        ShowFooter="false" CssClass="table table-bordered table-condensed"
+        EmptyDataRowStyle-CssClass="gvEmpty"
+        OnPreRender="proveedoresResultadosDataGrid_PreRender" >
+        <Columns>
+            <asp:TemplateField HeaderText="ID">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemUser"  Text="<%# Item.id %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Razon Social">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemUser"  Text="<%# Item.razonSocial %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="CUIT">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemDescripcion" Text="<%# Item.cuit%>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Telefono">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.tel%>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Mail">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.mail%>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Activo">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.m_EstadoProveedorBE.descripcion %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Acciones">
+                <ItemTemplate>
+                    <asp:ImageButton ID="ibtnEdit" runat="server"
+                        ImageUrl="/images/editItem.png" OnClick="ibtnEdit_Click"/>
+                    <asp:ImageButton ID="ibtnDelete" runat="server"
+                        ImageUrl="/images/deleteItem.png"
+                        OnClick="ibtnDelete_Click" />
+                    <asp:ImageButton ID="ibtnDetails" runat="server"
+                        ImageUrl="/images/detail.png"
+                        OnClick="ibtnDetails_Click"  />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+        <SortedAscendingHeaderStyle CssClass="asc" />
+        <SortedDescendingHeaderStyle CssClass="desc" />
+        <SortedAscendingCellStyle CssClass="asc" />
+        <SortedDescendingCellStyle CssClass="desc" />
+        <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
+        <PagerStyle CssClass="grid-pager" />
+    </asp:GridView>
 </asp:Content>
