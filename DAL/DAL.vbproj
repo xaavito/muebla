@@ -154,6 +154,7 @@
   <ItemGroup>
     <Content Include="BD\BDMuebla20150823.sql" />
     <Content Include="BD\BDMuebla20150913.sql" />
+    <Content Include="BD\BDMuebla20150916.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
