@@ -28,14 +28,32 @@ Public Class ExtendedPage
         If Page.IsPostBack Then
             Return
         End If
+        Dim messageLogger As Label
+        messageLogger = CType(Me.Master.FindControl("errorMessageLogger"), Label)
+        messageLogger.Text = ""
+        messageLogger = CType(Me.Master.FindControl("infoMessageLogger"), Label)
+        messageLogger.Text = ""
+        messageLogger = CType(Me.Master.FindControl("warningMessageLogger"), Label)
+        messageLogger.Text = ""
+        messageLogger = CType(Me.Master.FindControl("exitoMessageLogger"), Label)
+        messageLogger.Text = ""
     End Sub
 
     Public Sub logMessage(ByVal ex As Exception)
-        Dim messageLogger As Label = CType(Me.Master.FindControl("messageLogger"), Label)
+        Dim messageLogger As Label = CType(Me.Master.FindControl("errorMessageLogger"), Label)
         idioma = New BE.IdiomaBE
         idioma.id = Session("Idioma")
         If (TypeOf ex Is ExceptionManager) Then
             Dim excep = DirectCast(ex, ExceptionManager)
+            If excep.tipo = Enumeradores.ImportanciaEvento.Err Then
+                messageLogger = CType(Me.Master.FindControl("errorMessageLogger"), Label)
+            ElseIf excep.tipo = Enumeradores.ImportanciaEvento.Info Then
+                messageLogger = CType(Me.Master.FindControl("infoMessageLogger"), Label)
+            ElseIf excep.tipo = Enumeradores.ImportanciaEvento.Warning Then
+                messageLogger = CType(Me.Master.FindControl("warningMessageLogger"), Label)
+            Else
+                messageLogger = CType(Me.Master.FindControl("exitoMessageLogger"), Label)
+            End If
             Try
                 messageLogger.Text = BLL.GestorExcepcionesBLL.buscarExcepcion(excep.codigo, idioma.id)
             Catch e As BusquedaSinResultadosException

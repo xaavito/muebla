@@ -161,7 +161,7 @@ Public Class MasterPage
                 Next
             Next
         Catch ex As Exception
-            Me.messageLogger.Text = ex.Message
+            Me.errorMessageLogger.Text = ex.Message
         End Try
     End Sub
 

@@ -59,7 +59,22 @@
     border: 2px solid red;
 }
 
-#messageLogger{
+#errorMessageLogger{
     font: bold 20px arial;
     color: red;
+}
+
+#infoMessageLogger{
+    font: bold 20px arial;
+    color: grey;
+}
+
+#exitoMessageLogger{
+    font: bold 20px arial;
+    color: blue;
+}
+
+#warningMessageLogger{
+    font: bold 20px arial;
+    color: yellow;
 }

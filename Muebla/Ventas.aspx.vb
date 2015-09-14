@@ -1,7 +1,6 @@
 ﻿Imports BLL
 Imports BE
 Public Class Ventas
-
     Inherits ExtendedPage
 
     Dim listaProductos As New List(Of ListaPrecioDetalleBE)

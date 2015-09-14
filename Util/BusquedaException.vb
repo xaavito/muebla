@@ -5,7 +5,7 @@ Public Class BusquedaSinResultadosException
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.BusquedaSinResultados
-        Me.tipo = MsgBoxStyle.Information
+        Me.tipo = Enumeradores.ImportanciaEvento.Info
         Me.mensaje = "Sin resultados"
     End Sub
 End Class

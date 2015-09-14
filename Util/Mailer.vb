@@ -38,7 +38,7 @@ Public Class Mailer
 
         Catch ex As SmtpException
         Catch ex As Exception
-            'do nothing
+            Throw ex
         End Try
     End Sub
 

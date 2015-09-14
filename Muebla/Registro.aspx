@@ -10,7 +10,11 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="nombreTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="nombreTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="nombreTextBox" runat="server" />
+                <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
+                    ErrorMessage="Solo Texto"
+                    ControlToValidate="nombreTextBox"
+                    ValidationExpression="^[a-zA-Z]*$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -19,7 +23,11 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="apellidoTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="apellidoTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="apellidoTextBox" runat="server" />
+                <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
+                    ErrorMessage="Solo Texto"
+                    ControlToValidate="apellidoTextBox"
+                    ValidationExpression="^[a-zA-Z]*$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -28,7 +36,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:DropDownList EnableViewState="True" runat="server" ID="tipoDocDropDownList" AutoPostBack="true" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="tipoDocDropDownList" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="tipoDocDropDownList" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -37,7 +45,11 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="documentoTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="documentoTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="documentoTextBox" runat="server" />
+                <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
+                    ErrorMessage="Solo Numeros"
+                    ControlToValidate="documentoTextBox"
+                    ValidationExpression="^[0-9]*$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -46,7 +58,11 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="cuilTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="cuilTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="cuilTextBox" runat="server" />
+                <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
+                    ErrorMessage="Solo Numeros"
+                    ControlToValidate="cuilTextBox"
+                    ValidationExpression="^[0-9]*$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -55,7 +71,11 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="mailTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="mailTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="mailTextBox" runat="server" />
+                <asp:RegularExpressionValidator runat="server"
+                    ErrorMessage="Email Invalido"
+                    ControlToValidate="mailTextBox"
+                    ValidationExpression="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b" ValidationGroup="registrarse" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -64,7 +84,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="calleTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="calleTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="calleTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -73,7 +93,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="nroTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="nroTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="nroTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -114,7 +134,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="telefonoTextBox" TextMode="Phone" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="telefonoTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="telefonoTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -139,7 +159,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="usuarioTextBox" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="usuarioTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="usuarioTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -148,11 +168,11 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="passTextBox" TextMode="Password" />
-                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="passTextBox" runat="server" />
+                <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="passTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Button Text="Registrarse" runat="server" ID="registrarseButton" OnClick="registrarseButton_Click" />
+    <asp:Button Text="Registrarse" runat="server" ID="registrarseButton" OnClick="registrarseButton_Click" ValidationGroup="registrarse"/>
 
 
 </asp:Content>

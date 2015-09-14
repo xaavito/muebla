@@ -14,7 +14,10 @@
 <body>
     <form id="form1" runat="server">
         <div id="top">
-            <asp:Label id="messageLogger" runat="server" />
+            <asp:Label id="errorMessageLogger" runat="server" />
+            <asp:Label id="exitoMessageLogger" runat="server" />
+            <asp:Label id="infoMessageLogger" runat="server" />
+            <asp:Label id="warningMessageLogger" runat="server" />
             <a href="Login.aspx">Login</a>
             <asp:DropDownList runat="server" ID="idiomasList" AutoPostBack="True" OnSelectedIndexChanged="idiomasList_SelectedIndexChanged" />
 

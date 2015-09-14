@@ -1,7 +1,6 @@
 ﻿Public Class ExceptionManager
     Inherits Exception
 
-
     Private _codigo As Integer
     Public Property codigo() As Integer
         Get
@@ -23,13 +22,13 @@
     End Property
 
 
-    Private _tipo As MsgBoxStyle
+    Private _tipo As Integer
 
-    Public Property tipo() As MsgBoxStyle
+    Public Property tipo() As Integer
         Get
             Return _tipo
         End Get
-        Set(ByVal value As MsgBoxStyle)
+        Set(ByVal value As Integer)
             _tipo = value
         End Set
     End Property

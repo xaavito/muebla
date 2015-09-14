@@ -19,13 +19,17 @@ Imports BE
 
 Public Class GestorBitacoraBLL
 
-    Public Shared Function buscarBitacoras(ByVal fechahasta As DateTime, ByVal fechadesde As DateTime, ByVal tipo As BE.TipoEventoBE, ByVal usr As BE.UsuarioBE) As List(Of EventoBE)
-        buscarBitacoras = Nothing
+    Public Shared Function buscarBitacoras(ByVal fechahasta As Date, ByVal fechadesde As Date, ByVal tipo As Integer, ByVal usr As String, ByVal id As Integer) As List(Of EventoBE)
+        Return DAL.GestorBitacoraDAL.buscarBitacoras(fechahasta, fechadesde, usr, tipo, id)
     End Function
 
     Public Shared Sub registrarEvento(ByVal usuario As UsuarioBE, ByVal tipo As Integer)
         DAL.GestorBitacoraDAL.registrarEvento(usuario, tipo)
     End Sub
+
+    Shared Function getTipoEventos(ByVal id As Integer) As List(Of BE.TipoEventoBE)
+        Return DAL.GestorBitacoraDAL.getTipoEventos(id)
+    End Function
 
 
 End Class ' GestorBitacoraBLL

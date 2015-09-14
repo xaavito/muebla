@@ -2,60 +2,81 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <table>
-        <tr>
-            <td>Usuario</td>
-            <td class="auto-style1">
-                <input id="Text1" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Fecha Desde</td>
-            <td class="auto-style1">
-                <input id="Text2" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Fecha Desde</td>
-            <td class="auto-style1">
-                <input id="Text2" type="text" /></td>
-        </tr>
-        <tr>
-            <td>Tipo Evento</td>
-            <td class="auto-style1">
-                <select name="ad">
-                    <option value="1.htm">Todos</option>
-                </select></td>
-        </tr>
+    
+    <asp:Table runat="server" ID="tableSearchBitacoraCriteria">
+        <asp:TableHeaderRow></asp:TableHeaderRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="usuarioTextBox" mask="99/99/9999"/>
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="fechaDesdeLabel" Text="Fecha Desde" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="fechaDesdeDate" mask="99/99/9999"/>       
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="fechaHastaLabel" Text="Fecha Hasta" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:TextBox runat="server" ID="fechaHastaDate"/> 
+            </asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow>
+            <asp:TableCell>
+                <asp:Label runat="server" ID="tipoEventoLabel" Text="Tipo Evento" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:DropDownList runat="server" ID="tipoEventoDropDown" />
+            </asp:TableCell>
+        </asp:TableRow>
+    </asp:Table>
 
-    </table>
-    <input id="Button2" type="button" value="Buscar" />
+    <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarButton_Click"  />
 
-    <table id="result">
-        <tr>
-            <td></td>
-            <td>Evento</td>
-            <td>Tipo</td>
-            <td>Usuario</td>
-            <td>Fecha</td>
-
-        </tr>
-        <tr>
-            <td> <input type="checkbox" /></td>
-            <td class="auto-style1">Login de Usuario jgonzalez</td>
-            <td class="auto-style1">Login</td>
-            <td class="auto-style1">jgonzalez</td>
-            <td class="auto-style1">10/10/2013 12:53:44</td>
-       
-
-        </tr>
-        <tr>
-            <td> <input type="checkbox" /></td>
-            <td class="auto-style1">Intento de Logueo</td>
-            <td class="auto-style1">Login</td>
-            <td class="auto-style1">NULL</td>
-            <td class="auto-style1">10/10/2013 12:53:46</td>
-
-        </tr>
-
-    </table>
+    <asp:GridView runat="server" ID="bitacoraResultadosDataGrid"
+        AutoGenerateColumns="false"
+        AllowPaging="true" PageSize="12"
+        ItemType="BE.EventoBE"
+        ShowFooter="false" CssClass="table table-bordered table-condensed"
+        EmptyDataRowStyle-CssClass="gvEmpty"
+        OnRowDataBound="bitacoraResultadosDataGrid_RowDataBound"    
+        OnPreRender="bitacoraResultadosDataGrid_PreRender"   >
+        <Columns>
+            <asp:TemplateField HeaderText="ID">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemID"  Text="<%# Item.id %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Usuario">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemDescripcion" Text="<%# Item.usr.usuario %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Tipo Evento">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.tipoEvento.texto %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Fecha">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemFecha"  Text="<%# Item.fecha %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+        <SortedAscendingHeaderStyle CssClass="asc" />
+        <SortedDescendingHeaderStyle CssClass="desc" />
+        <SortedAscendingCellStyle CssClass="asc" />
+        <SortedDescendingCellStyle CssClass="desc" />
+        <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
+        <PagerStyle CssClass="grid-pager" />
+    </asp:GridView>
 
 </asp:Content>

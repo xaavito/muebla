@@ -23,7 +23,7 @@ Public Class UsuarioDAL
             repository.addParam("@tipo", usr.tipoDoc.id)
             id = repository.executeWithReturnValue
         Catch ex As Exception
-            'Throw Exception
+            Throw ex
         End Try
 
         Return id
@@ -307,7 +307,8 @@ Public Class UsuarioDAL
             repository.addParam("@dpto", usr.domicilio.dpto)
             repository.addParam("@loc", usr.domicilio.m_LocalidadBE.id)
             id = repository.executeWithReturnValue
-        Catch ex As ExceptionManager
+        Catch ex As Exception
+            Throw ex
         End Try
 
         Return id
@@ -317,14 +318,17 @@ Public Class UsuarioDAL
         Dim id As Int16
 
         Dim repository As New AccesoSQLServer
-        'Try
-        repository.crearComando("ALTA_TELEFONO_SP")
-        repository.addParam("@usr", usr.id)
-        repository.addParam("@num", usr.telefono.numero)
-        repository.addParam("@int", usr.telefono.interno)
-        repository.addParam("@pre", usr.telefono.prefijo)
-        id = repository.executeWithReturnValue
-
+        Try
+            repository.crearComando("ALTA_TELEFONO_SP")
+            repository.addParam("@usr", usr.id)
+            repository.addParam("@num", usr.telefono.numero)
+            repository.addParam("@int", usr.telefono.interno)
+            repository.addParam("@pre", usr.telefono.prefijo)
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+            Throw ex
+        End Try
+        
         Return id
     End Function
 

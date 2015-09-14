@@ -32,13 +32,40 @@ Partial Public Class MasterPage
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
 
     '''<summary>
-    '''Control messageLogger.
+    '''Control errorMessageLogger.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents messageLogger As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents errorMessageLogger As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control exitoMessageLogger.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents exitoMessageLogger As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control infoMessageLogger.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents infoMessageLogger As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control warningMessageLogger.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents warningMessageLogger As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control idiomasList.

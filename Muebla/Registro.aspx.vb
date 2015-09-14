@@ -54,8 +54,15 @@
         tel.interno = Me.internoTextBox.Text
         tel.prefijo = Me.prefijoTextBox.Text
         usr.telefono = tel
+        Try
+            usr = BLL.UsuarioBLL.altaCliente(usr)
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
 
-        usr = BLL.UsuarioBLL.altaCliente(usr)
+        If Not usr Is Nothing Then
+            logMessage(New Util.AltaUsuarioExitosaException)
+        End If
     End Sub
 
 End Class
