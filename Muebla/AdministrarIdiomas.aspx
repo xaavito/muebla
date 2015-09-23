@@ -7,19 +7,15 @@
             <asp:TableCell>
                 <asp:Label runat="server" ID="idiomaLabel" Text="Idioma" />
             </asp:TableCell><asp:TableCell>
-                <asp:DropDownList runat="server" ID="idiomaDropDownList" OnSelectedIndexChanged="idiomaDropDownList_SelectedIndexChanged" />
+                <asp:DropDownList runat="server" EnableViewState="True" AutoPostBack="True" ID="idiomaDropDownList" OnSelectedIndexChanged="idiomaDropDownList_SelectedIndexChanged" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-
-    <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarButton_Click" />
 
     <asp:GridView runat="server" ID="idiomaResultadosDataGrid"
         AutoGenerateColumns="false"
         AllowPaging="false" PageSize="12"
         ItemType="BE.ComponenteBE"
-        ShowFooter="false" CssClass="table table-bordered table-condensed"
-        EmptyDataRowStyle-CssClass="gvEmpty"
         OnPreRender="idiomaResultadosDataGrid_PreRender">
         <Columns>
             <asp:TemplateField HeaderText="ID">
@@ -44,11 +40,20 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <SortedAscendingHeaderStyle CssClass="asc" />
-        <SortedDescendingHeaderStyle CssClass="desc" />
-        <SortedAscendingCellStyle CssClass="asc" />
-        <SortedDescendingCellStyle CssClass="desc" />
-        <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
-        <PagerStyle CssClass="grid-pager" />
     </asp:GridView>
+
+    <div runat="server" id="editDiv">
+        <asp:Table runat="server" ID="tableEditIdioma">
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="textoLabel" Text="texto" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="textoTextBox" />
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+
+        <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarButton_Click" />
+    </div>
 </asp:Content>
