@@ -77,7 +77,6 @@ Public Class GestorResguardoDAL
 
 
     Public Shared Sub Restore(ByVal path As String)
-        'Dim path As String = "D:\\Prueba"
         Dim repo As New AccesoSQLServer
 
         Dim builder As New SqlConnectionStringBuilder(repo.conString)
@@ -151,5 +150,34 @@ Public Class GestorResguardoDAL
 
         Return resultado
     End Function
+
+    Shared Function buscarBackup(backupId As Integer) As BackupBE
+        Dim table As DataTable
+        Dim bu As BE.BackupBE
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_BACKUP_SP")
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                bu = New BE.BackupBE
+                bu.id = pepe.Item(0)
+                bu.descripcion = pepe.Item(2)
+                If Not IsDBNull(pepe.Item(3)) Then
+                    bu.fecha = pepe.Item(3)
+                End If
+                bu.path = pepe.Item(1)
+            Next
+
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return bu
+    End Function
+
 End Class ' GestorResguardoDAL
 

@@ -122,22 +122,40 @@ Partial Public Class AltaUsuario
     Protected WithEvents rolesLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control TextBox1.
+    '''Control rolesPropiosListBox.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.ListBox
+    Protected WithEvents rolesPropiosListBox As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
-    '''Control addRolButton.
+    '''Control removerRolButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents addRolButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents removerRolButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control agregarRolButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents agregarRolButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control allRolesListBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents allRolesListBox As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
     '''Control confirmarAltaUsuarioButton.

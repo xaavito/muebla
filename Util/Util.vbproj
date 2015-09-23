@@ -62,6 +62,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UtilException.vb" />
     <Compile Include="ModificacionException.vb" />
     <Compile Include="CreacionException.vb" />
     <Compile Include="EliminacionException.vb" />

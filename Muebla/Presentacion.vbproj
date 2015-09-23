@@ -104,6 +104,7 @@
     <Content Include="images\addToCart.png" />
     <Content Include="images\arrowLeft.png" />
     <Content Include="images\arrowRight.png" />
+    <Content Include="images\backup-restore.png" />
     <Content Include="images\bigMuebla.jpg" />
     <Content Include="images\deleteItem.png" />
     <Content Include="images\detail.png" />

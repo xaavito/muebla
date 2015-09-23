@@ -14,6 +14,8 @@
         ExitoAlCrearUsuario = 9
         'Login Fallido
         UsuarioYOPassIncorrecto = 10
+        'Genericos, en este caso Restaurar BD.
+        RestauracionExitosa = 11
 
     End Enum
 

@@ -87,4 +87,11 @@ Public Class ExtendedPage
             Next
         End If
     End Sub
+
+    Public Shared Function getItemId(sender As Object, gridView As GridView) As Integer
+        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
+        Dim con As Label = CType(gridView.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
+        Dim id As Integer = Integer.Parse(con.Text.ToString)
+        Return id
+    End Function
 End Class
