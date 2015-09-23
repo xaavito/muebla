@@ -10,7 +10,7 @@
         ItemType="BE.BackupBE"
         ShowFooter="false" CssClass="table table-bordered table-condensed"
         EmptyDataRowStyle-CssClass="gvEmpty"
-        OnPreRender="backupDataGrid_PreRender"   >
+        OnPreRender="backupDataGrid_PreRender">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
