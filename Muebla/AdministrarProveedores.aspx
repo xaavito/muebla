@@ -49,8 +49,10 @@
         AutoGenerateColumns="false"
         AllowPaging="false" PageSize="12"
         ItemType="BE.ProveedorBE"
-        ShowFooter="false" CssClass="table table-bordered table-condensed"
-        EmptyDataRowStyle-CssClass="gvEmpty"
+        ShowFooter="false" 
+        CssClass="mGrid"  
+        PagerStyle-CssClass="pgr"  
+        AlternatingRowStyle-CssClass="alt"
         OnPreRender="proveedoresResultadosDataGrid_PreRender" >
         <Columns>
             <asp:TemplateField HeaderText="ID">
@@ -96,11 +98,6 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <SortedAscendingHeaderStyle CssClass="asc" />
-        <SortedDescendingHeaderStyle CssClass="desc" />
-        <SortedAscendingCellStyle CssClass="asc" />
-        <SortedDescendingCellStyle CssClass="desc" />
-        <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
-        <PagerStyle CssClass="grid-pager" />
+
     </asp:GridView>
 </asp:Content>

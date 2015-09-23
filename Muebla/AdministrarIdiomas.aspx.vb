@@ -36,7 +36,11 @@
     End Sub
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
-
+        Try
+            BLL.GestorIdiomaBLL.modificarComponente(Session("idTextoIdioma"), Me.textoTextBox.Text)
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)

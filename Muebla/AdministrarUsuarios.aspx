@@ -35,8 +35,9 @@
         AutoGenerateColumns="false"
         AllowPaging="false" PageSize="12"
         ItemType="BE.UsuarioBE"
-        ShowFooter="false" CssClass="table table-bordered table-condensed"
-        EmptyDataRowStyle-CssClass="gvEmpty"
+        ShowFooter="false" CssClass="mGrid"  
+        PagerStyle-CssClass="pgr"  
+        AlternatingRowStyle-CssClass="alt"
         OnPreRender="usuariosResultadosDataGrid_PreRender">
         <Columns>
             <asp:TemplateField HeaderText="ID">
@@ -77,12 +78,6 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <SortedAscendingHeaderStyle CssClass="asc" />
-        <SortedDescendingHeaderStyle CssClass="desc" />
-        <SortedAscendingCellStyle CssClass="asc" />
-        <SortedDescendingCellStyle CssClass="desc" />
-        <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
-        <PagerStyle CssClass="grid-pager" />
     </asp:GridView>
     <div id="editDataDiv" runat="server">
         <asp:Table runat="server" ID="tableAdminUsuario">

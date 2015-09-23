@@ -36,16 +36,17 @@ Public Class Backup
     End Sub
 
     Protected Sub backupDataGrid_PreRender(sender As Object, e As EventArgs)
-        Dim id As Integer = getSelectedIdioma()
+        translateGrid(Me.backupDataGrid)
+        'Dim id As Integer = getSelectedIdioma()
 
-        If Not Me.backupDataGrid.HeaderRow Is Nothing Then
-            For index = 0 To Me.backupDataGrid.HeaderRow.Cells.Count - 1
-                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(Me.backupDataGrid.HeaderRow.Cells(index).Text, id)
-                If (Not traduccion Is Nothing) Then
-                    Me.backupDataGrid.HeaderRow.Cells(index).Text = traduccion
-                End If
-            Next
-        End If
+        'If Not Me.backupDataGrid.HeaderRow Is Nothing Then
+        '    For index = 0 To Me.backupDataGrid.HeaderRow.Cells.Count - 1
+        '        Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(Me.backupDataGrid.HeaderRow.Cells(index).Text, id)
+        '        If (Not traduccion Is Nothing) Then
+        '            Me.backupDataGrid.HeaderRow.Cells(index).Text = traduccion
+        '        End If
+        '    Next
+        'End If
     End Sub
 
     Private Sub buscarBackups()

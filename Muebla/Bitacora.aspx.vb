@@ -35,29 +35,18 @@ Public Class Bitacora
 
     End Sub
 
-    Protected Sub bitacoraResultadosDataGrid_RowDataBound(sender As Object, e As GridViewRowEventArgs)
-        Dim id As Integer = getSelectedIdioma()
-
-        If (e.Row.RowType = DataControlRowType.Header) Then
-            For index = 0 To e.Row.Cells.Count - 1
-                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(e.Row.Cells(index).Text, id)
-                If (Not traduccion Is Nothing) Then
-                    e.Row.Cells(index).Text = traduccion
-                End If
-            Next
-        End If
-    End Sub
-
     Protected Sub bitacoraResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
-        Dim id As Integer = getSelectedIdioma()
+        translateGrid(Me.bitacoraResultadosDataGrid)
 
-        If Not Me.bitacoraResultadosDataGrid.HeaderRow Is Nothing Then
-            For index = 0 To Me.bitacoraResultadosDataGrid.HeaderRow.Cells.Count - 1
-                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(Me.bitacoraResultadosDataGrid.HeaderRow.Cells(index).Text, id)
-                If (Not traduccion Is Nothing) Then
-                    Me.bitacoraResultadosDataGrid.HeaderRow.Cells(index).Text = traduccion
-                End If
-            Next
-        End If
+        'Dim id As Integer = getSelectedIdioma()
+
+        'If Not Me.bitacoraResultadosDataGrid.HeaderRow Is Nothing Then
+        '    For index = 0 To Me.bitacoraResultadosDataGrid.HeaderRow.Cells.Count - 1
+        '        Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(Me.bitacoraResultadosDataGrid.HeaderRow.Cells(index).Text, id)
+        '        If (Not traduccion Is Nothing) Then
+        '            Me.bitacoraResultadosDataGrid.HeaderRow.Cells(index).Text = traduccion
+        '        End If
+        '    Next
+        'End If
     End Sub
 End Class

@@ -18,10 +18,12 @@ Public Class MasterPage
             Me.logoutButton.Visible = False
             Me.shoppingCart.Visible = False
             Me.loginButton.Visible = True
+            Me.greetingsLabel.Visible = False
         Else
             Me.logoutButton.Visible = True
             Me.shoppingCart.Visible = True
             Me.loginButton.Visible = False
+            Me.greetingsLabel.Visible = False
         End If
 
         loadPermisos(usr)

@@ -76,16 +76,21 @@ Public Class ExtendedPage
     End Function
 
     Public Sub translateGrid(ByRef grid As GridView)
-        Dim id As Integer = getSelectedIdioma()
+        Try
+            Dim id As Integer = getSelectedIdioma()
 
-        If Not grid.HeaderRow Is Nothing Then
-            For index = 0 To grid.HeaderRow.Cells.Count - 1
-                Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(grid.HeaderRow.Cells(index).Text, id)
-                If (Not traduccion Is Nothing) Then
-                    grid.HeaderRow.Cells(index).Text = traduccion
-                End If
-            Next
-        End If
+            If Not grid.HeaderRow Is Nothing Then
+                For index = 0 To grid.HeaderRow.Cells.Count - 1
+                    Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(grid.HeaderRow.Cells(index).Text, id)
+                    If (Not traduccion Is Nothing) Then
+                        grid.HeaderRow.Cells(index).Text = traduccion
+                    End If
+                Next
+            End If
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Public Shared Function getItemId(sender As Object, gridView As GridView) As Integer

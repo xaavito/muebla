@@ -47,7 +47,6 @@
         ItemType="BE.EventoBE"
         ShowFooter="false" CssClass="table table-bordered table-condensed"
         EmptyDataRowStyle-CssClass="gvEmpty"
-        OnRowDataBound="bitacoraResultadosDataGrid_RowDataBound"    
         OnPreRender="bitacoraResultadosDataGrid_PreRender"   >
         <Columns>
             <asp:TemplateField HeaderText="ID">

@@ -16,6 +16,9 @@
         AutoGenerateColumns="false"
         AllowPaging="false" PageSize="12"
         ItemType="BE.ComponenteBE"
+        CssClass="mGrid"  
+        PagerStyle-CssClass="pgr"  
+        AlternatingRowStyle-CssClass="alt"
         OnPreRender="idiomaResultadosDataGrid_PreRender">
         <Columns>
             <asp:TemplateField HeaderText="ID">

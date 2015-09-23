@@ -92,4 +92,8 @@ Public Class GestorIdiomaBLL
         Return _comps
     End Function
 
+    Shared Sub modificarComponente(id As Integer, nuevoTexto As String)
+        DAL.GestorIdiomaDAL.modificarComponente(id, nuevoTexto)
+    End Sub
+
 End Class
