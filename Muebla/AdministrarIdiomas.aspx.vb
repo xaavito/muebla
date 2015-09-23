@@ -11,10 +11,7 @@
             Me.idiomaDropDownList.DataValueField = "id"
             Me.idiomaDropDownList.DataBind()
 
-            Dim idioma As New BE.IdiomaBE
-            idioma.id = 1
-            Me.idiomaResultadosDataGrid.DataSource = BLL.GestorIdiomaBLL.buscarComponentes(idioma)
-            Me.idiomaResultadosDataGrid.DataBind()
+            llenarTabla()
         End If
         Me.editDiv.Visible = False
     End Sub
@@ -37,7 +34,9 @@
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
         Try
-            BLL.GestorIdiomaBLL.modificarComponente(Session("idTextoIdioma"), Me.textoTextBox.Text)
+            BLL.GestorIdiomaBLL.modificarComponente(Session("idTextoIdioma"), Me.textoTextBox.Text, Session("idiomaChange"))
+            llenarTabla()
+            Me.editDiv.Visible = False
         Catch ex As Exception
             logMessage(ex)
         End Try
@@ -50,4 +49,22 @@
         Session("idTextoIdioma") = id
         Me.editDiv.Visible = True
     End Sub
+
+    Protected Sub cancelarButton_Click(sender As Object, e As EventArgs)
+        Me.editDiv.Visible = False
+    End Sub
+
+    Private Sub llenarTabla()
+        Dim idioma As New BE.IdiomaBE
+        If Session("idiomaChange") Is Nothing Then
+            idioma.id = 1
+            Session("idiomaChange") = 1
+        Else
+            idioma.id = Session("idiomaChange")
+        End If
+
+        Me.idiomaResultadosDataGrid.DataSource = BLL.GestorIdiomaBLL.buscarComponentes(idioma)
+        Me.idiomaResultadosDataGrid.DataBind()
+    End Sub
+
 End Class

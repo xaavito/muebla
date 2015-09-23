@@ -101,7 +101,7 @@ Public Class GestorIdiomaDAL
         Return Nothing
     End Function
 
-    Shared Sub modificarComponente(id As Integer, nuevoTexto As String)
+    Shared Sub modificarComponente(id As Integer, nuevoTexto As String, idIdioma As Integer)
         Dim ret As Integer
 
         Dim repository As New AccesoSQLServer
@@ -109,6 +109,7 @@ Public Class GestorIdiomaDAL
             repository.crearComando("MODIFICAR_TRADUCCION_SP")
             repository.addParam("@id", id)
             repository.addParam("@texto", nuevoTexto)
+            repository.addParam("@idIdioma", idIdioma)
             ret = repository.executeSearchWithStatus
             If (ret <> 1) Then
                 Throw New Util.ModificarException

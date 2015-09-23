@@ -45,8 +45,10 @@
         AutoGenerateColumns="false"
         AllowPaging="false" PageSize="12"
         ItemType="BE.EventoBE"
-        ShowFooter="false" CssClass="table table-bordered table-condensed"
-        EmptyDataRowStyle-CssClass="gvEmpty"
+        ShowFooter="false" 
+        CssClass="mGrid"
+        PagerStyle-CssClass="pgr"
+        AlternatingRowStyle-CssClass="alt"
         OnPreRender="bitacoraResultadosDataGrid_PreRender"   >
         <Columns>
             <asp:TemplateField HeaderText="ID">

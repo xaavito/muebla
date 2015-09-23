@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="AdministrarIdiomas.aspx.vb" Inherits="Muebla.AdministrarIdiomas" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -16,8 +17,8 @@
         AutoGenerateColumns="false"
         AllowPaging="false" PageSize="12"
         ItemType="BE.ComponenteBE"
-        CssClass="mGrid"  
-        PagerStyle-CssClass="pgr"  
+        CssClass="mGrid"
+        PagerStyle-CssClass="pgr"
         AlternatingRowStyle-CssClass="alt"
         OnPreRender="idiomaResultadosDataGrid_PreRender">
         <Columns>
@@ -49,14 +50,16 @@
         <asp:Table runat="server" ID="tableEditIdioma">
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:Label runat="server" ID="textoLabel" Text="texto" />
+                    <asp:Label runat="server" ID="textoLabel" Text="Texto" />
                 </asp:TableCell>
                 <asp:TableCell>
                     <asp:TextBox runat="server" ID="textoTextBox" />
+                    <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="textoTextBox" runat="server" ValidationGroup="cambioIdioma" />
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
 
-        <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarButton_Click" />
+        <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarButton_Click" ValidationGroup="cambioIdioma" />
+        <asp:Button runat="server" ID="cancelarButton" Text="Cancelar" OnClick="cancelarButton_Click" />
     </div>
 </asp:Content>

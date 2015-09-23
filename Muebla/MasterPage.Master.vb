@@ -23,7 +23,7 @@ Public Class MasterPage
             Me.logoutButton.Visible = True
             Me.shoppingCart.Visible = True
             Me.loginButton.Visible = False
-            Me.greetingsLabel.Visible = False
+            Me.greetingsLabel.Visible = Visible
         End If
 
         loadPermisos(usr)
