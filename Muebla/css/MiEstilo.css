@@ -1,5 +1,6 @@
 ﻿#top {
     border: 2px solid black;
+    border-radius: 5px;
     width: 100%;
     text-align: right;
     background-color: beige;
@@ -7,6 +8,7 @@
 
 #left {
     border: 2px solid black;
+    border-radius: 5px;
     float: left;
     width: 30%;
     height: 100%;
@@ -15,6 +17,7 @@
 
 #right {
     border: 2px solid black;
+    border-radius: 5px;
     float: right;
     width: 69%;
     height: 100%;
@@ -62,21 +65,25 @@
 #errorMessageLogger {
     font: bold 20px arial;
     color: red;
+    transition: opacity 2s ease-in;
 }
 
 #infoMessageLogger {
     font: bold 20px arial;
     color: grey;
+    transition: opacity 2s ease-in;
 }
 
 #exitoMessageLogger {
     font: bold 20px arial;
     color: blue;
+    transition: opacity 2s ease-in;
 }
 
 #warningMessageLogger {
     font: bold 20px arial;
     color: yellow;
+    transition: opacity 2s ease-in;
 }
 
 .mGrid {
@@ -131,3 +138,11 @@
                 color: #000;
                 text-decoration: none;
             }
+
+.table {
+    border-radius: 25px;
+    border: 2px solid black;
+    padding: 20px; 
+    width: 200px;
+    height: 150px; 
+}

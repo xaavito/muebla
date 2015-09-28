@@ -4,6 +4,9 @@ Public Class Backup
     Inherits ExtendedPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Page.IsPostBack Then
+            Return
+        End If
         Try
             buscarBackups()
         Catch ex As Exception
@@ -37,16 +40,6 @@ Public Class Backup
 
     Protected Sub backupDataGrid_PreRender(sender As Object, e As EventArgs)
         translateGrid(Me.backupDataGrid)
-        'Dim id As Integer = getSelectedIdioma()
-
-        'If Not Me.backupDataGrid.HeaderRow Is Nothing Then
-        '    For index = 0 To Me.backupDataGrid.HeaderRow.Cells.Count - 1
-        '        Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(Me.backupDataGrid.HeaderRow.Cells(index).Text, id)
-        '        If (Not traduccion Is Nothing) Then
-        '            Me.backupDataGrid.HeaderRow.Cells(index).Text = traduccion
-        '        End If
-        '    Next
-        'End If
     End Sub
 
     Private Sub buscarBackups()
@@ -61,6 +54,7 @@ Public Class Backup
         id = getItemId(sender, Me.backupDataGrid)
         Try
             BLL.GestorResguardoBLL.realizarRestore(id)
+            buscarBackups()
             logMessage(New Util.RestauracionExitosaException)
         Catch ex As Exception
             logMessage(ex)

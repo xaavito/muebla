@@ -64,7 +64,7 @@ Public Class UsuarioDAL
                 tip.id = pepe.Item(4)
                 tip.descripcion = pepe.Item(5)
                 user.tipoUsuario = tip
-                user.bloqueado = pepe.Item(6)
+                user.activo = pepe.Item(6)
                 user.mail = pepe.Item(7)
                 lista.Add(user)
             Next
@@ -106,7 +106,11 @@ Public Class UsuarioDAL
             repository.addParam("@pass", pass)
             table = New DataTable
             table = repository.executeSearchWithAdapter()
-            If (table.Rows.Count <> 1) Then
+            If (table.Rows.Count > 1) Then
+                Throw New Util.ConexionImposibleExcepcion
+            End If
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
             End If
             For Each pepe As DataRow In table.Rows
                 Dim usuario As New BE.UsuarioBE
@@ -359,5 +363,48 @@ Public Class UsuarioDAL
         Return id
     End Function
 
-End Class ' UsuarioDAL
+    Shared Sub modificarUsuario(idUsuario As Integer, estado As Integer)
+        Dim id As Int16
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("MODIFICAR_USUARIO_SP")
+            repository.addParam("@id", idUsuario)
+            repository.addParam("@est", estado)
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Shared Sub modificarPermisoUsuario(idUsuario As Integer, rol As BE.RolBE)
+        Dim id As Integer
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("INSERTAR_PERMISOS_USUARIO_SP")
+            repository.addParam("@id", idUsuario)
+            repository.addParam("@rol", rol.id)
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
+
+    Shared Sub borrarPermisos(idUsuario As Integer)
+        Dim id As Int16
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ELIMINAR_PERMISOS_USUARIO_SP")
+            repository.addParam("@id", idUsuario)
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+End Class
 

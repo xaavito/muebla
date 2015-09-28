@@ -6,9 +6,7 @@
             Dim usr As String = Me.usrTextBox.Text
             Dim pass As String = Me.passTextBox.Text
             usuario = BLL.UsuarioBLL.login(pass, usr)
-            If usuario Is Nothing Then
-                logMessage(New Util.UsuarioNoEncontradoException)
-            Else
+            If Not usuario Is Nothing Then
                 Session("Usuario") = usuario
                 Response.Redirect("Main.aspx", False)
                 Session("Idioma") = usuario.idioma.id

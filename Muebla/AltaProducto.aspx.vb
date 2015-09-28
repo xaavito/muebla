@@ -38,7 +38,13 @@
         prod.image1 = Me.fileUpload.FileBytes
         prod.stock = Integer.Parse(Me.stockTextBox.Text)
         prod.stockMin = Integer.Parse(Me.stockMinimoTextBox.Text)
-        BLL.ProductoBLL.altaProducto(prod)
+        Try
+            BLL.ProductoBLL.altaProducto(prod)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+
     End Sub
 
     Protected Sub cancelarAltaProductoButton_Click(sender As Object, e As EventArgs)

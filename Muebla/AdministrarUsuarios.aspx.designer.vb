@@ -140,13 +140,13 @@ Partial Public Class AdministrarUsuarios
     Protected WithEvents estadoLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control estadoUsuarioDropDown.
+    '''Control estadoUsuarioCheck.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents estadoUsuarioDropDown As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents estadoUsuarioCheck As Global.System.Web.UI.WebControls.CheckBox
 
     '''<summary>
     '''Control permisosLabel.

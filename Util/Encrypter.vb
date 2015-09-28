@@ -3,11 +3,11 @@
 Public Class Encrypter
 
 
-    Private Shared m_strPassPhrase As String = "MyPriv@Password!$$"    '---- any text string is good here
-    Private Shared m_strHashAlgorithm As String = "MD5"                '--- we are doing MD5 encryption - can be "SHA1"
-    Private Shared m_strPasswordIterations As Integer = 2              '--- can be any number
-    Private Shared m_strInitVector As String = "@1B2c3D4e5F6g7H8"      '--- must be 16 bytes
-    Private Shared m_intKeySize As Integer = 256                       '--- can be 192 or 128
+    Private Shared m_strPassPhrase As String = "MyPriv@Password!$$"    '---- cualquier cosa
+    Private Shared m_strHashAlgorithm As String = "MD5"                '--- MD5
+    Private Shared m_strPasswordIterations As Integer = 2              '--- cualquier numero
+    Private Shared m_strInitVector As String = "@1B2c3D4e5F6g7H8"      '---  16 bytes
+    Private Shared m_intKeySize As Integer = 256                       '--- 256
     Private Shared strSaltValue As String = "00000000"
 
 

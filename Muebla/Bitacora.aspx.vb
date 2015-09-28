@@ -4,6 +4,9 @@ Public Class Bitacora
     Inherits ExtendedPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Page.IsPostBack Then
+            Return
+        End If
         Dim id As Integer = getSelectedIdioma()
         Dim lista As List(Of BE.TipoEventoBE)
         Try

@@ -157,6 +157,7 @@ Public Class GestorResguardoDAL
         Dim repository As New AccesoSQLServer
         Try
             repository.crearComando("BUSCAR_BACKUP_SP")
+            repository.addParam("@id", backupId)
             table = New DataTable
             table = repository.executeSearchWithAdapter()
             If (table.Rows.Count = 0) Then

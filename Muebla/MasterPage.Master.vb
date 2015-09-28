@@ -186,6 +186,7 @@ Public Class MasterPage
 
     Protected Sub logout_Click(sender As Object, e As EventArgs)
         Me.mainTree.Nodes.Clear()
+        BLL.GestorBitacoraBLL.registrarEvento(Session("Usuario"), Util.Enumeradores.Bitacora.LogoutExitoso)
         Session("Usuario") = Nothing
         usr = Nothing
         loadBasic()

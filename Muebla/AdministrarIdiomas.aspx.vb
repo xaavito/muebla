@@ -47,6 +47,8 @@
         Dim con As Label = CType(Me.idiomaResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)
         Session("idTextoIdioma") = id
+        Dim texto As Label = CType(Me.idiomaResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemTexto"), Label)
+        Me.textoTextBox.Text = texto.Text
         Me.editDiv.Visible = True
     End Sub
 

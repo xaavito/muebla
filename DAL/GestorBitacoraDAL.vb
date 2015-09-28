@@ -90,6 +90,10 @@ Public Class GestorBitacoraDAL
         Return tipos
     End Function
 
-
+    Shared Sub registrarEvento(usuarioId As Integer, tipo As Integer)
+        Dim usr As New UsuarioBE
+        usr.id = usuarioId
+        registrarEvento(usr, tipo)
+    End Sub
 End Class
 

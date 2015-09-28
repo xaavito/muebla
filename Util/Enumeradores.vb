@@ -16,12 +16,17 @@
         UsuarioYOPassIncorrecto = 10
         'Genericos, en este caso Restaurar BD.
         RestauracionExitosa = 11
+        'Recuperar Pass
+        MailEnviandose = 12
+
+        ErrorBizarro = 13
 
     End Enum
 
     Enum Bitacora
         LogueoExitoso = 1
         LogoutExitoso = 2
+        ModificacionUsuario = 3
     End Enum
 
     Enum ImportanciaEvento

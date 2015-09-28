@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Table runat="server" ID="tableAltaUsuario">
-        <asp:TableHeaderRow></asp:TableHeaderRow>
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" /></asp:TableCell>
@@ -63,7 +62,6 @@
                 <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allRolesListBox" />
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableFooterRow></asp:TableFooterRow>
     </asp:Table>
 
     <asp:Button runat="server" ID="confirmarAltaUsuarioButton" ValidationGroup="altaUsuario" Text="Confirmar" OnClick="confirmarAltaUsuarioButton_Click"/>

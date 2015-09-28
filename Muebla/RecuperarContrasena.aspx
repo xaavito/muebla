@@ -28,7 +28,6 @@
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Label Text="" runat="server" ID="mailEnviandose" />
     <asp:Button ValidationGroup='recuperarPass' Text="Recuperar" runat="server" ID="recuperarPassButton" OnClick="recuperarPassButton_Click" />
     <asp:LinkButton ID="loginButton" Text="Login" runat="server" OnClick="loginButton_Click" />
 

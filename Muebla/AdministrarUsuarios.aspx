@@ -60,9 +60,9 @@
                     <asp:Label runat="server" ID="itemMail" Text="<%# Item.mail %>" />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField HeaderText="Bloqueado">
+            <asp:TemplateField HeaderText="Activo">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemBloqueado" Text="<%# Item.bloqueado %>" />
+                    <asp:Label runat="server" ID="itemActivo" Text="<%# Item.activo %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
@@ -81,7 +81,6 @@
     </asp:GridView>
     <div id="editDataDiv" runat="server">
         <asp:Table runat="server" ID="tableAdminUsuario">
-            <asp:TableHeaderRow></asp:TableHeaderRow>
             <asp:TableRow>
                 <asp:TableCell>
                     <asp:Label runat="server" ID="userLabel" Text="Usuario" />
@@ -95,7 +94,7 @@
                     <asp:Label runat="server" ID="estadoLabel" Text="Estado" />
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:DropDownList runat="server" ID="estadoUsuarioDropDown" />
+                    <asp:CheckBox runat="server" ID="estadoUsuarioCheck" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -115,7 +114,6 @@
                     <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allPermisosListBox" />
                 </asp:TableCell>
             </asp:TableRow>
-
         </asp:Table>
 
         <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarButton_Click" />

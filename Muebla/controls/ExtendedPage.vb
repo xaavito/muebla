@@ -41,8 +41,6 @@ Public Class ExtendedPage
 
     Public Sub logMessage(ByVal ex As Exception)
         Dim messageLogger As Label = CType(Me.Master.FindControl("errorMessageLogger"), Label)
-        idioma = New BE.IdiomaBE
-        idioma.id = Session("Idioma")
         If (TypeOf ex Is ExceptionManager) Then
             Dim excep = DirectCast(ex, ExceptionManager)
             If excep.tipo = Enumeradores.ImportanciaEvento.Err Then
@@ -55,7 +53,7 @@ Public Class ExtendedPage
                 messageLogger = CType(Me.Master.FindControl("exitoMessageLogger"), Label)
             End If
             Try
-                messageLogger.Text = BLL.GestorExcepcionesBLL.buscarExcepcion(excep.codigo, idioma.id)
+                messageLogger.Text = BLL.GestorExcepcionesBLL.buscarExcepcion(excep.codigo, getSelectedIdioma())
             Catch e As BusquedaSinResultadosException
                 messageLogger.Text = e.mensaje
             End Try

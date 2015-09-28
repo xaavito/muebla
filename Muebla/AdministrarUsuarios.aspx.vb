@@ -5,7 +5,12 @@
         If Page.IsPostBack Then
             Return
         End If
-        Me.tipoUsuarioDropDownList.DataSource = BLL.UsuarioBLL.getTiposUsuarios()
+        Try
+            Me.tipoUsuarioDropDownList.DataSource = BLL.UsuarioBLL.getTiposUsuarios()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+
         Me.tipoUsuarioDropDownList.DataTextField = "descripcion"
         Me.tipoUsuarioDropDownList.DataValueField = "id"
         Me.tipoUsuarioDropDownList.DataBind()
@@ -16,23 +21,6 @@
         buscarUsuarios()
     End Sub
 
-    Protected Sub modificarUsuarioButton_Click(sender As Object, e As EventArgs)
-        Me.editDataDiv.Visible = True
-
-    End Sub
-
-    Protected Sub verDetalleUsuarioButton_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub bajaUsuarioButton_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
-    Protected Sub desbloquearUsuarioButton_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Protected Sub usuariosResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
         translateGrid(usuariosResultadosDataGrid)
     End Sub
@@ -41,21 +29,27 @@
         Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
         Dim con As Label = CType(Me.usuariosResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)
-
+        Session("idUsuario") = id
         Dim listaUsuarios As List(Of BE.UsuarioBE) = Session("listaUsuarios")
         For Each usr As BE.UsuarioBE In listaUsuarios
             If usr.id = id Then
                 Debug.WriteLine(usr.nombre)
                 Me.userTextBox.Text = usr.usuario
-                'Me.estadoUsuarioDropDown.SelectedValue = 1
+                Me.estadoUsuarioCheck.Checked = usr.activo
                 If usr.roles Is Nothing Then
-                    usr.roles = BLL.GestorRolesBLL.getRoles(usr)
+                    Try
+                        usr.roles = BLL.GestorRolesBLL.getRoles(usr)
+                    Catch ex As Exception
+                        logMessage(ex)
+                    End Try
+
                 End If
                 Session("MyRoles") = usr.roles
                 Me.permisosPropiosListBox.DataSource = Session("MyRoles")
                 Me.permisosPropiosListBox.DataTextField = "descripcion"
                 Me.permisosPropiosListBox.DataValueField = "id"
                 Me.permisosPropiosListBox.DataBind()
+
                 Session("AllRoles") = BLL.GestorRolesBLL.buscarRoles
                 Me.allPermisosListBox.DataSource = Session("AllRoles")
                 Me.allPermisosListBox.DataTextField = "descripcion"
@@ -77,8 +71,12 @@
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
         Me.editDataDiv.Visible = False
-        buscarUsuarios()
-
+        Try
+            BLL.UsuarioBLL.modificarUsuario(Session("idUsuario"), Session("MyRoles"), estadoUsuarioCheck.Checked)
+            buscarUsuarios()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub cancelarButton_Click(sender As Object, e As EventArgs)
@@ -87,8 +85,12 @@
 
     Private Sub buscarUsuarios()
         Dim listaUsrs As List(Of BE.UsuarioBE)
+        Try
+            listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Int16.Parse(tipoUsuarioDropDownList.SelectedValue), Me.mailTextBox.Text)
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
 
-        listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Int16.Parse(tipoUsuarioDropDownList.SelectedValue), Me.mailTextBox.Text)
         Session("listaUsuarios") = listaUsrs
         usuariosResultadosDataGrid.DataSource = listaUsrs
         usuariosResultadosDataGrid.DataBind()

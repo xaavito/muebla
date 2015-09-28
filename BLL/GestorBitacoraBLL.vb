@@ -23,6 +23,10 @@ Public Class GestorBitacoraBLL
         Return DAL.GestorBitacoraDAL.buscarBitacoras(fechahasta, fechadesde, usr, tipo, id)
     End Function
 
+    Public Shared Sub registrarEvento(ByVal usuarioId As Integer, ByVal tipo As Integer)
+        DAL.GestorBitacoraDAL.registrarEvento(usuarioId, tipo)
+    End Sub
+
     Public Shared Sub registrarEvento(ByVal usuario As UsuarioBE, ByVal tipo As Integer)
         DAL.GestorBitacoraDAL.registrarEvento(usuario, tipo)
     End Sub
