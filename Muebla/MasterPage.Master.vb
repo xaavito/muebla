@@ -11,7 +11,7 @@ Public Class MasterPage
         If Page.IsPostBack Then
             Return
         End If
-       
+
         usr = Session("Usuario")
 
         If usr Is Nothing Then
@@ -191,6 +191,7 @@ Public Class MasterPage
         usr = Nothing
         loadBasic()
         Response.Redirect("Main.aspx", False)
+        Session.Abandon()
     End Sub
 
     Private Sub loadBasic()
