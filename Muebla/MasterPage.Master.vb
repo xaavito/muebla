@@ -208,17 +208,20 @@ Public Class MasterPage
         If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Then
             permisoPaginaActual = True
         Else
-            If Not usr Is Nothing And Not usr.roles Is Nothing Then
-                For Each rol As BE.RolBE In usr.roles
-                    For Each com As BE.ComponenteBE In rol.componentes
-                        If Not com.pagina Is Nothing Then
-                            If com.pagina = paginaActual Then
-                                permisoPaginaActual = True
+            If Not usr Is Nothing Then
+                If Not usr.roles Is Nothing Then
+                    For Each rol As BE.RolBE In usr.roles
+                        For Each com As BE.ComponenteBE In rol.componentes
+                            If Not com.pagina Is Nothing Then
+                                If com.pagina = paginaActual Then
+                                    permisoPaginaActual = True
+                                End If
                             End If
-                        End If
+                        Next
                     Next
-                Next
+                End If
             End If
+
         End If
 
         If permisoPaginaActual = False Then

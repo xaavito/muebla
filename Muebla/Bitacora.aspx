@@ -72,12 +72,6 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-        <SortedAscendingHeaderStyle CssClass="asc" />
-        <SortedDescendingHeaderStyle CssClass="desc" />
-        <SortedAscendingCellStyle CssClass="asc" />
-        <SortedDescendingCellStyle CssClass="desc" />
-        <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
-        <PagerStyle CssClass="grid-pager" />
     </asp:GridView>
 
 </asp:Content>

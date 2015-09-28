@@ -56,13 +56,12 @@
         usr.telefono = tel
         Try
             usr = BLL.UsuarioBLL.altaCliente(usr)
+            Throw New Util.AltaUsuarioExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try
 
-        If Not usr Is Nothing Then
-            logMessage(New Util.AltaUsuarioExitosaException)
-        End If
+
     End Sub
 
 End Class

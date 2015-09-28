@@ -1,5 +1,6 @@
 ﻿Imports Util
 Imports BLL
+Imports System.IO
 
 Public Class ExtendedPage
     Inherits System.Web.UI.Page
@@ -24,6 +25,14 @@ Public Class ExtendedPage
         End Set
     End Property
 
+    Public Function getUsuario() As BE.UsuarioBE
+        If usuario Is Nothing Then
+            Return Session("Usuario")
+        Else
+            Return usuario
+        End If
+    End Function
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Page.IsPostBack Then
             Return
@@ -37,6 +46,34 @@ Public Class ExtendedPage
         messageLogger.Text = ""
         messageLogger = CType(Me.Master.FindControl("exitoMessageLogger"), Label)
         messageLogger.Text = ""
+        checkPermisoPaginaActual()
+        'usuario = Session("Usuario")
+    End Sub
+
+    Private Sub checkPermisoPaginaActual()
+        Dim paginaActual As String = Path.GetFileName(Request.PhysicalPath)
+        Dim permisoPaginaActual = False
+        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Then
+            permisoPaginaActual = True
+        Else
+            If Not getUsuario() Is Nothing Then
+                If Not getUsuario().roles Is Nothing Then
+                    For Each rol As BE.RolBE In getUsuario().roles
+                        For Each com As BE.ComponenteBE In rol.componentes
+                            If Not com.pagina Is Nothing Then
+                                If com.pagina = paginaActual Then
+                                    permisoPaginaActual = True
+                                End If
+                            End If
+                        Next
+                    Next
+                End If
+            End If
+        End If
+
+        If permisoPaginaActual = False Then
+            Response.Redirect("Main.aspx", False)
+        End If
     End Sub
 
     Public Sub logMessage(ByVal ex As Exception)
@@ -88,7 +125,7 @@ Public Class ExtendedPage
         Catch ex As Exception
             logMessage(ex)
         End Try
-        
+
     End Sub
 
     Public Shared Function getItemId(sender As Object, gridView As GridView) As Integer

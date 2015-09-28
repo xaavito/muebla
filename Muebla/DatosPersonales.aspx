@@ -10,7 +10,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="nombreTextBox" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -19,7 +18,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="apellidoTextBox" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -28,7 +26,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:DropDownList EnableViewState="True" runat="server" ID="tipoDocDropDownList" AutoPostBack="true" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -37,7 +34,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="documentoTextBox" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -46,7 +42,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="cuilTextBox" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -55,8 +50,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="mailTextBox" />
-
-            </asp:TableCell>
+           </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
@@ -64,7 +58,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="calleTextBox" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -73,7 +66,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="nroTextBox" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -139,7 +131,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="usuarioTextBox" />
-
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -148,9 +139,8 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="passTextBox" TextMode="Password" />
-
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Button Text="Confirmar" runat="server" />
+    <asp:Button id="confirmarButton" Text="Confirmar" runat="server" />
 </asp:Content>
