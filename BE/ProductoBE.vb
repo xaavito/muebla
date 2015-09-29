@@ -5,6 +5,7 @@ Public Class ProductoBE
 
     Private _baja As Boolean
     Private _descripcion As String
+    Private _breveDescripcion As String
     Private _id As Long
     Private _image1 As Byte()
     Private _image2 As Byte()
@@ -38,6 +39,15 @@ Public Class ProductoBE
         End Get
         Set(ByVal Value As String)
             _descripcion = Value
+        End Set
+    End Property
+
+    Public Property breveDescripcion() As String
+        Get
+            Return _breveDescripcion
+        End Get
+        Set(ByVal Value As String)
+            _breveDescripcion = Value
         End Set
     End Property
 

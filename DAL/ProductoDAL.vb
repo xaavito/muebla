@@ -141,8 +141,8 @@ Public Class ProductoDAL
         repository.crearComando("LISTAR_PRODUCTOS_SP")
         table = New DataTable
         table = repository.executeSearchWithAdapter()
-        If (table.Rows.Count <> 1) Then
-            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
+        If (table.Rows.Count = 0) Then
+            Throw New Util.BusquedaSinResultadosException
         End If
         For Each item As DataRow In table.Rows
             Dim producto As New BE.ProductoBE
@@ -150,6 +150,7 @@ Public Class ProductoDAL
             Dim lp As New BE.ListaPrecioBE
             producto.id = item.Item(0)
             producto.descripcion = item.Item(1)
+            producto.breveDescripcion = item.Item(6)
 
             producto.image1 = (DirectCast(item.Item(2), Byte()))
             lpd.precio = item.Item(3)
