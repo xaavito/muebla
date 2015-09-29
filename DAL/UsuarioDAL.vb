@@ -122,6 +122,10 @@ Public Class UsuarioDAL
                 Dim idioma As New BE.IdiomaBE
                 idioma.id = pepe.Item(3)
                 usuario.idioma = idioma
+                Dim tDoc As New BE.TipoDocumentoBE
+                tDoc.id = pepe.Item(4)
+                usuario.tipoDoc = tDoc
+                usuario.dni = pepe.Item(5)
                 Return usuario
             Next
         Catch ex As Exception
@@ -401,6 +405,72 @@ Public Class UsuarioDAL
             repository.crearComando("ELIMINAR_PERMISOS_USUARIO_SP")
             repository.addParam("@id", idUsuario)
             id = repository.executeWithReturnValue
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub buscarDomicilioUsuario(ByRef usuario As UsuarioBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_DOMICILIO_USR_SP")
+            repository.addParam("@id", usuario.id)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count > 1) Then
+                Throw New Util.BusquedaConMuchosResultadosException
+            End If
+            If (table.Rows.Count = 0) Then
+                'Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                'd.id, d.calle, d.numero, d.piso, d.dpto, d.idLocalidad,l.descripcion, l.idProvincia, p.descripcion
+                Dim dom As New BE.DomicilioBE
+                dom.id = pepe.Item(0)
+                dom.calle = pepe.Item(1)
+                dom.numero = pepe.Item(2)
+                dom.piso = pepe.Item(3)
+                dom.dpto = pepe.Item(4)
+                Dim loc As New BE.LocalidadBE
+                loc.id = pepe.Item(5)
+                loc.descripcion = pepe.Item(6)
+                Dim prov As New BE.ProvinciaBE
+                prov.id = pepe.Item(7)
+                prov.descripcion = pepe.Item(8)
+                loc.m_ProvinciaBE = prov
+                dom.m_LocalidadBE = loc
+                usuario.domicilio = dom
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub buscarTelefono(ByRef usuario As UsuarioBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_TELEFONO_USR_SP")
+            repository.addParam("@id", usuario.id)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count > 1) Then
+                Throw New Util.BusquedaConMuchosResultadosException
+            End If
+            If (table.Rows.Count = 0) Then
+                'Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                Dim telefono As New BE.TelefonoBE
+                telefono.id = pepe.Item(0)
+                telefono.numero = pepe.Item(1)
+                telefono.prefijo = pepe.Item(2)
+                telefono.interno = pepe.Item(3)
+                usuario.telefono = telefono
+            Next
         Catch ex As Exception
             Throw ex
         End Try

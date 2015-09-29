@@ -19,6 +19,7 @@
         provinciaDropDownList_SelectedIndexChanged(sender, e)
 
         If Not getUsuario() Is Nothing Then
+            BLL.UsuarioBLL.llenarDatosUsuario(getUsuario)
             Me.nombreTextBox.Text = getUsuario().nombre
             Me.apellidoTextBox.Text = getUsuario().apellido
 
@@ -27,28 +28,23 @@
             Me.usuarioTextBox.Text = getUsuario().usuario
             Me.documentoTextBox.Text = getUsuario().dni
             Me.cuilTextBox.Text = getUsuario().cuil
-            Me.tipoDocDropDownList.SelectedValue = getUsuario().tipoDoc.id
-            Me.calleTextBox.Text = getUsuario().domicilio.calle
-            Me.nroTextBox.Text
-            Me.pisoTextBox.Text
-            Me.dptoTextBox.Text
-            loc.m_ProvinciaBE = prov
-            reg.m_LocalidadBE = loc
-            usr.domicilio = reg
-            Me.telefonoTextBox.Text
-            Me.internoTextBox.Text
-            Me.prefijoTextBox.Text
-
+            If Not getUsuario.tipoDoc Is Nothing Then
+                Me.tipoDocDropDownList.SelectedValue = getUsuario().tipoDoc.id
+            End If
+            If Not getUsuario().domicilio Is Nothing Then
+                Me.calleTextBox.Text = getUsuario().domicilio.calle
+                Me.nroTextBox.Text = getUsuario.domicilio.numero
+                Me.pisoTextBox.Text = getUsuario().domicilio.piso
+                Me.dptoTextBox.Text = getUsuario().domicilio.dpto
+                Me.localidadDropDownList.SelectedValue = getUsuario().domicilio.m_LocalidadBE.id
+                Me.provinciaDropDownList.SelectedValue = getUsuario().domicilio.m_LocalidadBE.m_ProvinciaBE.id
+            End If
+            If Not getUsuario().telefono Is Nothing Then
+                Me.telefonoTextBox.Text = getUsuario().telefono.numero
+                Me.internoTextBox.Text = getUsuario().telefono.interno
+                Me.prefijoTextBox.Text = getUsuario().telefono.prefijo
+            End If
             Me.DataBind()
-
-            'Me.nombreTextBox.Text = usuario.nombre
-            'Me.nombreTextBox.Text = usuario.nombre
-            'Me.nombreTextBox.Text = usuario.nombre
-            'Me.nombreTextBox.Text = usuario.nombre
-            'Me.nombreTextBox.Text = usuario.nombre
-            'Me.nombreTextBox.Text = usuario.nombre
-            'Me.nombreTextBox.Text = usuario.nombre
-            'Me.nombreTextBox.Text = usuario.nombre
         End If
     End Sub
 

@@ -50,7 +50,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="mailTextBox" />
-           </asp:TableCell>
+            </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
@@ -142,5 +142,5 @@
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
-    <asp:Button id="confirmarButton" Text="Confirmar" runat="server" />
+    <asp:Button ID="confirmarButton" Text="Confirmar" runat="server" />
 </asp:Content>

@@ -1,4 +1,14 @@
-﻿
+﻿Public Class BusquedaConMuchosResultadosException
+    Inherits ExceptionManager
+
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.BusquedaConMuchosResultados
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
 Public Class BusquedaSinResultadosException
     Inherits ExceptionManager
 

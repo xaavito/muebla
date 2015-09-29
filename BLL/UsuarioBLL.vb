@@ -1,8 +1,6 @@
 Imports BE
 
 Public Class UsuarioBLL
-
-
     Public Shared Function altaCliente(ByVal usr As UsuarioBE)
         usr.id = DAL.UsuarioDAL.altaCliente(usr)
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
@@ -82,6 +80,11 @@ Public Class UsuarioBLL
         Next
         BLL.GestorBitacoraBLL.registrarEvento(idUsuario, Util.Enumeradores.Bitacora.ModificacionUsuario)
         Throw New Util.ModificacionExitosaException
+    End Sub
+
+    Shared Sub llenarDatosUsuario(ByRef usuario As UsuarioBE)
+        DAL.UsuarioDAL.buscarDomicilioUsuario(usuario)
+        DAL.UsuarioDAL.buscarTelefono(usuario)
     End Sub
 
 

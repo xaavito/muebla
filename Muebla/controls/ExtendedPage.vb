@@ -33,6 +33,11 @@ Public Class ExtendedPage
         End If
     End Function
 
+    Public Sub setUsuario(ByVal usr As BE.UsuarioBE)
+        Session("Usuario") = usr
+        usuario = usr
+    End Sub
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Page.IsPostBack Then
             Return
