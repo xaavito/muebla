@@ -8,6 +8,10 @@ Public Class Ventas
     Dim carrito As List(Of ListaPrecioDetalleBE)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If getUsuario() Is Nothing Then
+            'Me.btnAgregarAlCarrito.Visible = False
+        End If
+
         listaProductos = BLL.ProductoBLL.listarProductos()
     End Sub
 

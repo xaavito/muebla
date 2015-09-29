@@ -17,8 +17,8 @@
                     <div class="media-body">
                         <h3 class="media-heading"><%# Item.producto.descripcion %></h3>
                         <h5 class="media-heading"><%# Item.producto.breveDescripcion %></h5>
-                        <asp:Label Text="<%# Item.getPrecio%>" runat="server" />
-                        <asp:ImageButton runat="server" ID="btnAgregarAlCarrito" ImageUrl="/images/addToCart.png" CssClass="pull-right" CommandName="addToCart" CommandArgument="<%# Item.producto.id %>" />
+                        <asp:Label Text="<%# Item.getPrecio%>" runat="server" id="precioItem" Visible='<%# Not getUsuario() Is Nothing%>'/>
+                        <asp:ImageButton runat="server" ID="btnAgregarAlCarrito" ImageUrl="/images/addToCart.png" CssClass="pull-right" CommandName="addToCart" CommandArgument="<%# Item.producto.id %>" Visible='<%# Not getUsuario() Is Nothing%>'/>
                     </div>
                 </div>
             </div>
