@@ -21,6 +21,17 @@ Public Class MailEnviadoseException
     End Sub
 End Class
 
+Public Class MailFalloException
+    Inherits ExceptionManager
+
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.MailFallo
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
 Public Class ErrorBizarroException
     Inherits ExceptionManager
 

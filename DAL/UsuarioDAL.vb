@@ -163,7 +163,7 @@ Public Class UsuarioDAL
             table = repository.executeSearchWithAdapter()
             For Each pepe As DataRow In table.Rows
                 If IsDBNull(pepe.Item(0)) Then
-                    Return Nothing
+                    Throw New UsuarioNoEncontradoException
                 Else
                     Return pepe.Item(0)
                 End If

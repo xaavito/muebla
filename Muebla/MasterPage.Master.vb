@@ -203,9 +203,8 @@ Public Class MasterPage
 
     Private Sub checkPermisoPaginaActual()
         Dim paginaActual As String = Path.GetFileName(Request.PhysicalPath)
-        'Debug.WriteLine("Pagina donde estoy parado 2: " + paginaActual)
         Dim permisoPaginaActual = False
-        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Then
+        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Or paginaActual = "Registro.aspx" Or paginaActual = "RecuperarContrasena.aspx" Then
             permisoPaginaActual = True
         Else
             If Not usr Is Nothing Then

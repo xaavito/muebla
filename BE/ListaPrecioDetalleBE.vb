@@ -45,6 +45,10 @@ Public Class ListaPrecioDetalleBE
         End Set
     End Property
 
+    Public Function getPrecio() As String
+        Return String.Format("{0:C}", precio)
+    End Function
+
 
 End Class ' ListaPrecioDetalleBE
 

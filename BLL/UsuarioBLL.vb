@@ -50,9 +50,8 @@ Public Class UsuarioBLL
 
     Public Shared Function solicitarContraseña(ByVal mail As String, ByVal usuario As String) As String
         Dim pass As String = DAL.UsuarioDAL.solicitarContrasena(mail, usuario)
-        If Not pass Is Nothing Then
-            Util.Mailer.sendMail(mail, "Recuperar Contrasena Muebla", "Usuario su mail es " + pass)
-        End If
+        Util.Mailer.sendMail(mail, "Recuperar Contrasena Muebla", "Usuario su mail es " + pass)
+        Throw New Util.MailEnviadoseException
         Return pass
     End Function
 

@@ -58,7 +58,7 @@ Public Class ExtendedPage
     Private Sub checkPermisoPaginaActual()
         Dim paginaActual As String = Path.GetFileName(Request.PhysicalPath)
         Dim permisoPaginaActual = False
-        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Then
+        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Or paginaActual = "Registro.aspx" Or paginaActual = "RecuperarContrasena.aspx" Then
             permisoPaginaActual = True
         Else
             If Not getUsuario() Is Nothing Then

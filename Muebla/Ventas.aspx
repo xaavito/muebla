@@ -16,7 +16,7 @@
                     <asp:Image ImageUrl='<%#"getImageHandler.ashx?id=" + Convert.ToString(Eval("producto.id"))%>' runat="server" GenerateEmptyAlternateText="False" />
                     <div class="media-body">
                         <h4 class="media-heading"><%# Item.producto.descripcion %></h4>
-                        <asp:Label Text="<%# Item.precio%>" runat="server" />
+                        <asp:Label Text="<%# Item.getPrecio%>" runat="server" />
                         <asp:ImageButton runat="server" ID="btnAgregarAlCarrito" ImageUrl="/images/addToCart.png" CssClass="pull-right" CommandName="addToCart" CommandArgument="<%# Item.producto.id %>" />
                     </div>
                 </div>

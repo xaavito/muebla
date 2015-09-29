@@ -18,8 +18,12 @@
         RestauracionExitosa = 11
         'Recuperar Pass
         MailEnviandose = 12
-        ErrorBizarro = 13
-        BusquedaConMuchosResultados = 14
+
+        ErrorBizarro = 13 ' falta
+        BusquedaConMuchosResultados = 14 ' falta
+
+        MailFallo = 15 ' falta
+
     End Enum
 
     Enum Bitacora

@@ -23,7 +23,7 @@
                 <asp:RegularExpressionValidator runat="server"
                     ErrorMessage="Email Invalido"
                     ControlToValidate="mailTextBox"
-                    ValidationExpression="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"
+                    ValidationExpression="\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}\b"
                     ValidationGroup='recuperarPass' />
             </asp:TableCell>
         </asp:TableRow>
