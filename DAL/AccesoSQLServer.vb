@@ -1,5 +1,6 @@
 ﻿Imports System.Data.SqlClient
 Imports Util
+Imports System.Web.Configuration
 
 Public Class AccesoSQLServer
     Implements Acceso
@@ -12,7 +13,7 @@ Public Class AccesoSQLServer
     Dim result As Integer
     Dim tx As SqlTransaction
     Dim r As String
-    Private _conString As String = My.Resources.MueblaSettings.connectionString
+    Private _conString As String = WebConfigurationManager.ConnectionStrings("myConnectionString").ConnectionString
 
     Public Sub New()
         Try
