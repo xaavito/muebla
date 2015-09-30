@@ -14,7 +14,7 @@
 <body>
     <form id="form1" runat="server">
         <div id="top">
-            <asp:Image runat="server" ImageUrl="/images/smallMuebla.png" />
+            <asp:Image id="logoMuebla" runat="server" ImageUrl="/images/smallMuebla.png" />
             <asp:Label id="errorMessageLogger" runat="server" />
             <asp:Label id="exitoMessageLogger" runat="server" />
             <asp:Label id="infoMessageLogger" runat="server" />
@@ -29,7 +29,7 @@
             <asp:LinkButton id="logoutButton" Text="Logout" runat="server" OnClick="logout_Click" />
         </div>
         <div id="left">
-            <asp:TreeView ExpandDepth="1" runat="server" ID="mainTree">
+            <asp:TreeView ExpandDepth="1" runat="server" ID="mainTree" ExpandImageUrl="/images/expand_more.png" CollapseImageUrl="/images/expand_less.png">
             </asp:TreeView>
         </div>
         <div id="right">

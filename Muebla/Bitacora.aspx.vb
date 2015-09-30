@@ -5,12 +5,39 @@ Public Class Bitacora
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Page.IsPostBack Then
-            Return
+            Debug.WriteLine("PostBack de: " + getPostBackCaller())
+            If getPostBackCaller().Equals("idiomasList") Then
+                buscarTipoEventos()
+            Else
+                Return
+            End If
+        Else
+            buscarTipoEventos()
         End If
+    End Sub
+
+    Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
         Dim id As Integer = getSelectedIdioma()
-        Dim lista As List(Of BE.TipoEventoBE)
         Try
-            lista = BLL.GestorBitacoraBLL.getTipoEventos(id)
+            Me.bitacoraResultadosDataGrid.DataSource = BLL.GestorBitacoraBLL.buscarBitacoras(Util.Util.getDate(Me.fechaHastaDate.Text), Util.Util.getDate(Me.fechaDesdeDate.Text), Me.tipoEventoDropDown.SelectedValue, Me.usuarioTextBox.Text, id)
+            Me.bitacoraResultadosDataGrid.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub bitacoraResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
+        translateGrid(Me.bitacoraResultadosDataGrid)
+    End Sub
+
+    Protected Sub tipoEventoDropDown_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Debug.WriteLine("Cambio el tipo log: " + Me.tipoEventoDropDown.SelectedValue)
+    End Sub
+
+    Private Sub buscarTipoEventos()
+        Dim lista As List(Of BE.TipoEventoBE) = Nothing
+        Try
+            lista = BLL.GestorBitacoraBLL.getTipoEventos(getSelectedIdioma())
         Catch ex As Exception
             logMessage(ex)
         End Try
@@ -23,33 +50,6 @@ Public Class Bitacora
         Me.tipoEventoDropDown.DataTextField = "texto"
         Me.tipoEventoDropDown.DataValueField = "codigo"
         Me.tipoEventoDropDown.DataBind()
-
-
     End Sub
 
-    Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
-        Dim id As Integer = getSelectedIdioma()
-        Try
-            Me.bitacoraResultadosDataGrid.DataSource = BLL.GestorBitacoraBLL.buscarBitacoras(Util.Util.getDate(Me.fechaHastaDate.Text), Util.Util.getDate(Me.fechaDesdeDate.Text), Me.tipoEventoDropDown.SelectedValue, Me.usuarioTextBox.Text, id)
-            Me.bitacoraResultadosDataGrid.DataBind()
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
-
-    End Sub
-
-    Protected Sub bitacoraResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
-        translateGrid(Me.bitacoraResultadosDataGrid)
-
-        'Dim id As Integer = getSelectedIdioma()
-
-        'If Not Me.bitacoraResultadosDataGrid.HeaderRow Is Nothing Then
-        '    For index = 0 To Me.bitacoraResultadosDataGrid.HeaderRow.Cells.Count - 1
-        '        Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(Me.bitacoraResultadosDataGrid.HeaderRow.Cells(index).Text, id)
-        '        If (Not traduccion Is Nothing) Then
-        '            Me.bitacoraResultadosDataGrid.HeaderRow.Cells(index).Text = traduccion
-        '        End If
-        '    Next
-        'End If
-    End Sub
 End Class

@@ -112,6 +112,8 @@
     <Content Include="images\deleteItem.png" />
     <Content Include="images\detail.png" />
     <Content Include="images\editItem.png" />
+    <Content Include="images\expand_less.png" />
+    <Content Include="images\expand_more.png" />
     <Content Include="images\grd_alt.png" />
     <Content Include="images\grd_head.png" />
     <Content Include="images\grd_pgr.png" />

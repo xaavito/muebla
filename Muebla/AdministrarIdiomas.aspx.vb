@@ -5,14 +5,14 @@
         If Page.IsPostBack Then
             Return
         End If
-        If Session("idiomaChange") Is Nothing Then
-            Me.idiomaDropDownList.DataSource = BLL.GestorIdiomaBLL.buscarIdiomas
-            Me.idiomaDropDownList.DataTextField = "descripcion"
-            Me.idiomaDropDownList.DataValueField = "id"
-            Me.idiomaDropDownList.DataBind()
+        'If Session("idiomaChange") Is Nothing Then
+        Me.idiomaDropDownList.DataSource = BLL.GestorIdiomaBLL.buscarIdiomas
+        Me.idiomaDropDownList.DataTextField = "descripcion"
+        Me.idiomaDropDownList.DataValueField = "id"
+        Me.idiomaDropDownList.DataBind()
 
-            llenarTabla()
-        End If
+        llenarTabla()
+        'End If
         Me.editDiv.Visible = False
     End Sub
 

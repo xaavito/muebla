@@ -20,6 +20,7 @@ body
     width: 99.7%;
     text-align: right;
     background-color: beige;
+    height:45px;
 }
 
 #left {
@@ -163,4 +164,8 @@ body
     padding: 20px; 
     width: 200px;
     height: 150px; 
+}
+
+#logoMuebla {
+    float:left;
 }

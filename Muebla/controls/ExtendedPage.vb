@@ -139,4 +139,19 @@ Public Class ExtendedPage
         Dim id As Integer = Integer.Parse(con.Text.ToString)
         Return id
     End Function
+
+    Public Function getPostBackCaller()
+        Dim CtrlID As String = String.Empty
+        If Request.Form("__EVENTTARGET") IsNot Nothing And
+           Request.Form("__EVENTTARGET") <> String.Empty Then
+            CtrlID = Request.Form("__EVENTTARGET")
+            Dim arr() As String = CtrlID.Split("$")
+            Try
+                CtrlID = arr(2)
+            Catch ex As Exception
+                CtrlID = arr(1)
+            End Try
+        End If
+        Return CtrlID
+    End Function
 End Class

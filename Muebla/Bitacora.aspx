@@ -34,7 +34,7 @@
                 <asp:Label runat="server" ID="tipoEventoLabel" Text="Tipo Evento" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList runat="server" ID="tipoEventoDropDown" AutoPostBack="true" EnableViewState="True"/>
+                <asp:DropDownList runat="server" ID="tipoEventoDropDown" EnableViewState="True" OnSelectedIndexChanged="tipoEventoDropDown_SelectedIndexChanged"/>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
