@@ -92,11 +92,6 @@
     <Compile Include="GestorRolesDAL.vb" />
     <Compile Include="GestorShowroomDAL.vb" />
     <Compile Include="ListaPrecioDAL.vb" />
-    <Compile Include="MueblaSettings.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MueblaSettings.resx</DependentUpon>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -117,11 +112,6 @@
     <Compile Include="UsuarioDAL.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MueblaSettings.resx">
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>MueblaSettings.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
