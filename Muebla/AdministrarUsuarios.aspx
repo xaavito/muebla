@@ -33,12 +33,13 @@
 
     <asp:GridView runat="server" ID="usuariosResultadosDataGrid"
         AutoGenerateColumns="false"
-        AllowPaging="false" PageSize="12"
+        AllowPaging="true" PageSize="12"
         ItemType="BE.UsuarioBE"
         ShowFooter="false" CssClass="mGrid"  
         PagerStyle-CssClass="pgr"  
         AlternatingRowStyle-CssClass="alt"
-        OnPreRender="usuariosResultadosDataGrid_PreRender">
+        OnPreRender="usuariosResultadosDataGrid_PreRender"
+        OnPageIndexChanging="usuariosResultadosDataGrid_PageIndexChanging">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>

@@ -47,13 +47,14 @@
 
     <asp:GridView runat="server" ID="proveedoresResultadosDataGrid"
         AutoGenerateColumns="false"
-        AllowPaging="false" PageSize="12"
+        AllowPaging="true" PageSize="12"
         ItemType="BE.ProveedorBE"
         ShowFooter="false" 
         CssClass="mGrid"  
         PagerStyle-CssClass="pgr"  
         AlternatingRowStyle-CssClass="alt"
-        OnPreRender="proveedoresResultadosDataGrid_PreRender" >
+        OnPreRender="proveedoresResultadosDataGrid_PreRender" 
+        OnPageIndexChanging="proveedoresResultadosDataGrid_PageIndexChanging">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>

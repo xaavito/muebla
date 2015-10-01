@@ -28,4 +28,14 @@
     Protected Sub proveedoresResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
         translateGrid(Me.proveedoresResultadosDataGrid)
     End Sub
+
+    Protected Sub proveedoresResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        Me.proveedoresResultadosDataGrid.PageIndex = e.NewPageIndex
+        buscar()
+    End Sub
+
+    Private Sub buscar()
+        Throw New NotImplementedException
+    End Sub
+
 End Class

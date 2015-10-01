@@ -4,13 +4,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
     <asp:Table runat="server" ID="tableSearchBitacoraCriteria">
-        <asp:TableHeaderRow></asp:TableHeaderRow>
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="usuarioTextBox" mask="99/99/9999"/>
+                <asp:TextBox runat="server" ID="usuarioTextBox"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -18,7 +17,7 @@
                 <asp:Label runat="server" ID="fechaDesdeLabel" Text="Fecha Desde" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="fechaDesdeDate" mask="99/99/9999"/>       
+                <asp:TextBox runat="server" ID="fechaDesdeDate"/>       
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -42,14 +41,14 @@
     <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarButton_Click"  />
 
     <asp:GridView runat="server" ID="bitacoraResultadosDataGrid"
+        AllowPaging="true" PageSize="12"
         AutoGenerateColumns="false"
-        AllowPaging="false" PageSize="12"
         ItemType="BE.EventoBE"
-        ShowFooter="false" 
         CssClass="mGrid"
         PagerStyle-CssClass="pgr"
         AlternatingRowStyle-CssClass="alt"
-        OnPreRender="bitacoraResultadosDataGrid_PreRender"   >
+        OnPreRender="bitacoraResultadosDataGrid_PreRender"
+        OnPageIndexChanging="bitacoraResultadosDataGrid_PageIndexChanging">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>

@@ -153,7 +153,7 @@ Public Class GestorResguardoDAL
 
     Shared Function buscarBackup(backupId As Integer) As BackupBE
         Dim table As DataTable
-        Dim bu As BE.BackupBE
+        Dim bu As BE.BackupBE = Nothing
         Dim repository As New AccesoSQLServer
         Try
             repository.crearComando("BUSCAR_BACKUP_SP")

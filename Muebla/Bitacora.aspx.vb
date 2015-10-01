@@ -17,13 +17,7 @@ Public Class Bitacora
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
-        Dim id As Integer = getSelectedIdioma()
-        Try
-            Me.bitacoraResultadosDataGrid.DataSource = BLL.GestorBitacoraBLL.buscarBitacoras(Util.Util.getDate(Me.fechaHastaDate.Text), Util.Util.getDate(Me.fechaDesdeDate.Text), Me.tipoEventoDropDown.SelectedValue, Me.usuarioTextBox.Text, id)
-            Me.bitacoraResultadosDataGrid.DataBind()
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
+        buscar()
     End Sub
 
     Protected Sub bitacoraResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
@@ -50,6 +44,20 @@ Public Class Bitacora
         Me.tipoEventoDropDown.DataTextField = "texto"
         Me.tipoEventoDropDown.DataValueField = "codigo"
         Me.tipoEventoDropDown.DataBind()
+    End Sub
+
+    Protected Sub bitacoraResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        Me.bitacoraResultadosDataGrid.PageIndex = e.NewPageIndex
+        buscar()
+    End Sub
+
+    Private Sub buscar()
+        Try
+            Me.bitacoraResultadosDataGrid.DataSource = BLL.GestorBitacoraBLL.buscarBitacoras(Util.Util.getDate(Me.fechaHastaDate.Text), Util.Util.getDate(Me.fechaDesdeDate.Text), Me.tipoEventoDropDown.SelectedValue, Me.usuarioTextBox.Text, getSelectedIdioma())
+            Me.bitacoraResultadosDataGrid.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
 End Class

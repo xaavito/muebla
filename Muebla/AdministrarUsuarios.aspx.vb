@@ -18,7 +18,7 @@
     End Sub
 
     Protected Sub buscarUsuariosButton_Click(sender As Object, e As EventArgs)
-        buscarUsuarios()
+        buscar()
     End Sub
 
     Protected Sub usuariosResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
@@ -73,7 +73,7 @@
         Me.editDataDiv.Visible = False
         Try
             BLL.UsuarioBLL.modificarUsuario(Session("idUsuario"), Session("MyRoles"), estadoUsuarioCheck.Checked)
-            buscarUsuarios()
+            buscar()
         Catch ex As Exception
             logMessage(ex)
         End Try
@@ -83,8 +83,8 @@
         Me.editDataDiv.Visible = False
     End Sub
 
-    Private Sub buscarUsuarios()
-        Dim listaUsrs As List(Of BE.UsuarioBE)
+    Private Sub buscar()
+        Dim listaUsrs As List(Of BE.UsuarioBE) = Nothing
         Try
             listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Int16.Parse(tipoUsuarioDropDownList.SelectedValue), Me.mailTextBox.Text)
         Catch ex As Exception
@@ -132,5 +132,10 @@
         If Not permisosPropiosListBox.SelectedItem Is Nothing Then
             permisosPropiosListBox.Items.RemoveAt(permisosPropiosListBox.SelectedIndex)
         End If
+    End Sub
+
+    Protected Sub usuariosResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        Me.usuariosResultadosDataGrid.PageIndex = e.NewPageIndex
+        buscar()
     End Sub
 End Class

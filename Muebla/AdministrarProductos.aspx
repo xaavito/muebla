@@ -24,13 +24,14 @@
 
     <asp:GridView runat="server" ID="productosResultadosDataGrid"
         AutoGenerateColumns="false"
-        AllowPaging="false" PageSize="12"
+        AllowPaging="true" PageSize="12"
         ItemType="BE.ProductoBE"
         ShowFooter="false" 
         CssClass="mGrid"  
         PagerStyle-CssClass="pgr"  
         AlternatingRowStyle-CssClass="alt"
-        OnPreRender="productosResultadosDataGrid_PreRender">
+        OnPreRender="productosResultadosDataGrid_PreRender"
+        OnPageIndexChanging="productosResultadosDataGrid_PageIndexChanging">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>

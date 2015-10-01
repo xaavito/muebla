@@ -16,11 +16,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub buscarProductosButton_Click(sender As Object, e As EventArgs)
-        listaProductos = BLL.ProductoBLL.buscarProductos(Int16.Parse(tipoProductoDropDownList.SelectedValue), Me.nombreProductoTextBox.Text)
-        Session("listaProductos") = listaProductos
-    
-        Me.productosResultadosDataGrid.DataSource = listaProductos
-        Me.productosResultadosDataGrid.DataBind()
+        buscar()
     End Sub
 
     Protected Sub verDetalleButton_Click(sender As Object, e As EventArgs)
@@ -92,5 +88,22 @@ Public Class AdministrarProductos
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
 
+    End Sub
+
+    Protected Sub productosResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        Me.productosResultadosDataGrid.PageIndex = e.NewPageIndex
+        buscar()
+    End Sub
+
+    Private Sub buscar()
+        Try
+            listaProductos = BLL.ProductoBLL.buscarProductos(Int16.Parse(tipoProductoDropDownList.SelectedValue), Me.nombreProductoTextBox.Text)
+            Session("listaProductos") = listaProductos
+
+            Me.productosResultadosDataGrid.DataSource = listaProductos
+            Me.productosResultadosDataGrid.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 End Class

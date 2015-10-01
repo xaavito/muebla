@@ -69,4 +69,8 @@
         Me.idiomaResultadosDataGrid.DataBind()
     End Sub
 
+    Protected Sub idiomaResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+        Me.idiomaResultadosDataGrid.PageIndex = e.NewPageIndex
+        llenarTabla()
+    End Sub
 End Class
