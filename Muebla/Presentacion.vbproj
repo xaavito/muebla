@@ -99,6 +99,7 @@
     <Content Include="DatosPersonales.aspx" />
     <Content Include="EditarProveedor.aspx" />
     <Content Include="Factura.aspx" />
+    <Content Include="favicon.ico" />
     <Content Include="HojaDeRuta.aspx" />
     <Content Include="images\addImage.png" />
     <Content Include="images\addToCart.png" />
