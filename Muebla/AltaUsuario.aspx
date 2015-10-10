@@ -65,6 +65,5 @@
     </asp:Table>
 
     <asp:Button runat="server" ID="confirmarAltaUsuarioButton" ValidationGroup="altaUsuario" Text="Confirmar" OnClick="confirmarAltaUsuarioButton_Click"/>
-    <asp:Button runat="server" ID="cancelarAltaUsuarioButton" text="Cancelar" OnClick="cancelarAltaUsuarioButton_Click"/>
   
 </asp:Content>

@@ -12,6 +12,12 @@
         prov.mail = Me.emailTextBox.Text
         prov.razonSocial = Me.nombreTextBox.Text
         prov.tel = Me.telefonoTextBox.Text
-        prov.id = BLL.ProveedorBLL.altaProveedor(prov)
+        Try
+            prov.id = BLL.ProveedorBLL.altaProveedor(prov)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+
     End Sub
 End Class

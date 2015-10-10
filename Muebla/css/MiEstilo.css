@@ -77,7 +77,7 @@ body
     color: red;
 }
 
-#ContentPlaceHolder1_editDataDiv {
+#ContentPlaceHolder1_editDataDiv, #ContentPlaceHolder1_altaProveedor {
     border: 2px solid red;
 }
 

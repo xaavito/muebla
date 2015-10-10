@@ -165,13 +165,4 @@ Partial Public Class AltaUsuario
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents confirmarAltaUsuarioButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control cancelarAltaUsuarioButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents cancelarAltaUsuarioButton As Global.System.Web.UI.WebControls.Button
 End Class

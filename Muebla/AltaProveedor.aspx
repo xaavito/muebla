@@ -94,5 +94,4 @@
     </asp:Table>
 
     <asp:Button runat="server" ValidationGroup="altaProveedor" ID="confirmarAltaProveedorButton" Text="Confirmar" OnClick="confirmarAltaProveedorButton_Click" />
-    <asp:Button runat="server" ID="cancelarAltaProveedorButton" Text="Cancelar" OnClick="cancelarAltaProveedorButton_Click" />
 </asp:Content>

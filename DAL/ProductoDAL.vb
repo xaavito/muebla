@@ -24,16 +24,31 @@ Public Class ProductoDAL
         Try
             repository.crearComando("ALTA_PRODUCTO_SP")
             repository.addParam("@des", producto.descripcion)
+            repository.addParam("@bDes", producto.breveDescripcion)
             repository.addParam("@tipo", producto.tipoProducto.id)
             repository.addParam("@sto", producto.stock)
             repository.addParam("@stomin", producto.stockMin)
             repository.addParam("@prov", producto.proveedor.id)
             repository.addParam("@img", producto.image1)
             id = repository.executeWithReturnValue
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
         Catch ex As Exception
             Throw ex
         End Try
 
+        For Each a As BE.ProductoBE In producto.productos
+            repository = New AccesoSQLServer
+            Try
+                repository.crearComando("ALTA_PRODUCTO_COMPUESTO_SP")
+                repository.addParam("@id", id)
+                repository.addParam("@idCompuesto", a.id)
+                id = repository.executeWithReturnValue
+            Catch ex As Exception
+                Throw ex
+            End Try
+        Next
         Return id
     End Function
 

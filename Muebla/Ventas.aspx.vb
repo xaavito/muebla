@@ -8,7 +8,12 @@ Public Class Ventas
     Dim carrito As List(Of ListaPrecioDetalleBE)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        listaProductos = BLL.ProductoBLL.listarProductos()
+        Try
+            listaProductos = BLL.ProductoBLL.listarProductos()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+
     End Sub
 
     Public Function listarProductos() As List(Of BE.ListaPrecioDetalleBE)

@@ -23,11 +23,13 @@
 
         Me.productosPropiosListBox.DataTextField = "descripcion"
         Me.productosPropiosListBox.DataValueField = "id"
+        Me.altaProveedor.Visible = False
     End Sub
 
     Protected Sub confirmarAltaProductoButton_Click(sender As Object, e As EventArgs)
         Dim prod As New BE.ProductoBE
         prod.descripcion = Me.descripcionTextBox.Text
+        prod.breveDescripcion = Me.descripcionBreveTextBox.Text
         Dim tipo As New BE.TipoProductoBE
         tipo.id = Me.tipoProductoDropDown.SelectedValue
         prod.tipoProducto = tipo
@@ -38,6 +40,7 @@
         prod.image1 = Me.fileUpload.FileBytes
         prod.stock = Integer.Parse(Me.stockTextBox.Text)
         prod.stockMin = Integer.Parse(Me.stockMinimoTextBox.Text)
+        prod.productos = Session("productosPropios")
         Try
             BLL.ProductoBLL.altaProducto(prod)
             Throw New Util.CreacionExitosaException
@@ -52,7 +55,7 @@
     End Sub
 
     Protected Sub addProveedorButton_Click(sender As Object, e As EventArgs)
-
+        Me.altaProveedor.Visible = True
     End Sub
 
     Protected Sub removerProductoButton_Click(sender As Object, e As ImageClickEventArgs)
@@ -88,7 +91,41 @@
                 Next
                 productosPropiosListBox.DataSource = ps
                 productosPropiosListBox.DataBind()
+                Session("productosPropios") = ps
             End If
         End If
+    End Sub
+
+    Protected Sub tipoProductoDropDown_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If Me.tipoProductoDropDown.SelectedValue = 1 Then
+            Me.productosLabel.Visible = True
+            Me.removerProductoButton.Visible = True
+            Me.agregarProductoButton.Visible = True
+            Me.productosPropiosListBox.Visible = True
+            Me.allProductosListBox.Visible = True
+        Else
+            Me.productosLabel.Visible = False
+            Me.removerProductoButton.Visible = False
+            Me.agregarProductoButton.Visible = False
+            Me.productosPropiosListBox.Visible = False
+            Me.allProductosListBox.Visible = False
+        End If
+
+    End Sub
+
+    Protected Sub confirmarAltaProveedorButton_Click(sender As Object, e As EventArgs)
+        Dim prov As New BE.ProveedorBE
+        prov.cuit = Me.cuitTextBox.Text
+        prov.direccion = Me.direccionTextBox.Text
+        prov.mail = Me.emailTextBox.Text
+        prov.razonSocial = Me.nombreTextBox.Text
+        prov.tel = Me.telefonoTextBox.Text
+        Try
+            prov.id = BLL.ProveedorBLL.altaProveedor(prov)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+
     End Sub
 End Class

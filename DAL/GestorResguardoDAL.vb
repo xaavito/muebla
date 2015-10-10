@@ -8,23 +8,6 @@ Imports Util
 
 Public Class GestorResguardoDAL
 
-
-    Public Function buscarBackups() As List(Of BackupBE)
-        buscarBackups = Nothing
-    End Function
-
-    ''' 
-    ''' <param name="nombre"></param>
-    Public Sub realizarBackup(ByVal nombre As String)
-
-    End Sub
-
-    ''' 
-    ''' <param name="backup"></param>
-    Public Sub realizarRestore(ByVal backup As BackupBE)
-
-    End Sub
-
     'TODO buscar path relativo
     Public Shared Sub BackUp(ByVal description As String)
         Dim path As String = "C:\\Prueba"

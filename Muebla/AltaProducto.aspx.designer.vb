@@ -41,6 +41,24 @@ Partial Public Class AltaProducto
     Protected WithEvents descripcionTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control descripcionBreveLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents descripcionBreveLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control descripcionBreveTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents descripcionBreveTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control proveedorLabel.
     '''</summary>
     '''<remarks>
@@ -185,20 +203,146 @@ Partial Public Class AltaProducto
     Protected WithEvents allProductosListBox As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
-    '''Control confirmarAltaProductoButton.
+    '''Control confirmarButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents confirmarAltaProductoButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control cancelarAltaProductoButton.
+    '''Control altaProveedor.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cancelarAltaProductoButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents altaProveedor As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control tableAltaProveedor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents tableAltaProveedor As Global.System.Web.UI.WebControls.Table
+
+    '''<summary>
+    '''Control nombreLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nombreLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control nombreTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nombreTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control cuitLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cuitLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control cuitTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cuitTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control telefonoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents telefonoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control telefonoTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents telefonoTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control contactoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents contactoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control contactoTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents contactoTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control direccionLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents direccionLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control direccionTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents direccionTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control emailLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents emailLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control emailTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents emailTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control confirmarAltaProveedorButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarAltaProveedorButton As Global.System.Web.UI.WebControls.Button
 End Class

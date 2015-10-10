@@ -165,13 +165,4 @@ Partial Public Class AltaProveedor1
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents confirmarAltaProveedorButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control cancelarAltaProveedorButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents cancelarAltaProveedorButton As Global.System.Web.UI.WebControls.Button
 End Class
