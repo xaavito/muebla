@@ -16,7 +16,7 @@
                     ErrorMessage="Solo Texto"
                     ControlToValidate="descripcionTextBox"
                     ValidationGroup="altaProducto"
-                    ValidationExpression="^[a-zA-Z]*$" />
+                    ValidationExpression="^[a-zA-Z_ ]*$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -30,7 +30,7 @@
                     ErrorMessage="Solo Texto"
                     ControlToValidate="descripcionBreveTextBox"
                     ValidationGroup="altaProducto"
-                    ValidationExpression="^[a-zA-Z]*$" />
+                    ValidationExpression="^[a-zA-Z_ ]*$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -120,7 +120,7 @@
                     <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                         ErrorMessage="Solo Texto"
                         ControlToValidate="nombreTextBox"
-                        ValidationExpression="^[a-zA-Z]*$" />
+                        ValidationExpression="^[a-zA-Z_ ]*$" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -159,7 +159,7 @@
                     <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                         ErrorMessage="Solo Texto"
                         ControlToValidate="contactoTextBox"
-                        ValidationExpression="^[a-zA-Z]*$" />
+                        ValidationExpression="^[a-zA-Z_ ]*$" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -181,7 +181,7 @@
                     <asp:RegularExpressionValidator runat="server"
                         ErrorMessage="Email Invalido"
                         ControlToValidate="emailTextBox"
-                        ValidationExpression="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b" ValidationGroup="altaProveedor" />
+                        ValidationExpression="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b" ValidationGroup="altaProveedor" />
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>

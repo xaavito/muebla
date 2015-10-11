@@ -14,6 +14,17 @@ Public Class ProductoBE
     Private _tipoProducto As TipoProductoBE
     Private _stock As Integer
     Private _stockMin As Integer
+    Private _precio As Decimal
+
+    Public Property precio() As Decimal
+        Get
+            Return _precio
+        End Get
+        Set(ByVal value As Decimal)
+            _precio = value
+        End Set
+    End Property
+
 
     Public Property stockMin() As Integer
         Get

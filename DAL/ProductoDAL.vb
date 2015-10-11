@@ -44,7 +44,7 @@ Public Class ProductoDAL
                 repository.crearComando("ALTA_PRODUCTO_COMPUESTO_SP")
                 repository.addParam("@id", id)
                 repository.addParam("@idCompuesto", a.id)
-                id = repository.executeWithReturnValue
+                repository.executeWithReturnValue()
             Catch ex As Exception
                 Throw ex
             End Try
@@ -64,7 +64,7 @@ Public Class ProductoDAL
             repository.addParam("@id", producto)
             ret = repository.executeSearchWithStatus
         Catch ex As Exception
-
+            Throw ex
         End Try
 
         Return ret
@@ -75,26 +75,29 @@ Public Class ProductoDAL
         Dim list As New List(Of BE.ProductoBE)
 
         Dim repository As New AccesoSQLServer
-        'Try
-        repository.crearComando("BUSCAR_PRODUCTOS_SP")
-        repository.addParam("@tipo", tipo)
-        repository.addParam("@nom", nombre)
-        table = New DataTable
-        table = repository.executeSearchWithAdapter()
-        If (table.Rows.Count <> 1) Then
-            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
-        End If
-        For Each item As DataRow In table.Rows
-            Dim producto As New BE.ProductoBE
-            producto.id = item.Item(0)
-            producto.descripcion = item.Item(1)
-            Dim tipoProd As New BE.TipoProductoBE
-            tipoProd.id = item.Item(2)
-            tipoProd.descripcion = item.Item(3)
-            producto.tipoProducto = tipoProd
-            list.Add(producto)
-        Next
-
+        Try
+            repository.crearComando("BUSCAR_PRODUCTOS_SP")
+            repository.addParam("@tipo", tipo)
+            repository.addParam("@nom", nombre)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Dim producto As New BE.ProductoBE
+                producto.id = item.Item(0)
+                producto.descripcion = item.Item(1)
+                Dim tipoProd As New BE.TipoProductoBE
+                tipoProd.id = item.Item(2)
+                tipoProd.descripcion = item.Item(3)
+                producto.tipoProducto = tipoProd
+                list.Add(producto)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        
         Return list
     End Function
 
@@ -103,23 +106,26 @@ Public Class ProductoDAL
         Dim producto As New BE.ProductoBE
 
         Dim repository As New AccesoSQLServer
-        'Try
-        repository.crearComando("BUSCAR_PRODUCTO_SP")
-        repository.addParam("@id", id)
-        table = New DataTable
-        table = repository.executeSearchWithAdapter()
-        If (table.Rows.Count <> 1) Then
-            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
-        End If
-        For Each item As DataRow In table.Rows
-            producto.id = item.Item(0)
-            producto.descripcion = item.Item(1)
-            Dim tipoProd As New BE.TipoProductoBE
-            tipoProd.id = item.Item(2)
-            tipoProd.descripcion = item.Item(3)
-            producto.tipoProducto = tipoProd
-        Next
-
+        Try
+            repository.crearComando("BUSCAR_PRODUCTO_SP")
+            repository.addParam("@id", id)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count <> 1) Then
+                Throw New Util.BusquedaConMuchosResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                producto.id = item.Item(0)
+                producto.descripcion = item.Item(1)
+                Dim tipoProd As New BE.TipoProductoBE
+                tipoProd.id = item.Item(2)
+                tipoProd.descripcion = item.Item(3)
+                producto.tipoProducto = tipoProd
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        
         Return producto
     End Function
 
@@ -152,29 +158,32 @@ Public Class ProductoDAL
         Dim list As New List(Of BE.ListaPrecioDetalleBE)
 
         Dim repository As New AccesoSQLServer
-        'Try
-        repository.crearComando("LISTAR_PRODUCTOS_SP")
-        table = New DataTable
-        table = repository.executeSearchWithAdapter()
-        If (table.Rows.Count = 0) Then
-            Throw New Util.BusquedaSinResultadosException
-        End If
-        For Each item As DataRow In table.Rows
-            Dim producto As New BE.ProductoBE
-            Dim lpd As New BE.ListaPrecioDetalleBE
-            Dim lp As New BE.ListaPrecioBE
-            producto.id = item.Item(0)
-            producto.descripcion = item.Item(1)
-            producto.breveDescripcion = item.Item(6)
+        Try
+            repository.crearComando("LISTAR_PRODUCTOS_SP")
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Dim producto As New BE.ProductoBE
+                Dim lpd As New BE.ListaPrecioDetalleBE
+                Dim lp As New BE.ListaPrecioBE
+                producto.id = item.Item(0)
+                producto.descripcion = item.Item(1)
+                producto.breveDescripcion = item.Item(6)
 
-            producto.image1 = (DirectCast(item.Item(2), Byte()))
-            lpd.precio = item.Item(3)
-            lpd.id = item.Item(4)
-            lp.id = item.Item(5)
-            lpd.listaPrecio = lp
-            lpd.producto = producto
-            list.Add(lpd)
-        Next
+                producto.image1 = (DirectCast(item.Item(2), Byte()))
+                lpd.precio = item.Item(3)
+                lpd.id = item.Item(4)
+                lp.id = item.Item(5)
+                lpd.listaPrecio = lp
+                lpd.producto = producto
+                list.Add(lpd)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
 
         Return list
     End Function
@@ -184,17 +193,20 @@ Public Class ProductoDAL
         Dim list As New List(Of BE.ListaPrecioDetalleBE)
 
         Dim repository As New AccesoSQLServer
-        'Try
-        repository.crearComando("GET_PRODUCTO_IMAGEN_SP")
-        repository.addParam("@ID", idInt)
-        table = New DataTable
-        table = repository.executeSearchWithAdapter()
-        If (table.Rows.Count <> 1) Then
-            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
-        End If
-        For Each item As DataRow In table.Rows
-            Return (DirectCast(item.Item(0), Byte()))
-        Next
+        Try
+            repository.crearComando("GET_PRODUCTO_IMAGEN_SP")
+            repository.addParam("@ID", idInt)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count <> 1) Then
+                Throw New Util.BusquedaConMuchosResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Return (DirectCast(item.Item(0), Byte()))
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
 
     End Function
 
@@ -203,20 +215,23 @@ Public Class ProductoDAL
         Dim list As New List(Of BE.TipoProductoBE)
 
         Dim repository As New AccesoSQLServer
-        'Try
-        repository.crearComando("LISTAR_TIPO_PRODUCTOS_SP")
-        table = New DataTable
-        table = repository.executeSearchWithAdapter()
-        If (table.Rows.Count <> 1) Then
-            'Throw New Excepciones.UsuarioNoEncontradoExcepcion
-        End If
-        For Each item As DataRow In table.Rows
-            Dim producto As New BE.TipoProductoBE
-            producto.id = item.Item(0)
-            producto.descripcion = item.Item(1)
+        Try
+            repository.crearComando("LISTAR_TIPO_PRODUCTOS_SP")
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Dim producto As New BE.TipoProductoBE
+                producto.id = item.Item(0)
+                producto.descripcion = item.Item(1)
 
-            list.Add(producto)
-        Next
+                list.Add(producto)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
 
         Return list
     End Function

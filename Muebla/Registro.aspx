@@ -14,7 +14,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
                     ErrorMessage="Solo Texto"
                     ControlToValidate="nombreTextBox"
-                    ValidationExpression="^[a-zA-Z]*$"/>
+                    ValidationExpression="^[a-zA-Z_ ]*$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -27,7 +27,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
                     ErrorMessage="Solo Texto"
                     ControlToValidate="apellidoTextBox"
-                    ValidationExpression="^[a-zA-Z]*$"/>
+                    ValidationExpression="^[a-zA-Z_ ]*$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>

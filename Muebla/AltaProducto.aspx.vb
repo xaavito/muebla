@@ -10,10 +10,7 @@
         Me.tipoProductoDropDown.DataValueField = "id"
         Me.tipoProductoDropDown.DataBind()
 
-        Me.proveedorDropDown.DataSource = BLL.ProveedorBLL.listarProveedores
-        Me.proveedorDropDown.DataTextField = "razonSocial"
-        Me.proveedorDropDown.DataValueField = "id"
-        Me.proveedorDropDown.DataBind()
+        buscarProveedores()
 
         Session("productosMateriaPrima") = BLL.ProductoBLL.buscarProductos(2, "")
         Me.allProductosListBox.DataSource = Session("productosMateriaPrima")
@@ -47,11 +44,6 @@
         Catch ex As Exception
             logMessage(ex)
         End Try
-
-    End Sub
-
-    Protected Sub cancelarAltaProductoButton_Click(sender As Object, e As EventArgs)
-
     End Sub
 
     Protected Sub addProveedorButton_Click(sender As Object, e As EventArgs)
@@ -110,7 +102,6 @@
             Me.productosPropiosListBox.Visible = False
             Me.allProductosListBox.Visible = False
         End If
-
     End Sub
 
     Protected Sub confirmarAltaProveedorButton_Click(sender As Object, e As EventArgs)
@@ -126,6 +117,15 @@
         Catch ex As Exception
             logMessage(ex)
         End Try
-
+        buscarProveedores()
+        Me.altaProveedor.Visible = False
     End Sub
+
+    Private Sub buscarProveedores()
+        Me.proveedorDropDown.DataSource = BLL.ProveedorBLL.listarProveedores
+        Me.proveedorDropDown.DataTextField = "razonSocial"
+        Me.proveedorDropDown.DataValueField = "id"
+        Me.proveedorDropDown.DataBind()
+    End Sub
+
 End Class

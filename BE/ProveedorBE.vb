@@ -8,7 +8,28 @@ Public Class ProveedorBE
     Private _id As Long
     Private _mail As String
     Private _razonSocial As String
-    Public m_EstadoProveedorBE As EstadoProveedorBE
+    Private _productos As List(Of BE.ProductoBE)
+    Private _estado As BE.EstadoProveedorBE
+
+    Public Property estado() As BE.EstadoProveedorBE
+        Get
+            Return _estado
+        End Get
+        Set(ByVal value As BE.EstadoProveedorBE)
+            _estado = value
+        End Set
+    End Property
+
+
+    Public Property productos() As List(Of BE.ProductoBE)
+        Get
+            Return _productos
+        End Get
+        Set(ByVal value As List(Of BE.ProductoBE))
+            _productos = value
+        End Set
+    End Property
+
 
     Private _tel As String
     Public Property tel() As String

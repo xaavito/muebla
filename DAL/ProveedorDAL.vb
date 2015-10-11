@@ -19,6 +19,18 @@ Public Class ProveedorDAL
             repository.addParam("@dir", prov.direccion)
             
             id = repository.executeWithReturnValue
+
+            For Each a As BE.ProductoBE In prov.productos
+                repository = New AccesoSQLServer
+                Try
+                    repository.crearComando("ALTA_PROVEEDOR_PRODUCTO_SP")
+                    repository.addParam("@idProv", id)
+                    repository.addParam("@idProd", a.id)
+                    repository.executeWithReturnValue()
+                Catch ex As Exception
+                    Throw ex
+                End Try
+            Next
         Catch ex As Exception
             Throw ex
         End Try

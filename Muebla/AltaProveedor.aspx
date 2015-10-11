@@ -4,7 +4,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Table runat="server" ID="tableAltaProveedor">
-        <asp:TableHeaderRow></asp:TableHeaderRow>
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="nombreLabel" Text="Nombre" />
@@ -15,7 +14,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                     ErrorMessage="Solo Texto"
                     ControlToValidate="nombreTextBox"
-                    ValidationExpression="^[a-zA-Z]*$" />
+                    ValidationExpression="^[a-zA-Z_ ]*$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -54,7 +53,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                     ErrorMessage="Solo Texto"
                     ControlToValidate="contactoTextBox"
-                    ValidationExpression="^[a-zA-Z]*$" />
+                    ValidationExpression="^[a-zA-Z_ ]*$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -84,13 +83,18 @@
                 <asp:Label runat="server" ID="productosLabel" Text="Productos" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:ListBox runat="server" ID="productosListBox" />
+                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:Button runat="server" ID="addProductoButton" Text="Manejar Productos" />
+                <asp:ImageButton runat="server" ID="removerProductoButton" ImageUrl="/images/arrowRight.png" OnClick="removerProductoButton_Click" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:ImageButton runat="server" ID="agregarProductoButton" ImageUrl="/images/arrowLeft.png" OnClick="agregarProductoButton_Click" />
+            </asp:TableCell>
+            <asp:TableCell>
+                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" />
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableFooterRow></asp:TableFooterRow>
     </asp:Table>
 
     <asp:Button runat="server" ValidationGroup="altaProveedor" ID="confirmarAltaProveedorButton" Text="Confirmar" OnClick="confirmarAltaProveedorButton_Click" />
