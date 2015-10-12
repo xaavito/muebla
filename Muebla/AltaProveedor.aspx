@@ -75,7 +75,7 @@
                 <asp:RegularExpressionValidator runat="server"
                     ErrorMessage="Email Invalido"
                     ControlToValidate="emailTextBox"
-                    ValidationExpression="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b" ValidationGroup="altaProveedor" />
+                    ValidationExpression="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b" ValidationGroup="altaProveedor" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -96,6 +96,12 @@
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
+    
+    <div id="valorProducto" runat="server">
+        <asp:TextBox runat="server" ID="valorProductoTextBox" />
+        <asp:Button Text="Confirmar" ID="confirmarValorButton" runat="server" OnClick="confirmarButton_Click" />
+        <asp:Button Text="Cancelar" ID="cancelarValorButton" runat="server" OnClick="cancelarButton_Click" />
+    </div>
 
-    <asp:Button runat="server" ValidationGroup="altaProveedor" ID="confirmarAltaProveedorButton" Text="Confirmar" OnClick="confirmarAltaProveedorButton_Click" />
+    <asp:Button runat="server" ValidationGroup="altaProveedor" ID="confirmarButton" Text="Confirmar" OnClick="confirmarAltaProveedorButton_Click" />
 </asp:Content>

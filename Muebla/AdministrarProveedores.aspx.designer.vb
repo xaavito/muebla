@@ -41,6 +41,78 @@ Partial Public Class AdministrarProveedores
     Protected WithEvents nombreProveedorTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control contactoSearchLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents contactoSearchLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control contactoSearchTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents contactoSearchTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control buscarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents buscarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control proveedoresResultadosDataGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents proveedoresResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control editData.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents editData As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control tableAltaProveedor.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents tableAltaProveedor As Global.System.Web.UI.WebControls.Table
+
+    '''<summary>
+    '''Control nombreLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nombreLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control nombreTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nombreTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control cuitLabel.
     '''</summary>
     '''<remarks>
@@ -95,38 +167,101 @@ Partial Public Class AdministrarProveedores
     Protected WithEvents contactoTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control activoLabel.
+    '''Control direccionLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents activoLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents direccionLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control activoDropDownList.
+    '''Control direccionTextBox.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents activoDropDownList As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents direccionTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control buscarButton.
+    '''Control emailLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents buscarButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents emailLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control proveedoresResultadosDataGrid.
+    '''Control emailTextBox.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents proveedoresResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents emailTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control productosLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents productosLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control productosPropiosListBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents productosPropiosListBox As Global.System.Web.UI.WebControls.ListBox
+
+    '''<summary>
+    '''Control removerProductoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents removerProductoButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control agregarProductoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents agregarProductoButton As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
+    '''Control allProductosListBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents allProductosListBox As Global.System.Web.UI.WebControls.ListBox
+
+    '''<summary>
+    '''Control modificarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents modificarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control cancelarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cancelarButton As Global.System.Web.UI.WebControls.Button
 End Class

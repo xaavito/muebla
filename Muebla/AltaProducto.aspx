@@ -109,7 +109,6 @@
 
     <div id="altaProveedor" runat="server">
         <asp:Table runat="server" ID="tableAltaProveedor">
-
             <asp:TableRow>
                 <asp:TableCell>
                     <asp:Label runat="server" ID="nombreLabel" Text="Nombre" />

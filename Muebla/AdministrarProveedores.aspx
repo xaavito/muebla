@@ -13,32 +13,10 @@
         </asp:TableRow>
         <asp:TableRow>
             <asp:TableCell>
-                <asp:Label runat="server" ID="cuitLabel" Text="CUIT" />
-            </asp:TableCell><asp:TableCell>
-                <asp:TextBox runat="server" ID="cuitTextBox" />
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <asp:Label runat="server" ID="telefonoLabel" Text="Telefono" />
-            </asp:TableCell><asp:TableCell>
-                <asp:TextBox runat="server" ID="telefonoTextBox" />
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <asp:Label runat="server" ID="contactoLabel" Text="Contacto" />
+                <asp:Label runat="server" ID="contactoSearchLabel" Text="Contacto" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="contactoTextBox" />
-            </asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <asp:Label runat="server" ID="activoLabel" Text="Activo" />
-            </asp:TableCell>
-            <asp:TableCell>
-                <asp:DropDownList runat="server" ID="activoDropDownList" />
+                <asp:TextBox runat="server" ID="contactoSearchTextBox" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
@@ -49,56 +27,154 @@
         AutoGenerateColumns="false"
         AllowPaging="true" PageSize="12"
         ItemType="BE.ProveedorBE"
-        ShowFooter="false" 
-        CssClass="mGrid"  
-        PagerStyle-CssClass="pgr"  
+        ShowFooter="false"
+        CssClass="mGrid"
+        PagerStyle-CssClass="pgr"
         AlternatingRowStyle-CssClass="alt"
-        OnPreRender="proveedoresResultadosDataGrid_PreRender" 
+        OnPreRender="proveedoresResultadosDataGrid_PreRender"
         OnPageIndexChanging="proveedoresResultadosDataGrid_PageIndexChanging">
         <Columns>
             <asp:TemplateField HeaderText="ID">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemUser"  Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Razon Social">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemUser"  Text="<%# Item.razonSocial %>" />
+                    <asp:Label runat="server" ID="itemRazonSocial" Text="<%# Item.razonSocial %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="CUIT">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemDescripcion" Text="<%# Item.cuit%>" />
+                    <asp:Label runat="server" ID="itemCuit" Text="<%# Item.cuit%>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Telefono">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.tel%>" />
+                    <asp:Label runat="server" ID="itemTelefoni" Text="<%# Item.telefono%>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Mail">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.mail%>" />
+                    <asp:Label runat="server" ID="itemMail" Text="<%# Item.mail%>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Activo">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemTipo"  Text="<%# Item.m_EstadoProveedorBE.descripcion %>" />
+                    <asp:Label runat="server" ID="itemEstado" Text="<%# Item.estado %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
                     <asp:ImageButton ID="ibtnEdit" runat="server"
-                        ImageUrl="/images/editItem.png" OnClick="ibtnEdit_Click"/>
+                        ImageUrl="/images/editItem.png"
+                        OnClick="ibtnEdit_Click" />
                     <asp:ImageButton ID="ibtnDelete" runat="server"
                         ImageUrl="/images/deleteItem.png"
                         OnClick="ibtnDelete_Click" />
                     <asp:ImageButton ID="ibtnDetails" runat="server"
                         ImageUrl="/images/detail.png"
-                        OnClick="ibtnDetails_Click"  />
+                        OnClick="ibtnDetails_Click" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-
     </asp:GridView>
+
+    <div id="editData" runat="server">
+        <asp:Table runat="server" ID="tableAltaProveedor">
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="nombreLabel" Text="Nombre" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="nombreTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="nombreTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
+                        ErrorMessage="Solo Texto"
+                        ControlToValidate="nombreTextBox"
+                        ValidationExpression="^[a-zA-Z_ ]*$" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="cuitLabel" Text="CUIT" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="cuitTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="cuitTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="cuitTextBox"
+                        ValidationExpression="^[0-9]*$" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="telefonoLabel" Text="Telefono" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="telefonoTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="telefonoTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="telefonoTextBox"
+                        ValidationExpression="^[0-9]*$" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="contactoLabel" Text="Contacto" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="contactoTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="contactoTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
+                        ErrorMessage="Solo Texto"
+                        ControlToValidate="contactoTextBox"
+                        ValidationExpression="^[a-zA-Z_ ]*$" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="direccionLabel" Text="Direccion" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="direccionTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="direccionTextBox" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="emailLabel" Text="Email" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="emailTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="emailTextBox" runat="server" />
+                    <asp:RegularExpressionValidator runat="server"
+                        ErrorMessage="Email Invalido"
+                        ControlToValidate="emailTextBox"
+                        ValidationExpression="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b" ValidationGroup="altaProveedor" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="productosLabel" Text="Productos" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:ImageButton runat="server" ID="removerProductoButton" ImageUrl="/images/arrowRight.png" OnClick="removerProductoButton_Click" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:ImageButton runat="server" ID="agregarProductoButton" ImageUrl="/images/arrowLeft.png" OnClick="agregarProductoButton_Click" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" />
+                </asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+        <asp:Button Text="Modificar" id="modificarButton" runat="server" OnClick="modificarButton_Click"/>
+        <asp:Button Text="Cancelar" id="cancelarButton" runat="server" OnClick="cancelarButton_Click"/>
+    </div>
 </asp:Content>

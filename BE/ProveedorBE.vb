@@ -1,25 +1,43 @@
 
 
 Public Class ProveedorBE
-
-
     Private _cuit As Long
     Private _direccion As String
     Private _id As Long
     Private _mail As String
     Private _razonSocial As String
     Private _productos As List(Of BE.ProductoBE)
-    Private _estado As BE.EstadoProveedorBE
+    Private _estado As Boolean
+    Private _telefono As String
+    Private _contacto As String
 
-    Public Property estado() As BE.EstadoProveedorBE
+    Public Property contacto() As String
         Get
-            Return _estado
+            Return _contacto
         End Get
-        Set(ByVal value As BE.EstadoProveedorBE)
-            _estado = value
+        Set(ByVal value As String)
+            _contacto = value
         End Set
     End Property
 
+
+    Public Property telefono() As String
+        Get
+            Return _telefono
+        End Get
+        Set(ByVal value As String)
+            _telefono = value
+        End Set
+    End Property
+
+    Public Property estado() As Boolean
+        Get
+            Return _estado
+        End Get
+        Set(ByVal value As Boolean)
+            _estado = value
+        End Set
+    End Property
 
     Public Property productos() As List(Of BE.ProductoBE)
         Get
@@ -29,18 +47,6 @@ Public Class ProveedorBE
             _productos = value
         End Set
     End Property
-
-
-    Private _tel As String
-    Public Property tel() As String
-        Get
-            Return _tel
-        End Get
-        Set(ByVal value As String)
-            _tel = value
-        End Set
-    End Property
-
 
     Public Property cuit() As Long
         Get
@@ -78,7 +84,6 @@ Public Class ProveedorBE
         End Set
     End Property
 
-
     Public Property razonSocial() As String
         Get
             Return _razonSocial
@@ -89,4 +94,4 @@ Public Class ProveedorBE
     End Property
 
 
-End Class ' ProveedorBE
+End Class

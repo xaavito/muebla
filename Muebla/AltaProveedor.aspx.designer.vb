@@ -176,11 +176,47 @@ Partial Public Class AltaProveedor1
     Protected WithEvents allProductosListBox As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
-    '''Control confirmarAltaProveedorButton.
+    '''Control valorProducto.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents confirmarAltaProveedorButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents valorProducto As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control valorProductoTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents valorProductoTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control confirmarValorButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarValorButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control cancelarValorButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cancelarValorButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control confirmarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
 End Class

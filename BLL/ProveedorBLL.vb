@@ -18,8 +18,8 @@ Public Class ProveedorBLL
 
     ''' 
     ''' <param name="prov"></param>
-    Public Shared Function buscarProveedores(ByVal prov As ProveedorBE) As List(Of ProveedorBE)
-        buscarProveedores = Nothing
+    Public Shared Function buscarProveedores(ByVal nom As String, ByVal contacto As String) As List(Of ProveedorBE)
+        Return DAL.ProveedorDAL.buscarProveedores(nom, contacto)
     End Function
 
     ''' 
@@ -34,6 +34,10 @@ Public Class ProveedorBLL
 
     Shared Function listarProveedores() As List(Of BE.ProveedorBE)
         Return DAL.ProveedorDAL.listarProveedores()
+    End Function
+
+    Shared Function getProductos(prov As ProveedorBE) As List(Of ProductoBE)
+        Return DAL.ProveedorDAL.getProductos(prov)
     End Function
 
 

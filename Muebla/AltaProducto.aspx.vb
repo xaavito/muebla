@@ -20,6 +20,7 @@
 
         Me.productosPropiosListBox.DataTextField = "descripcion"
         Me.productosPropiosListBox.DataValueField = "id"
+
         Me.altaProveedor.Visible = False
     End Sub
 
@@ -56,6 +57,46 @@
         End If
     End Sub
 
+    Protected Sub tipoProductoDropDown_SelectedIndexChanged(sender As Object, e As EventArgs)
+        If Me.tipoProductoDropDown.SelectedValue = 1 Then
+            Me.productosLabel.Visible = True
+            Me.removerProductoButton.Visible = True
+            Me.agregarProductoButton.Visible = True
+            Me.productosPropiosListBox.Visible = True
+            Me.allProductosListBox.Visible = True
+        Else
+            Me.productosLabel.Visible = False
+            Me.removerProductoButton.Visible = False
+            Me.agregarProductoButton.Visible = False
+            Me.productosPropiosListBox.Visible = False
+            Me.allProductosListBox.Visible = False
+        End If
+    End Sub
+
+    Protected Sub confirmarAltaProveedorButton_Click(sender As Object, e As EventArgs)
+        Dim prov As New BE.ProveedorBE
+        prov.cuit = Me.cuitTextBox.Text
+        prov.direccion = Me.direccionTextBox.Text
+        prov.mail = Me.emailTextBox.Text
+        prov.razonSocial = Me.nombreTextBox.Text
+        prov.telefono = Me.telefonoTextBox.Text
+        Try
+            prov.id = BLL.ProveedorBLL.altaProveedor(prov)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        buscarProveedores()
+        Me.altaProveedor.Visible = False
+    End Sub
+
+    Private Sub buscarProveedores()
+        Me.proveedorDropDown.DataSource = BLL.ProveedorBLL.listarProveedores
+        Me.proveedorDropDown.DataTextField = "razonSocial"
+        Me.proveedorDropDown.DataValueField = "id"
+        Me.proveedorDropDown.DataBind()
+    End Sub
+
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
         If Not allProductosListBox.SelectedItem Is Nothing Then
             Dim idToAdd As Integer = allProductosListBox.SelectedValue
@@ -87,45 +128,4 @@
             End If
         End If
     End Sub
-
-    Protected Sub tipoProductoDropDown_SelectedIndexChanged(sender As Object, e As EventArgs)
-        If Me.tipoProductoDropDown.SelectedValue = 1 Then
-            Me.productosLabel.Visible = True
-            Me.removerProductoButton.Visible = True
-            Me.agregarProductoButton.Visible = True
-            Me.productosPropiosListBox.Visible = True
-            Me.allProductosListBox.Visible = True
-        Else
-            Me.productosLabel.Visible = False
-            Me.removerProductoButton.Visible = False
-            Me.agregarProductoButton.Visible = False
-            Me.productosPropiosListBox.Visible = False
-            Me.allProductosListBox.Visible = False
-        End If
-    End Sub
-
-    Protected Sub confirmarAltaProveedorButton_Click(sender As Object, e As EventArgs)
-        Dim prov As New BE.ProveedorBE
-        prov.cuit = Me.cuitTextBox.Text
-        prov.direccion = Me.direccionTextBox.Text
-        prov.mail = Me.emailTextBox.Text
-        prov.razonSocial = Me.nombreTextBox.Text
-        prov.tel = Me.telefonoTextBox.Text
-        Try
-            prov.id = BLL.ProveedorBLL.altaProveedor(prov)
-            Throw New Util.CreacionExitosaException
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
-        buscarProveedores()
-        Me.altaProveedor.Visible = False
-    End Sub
-
-    Private Sub buscarProveedores()
-        Me.proveedorDropDown.DataSource = BLL.ProveedorBLL.listarProveedores
-        Me.proveedorDropDown.DataTextField = "razonSocial"
-        Me.proveedorDropDown.DataValueField = "id"
-        Me.proveedorDropDown.DataBind()
-    End Sub
-
 End Class

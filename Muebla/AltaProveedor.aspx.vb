@@ -6,6 +6,9 @@
             Return
         End If
         buscarProductosMateriaPrima()
+        Me.valorProducto.Visible = False
+        Me.productosPropiosListBox.DataTextField = "descripcion"
+        Me.productosPropiosListBox.DataValueField = "id"
     End Sub
 
     Protected Sub cancelarAltaProveedorButton_Click(sender As Object, e As EventArgs)
@@ -18,7 +21,7 @@
         prov.direccion = Me.direccionTextBox.Text
         prov.mail = Me.emailTextBox.Text
         prov.razonSocial = Me.nombreTextBox.Text
-        prov.tel = Me.telefonoTextBox.Text
+        prov.telefono = Me.telefonoTextBox.Text
         prov.productos = Session("productosPropios")
         Try
             prov.id = BLL.ProveedorBLL.altaProveedor(prov)
@@ -26,7 +29,7 @@
         Catch ex As Exception
             logMessage(ex)
         End Try
-
+        Me.valorProducto.Visible = False
     End Sub
 
     Private Sub buscarProductosMateriaPrima()
@@ -44,6 +47,10 @@
     End Sub
 
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
+        Me.valorProducto.Visible = True
+    End Sub
+
+    Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
         If Not allProductosListBox.SelectedItem Is Nothing Then
             Dim idToAdd As Integer = allProductosListBox.SelectedValue
             Dim found As Boolean = False
@@ -65,6 +72,7 @@
                 Dim prods As List(Of BE.ProductoBE) = Session("productosMateriaPrima")
                 For Each p As BE.ProductoBE In prods
                     If p.id = idToAdd Then
+                        p.precio = Decimal.Parse(Me.valorProductoTextBox.Text)
                         ps.Add(p)
                     End If
                 Next
@@ -73,6 +81,11 @@
                 Session("productosPropios") = ps
             End If
         End If
+        Me.valorProducto.Visible = False
+    End Sub
+
+    Protected Sub cancelarButton_Click(sender As Object, e As EventArgs)
+        Me.valorProducto.Visible = False
     End Sub
 
 End Class
