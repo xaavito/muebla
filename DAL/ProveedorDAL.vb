@@ -71,10 +71,39 @@ Public Class ProveedorDAL
         checkProvUtilizado = False
     End Function
 
-    ''' 
-    ''' <param name="proveedor"></param>
-    Public Shared Sub modificarProveedor(ByVal proveedor As ProveedorBE)
+    Public Shared Sub modificarProveedor(ByVal prov As ProveedorBE)
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("MODIFICAR_PROVEEDOR_SP")
+            repository.addParam("@id", prov.id)
+            repository.addParam("@raz", prov.razonSocial)
+            repository.addParam("@mail", prov.mail)
+            repository.addParam("@tel", prov.telefono)
+            repository.addParam("@cuit", prov.cuit)
+            repository.addParam("@dir", prov.direccion)
+            repository.addParam("@con", prov.contacto)
 
+            repository.executeWithReturnValue()
+
+            repository.crearComando("ELIMINAR_PRODUCTO_PROVEEDOR_SP")
+            repository.addParam("@id", prov.id)
+            repository.executeWithReturnValue()
+
+            For Each a As BE.ProductoBE In prov.productos
+                repository = New AccesoSQLServer
+                Try
+                    repository.crearComando("ALTA_PRODUCTO_PROVEEDOR_SP")
+                    repository.addParam("@id", prov.id)
+                    repository.addParam("@idProducto", a.id)
+                    repository.addParam("@precio", a.precio)
+                    repository.executeWithReturnValue()
+                Catch ex As Exception
+                    Throw ex
+                End Try
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Shared Function listarProveedores() As List(Of BE.ProveedorBE)
@@ -166,6 +195,22 @@ Public Class ProveedorDAL
             Throw ex
         End Try
     End Function
+
+    Shared Sub eliminarProveedor(id As Integer)
+        Dim resultado As Integer
+        
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ELIMINAR_PROVEEDOR_SP")
+            repository.addParam("@id", id)
+            resultado = repository.executeSearchWithStatus()
+            If (resultado <> 1) Then
+                Throw New Util.EliminacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 
 
 End Class

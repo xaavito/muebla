@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="MasterPage.master.vb" Inherits="Muebla.MasterPage" %>
+
 <%@ Import Namespace="BE" %>
+
 
 <!DOCTYPE html>
 
@@ -15,19 +17,19 @@
 <body>
     <form id="form1" runat="server">
         <div id="top">
-            <asp:Image id="logoMuebla" runat="server" ImageUrl="/images/smallMuebla.png" />
-            <asp:Label id="errorMessageLogger" runat="server" />
-            <asp:Label id="exitoMessageLogger" runat="server" />
-            <asp:Label id="infoMessageLogger" runat="server" />
-            <asp:Label id="warningMessageLogger" runat="server" />
-            <asp:LinkButton id="loginButton" Text="Login" runat="server" OnClick="loginButton_Click" />
+            <asp:Image ID="logoMuebla" runat="server" ImageUrl="/images/smallMuebla.png" />
+            <asp:Label ID="errorMessageLogger" runat="server" />
+            <asp:Label ID="exitoMessageLogger" runat="server" />
+            <asp:Label ID="infoMessageLogger" runat="server" />
+            <asp:Label ID="warningMessageLogger" runat="server" />
+            <asp:LinkButton ID="loginButton" Text="Login" runat="server" OnClick="loginButton_Click" />
             <asp:DropDownList runat="server" ID="idiomasList" AutoPostBack="True" OnSelectedIndexChanged="idiomasList_SelectedIndexChanged" />
 
             <asp:ImageButton runat="server" ImageUrl="/images/shopping_cart.png" ID="shoppingCart" OnClick="shoppingCart_Click" />
-            <asp:Label Text="Bienvenido!" id="greetingsLabel" runat="server" />
-                
+            <asp:Label Text="Bienvenido!" ID="greetingsLabel" runat="server" />
+
             <asp:Label Text="" runat="server" ID="usrText" />
-            <asp:LinkButton id="logoutButton" Text="Logout" runat="server" OnClick="logout_Click" />
+            <asp:LinkButton ID="logoutButton" Text="Logout" runat="server" OnClick="logout_Click" />
         </div>
         <div id="left">
             <asp:TreeView ExpandDepth="1" runat="server" ID="mainTree" ExpandImageUrl="/images/expand_more.png" CollapseImageUrl="/images/expand_less.png">

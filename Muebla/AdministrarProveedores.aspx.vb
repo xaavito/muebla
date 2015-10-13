@@ -13,6 +13,7 @@
         Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
         Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)
+        Session("idProveedor") = id
         Dim listaProvs As List(Of BE.ProveedorBE) = Session("proveedores")
         For Each prov As BE.ProveedorBE In listaProvs
             If prov.id = id Then
@@ -48,11 +49,23 @@
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-
+        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
+        Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
+        Dim id As Integer = Integer.Parse(con.Text.ToString)
+        Session("idProveedor") = id
+        Try
+            BLL.ProveedorBLL.eliminarProveedor(id)
+            Throw New Util.EliminacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
-
+        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
+        Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
+        Dim id As Integer = Integer.Parse(con.Text.ToString)
+        Session("idProveedor") = id
     End Sub
 
     Protected Sub proveedoresResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
@@ -113,10 +126,24 @@
     End Sub
 
     Protected Sub modificarButton_Click(sender As Object, e As EventArgs)
-
+        Dim prov As New BE.ProveedorBE
+        prov.id = Session("idProveedor")
+        prov.cuit = Me.cuitTextBox.Text
+        prov.direccion = Me.direccionTextBox.Text
+        prov.mail = Me.emailTextBox.Text
+        prov.razonSocial = Me.nombreTextBox.Text
+        prov.telefono = Me.telefonoTextBox.Text
+        prov.productos = Session("productosPropios")
+        Try
+            BLL.ProveedorBLL.modificarProveedor(prov)
+            Throw New Util.ModificacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        Me.editData.Visible = False
     End Sub
 
     Protected Sub cancelarButton_Click(sender As Object, e As EventArgs)
-
+        Me.editData.Visible = False
     End Sub
 End Class

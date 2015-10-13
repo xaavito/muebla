@@ -174,7 +174,7 @@
                 </asp:TableCell>
             </asp:TableRow>
         </asp:Table>
-        <asp:Button Text="Modificar" id="modificarButton" runat="server" OnClick="modificarButton_Click"/>
-        <asp:Button Text="Cancelar" id="cancelarButton" runat="server" OnClick="cancelarButton_Click"/>
+        <asp:Button Text="Modificar" ID="modificarButton" runat="server" OnClick="modificarButton_Click" />
+        <asp:Button Text="Cancelar" ID="cancelarButton" runat="server" OnClick="cancelarButton_Click" />
     </div>
 </asp:Content>
