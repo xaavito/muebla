@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImageUrl>/images/rapipago.png</ImageUrl>
+    <NavigateUrl>Ventas.aspx</NavigateUrl>
+    <AlternateText>
+    </AlternateText>
+    <Impressions>20</Impressions>
+    <Keyword></Keyword>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>/images/banelco.png</ImageUrl>
+    <NavigateUrl>Ventas.aspx</NavigateUrl>
+    <AlternateText></AlternateText>
+    <Impressions>20</Impressions>
+    <Keyword></Keyword>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>/images/mercadopago.png</ImageUrl>
+    <NavigateUrl>Ventas.aspx</NavigateUrl>
+    <AlternateText>
+    </AlternateText>
+    <Impressions>20</Impressions>
+    <Keyword></Keyword>
+  </Ad>
+
+  <Ad>
+    <ImageUrl>/images/mastercard.png</ImageUrl>
+    <NavigateUrl>Ventas.aspx</NavigateUrl>
+    <AlternateText>
+    </AlternateText>
+    <Impressions>20</Impressions>
+    <Keyword></Keyword>
+  </Ad>
+</Advertisements>

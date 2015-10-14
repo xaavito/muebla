@@ -104,6 +104,7 @@
     <Content Include="Bitacora.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="ConfirmarShowroom.aspx" />
+    <Content Include="adfile.xml" />
     <Content Include="css\MiEstilo.css" />
     <Content Include="DatosPersonales.aspx" />
     <Content Include="Factura.aspx" />
@@ -139,7 +140,6 @@
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
-    <Content Include="AdministrarListaPrecio.aspx" />
     <Content Include="NotaCredito.aspx" />
     <Content Include="NuevaPromo.aspx" />
     <Content Include="Observaciones.aspx" />
@@ -306,13 +306,6 @@
     </Compile>
     <Compile Include="MisPedidos.aspx.vb">
       <DependentUpon>MisPedidos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdministrarListaPrecio.aspx.designer.vb">
-      <DependentUpon>AdministrarListaPrecio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdministrarListaPrecio.aspx.vb">
-      <DependentUpon>AdministrarListaPrecio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
