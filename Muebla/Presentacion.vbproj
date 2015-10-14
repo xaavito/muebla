@@ -91,6 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdministrarIdiomas.aspx" />
+    <Content Include="AdministrarListaPrecio.aspx" />
     <Content Include="AdministrarProductos.aspx" />
     <Content Include="AdministrarProveedores.aspx" />
     <Content Include="AdministrarUsuarios.aspx" />
@@ -160,6 +161,13 @@
     </Compile>
     <Compile Include="AdministrarIdiomas.aspx.vb">
       <DependentUpon>AdministrarIdiomas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdministrarListaPrecio.aspx.designer.vb">
+      <DependentUpon>AdministrarListaPrecio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdministrarListaPrecio.aspx.vb">
+      <DependentUpon>AdministrarListaPrecio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AdministrarProductos.aspx.designer.vb">
