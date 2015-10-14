@@ -21,8 +21,8 @@ Public Class ListaPrecioBLL
     ''' 
     ''' <param name="activo"></param>
     ''' <param name="tipoVenta"></param>
-    Public Shared Function buscarListas(ByVal activo As Boolean, ByVal tipoVenta As TipoVentaBE) As List(Of ListaPrecioBE)
-        buscarListas = Nothing
+    Public Shared Function buscarListas(ByVal activo As Integer, ByVal tipoVenta As String) As List(Of ListaPrecioBE)
+        Return DAL.ListaPrecioDAL.buscarListas(activo, tipoVenta)
     End Function
 
     ''' 
@@ -32,6 +32,10 @@ Public Class ListaPrecioBLL
     Public Shared Sub modificarListaPrecio(ByVal desde As DateTime, ByVal aumento As Integer, ByVal tipoAumento As Boolean)
 
     End Sub
+
+    Shared Function getDetalleListaPrecio(id As Integer) As List(Of BE.ListaPrecioDetalleBE)
+        Return DAL.ListaPrecioDAL.getDetalleListaPrecio(id)
+    End Function
 
 
 End Class ' ListaPrecioBLL

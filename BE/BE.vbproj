@@ -104,6 +104,7 @@
     <Compile Include="TipoProductoBE.vb" />
     <Compile Include="TipoDocumentoBE.vb" />
     <Compile Include="TipoUsuarioBE.vb" />
+    <Compile Include="Estado.vb" />
     <Compile Include="TipoVentaBE.vb" />
     <Compile Include="UsuarioBE.vb" />
   </ItemGroup>

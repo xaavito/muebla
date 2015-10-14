@@ -1,12 +1,31 @@
 
 Public Class ListaPrecioBE
-
-
     Private _detalles As ListaPrecioDetalleBE
     Private _fechaDesde As Date
     Private _fechaHasta As Date
     Private _id As Long
-    Public m_ListaPrecioDetalleBE As ListaPrecioDetalleBE
+    Private _descripcion As String
+    Private _activo As Boolean
+
+    Public Property activo() As Boolean
+        Get
+            Return _activo
+        End Get
+        Set(ByVal value As Boolean)
+            _activo = value
+        End Set
+    End Property
+
+
+    Public Property descripcion() As String
+        Get
+            Return _descripcion
+        End Get
+        Set(ByVal value As String)
+            _descripcion = value
+        End Set
+    End Property
+
 
     Public Property detalles() As ListaPrecioDetalleBE
         Get
@@ -43,8 +62,4 @@ Public Class ListaPrecioBE
             _id = Value
         End Set
     End Property
-
-
-
-
-End Class ' ListaPrecioBE
+End Class

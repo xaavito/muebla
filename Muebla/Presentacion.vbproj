@@ -106,7 +106,6 @@
     <Content Include="ConfirmarShowroom.aspx" />
     <Content Include="css\MiEstilo.css" />
     <Content Include="DatosPersonales.aspx" />
-    <Content Include="EditarProveedor.aspx" />
     <Content Include="Factura.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="HojaDeRuta.aspx" />
@@ -137,8 +136,7 @@
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
-    <Content Include="ModificacionListaPrecio.aspx" />
-    <Content Include="ModificarListaPrecio.aspx" />
+    <Content Include="AdministrarListaPrecio.aspx" />
     <Content Include="NotaCredito.aspx" />
     <Content Include="NuevaPromo.aspx" />
     <Content Include="Observaciones.aspx" />
@@ -259,13 +257,6 @@
       <DependentUpon>DatosPersonales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditarProveedor.aspx.designer.vb">
-      <DependentUpon>EditarProveedor.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="EditarProveedor.aspx.vb">
-      <DependentUpon>EditarProveedor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="controls\ExtendedPage.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -314,18 +305,11 @@
       <DependentUpon>MisPedidos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModificacionListaPrecio.aspx.designer.vb">
-      <DependentUpon>ModificacionListaPrecio.aspx</DependentUpon>
+    <Compile Include="AdministrarListaPrecio.aspx.designer.vb">
+      <DependentUpon>AdministrarListaPrecio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModificacionListaPrecio.aspx.vb">
-      <DependentUpon>ModificacionListaPrecio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ModificarListaPrecio.aspx.designer.vb">
-      <DependentUpon>ModificarListaPrecio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ModificarListaPrecio.aspx.vb">
-      <DependentUpon>ModificarListaPrecio.aspx</DependentUpon>
+    <Compile Include="AdministrarListaPrecio.aspx.vb">
+      <DependentUpon>AdministrarListaPrecio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />

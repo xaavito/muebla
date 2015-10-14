@@ -11,10 +11,6 @@
         Me.productosPropiosListBox.DataValueField = "id"
     End Sub
 
-    Protected Sub cancelarAltaProveedorButton_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Protected Sub confirmarAltaProveedorButton_Click(sender As Object, e As EventArgs)
         Dim prov As New BE.ProveedorBE
         prov.cuit = Me.cuitTextBox.Text

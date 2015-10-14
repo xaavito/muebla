@@ -19,5 +19,14 @@ Public Class Util
         End Try
     End Function
 
-
+    Public Shared Function getEstadoCombo() As List(Of BE.Estado)
+        Dim lista As New List(Of BE.Estado)
+        Dim ob As New BE.Estado(1, "Activo")
+        lista.Add(ob)
+        ob = New BE.Estado(0, "Inactivo")
+        lista.Add(ob)
+        ob = New BE.Estado(-1, "Todos")
+        lista.Add(ob)
+        Return lista
+    End Function
 End Class ' Util
