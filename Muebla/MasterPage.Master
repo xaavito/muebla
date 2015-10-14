@@ -31,13 +31,11 @@
             <asp:Label Text="" runat="server" ID="usrText" />
             <asp:LinkButton ID="logoutButton" Text="Logout" runat="server" OnClick="logout_Click" />
         </div>
-        <div id="left">
-            <asp:TreeView ExpandDepth="1" runat="server" ID="mainTree" ExpandImageUrl="/images/expand_more.png" CollapseImageUrl="/images/expand_less.png">
-            </asp:TreeView>
+        <div id="menu">
+            <asp:Menu Orientation="Horizontal" runat="server" ID="mainTree" />
         </div>
         <div id="right">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
         </div>
     </form>
 </body>

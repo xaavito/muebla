@@ -134,28 +134,28 @@ Public Class MasterPage
     Private Sub loadPermisos(usr As UsuarioBE)
         If Not usr Is Nothing Then
             Me.usrText.Text = usr.apellido + " " + usr.nombre
-            Me.mainTree.Nodes.Clear()
+            Me.mainTree.Items.Clear()
             For Each rol As BE.RolBE In usr.roles
                 For Each comp As BE.ComponenteBE In rol.componentes
                     If comp.padre Is Nothing Then
-                        For Each nodo As TreeNode In Me.mainTree.Nodes
+                        For Each nodo As MenuItem In Me.mainTree.Items
                             If nodo.Text.Equals(comp.texto) Then
                                 Exit For
                             End If
                         Next
-                        Me.mainTree.Nodes.Add(New TreeNode(comp.texto, comp.nombre, "", comp.pagina, ""))
+                        Me.mainTree.Items.Add(New MenuItem(comp.texto, comp.nombre, "", comp.pagina, ""))
                     End If
                 Next
                 For Each comp As BE.ComponenteBE In rol.componentes
                     If Not comp.padre Is Nothing Then
-                        For Each nodo As TreeNode In Me.mainTree.Nodes
+                        For Each nodo As MenuItem In Me.mainTree.Items
                             If nodo.Text.Equals(comp.padre.texto) Then
-                                For Each nodito As TreeNode In nodo.ChildNodes
+                                For Each nodito As MenuItem In nodo.ChildItems
                                     If nodito.Text.Equals(comp.texto) Then
                                         Exit For
                                     End If
                                 Next
-                                nodo.ChildNodes.Add(New TreeNode(comp.texto, comp.nombre, "", comp.pagina, ""))
+                                nodo.ChildItems.Add(New MenuItem(comp.texto, comp.nombre, "", comp.pagina, ""))
                             End If
                         Next
                     End If
@@ -194,7 +194,7 @@ Public Class MasterPage
     End Sub
 
     Protected Sub logout_Click(sender As Object, e As EventArgs)
-        Me.mainTree.Nodes.Clear()
+        Me.mainTree.Items.Clear()
         BLL.GestorBitacoraBLL.registrarEvento(Session("Usuario"), Util.Enumeradores.Bitacora.LogoutExitoso)
         Session("Usuario") = Nothing
         usr = Nothing
@@ -204,10 +204,10 @@ Public Class MasterPage
     End Sub
 
     Private Sub loadBasic()
-        Dim t As New TreeNode
+        Dim t As New MenuItem
         t.Text = "Shop!"
         t.NavigateUrl = "Ventas.aspx"
-        Me.mainTree.Nodes.Add(t)
+        Me.mainTree.Items.Add(t)
     End Sub
 
     Private Sub checkPermisoPaginaActual()

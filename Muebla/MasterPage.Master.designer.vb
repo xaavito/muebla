@@ -137,7 +137,7 @@ Partial Public Class MasterPage
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents mainTree As Global.System.Web.UI.WebControls.TreeView
+    Protected WithEvents mainTree As Global.System.Web.UI.WebControls.Menu
 
     '''<summary>
     '''Control ContentPlaceHolder1.

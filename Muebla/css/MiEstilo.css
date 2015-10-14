@@ -2,6 +2,7 @@
     width:98%;
     margin:15px;
     height:90%;
+    background-color: beige;
 }
 body 
 {
@@ -15,16 +16,19 @@ body
     background-position:center;
 }
 #top {
-    border: 2px solid black;
+    width: 99.7%;
+    text-align: right;
+    background-color: beige;
+    height:45px;
+}
+#menu {
     border-radius: 5px;
     width: 99.7%;
     text-align: right;
     background-color: beige;
     height:45px;
 }
-
 #left {
-    border: 2px solid black;
     border-radius: 5px;
     float: left;
     width: 30%;
@@ -34,11 +38,10 @@ body
 }
 
 #right {
-    border: 2px solid black;
     border-radius: 5px;
     float: right;
-    width: 69%;
-    height: 550px;
+    width: 99.7%;
+    height: 100%;
     overflow: auto;
     background-color: beige;
 }
