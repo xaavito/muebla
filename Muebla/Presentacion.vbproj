@@ -118,6 +118,7 @@
     <Content Include="images\banelco.png" />
     <Content Include="images\bigMuebla.jpg" />
     <Content Include="images\cabal.png" />
+    <Content Include="images\cross_icon_normal.png" />
     <Content Include="images\deleteItem.png" />
     <Content Include="images\detail.png" />
     <Content Include="images\editItem.png" />
@@ -132,6 +133,8 @@
     <Content Include="images\rapipago.png" />
     <Content Include="images\shopping_cart.png" />
     <Content Include="images\smallMuebla.png" />
+    <Content Include="images\Stage_BG_btm.png" />
+    <Content Include="images\titlebar_bg.jpg" />
     <Content Include="images\visa.png" />
     <Content Include="Login.aspx" />
     <Content Include="Main.aspx" />
