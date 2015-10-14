@@ -32,10 +32,18 @@
             <asp:LinkButton ID="logoutButton" Text="Logout" runat="server" OnClick="logout_Click" />
         </div>
         <div id="menu">
-            <asp:Menu Orientation="Horizontal" runat="server" ID="mainTree" />
+            <asp:Menu Orientation="Horizontal" runat="server" ID="mainTree" CssClass="SomeMenuClass"
+                StaticMenuStyle-CssClass="StaticMenuStyle"
+                StaticMenuItemStyle-CssClass="StaticMenuItemStyle"
+                MaximumDynamicDisplayLevels="1">
+                <LevelMenuItemStyles>
+                    <asp:MenuItemStyle CssClass="level0" />
+                    <asp:MenuItemStyle CssClass="level1" />
+                </LevelMenuItemStyles>
+            </asp:Menu>
         </div>
         <div id="right">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"/>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
         </div>
     </form>
 </body>
