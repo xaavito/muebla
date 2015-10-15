@@ -259,7 +259,11 @@ body {
 }
 /* MENUUUUU*/
 #mainTree {
-    text-align:left;
+    text-align: left;
+}
+
+.StaticHoverStyle {
+    background: #000000;
 }
 
 .SomeMenuClass {
@@ -273,22 +277,8 @@ body {
     .SomeMenuClass a.static.selected {
         color: Blue !important;
     }
-   
-/*
-#mainTree a.static.highlighted
-{
-    background-color:Red;
-}
 
-#mainTree a.static.selected
-{
-    background-color:Blue;
-    text-decoration:none;
-}
-    */
-
-.level1
-{
+.level1 {
     color: White;
     background-color: Black;
     font-variant: small-caps;
@@ -296,10 +286,12 @@ body {
     font-weight: bold;
 }
 
-.level2
-{
-    color: Blue;
+.level2 {
+    color: white;
     font-family: Gill Sans MT !important;
     font-size: medium;
     background-color: Gray;
+}
+#UpdatePanel1, #AdRotator1{
+    text-align:center;
 }

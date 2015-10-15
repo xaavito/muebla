@@ -35,6 +35,7 @@
             <asp:Menu Orientation="Horizontal" runat="server" ID="mainTree" CssClass="SomeMenuClass"
                 StaticMenuStyle-CssClass="StaticMenuStyle"
                 StaticMenuItemStyle-CssClass="StaticMenuItemStyle"
+                StaticHoverStyle-CssClass="StaticHoverStyle"
                 MaximumDynamicDisplayLevels="1">
                 <LevelMenuItemStyles>
                     <asp:MenuItemStyle CssClass="level0" />

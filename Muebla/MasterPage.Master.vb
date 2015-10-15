@@ -86,7 +86,7 @@ Public Class MasterPage
                             End If
                         ElseIf TypeOf Control Is Button Then
                             If Not CType(Control, Button).ID Is Nothing Then
-                                Debug.WriteLine("Button: " + CType(Control, Button).ID.ToString)
+                                'Debug.WriteLine("Button: " + CType(Control, Button).ID.ToString)
                                 If CType(Control, Button).ID.Equals(comp.nombre) Then
                                     CType(Control, Button).Text = comp.texto
                                 End If
@@ -98,7 +98,7 @@ Public Class MasterPage
             Next
         ElseIf TypeOf con Is Button Then
             If Not CType(con, Button).ID Is Nothing Then
-                Debug.WriteLine("Button: " + CType(con, Button).ID.ToString)
+                'Debug.WriteLine("Button: " + CType(con, Button).ID.ToString)
                 If CType(con, Button).ID.Equals(comp.nombre) Then
                     CType(con, Button).Text = comp.texto
                 End If

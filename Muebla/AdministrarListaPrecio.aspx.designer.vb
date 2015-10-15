@@ -77,6 +77,24 @@ Partial Public Class ModificarListaPrecio
     Protected WithEvents listaPrecioResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
+    '''Control Button1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control lnkDelete_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnkDelete_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
     '''Control DivDeleteConfirmation.
     '''</summary>
     '''<remarks>
@@ -84,6 +102,42 @@ Partial Public Class ModificarListaPrecio
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents DivDeleteConfirmation As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control confirmarLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control eliminarLeyendaLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents eliminarLeyendaLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control ButtonDeleleOkay.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonDeleleOkay As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control ButtonDeleteCancel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonDeleteCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control detailsData.
@@ -102,4 +156,67 @@ Partial Public Class ModificarListaPrecio
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents detalleListaPrecioResultGrid As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control btnShowPopup.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents btnShowPopup As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control lnkEditDetail_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnkEditDetail_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivEditDetailConfirmation.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivEditDetailConfirmation As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control edicionLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents edicionLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control valorTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents valorTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control ButtonEditDetailOkay.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonEditDetailOkay As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control ButtonEditDetailCancel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonEditDetailCancel As Global.System.Web.UI.WebControls.Button
 End Class

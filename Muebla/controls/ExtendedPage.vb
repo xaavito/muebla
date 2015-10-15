@@ -133,11 +133,16 @@ Public Class ExtendedPage
 
     End Sub
 
-    Public Shared Function getItemId(sender As Object, gridView As GridView) As Integer
-        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
-        Dim con As Label = CType(gridView.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
-        Dim id As Integer = Integer.Parse(con.Text.ToString)
-        Return id
+    Public Function getItemId(sender As Object, gridView As GridView) As Integer
+        Try
+            Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
+            Dim con As Label = CType(gridView.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
+            Dim id As Integer = Integer.Parse(con.Text.ToString)
+            Return id
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+
     End Function
 
     Public Function getPostBackCaller()

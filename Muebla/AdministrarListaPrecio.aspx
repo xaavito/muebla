@@ -3,12 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager runat="server" />    
+    <asp:ScriptManager runat="server" />
     <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria" CssClass="table">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="estadoLabel" Text="Estado" />
-            </asp:TableCell><asp:TableCell>
+            </asp:TableCell>
+            <asp:TableCell>
                 <asp:DropDownList runat="server" ID="estadoListBox" />
             </asp:TableCell>
         </asp:TableRow>
@@ -68,15 +69,6 @@
                     <asp:ImageButton ID="ibtnDelete" runat="server"
                         ImageUrl="/images/deleteItem.png"
                         OnClick="ibtnDelete_Click" />
-                    <ajaxToolkit:ModalPopupExtender
-                        ID="lnkDelete_ModalPopupExtender" runat="server"
-                        CancelControlID="ButtonDeleteCancel" OkControlID="ButtonDeleleOkay"
-                        TargetControlID="ibtnDelete" PopupControlID="DivDeleteConfirmation"
-                        BackgroundCssClass="ModalPopupBG">
-                    </ajaxToolkit:ModalPopupExtender>
-                    <ajaxToolkit:ConfirmButtonExtender ID="lnkDelete_ConfirmButtonExtender"
-                        runat="server" TargetControlID="ibtnDelete" Enabled="True"
-                        DisplayModalPopupID="lnkDelete_ModalPopupExtender"></ajaxToolkit:ConfirmButtonExtender>
                     <asp:ImageButton ID="ibtnDetails" runat="server"
                         ImageUrl="/images/detail.png"
                         OnClick="ibtnDetails_Click" />
@@ -84,24 +76,31 @@
             </asp:TemplateField>
         </Columns>
     </asp:GridView>
+    <asp:Button ID="Button1" runat="server" Style="display: none" />
+
+    <ajaxToolkit:ModalPopupExtender
+        ID="lnkDelete_ModalPopupExtender" runat="server"
+        CancelControlID="ButtonDeleteCancel"
+        TargetControlID="Button1" PopupControlID="DivDeleteConfirmation"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
     <asp:Panel class="popupConfirmation" ID="DivDeleteConfirmation"
         Style="display: none" runat="server">
         <div class="popup_Container">
             <div class="popup_Titlebar" id="PopupHeader">
                 <div class="TitlebarLeft">
-                    Delete Expanse
-                </div>
-                <div class="TitlebarRight" onclick="$get('ButtonDeleteCancel').click();">
+                    <asp:Label Text="Confirmacion" ID="confirmarLabel" runat="server" />
                 </div>
             </div>
             <div class="popup_Body">
                 <p>
-                    Are you sure, you want to delete the expanse?
+                    <asp:Label ID="eliminarLeyendaLabel" Text="Desea Eliminar?" runat="server" />
                 </p>
             </div>
             <div class="popup_Buttons">
-                <input id="ButtonDeleleOkay" type="button" value="Okay" />
-                <input id="ButtonDeleteCancel" type="button" value="Cancel" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonDeleleOkay" OnClick="ButtonDeleleOkay_Click" />
+                <asp:Button runat="server" Text="Cancelar" ID="ButtonDeleteCancel" />
             </div>
         </div>
     </asp:Panel>
@@ -143,9 +142,6 @@
                         <asp:ImageButton ID="ibtnEditDetail" runat="server"
                             ImageUrl="/images/editItem.png"
                             OnClick="ibtnEditDetail_Click" />
-                        <asp:ImageButton ID="ibtnDeleteDetail" runat="server"
-                            ImageUrl="/images/deleteItem.png"
-                            OnClick="ibtnDeleteDetail_Click" />
                         <asp:ImageButton ID="ibtnDetailsDetail" runat="server"
                             ImageUrl="/images/detail.png"
                             OnClick="ibtnDetailsDetail_Click" />
@@ -153,5 +149,34 @@
                 </asp:TemplateField>
             </Columns>
         </asp:GridView>
+
+        <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
+
+        <ajaxToolkit:ModalPopupExtender
+            ID="lnkEditDetail_ModalPopupExtender" runat="server"
+            CancelControlID="ButtonEditDetailCancel"
+            TargetControlID="btnShowPopup" PopupControlID="DivEditDetailConfirmation"
+            BackgroundCssClass="ModalPopupBG">
+        </ajaxToolkit:ModalPopupExtender>
+
+        <asp:Panel class="popupConfirmation" ID="DivEditDetailConfirmation"
+            Style="display: none" runat="server">
+            <div class="popup_Container">
+                <div class="popup_Titlebar" id="PopupDetailHeader">
+                    <div class="TitlebarLeft">
+                        <asp:Label Text="Edicion" ID="edicionLabel" runat="server" />
+                    </div>
+                </div>
+                <div class="popup_Body">
+                    <p>
+                        <asp:TextBox ID="valorTextBox" runat="server" />
+                    </p>
+                </div>
+                <div class="popup_Buttons">
+                    <asp:Button runat="server" Text="Confirmar" ID="ButtonEditDetailOkay" OnClick="confirmarEdicionButton_Click" />
+                    <asp:Button runat="server" Text="Cancelar" ID="ButtonEditDetailCancel" OnClick="ButtonEditDetailCancel_Click" />
+                </div>
+            </div>
+        </asp:Panel>
     </div>
 </asp:Content>

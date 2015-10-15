@@ -118,6 +118,9 @@
     <Content Include="images\arrowRight.png" />
     <Content Include="images\backup-restore.png" />
     <Content Include="images\banelco.png" />
+    <Content Include="images\banner_colorfull.jpg" />
+    <Content Include="images\banner_compra.jpg" />
+    <Content Include="images\banner_detalles.jpg" />
     <Content Include="images\bigMuebla.jpg" />
     <Content Include="images\cabal.png" />
     <Content Include="images\cross_icon_normal.png" />
