@@ -52,13 +52,12 @@ Public Class ExtendedPage
         messageLogger = CType(Me.Master.FindControl("exitoMessageLogger"), Label)
         messageLogger.Text = ""
         checkPermisoPaginaActual()
-        'usuario = Session("Usuario")
     End Sub
 
     Private Sub checkPermisoPaginaActual()
         Dim paginaActual As String = Path.GetFileName(Request.PhysicalPath)
         Dim permisoPaginaActual = False
-        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Or paginaActual = "Registro.aspx" Or paginaActual = "RecuperarContrasena.aspx" Then
+        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Or paginaActual = "Registro.aspx" Or paginaActual = "RecuperarContrasena.aspx" Or paginaActual = "Carrito.aspx" Then
             permisoPaginaActual = True
         Else
             If Not getUsuario() Is Nothing Then
@@ -142,21 +141,35 @@ Public Class ExtendedPage
         Catch ex As Exception
             logMessage(ex)
         End Try
+    End Function
 
+    Public Function getItemId(sender As Object, listView As ListView) As Integer
+        Try
+            Dim listItem As ListViewItem = CType(CType(sender, ImageButton).NamingContainer, ListViewItem)
+            Dim con As Label = CType(listItem.FindControl("itemID"), Label)
+            Dim id As Integer = Integer.Parse(con.Text.ToString)
+            Return id
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Function
 
     Public Function getPostBackCaller()
-        Dim CtrlID As String = String.Empty
-        If Request.Form("__EVENTTARGET") IsNot Nothing And
-           Request.Form("__EVENTTARGET") <> String.Empty Then
-            CtrlID = Request.Form("__EVENTTARGET")
-            Dim arr() As String = CtrlID.Split("$")
-            Try
-                CtrlID = arr(2)
-            Catch ex As Exception
-                CtrlID = arr(1)
-            End Try
-        End If
-        Return CtrlID
+        Try
+            Dim CtrlID As String = String.Empty
+            If Request.Form("__EVENTTARGET") IsNot Nothing And
+               Request.Form("__EVENTTARGET") <> String.Empty Then
+                CtrlID = Request.Form("__EVENTTARGET")
+                Dim arr() As String = CtrlID.Split("$")
+                Try
+                    CtrlID = arr(2)
+                Catch ex As Exception
+                    CtrlID = arr(1)
+                End Try
+            End If
+            Return CtrlID
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Function
 End Class

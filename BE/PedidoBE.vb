@@ -8,13 +8,24 @@ Public Class PedidoBE
     Private _medioPago As MedioPagoBE
     Private _pagado As Boolean
     Private _tipoVenta As TipoVentaBE
-    Private _productos As List(Of BE.ListaPrecioDetalleBE)
+    Private _productos As List(Of BE.PedidoProductoBE)
+    Private _estado As BE.EstadoPedidoBE
 
-    Public Property productos() As List(Of BE.ListaPrecioDetalleBE)
+    Public Property estado() As BE.EstadoPedidoBE
+        Get
+            Return _estado
+        End Get
+        Set(ByVal value As BE.EstadoPedidoBE)
+            _estado = value
+        End Set
+    End Property
+
+
+    Public Property productos() As List(Of BE.PedidoProductoBE)
         Get
             Return _productos
         End Get
-        Set(ByVal value As List(Of BE.ListaPrecioDetalleBE))
+        Set(ByVal value As List(Of BE.PedidoProductoBE))
             _productos = value
         End Set
     End Property

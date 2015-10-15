@@ -3,15 +3,10 @@ Imports BE
 
 Public Class ProveedorBLL
 
-
-    ''' 
-    ''' <param name="prov"></param>
     Public Shared Function altaProveedor(ByVal prov As ProveedorBE) As Integer
         Return DAL.ProveedorDAL.altaProveedor(prov)
     End Function
 
-    ''' 
-    ''' <param name="prov"></param>
     Public Shared Function buscarProveedores(ByVal nom As String, ByVal contacto As String) As List(Of ProveedorBE)
         Return DAL.ProveedorDAL.buscarProveedores(nom, contacto)
     End Function

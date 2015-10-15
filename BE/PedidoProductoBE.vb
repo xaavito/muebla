@@ -1,15 +1,18 @@
-﻿Public Class PedidoProducto
-    Private _id As Int32
-    Public Property id() As Int32
+﻿Public Class PedidoProductoBE
+    Private _id As Integer
+    Private _pedido As BE.PedidoBE
+    Private _producto As BE.ListaPrecioDetalleBE
+    Private _cantidad As Integer
+
+    Public Property id() As Integer
         Get
             Return _id
         End Get
-        Set(ByVal value As Int32)
+        Set(ByVal value As Integer)
             _id = value
         End Set
     End Property
 
-    Private _pedido As BE.PedidoBE
     Public Property pedido() As BE.PedidoBE
         Get
             Return _pedido
@@ -19,7 +22,6 @@
         End Set
     End Property
 
-    Private _producto As BE.ListaPrecioDetalleBE
     Public Property producto() As BE.ListaPrecioDetalleBE
         Get
             Return _producto
@@ -29,18 +31,12 @@
         End Set
     End Property
 
-    Private _cantidad As Int32
-    Public Property cantidad() As Int32
+    Public Property cantidad() As Integer
         Get
             Return _cantidad
         End Get
-        Set(ByVal value As Int32)
+        Set(ByVal value As Integer)
             _cantidad = value
         End Set
     End Property
-
-
-
-
-
 End Class

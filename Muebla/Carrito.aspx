@@ -3,50 +3,65 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ListView runat="server" ID="lvProductos"
-        ItemType="BE.ListaPrecioDetalleBE" SelectMethod="buscarSeleccionados" OnItemCommand="lvProductos_ItemCommand">
-        <LayoutTemplate>
-            <div class="row">
-                <div runat="server" id="itemPlaceHolder" />
-            </div>
-        </LayoutTemplate>
-        <ItemTemplate>
-            <div runat="server" class="productos-container">
-                <div class="media" id="<%# Item.id %>">
+    <asp:GridView runat="server" ID="detalleCarritoResultGrid"
+        AutoGenerateColumns="false"
+        AllowPaging="true" PageSize="12"
+        ItemType="BE.ListaPrecioDetalleBE"
+        ShowFooter="false"
+        CssClass="mGrid"
+        PagerStyle-CssClass="pgr"
+        AlternatingRowStyle-CssClass="alt"
+        OnPreRender="detalleCarritoResultGrid_PreRender"
+        OnPageIndexChanging="detalleCarritoResultGrid_PageIndexChanging">
+        <Columns>
+            <asp:TemplateField HeaderText="ID">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Imagen">
+                <ItemTemplate>
                     <asp:Image ImageUrl='<%#"getImageHandler.ashx?id=" + Convert.ToString(Eval("producto.id"))%>' runat="server" GenerateEmptyAlternateText="False" />
-                    <div class="media-body">
-                        <h4 class="media-heading"><%# Item.producto.descripcion %></h4>
-                        <h4 class="media-heading"><%# Item.precio %></h4>
-
-                        <asp:LinkButton runat="server" ID="btnSacarAlCarrito" Text="Sacar del Carrito" CssClass="pull-right" CommandName="removeFromCart" CommandArgument="<%# Item.id %>" />
-                        <asp:Label id="cantidadLabel" Text="Cantidad" runat="server" />
-                        <asp:Label Text="<%# Item.id %>" runat="server" Visible="false" ID="listaPrecioDetalleId" />
-                        <asp:DropDownList ID="cantidad" runat="server">
-                            <asp:ListItem Text="1" Value="1" />
-                            <asp:ListItem Text="2" Value="2" />
-                        </asp:DropDownList>
-                    </div>
-                </div>
-            </div>
-        </ItemTemplate>
-        <EmptyDataTemplate>
-            No hay Productos en el Carrito.
-        </EmptyDataTemplate>
-    </asp:ListView>
-
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Descripcion">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemDescripcion" Text="<%# Item.producto.descripcion%>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Precio">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemPrecio" Text="<%# Item.getPrecio%>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Acciones">
+                <ItemTemplate>
+                    <asp:ImageButton ID="ibtnEditDetail" runat="server"
+                        ImageUrl="/images/editItem.png"
+                        OnClick="ibtnEditDetail_Click" />
+                    <asp:ImageButton ID="ibtnDelete" runat="server"
+                        ImageUrl="/images/deleteItem.png"
+                        OnClick="ibtnDelete_Click" />
+                    <asp:ImageButton ID="ibtnDetailsDetail" runat="server"
+                        ImageUrl="/images/detail.png"
+                        OnClick="ibtnDetailsDetail_Click" />
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
     <div>
-        <asp:Label id="tipoEnvioLabel" Text="Tipo Envio" runat="server" />
+        <asp:Label ID="tipoEnvioLabel" Text="Tipo Envio" runat="server" />
         <asp:DropDownList ID="tipoEnvio" runat="server">
             <asp:ListItem Text="Lo retiro por mi cuenta" Value="1" />
             <asp:ListItem Text="Quiero que me lo envien a mi domicilio" Value="2" />
         </asp:DropDownList>
 
-        <asp:Label id="modoPagoLabel" Text="Modo de Pago" runat="server" />
+        <asp:Label ID="modoPagoLabel" Text="Modo de Pago" runat="server" />
         <asp:DropDownList ID="modoPago" runat="server">
             <asp:ListItem Text="Pago mis Cuentas" Value="1" />
             <asp:ListItem Text="Rapi Pago" Value="2" />
         </asp:DropDownList>
 
-        <asp:Button id="comprarButton" Text="Comprar" runat="server" OnClick="comprar_Click" />
+        <asp:Button ID="comprarButton" Text="Comprar" runat="server" OnClick="comprar_Click" />
     </div>
 </asp:Content>

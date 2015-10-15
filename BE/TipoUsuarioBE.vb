@@ -3,7 +3,7 @@ Public Class TipoUsuarioBE
 
 
     Private _descripcion As String
-    Private _id As Int32
+    Private _id As Integer
 
     Public Property descripcion() As String
         Get
@@ -14,11 +14,11 @@ Public Class TipoUsuarioBE
         End Set
     End Property
 
-    Public Property id() As Int32
+    Public Property id() As Integer
         Get
             Return _id
         End Get
-        Set(ByVal Value As Int32)
+        Set(ByVal Value As Integer)
             _id = Value
         End Set
     End Property

@@ -23,7 +23,6 @@ body {
 }
 
 #menu {
-    border-radius: 5px;
     width: 99.7%;
     text-align: right;
     background-color: beige;
@@ -31,7 +30,6 @@ body {
 }
 
 #left {
-    border-radius: 5px;
     float: left;
     width: 30%;
     height: 550px;
@@ -40,7 +38,6 @@ body {
 }
 
 #right {
-    border-radius: 5px;
     float: right;
     width: 99.7%;
     height: 100%;
@@ -73,7 +70,8 @@ body {
 }
 
 .productos-container {
-    border: 2px solid black;
+    border: 2px dotted red;
+    border-radius: 5px;
     width: 32.8%;
     float: left;
 }
@@ -272,6 +270,10 @@ body {
 
     .SomeMenuClass a.static.highlighted {
         color: Red !important;
+    }
+
+    .SomeMenuClass a.dynamic.highlighted {
+        color: black !important;
     }
 
     .SomeMenuClass a.static.selected {

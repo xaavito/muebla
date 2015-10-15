@@ -69,6 +69,7 @@
     <Compile Include="ComprobanteBE.vb" />
     <Compile Include="ComprobanteDetalleBE.vb" />
     <Compile Include="DomicilioBE.vb" />
+    <Compile Include="EstadoPedidoBE.vb" />
     <Compile Include="EstadoProveedorBE.vb" />
     <Compile Include="EventoBE.vb" />
     <Compile Include="IdiomaBE.vb" />
@@ -92,7 +93,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PedidoBE.vb" />
-    <Compile Include="PedidoProducto.vb" />
+    <Compile Include="PedidoProductoBE.vb" />
     <Compile Include="ProductoBE.vb" />
     <Compile Include="PromocionBE.vb" />
     <Compile Include="ProveedorBE.vb" />

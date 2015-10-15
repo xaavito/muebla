@@ -29,4 +29,19 @@ Public Class Util
         lista.Add(ob)
         Return lista
     End Function
+
+    Public Shared Function getCantidadCombo() As List(Of BE.Estado)
+        Dim lista As New List(Of BE.Estado)
+        Dim ob As New BE.Estado(1, "1")
+        lista.Add(ob)
+        ob = New BE.Estado(2, "2")
+        lista.Add(ob)
+        ob = New BE.Estado(3, "3")
+        lista.Add(ob)
+        ob = New BE.Estado(4, "4")
+        lista.Add(ob)
+        ob = New BE.Estado(5, "5")
+        lista.Add(ob)
+        Return lista
+    End Function
 End Class ' Util

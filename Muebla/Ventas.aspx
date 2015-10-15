@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ListView runat="server" ID="lvProductos"
-        ItemType="BE.ListaPrecioDetalleBE" SelectMethod="listarProductos" OnItemCommand="lvProductos_ItemCommand">
+        ItemType="BE.ListaPrecioDetalleBE" SelectMethod="listarProductos">
         <LayoutTemplate>
             <div class="row">
                 <div runat="server" id="itemPlaceHolder" />
@@ -15,10 +15,12 @@
                 <div class="media">
                     <asp:Image ImageUrl='<%#"getImageHandler.ashx?id=" + Convert.ToString(Eval("producto.id"))%>' runat="server" GenerateEmptyAlternateText="False" />
                     <div class="media-body">
+                        <asp:Label ID="itemID" Text="<%# Item.producto.id %>" Visible="false" runat="server" />
                         <h3 class="media-heading"><%# Item.producto.descripcion %></h3>
                         <h5 class="media-heading"><%# Item.producto.breveDescripcion %></h5>
-                        <asp:Label Text="<%# Item.getPrecio%>" runat="server" id="precioItem" Visible='<%# Not getUsuario() Is Nothing%>'/>
-                        <asp:ImageButton runat="server" ID="btnAgregarAlCarrito" ImageUrl="/images/addToCart.png" CssClass="pull-right" CommandName="addToCart" CommandArgument="<%# Item.producto.id %>" Visible='<%# Not getUsuario() Is Nothing%>'/>
+                        <asp:Label Text="<%# Item.getPrecio%>" runat="server" ID="precioItem" Visible='<%# Not getUsuario() Is Nothing%>' />
+                        <asp:DropDownList runat="server" ID="cantDropDown" Visible='<%# Not getUsuario() Is Nothing%>' DataSource="<%# Util.Util.getCantidadCombo %>" DataTextField="descripcion" DataValueField="id" OnSelectedIndexChanged="cantDropDown_SelectedIndexChanged" />
+                        <asp:ImageButton runat="server" ID="btnAgregarAlCarrito" ImageUrl="/images/addToCart.png" CssClass="pull-right" Visible='<%# Not getUsuario() Is Nothing%>' OnClick="btnAgregarAlCarrito_Click" />
                     </div>
                 </div>
             </div>
