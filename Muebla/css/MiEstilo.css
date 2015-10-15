@@ -294,6 +294,12 @@ body {
     font-size: medium;
     background-color: Gray;
 }
-#UpdatePanel1, #AdRotator1{
-    text-align:center;
+
+#UpdatePanel1, #AdRotator1 {
+    text-align: center;
+}
+
+#ContentPlaceHolder1_totalLabel, #ContentPlaceHolder1_totalMontoLabel, #ContentPlaceHolder1_pasoLabel {
+    float: right;
+    font-size: -webkit-xxx-large;
 }

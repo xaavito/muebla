@@ -5,7 +5,7 @@ Public Class Ventas
     Inherits ExtendedPage
 
     Dim listaProductos As New List(Of ListaPrecioDetalleBE)
-    Dim carrito As List(Of ListaPrecioDetalleBE)
+    Dim carrito As New BE.PedidoBE
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
@@ -28,19 +28,16 @@ Public Class Ventas
     Protected Sub btnAgregarAlCarrito_Click(sender As Object, e As ImageClickEventArgs)
         carrito = Session("carrito")
         If carrito Is Nothing Then
-            carrito = New List(Of ListaPrecioDetalleBE)
+            carrito = New BE.PedidoBE
         End If
         Dim ID As Integer = Integer.Parse(getItemId(sender, Me.lvProductos))
         For Each a As ListaPrecioDetalleBE In listaProductos
             If a.producto.id = ID Then
-                carrito.Add(a)
+                carrito.addProducto(a, getSelectedCantidad(sender, Me.lvProductos))
                 Exit For
             End If
         Next
-        getSelectedCantidad(sender, Me.lvProductos)
-        'transformar a pedido?????
         Session("carrito") = carrito
-
     End Sub
 
     Public Function getSelectedCantidad(sender As Object, listView As ListView) As Integer

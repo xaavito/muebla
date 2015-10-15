@@ -1,41 +1,96 @@
 ﻿Public Class Carrito
     Inherits ExtendedPage
+
     Dim carrito As List(Of BE.ListaPrecioDetalleBE)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Me.detalleCarritoResultGrid.DataSource = Session("carrito")
-        Me.detalleCarritoResultGrid.DataBind()
+        loadPedido()
+        handleSteps()
     End Sub
 
     Protected Sub comprar_Click(sender As Object, e As EventArgs)
-        Dim pedido As New BE.PedidoBE
-        pedido.productos = New List(Of BE.PedidoProductoBE)
 
-        For Each prod As ListViewDataItem In Me.lvProductos.Items
-            Dim lpd As New BE.ListaPrecioDetalleBE
-
-            Debug.WriteLine("Cantidad " + CType(prod.FindControl("cantidad"), DropDownList).SelectedValue)
-            Debug.WriteLine("Lista Precio Detalle ID " + CType(prod.FindControl("listaPrecioDetalleId"), Label).Text)
-        Next
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-
-    End Sub
-
-    Protected Sub ibtnEditDetail_Click(sender As Object, e As ImageClickEventArgs)
-
-    End Sub
-
-    Protected Sub ibtnDetailsDetail_Click(sender As Object, e As ImageClickEventArgs)
-
+        Session("idEliminar") = getItemId(sender, Me.detalleCarritoResultGrid)
+        Me.lnkDelete_ModalPopupExtender.Show()
     End Sub
 
     Protected Sub detalleCarritoResultGrid_PreRender(sender As Object, e As EventArgs)
 
     End Sub
 
-    Protected Sub detalleCarritoResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-
+    Protected Sub pasoConfirmarButton_Click(sender As Object, e As EventArgs)
+        handleSteps()
     End Sub
+
+    Protected Sub pasoPagoButton_Click(sender As Object, e As EventArgs)
+        handleSteps()
+    End Sub
+
+    Protected Sub confirmarCarritoButton_Click(sender As Object, e As EventArgs)
+        handleSteps()
+    End Sub
+
+    Protected Sub ButtonDeleleOkay_Click(sender As Object, e As EventArgs)
+        Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
+        For Each p As BE.PedidoProductoBE In pedido.productos
+            If p.producto.id = Session("idEliminar") Then
+                pedido.productos.Remove(p)
+                Exit For
+            End If
+        Next
+        Session("carrito") = pedido
+        loadPedido()
+    End Sub
+
+    Protected Sub detalleCarritoResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+    End Sub
+
+    Private Sub loadPedido()
+        Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
+        If Not pedido Is Nothing Then
+            Me.detalleCarritoResultGrid.DataSource = pedido.productos
+            Me.detalleCarritoResultGrid.DataBind()
+
+            Dim t As Decimal
+            For Each p As BE.PedidoProductoBE In pedido.productos
+                t += p.getPrecio
+            Next
+            Me.totalMontoLabel.Text = String.Format("{0:C}", t)
+        End If
+    End Sub
+
+    Private Sub handleSteps()
+        If Me.pasoLabel.Text = "" Then
+            Me.pasoLabel.Text = "Paso 1"
+            Me.pasoEnvio.Visible = False
+            Me.pasoPago.Visible = False
+            Me.pasoConfirmacion.Visible = False
+            Return
+        End If
+        If Me.pasoLabel.Text = "Paso 1" Then
+            Me.pasoLabel.Text = "Paso 2"
+            Me.pasoEnvio.Visible = True
+            Me.pasoPago.Visible = False
+            Me.pasoConfirmacion.Visible = False
+            Return
+        End If
+        If Me.pasoLabel.Text = "Paso 2" Then
+            Me.pasoLabel.Text = "Paso 3"
+            Me.pasoEnvio.Visible = False
+            Me.pasoPago.Visible = True
+            Me.pasoConfirmacion.Visible = False
+            Return
+        End If
+        If Me.pasoLabel.Text = "Paso 3" Then
+            Me.pasoLabel.Text = "Paso 4"
+            Me.pasoEnvio.Visible = False
+            Me.pasoPago.Visible = False
+            Me.pasoConfirmacion.Visible = True
+            Return
+        End If
+    End Sub
+
 End Class

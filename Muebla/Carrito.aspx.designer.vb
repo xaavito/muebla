@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class Carrito
 
     '''<summary>
+    '''Control pasoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pasoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
     '''Control detalleCarritoResultGrid.
     '''</summary>
     '''<remarks>
@@ -23,13 +32,103 @@ Partial Public Class Carrito
     Protected WithEvents detalleCarritoResultGrid As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control lvProductos.
+    '''Control totalLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lvProductos As Global.System.Web.UI.WebControls.ListView
+    Protected WithEvents totalLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control totalMontoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents totalMontoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control Button1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control lnkDelete_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnkDelete_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivDeleteConfirmation.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivDeleteConfirmation As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control confirmarLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control eliminarLeyendaLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents eliminarLeyendaLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control ButtonDeleleOkay.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonDeleleOkay As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control ButtonDeleteCancel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonDeleteCancel As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control confirmarCarritoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarCarritoButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control pasoEnvio.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pasoEnvio As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
     '''Control tipoEnvioLabel.
@@ -50,29 +149,65 @@ Partial Public Class Carrito
     Protected WithEvents tipoEnvio As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Control modoPagoLabel.
+    '''Control pasoPagoButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents modoPagoLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents pasoPagoButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control modoPago.
+    '''Control pasoPago.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents modoPago As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents pasoPago As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control comprarButton.
+    '''Control Label2.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents comprarButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control DropDownList2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DropDownList2 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control pasoConfirmarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pasoConfirmarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control pasoConfirmacion.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pasoConfirmacion As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''Control Button2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
 End Class

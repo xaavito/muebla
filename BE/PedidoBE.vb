@@ -1,6 +1,4 @@
 Public Class PedidoBE
-
-
     Private _comprobantes As List(Of ComprobanteBE)
     Private _envioPorFlete As Boolean
     Private _fechaCreacion As DateTime
@@ -9,13 +7,26 @@ Public Class PedidoBE
     Private _pagado As Boolean
     Private _tipoVenta As TipoVentaBE
     Private _productos As List(Of BE.PedidoProductoBE)
-    Private _estado As BE.EstadoPedidoBE
+    Private _estado As Integer
 
-    Public Property estado() As BE.EstadoPedidoBE
+    Public Sub New()
+        productos = New List(Of PedidoProductoBE)
+        estado = EstadoPedidoBE.EstadoPedido.Pedido
+    End Sub
+
+    Public Sub addProducto(ByVal lpd As ListaPrecioDetalleBE, ByVal cant As Integer)
+        Dim p As New PedidoProductoBE
+        p.cantidad = cant
+        p.pedido = Me
+        p.producto = lpd
+        productos.Add(p)
+    End Sub
+
+    Public Property estado() As Integer
         Get
             Return _estado
         End Get
-        Set(ByVal value As BE.EstadoPedidoBE)
+        Set(ByVal value As Integer)
             _estado = value
         End Set
     End Property

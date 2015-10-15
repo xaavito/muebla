@@ -39,4 +39,8 @@
             _cantidad = value
         End Set
     End Property
+
+    Public Function getPrecio() As String
+        Return String.Format("{0:C}", cantidad * producto.precio)
+    End Function
 End Class
