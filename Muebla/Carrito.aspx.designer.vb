@@ -32,15 +32,6 @@ Partial Public Class Carrito
     Protected WithEvents detalleCarritoResultGrid As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
-    '''Control totalLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents totalLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''Control totalMontoLabel.
     '''</summary>
     '''<remarks>
@@ -48,6 +39,15 @@ Partial Public Class Carrito
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents totalMontoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control totalLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents totalLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control Button1.
@@ -176,13 +176,13 @@ Partial Public Class Carrito
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control DropDownList2.
+    '''Control modoPago.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DropDownList2 As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents modoPago As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control pasoConfirmarButton.
@@ -203,11 +203,11 @@ Partial Public Class Carrito
     Protected WithEvents pasoConfirmacion As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control Button2.
+    '''Control confirmarPedidoCompra.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Button2 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents confirmarPedidoCompra As Global.System.Web.UI.WebControls.Button
 End Class

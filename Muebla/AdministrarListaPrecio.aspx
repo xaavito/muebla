@@ -169,6 +169,7 @@
                 </div>
                 <div class="popup_Body">
                     <p>
+                        <asp:Label ID="valoLabel" runat="server" />
                         <asp:TextBox ID="valorTextBox" runat="server" />
                     </p>
                 </div>

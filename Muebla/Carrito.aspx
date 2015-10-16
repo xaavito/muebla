@@ -101,7 +101,7 @@
 
     <div id="pasoPago" runat="server">
         <asp:Label ID="Label2" Text="Modo de Pago" runat="server" />
-        <asp:DropDownList ID="DropDownList2" runat="server">
+        <asp:DropDownList ID="modoPago" runat="server">
             <asp:ListItem Text="Pago mis Cuentas" Value="1" />
             <asp:ListItem Text="Rapi Pago" Value="2" />
         </asp:DropDownList>
@@ -110,6 +110,6 @@
     </div>
 
     <div id="pasoConfirmacion" runat="server">
-        <asp:Button ID="Button2" Text="Comprar" runat="server" OnClick="comprar_Click" />
+        <asp:Button ID="confirmarPedidoCompra" Text="Comprar" runat="server" OnClick="comprar_Click" />
     </div>
 </asp:Content>

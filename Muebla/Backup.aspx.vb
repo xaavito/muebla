@@ -55,7 +55,7 @@ Public Class Backup
         Try
             BLL.GestorResguardoBLL.realizarRestore(id)
             buscarBackups()
-            logMessage(New Util.RestauracionExitosaException)
+            Throw New Util.RestauracionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try

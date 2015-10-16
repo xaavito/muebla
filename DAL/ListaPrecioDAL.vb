@@ -84,6 +84,24 @@ Public Class ListaPrecioDAL
         Return list
     End Function
 
+    Shared Sub modificarListaPrecioDetalle(idLpd As Integer, precio As String)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            'NO IMPLEMENTADO
+            repository.crearComando("MODIFICAR_LISTA_PRECIO_DETALLE_SP")
+            repository.addParam("@id", idLpd)
+            repository.addParam("@precio", precio)
+
+            id = repository.executeSearchWithStatus
+            If (id <= 0) Then
+                Throw New Util.ModificarException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
 
 End Class ' ListaPrecioDAL
 

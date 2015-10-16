@@ -2,11 +2,16 @@
     Inherits ExtendedPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        Me.estadoListBox.DataSource = Util.Util.getEstadoCombo
-        Me.estadoListBox.DataValueField = "id"
-        Me.estadoListBox.DataTextField = "descripcion"
-        Me.estadoListBox.DataBind()
-        Me.detailsData.Visible = True
+        Try
+            Me.estadoListBox.DataSource = Util.Util.getEstadoCombo
+            Me.estadoListBox.DataValueField = "id"
+            Me.estadoListBox.DataTextField = "descripcion"
+            Me.estadoListBox.DataBind()
+            Me.detailsData.Visible = True
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
@@ -67,10 +72,13 @@
     End Sub
 
     Private Sub buscarDetalles()
-        'Me.detailsData.Visible = Not Me.detailsData.Visible
-        Session("detallesListaPrecio") = BLL.ListaPrecioBLL.getDetalleListaPrecio(Session("idListaPrecio"))
-        Me.detalleListaPrecioResultGrid.DataSource = Session("detallesListaPrecio")
-        Me.detalleListaPrecioResultGrid.DataBind()
+        Try
+            Session("detallesListaPrecio") = BLL.ListaPrecioBLL.getDetalleListaPrecio(Session("idListaPrecio"))
+            Me.detalleListaPrecioResultGrid.DataSource = Session("detallesListaPrecio")
+            Me.detalleListaPrecioResultGrid.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub ButtonDeleleOkay_Click(sender As Object, e As EventArgs)
@@ -78,7 +86,12 @@
     End Sub
 
     Protected Sub confirmarEdicionButton_Click(sender As Object, e As EventArgs)
-
+        Try
+            BLL.ListaPrecioBLL.modificarListaPrecioDetalle(Session("idListaPrecioDetalle"), Me.valorTextBox.Text)
+            buscarDetalles()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub ButtonEditDetailCancel_Click(sender As Object, e As EventArgs)

@@ -4,8 +4,6 @@ Imports BE
 Public Class ProveedorDAL
 
 
-    ''' 
-    ''' <param name="prov"></param>
     Public Shared Function altaProveedor(ByVal prov As ProveedorBE) As Integer
         Dim id As Int16
 
@@ -40,33 +38,22 @@ Public Class ProveedorDAL
         Return id
     End Function
 
-    ''' 
-    ''' <param name="prod"></param>
-    ''' <param name="prov"></param>
     Public Shared Sub asociarProvProd(ByVal prod As ProductoBE, ByVal prov As ProveedorBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="proveedor"></param>
     Public Shared Sub bajaProveedor(ByVal proveedor As ProveedorBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="prov"></param>
     Public Shared Function buscarProveedor(ByVal prov As ProveedorBE) As List(Of ProveedorBE)
         buscarProveedor = Nothing
     End Function
 
-    ''' 
-    ''' <param name="prov"></param>
     Public Shared Function checkProvExist(ByVal prov As ProveedorBE) As Boolean
         checkProvExist = False
     End Function
 
-    ''' 
-    ''' <param name="prov"></param>
     Public Shared Function checkProvUtilizado(ByVal prov As ProveedorBE) As Boolean
         checkProvUtilizado = False
     End Function

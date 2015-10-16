@@ -44,17 +44,25 @@
                     End Try
 
                 End If
-                Session("MyRoles") = usr.roles
-                Me.permisosPropiosListBox.DataSource = Session("MyRoles")
-                Me.permisosPropiosListBox.DataTextField = "descripcion"
-                Me.permisosPropiosListBox.DataValueField = "id"
-                Me.permisosPropiosListBox.DataBind()
+                Try
+                    Session("MyRoles") = usr.roles
+                    Me.permisosPropiosListBox.DataSource = Session("MyRoles")
+                    Me.permisosPropiosListBox.DataTextField = "descripcion"
+                    Me.permisosPropiosListBox.DataValueField = "id"
+                    Me.permisosPropiosListBox.DataBind()
+                Catch ex As Exception
+                    logMessage(ex)
+                End Try
 
-                Session("AllRoles") = BLL.GestorRolesBLL.buscarRoles
-                Me.allPermisosListBox.DataSource = Session("AllRoles")
-                Me.allPermisosListBox.DataTextField = "descripcion"
-                Me.allPermisosListBox.DataValueField = "id"
-                Me.allPermisosListBox.DataBind()
+                Try
+                    Session("AllRoles") = BLL.GestorRolesBLL.buscarRoles
+                    Me.allPermisosListBox.DataSource = Session("AllRoles")
+                    Me.allPermisosListBox.DataTextField = "descripcion"
+                    Me.allPermisosListBox.DataValueField = "id"
+                    Me.allPermisosListBox.DataBind()
+                Catch ex As Exception
+                    logMessage(ex)
+                End Try
 
             End If
         Next

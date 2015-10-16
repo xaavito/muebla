@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class ModificarListaPrecio
 
     '''<summary>
+    '''Control scriptManager.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scriptManager As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''Control tableAdministrarProveedoresCriteria.
     '''</summary>
     '''<remarks>
@@ -192,6 +201,15 @@ Partial Public Class ModificarListaPrecio
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents edicionLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control valoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents valoLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control valorTextBox.

@@ -101,6 +101,8 @@
     <Compile Include="RolBE.vb" />
     <Compile Include="TelefonoBE.vb" />
     <Compile Include="TipoComprobanteBE.vb" />
+    <Compile Include="TipoPagoBE.vb" />
+    <Compile Include="TipoEnvioBE.vb" />
     <Compile Include="TipoEventoBE.vb" />
     <Compile Include="TipoProductoBE.vb" />
     <Compile Include="TipoDocumentoBE.vb" />

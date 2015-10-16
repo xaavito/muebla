@@ -24,7 +24,7 @@
         Try
             Dim idioma As New BE.IdiomaBE
             Session("idiomaChange") = Me.idiomaDropDownList.SelectedValue
-            idioma.id = Me.idiomaDropDownList.SelectedValue
+            idioma.id = Session("idiomaChange")
             Me.idiomaResultadosDataGrid.DataSource = BLL.GestorIdiomaBLL.buscarComponentes(idioma)
             Me.idiomaResultadosDataGrid.DataBind()
         Catch ex As Exception
@@ -46,6 +46,7 @@
         Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
         Dim con As Label = CType(Me.idiomaResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)
+
         Session("idTextoIdioma") = id
         Dim texto As Label = CType(Me.idiomaResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemTexto"), Label)
         Me.textoTextBox.Text = texto.Text

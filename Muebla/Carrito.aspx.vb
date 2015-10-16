@@ -6,10 +6,17 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         loadPedido()
         handleSteps()
+        loadTipoEnvios()
+        loadModoPago()
     End Sub
 
     Protected Sub comprar_Click(sender As Object, e As EventArgs)
-
+        Try
+            BLL.GestorPedidoBLL.generarPedido(Session("carrito"))
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
@@ -23,10 +30,18 @@
 
     Protected Sub pasoConfirmarButton_Click(sender As Object, e As EventArgs)
         handleSteps()
+        Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
+
+        pedido.medioPago.id = Me.modoPago.SelectedValue()
+        Session("carrito") = pedido
     End Sub
 
     Protected Sub pasoPagoButton_Click(sender As Object, e As EventArgs)
         handleSteps()
+        Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
+
+        pedido.tipoEnvio.id = Me.tipoEnvio.SelectedValue()
+        Session("carrito") = pedido
     End Sub
 
     Protected Sub confirmarCarritoButton_Click(sender As Object, e As EventArgs)
@@ -46,6 +61,7 @@
     End Sub
 
     Protected Sub detalleCarritoResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
+
     End Sub
 
     Private Sub loadPedido()
@@ -91,6 +107,30 @@
             Me.pasoConfirmacion.Visible = True
             Return
         End If
+    End Sub
+
+    Private Sub loadTipoEnvios()
+        Try
+            Dim listaTipoEnvios As List(Of BE.TipoEnvioBE) = BLL.GestorPedidoBLL.buscarTiposEnvios(getSelectedIdioma)
+            Me.tipoEnvio.DataSource = listaTipoEnvios
+            Me.tipoEnvio.DataTextField = "texto"
+            Me.tipoEnvio.DataValueField = "id"
+            Me.tipoEnvio.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Private Sub loadModoPago()
+        Try
+            Dim listaModoPago As List(Of BE.MedioPagoBE) = BLL.GestorPedidoBLL.buscarMediosPago(getSelectedIdioma)
+            Me.tipoEnvio.DataSource = listaModoPago
+            Me.tipoEnvio.DataTextField = "descripcion"
+            Me.tipoEnvio.DataValueField = "id"
+            Me.tipoEnvio.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
 End Class

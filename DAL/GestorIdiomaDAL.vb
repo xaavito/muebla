@@ -68,8 +68,6 @@ Public Class GestorIdiomaDAL
         Return idiomas
     End Function
 
-    ''' 
-    ''' <param name="idioma"></param>
     Public Shared Sub modificarIdioma(ByVal idioma As IdiomaBE)
 
     End Sub

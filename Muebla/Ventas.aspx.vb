@@ -29,6 +29,7 @@ Public Class Ventas
         carrito = Session("carrito")
         If carrito Is Nothing Then
             carrito = New BE.PedidoBE
+            carrito.usr = getUsuario()
         End If
         Dim ID As Integer = Integer.Parse(getItemId(sender, Me.lvProductos))
         For Each a As ListaPrecioDetalleBE In listaProductos
@@ -49,5 +50,6 @@ Public Class Ventas
         Catch ex As Exception
             logMessage(ex)
         End Try
+        Return Nothing
     End Function
 End Class

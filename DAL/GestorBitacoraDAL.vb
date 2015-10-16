@@ -1,11 +1,6 @@
-
 Imports BE
 Imports Util
-
-
 Public Class GestorBitacoraDAL
-
-
     Public Shared Function buscarBitacoras(ByVal hasta As Date, ByVal desde As Date, ByVal usr As String, ByVal tipo As Integer, ByVal id As Integer) As List(Of BE.EventoBE)
         Dim table As DataTable
         Dim componentes As New List(Of BE.EventoBE)

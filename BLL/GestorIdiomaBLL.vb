@@ -1,7 +1,6 @@
 Imports BE
 
 Public Class GestorIdiomaBLL
-
     Private Shared _comps As List(Of BE.IdiomaBE)
 
     Public Shared Sub altaIdioma(ByVal componentes As ComponenteBE, ByVal idioma As String)

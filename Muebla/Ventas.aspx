@@ -26,7 +26,7 @@
             </div>
         </ItemTemplate>
         <EmptyDataTemplate>
-            No hay Productos para mostrar.
+            <asp:Label id="nothingToShowLabel" Text="No hay nada para mostrar" runat="server" />
         </EmptyDataTemplate>
     </asp:ListView>
 </asp:Content>

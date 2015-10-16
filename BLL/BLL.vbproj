@@ -65,7 +65,6 @@
     <Compile Include="GestorBitacoraBLL.vb" />
     <Compile Include="GestorExcepcionesBLL.vb" />
     <Compile Include="GestorIdiomaBLL.vb" />
-    <Compile Include="GestorNotifBLL.vb" />
     <Compile Include="GestorPedidoBLL.vb" />
     <Compile Include="GestorResguardoBLL.vb" />
     <Compile Include="GestorRolesBLL.vb" />

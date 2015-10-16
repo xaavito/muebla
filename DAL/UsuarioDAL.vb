@@ -3,10 +3,6 @@ Imports Util
 
 
 Public Class UsuarioDAL
-
-
-    ''' 
-    ''' <param name="usr"></param>
     Public Shared Function altaCliente(ByVal usr As UsuarioBE) As Int16
         Dim id As Int16
 
@@ -29,16 +25,10 @@ Public Class UsuarioDAL
         Return id
     End Function
 
-    ''' 
-    ''' <param name="usr"></param>
     Public Shared Sub altaUsuario(ByVal usr As UsuarioBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="tipo"></param>
-    ''' <param name="usuario"></param>
-    ''' <param name="mail"></param>
     Public Shared Function buscarUsuarios(ByVal tipo As Int16, ByVal usuario As String, ByVal mail As String) As List(Of UsuarioBE)
         Dim table As DataTable
 
@@ -75,27 +65,18 @@ Public Class UsuarioDAL
         Return lista
     End Function
 
-    ''' 
-    ''' <param name="mail"></param>
     Public Shared Sub checkMailValido(ByVal mail As String)
 
     End Sub
 
-    ''' 
-    ''' <param name="usr"></param>
     Public Shared Function checkUsuarioYaRegistrado(ByVal usr As UsuarioBE) As Boolean
         checkUsuarioYaRegistrado = False
     End Function
 
-    ''' 
-    ''' <param name="usr"></param>
     Public Shared Sub eliminarUsuario(ByVal usr As UsuarioBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="pass"></param>
-    ''' <param name="usr"></param>
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
         Dim table As DataTable
 
@@ -135,21 +116,14 @@ Public Class UsuarioDAL
         Return Nothing
     End Function
 
-    ''' 
-    ''' <param name="usr"></param>
     Public Shared Sub modificarCliente(ByVal usr As UsuarioBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="usr"></param>
     Public Shared Sub modificarUsuario(ByVal usr As UsuarioBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="mail"></param>
-    ''' <param name="usr"></param>
     Public Shared Function solicitarContrasena(ByVal mail As String, ByVal usr As String) As String
         Dim table As DataTable
 
@@ -171,7 +145,7 @@ Public Class UsuarioDAL
         Catch ex As Exception
             Throw ex
         End Try
-
+        Return Nothing
     End Function
 
     Shared Function buscarPermisos(rol As RolBE) As List(Of BE.ComponenteBE)

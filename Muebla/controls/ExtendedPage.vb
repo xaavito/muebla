@@ -1,6 +1,7 @@
 ﻿Imports Util
 Imports BLL
 Imports System.IO
+Imports BE
 
 Public Class ExtendedPage
     Inherits System.Web.UI.Page
@@ -141,6 +142,7 @@ Public Class ExtendedPage
         Catch ex As Exception
             logMessage(ex)
         End Try
+        Return Nothing
     End Function
 
     Public Function getItemId(sender As Object, listView As ListView) As Integer
@@ -152,6 +154,7 @@ Public Class ExtendedPage
         Catch ex As Exception
             logMessage(ex)
         End Try
+        Return Nothing
     End Function
 
     Public Function getPostBackCaller()
@@ -171,5 +174,6 @@ Public Class ExtendedPage
         Catch ex As Exception
             logMessage(ex)
         End Try
+        Return Nothing
     End Function
 End Class

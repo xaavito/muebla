@@ -1,6 +1,6 @@
 Public Class PedidoBE
     Private _comprobantes As List(Of ComprobanteBE)
-    Private _envioPorFlete As Boolean
+    Private _tipoEnvio As BE.TipoEnvioBE
     Private _fechaCreacion As DateTime
     Private _id As Long
     Private _medioPago As MedioPagoBE
@@ -8,10 +8,24 @@ Public Class PedidoBE
     Private _tipoVenta As TipoVentaBE
     Private _productos As List(Of BE.PedidoProductoBE)
     Private _estado As Integer
+    Private _usr As UsuarioBE
+
+    Public Property usr() As UsuarioBE
+        Get
+            Return _usr
+        End Get
+        Set(ByVal value As UsuarioBE)
+            _usr = value
+        End Set
+    End Property
+
 
     Public Sub New()
         productos = New List(Of PedidoProductoBE)
         estado = EstadoPedidoBE.EstadoPedido.Pedido
+        tipoEnvio = New TipoEnvioBE
+        medioPago = New MedioPagoBE
+        fechaCreacion = Date.Now
     End Sub
 
     Public Sub addProducto(ByVal lpd As ListaPrecioDetalleBE, ByVal cant As Integer)
@@ -51,12 +65,12 @@ Public Class PedidoBE
         End Set
     End Property
 
-    Public Property envioPorFlete() As Boolean
+    Public Property tipoEnvio() As BE.TipoEnvioBE
         Get
-            Return _envioPorFlete
+            Return _tipoEnvio
         End Get
-        Set(ByVal Value As Boolean)
-            _envioPorFlete = Value
+        Set(ByVal Value As BE.TipoEnvioBE)
+            _tipoEnvio = Value
         End Set
     End Property
 

@@ -3,14 +3,13 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
     <asp:Table runat="server" ID="tableLogin">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="usrTextBox"/>
+                <asp:TextBox runat="server" ID="usrTextBox" />
                 <asp:RequiredFieldValidator ValidationGroup='login' ErrorMessage="Requerido" ControlToValidate="usrTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
@@ -25,7 +24,7 @@
         </asp:TableRow>
     </asp:Table>
     <asp:Label Text="" runat="server" ID="loginFailed" />
-    <asp:Button ID="confirmarButton" Text="Confirmar" runat="server" OnClick="login" ValidationGroup='login'/>
+    <asp:Button ID="confirmarButton" Text="Confirmar" runat="server" OnClick="login" ValidationGroup='login' />
     <asp:LinkButton ID="recuperarPassButton" Text="Olvido su contraseña" runat="server" OnClick="recuperarPass_Click" />
     <asp:LinkButton ID="registroButton" Text="Registro" runat="server" OnClick="registroButton_Click" />
 </asp:Content>

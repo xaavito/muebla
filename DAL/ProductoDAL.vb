@@ -7,15 +7,10 @@ Imports System.Drawing
 Public Class ProductoDAL
 
 
-    ''' 
-    ''' <param name="prod"></param>
-    ''' <param name="cant"></param>
     Public Shared Sub actualizaCantProducto(ByVal prod As ProductoBE, ByVal cant As Integer)
 
     End Sub
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Function altaProducto(ByVal producto As ProductoBE) As Integer
         Dim id As Integer
         Dim list As New List(Of BE.ProductoBE)
@@ -129,26 +124,18 @@ Public Class ProductoDAL
         Return producto
     End Function
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Function checkProductoEnPedidos(ByVal producto As ProductoBE) As Boolean
         checkProductoEnPedidos = False
     End Function
 
-    ''' 
-    ''' <param name="prod"></param>
     Public Sub compararCosto(ByVal prod As ProductoBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="prod"></param>
     Public Shared Sub generarOrdenCompra(ByVal prod As ProductoBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
 
     End Sub
@@ -207,7 +194,7 @@ Public Class ProductoDAL
         Catch ex As Exception
             Throw ex
         End Try
-
+        Return Nothing
     End Function
 
     Shared Function getTipoProductos() As List(Of TipoProductoBE)
