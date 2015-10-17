@@ -7,7 +7,7 @@ Public Class GestorShowroomDAL
         Dim lista As New List(Of BE.AsistenciaShowroomBE)
         Dim repository As New AccesoSQLServer
         Try
-            'NO IMPLEMENTADO
+            'TODO NO IMPLEMENTADO BUSCAR_PEDIDOS_ASISTENCIA_SP
             repository.crearComando("BUSCAR_PEDIDOS_ASISTENCIA_SP")
             table = New DataTable
             table = repository.executeSearchWithAdapter()
@@ -37,7 +37,7 @@ Public Class GestorShowroomDAL
 
         Dim repository As New AccesoSQLServer
         Try
-            'FALTA IMPLEMENTAR
+            'TODO FALTA IMPLEMENTAR ALTA_PEDIDO_SHOWROOM_SP
             repository.crearComando("ALTA_PEDIDO_SHOWROOM_SP")
             repository.addParam("@id", usuario.id)
             repository.addParam("@fecha", fecha)
@@ -51,7 +51,7 @@ Public Class GestorShowroomDAL
         Dim id As Integer
         Dim repository As New AccesoSQLServer
         Try
-            'FALTA IMPLEMENTAR
+            'TODO FALTA IMPLEMENTAR MODIFICAR_PEDIDO_SHOWROOM_SP
             repository.crearComando("MODIFICAR_PEDIDO_SHOWROOM_SP")
             repository.addParam("@id", pedido.id)
             repository.addParam("@fecha", pedido.fecha)
@@ -67,7 +67,7 @@ Public Class GestorShowroomDAL
         Dim id As Integer
         Dim repository As New AccesoSQLServer
         Try
-            'FALTA IMPLEMENTAR
+            'TODO FALTA IMPLEMENTAR CONFIRMAR_PEDIDO_SHOWROOM_SP
             repository.crearComando("CONFIRMAR_PEDIDO_SHOWROOM_SP")
             repository.addParam("@id", pedido.id)
             id = repository.executeSearchWithStatus

@@ -10,7 +10,7 @@ Public Class GestorPedidoDAL
         Dim componentes As New List(Of BE.MedioPagoBE)
         Dim repository As New AccesoSQLServer
         Try
-            'NO IMPLEMENTADO
+            'TODO NO IMPLEMENTADO BUSCAR_MEDIOS_PAGO_SP
             repository.crearComando("BUSCAR_MEDIOS_PAGO_SP")
             repository.addParam("@idIdioma", idIdioma)
             table = New DataTable
@@ -59,7 +59,7 @@ Public Class GestorPedidoDAL
         Dim id As Integer
         Dim repository As New AccesoSQLServer
         Try
-            'NO IMPLEMENTADO
+            'TODO NO IMPLEMENTADO ALTA_PEDIDO_SP
             repository.crearComando("ALTA_PEDIDO_SP")
             repository.addParam("@fecha", pedido.fechaCreacion)
             repository.addParam("@pago", pedido.medioPago.id)
@@ -72,8 +72,8 @@ Public Class GestorPedidoDAL
             End If
             pedido.id = id
 
-            'NO IMPLEMENTADO
-            'CAMBIAR EN LA BD, PEDIDO PRODUCTO A FK CON LISTA PRECIO DETALLE!!
+            'TODO NO IMPLEMENTADO ALTA_PEDIDO_PRODUCTO_SP
+            'TODO CAMBIAR EN LA BD, PEDIDO PRODUCTO A FK CON LISTA PRECIO DETALLE!!
             Dim idDet As Integer
             For Each prod As PedidoProductoBE In pedido.productos
                 repository.crearComando("ALTA_PEDIDO_PRODUCTO_SP")
@@ -108,7 +108,7 @@ Public Class GestorPedidoDAL
         Dim componentes As New List(Of BE.TipoEnvioBE)
         Dim repository As New AccesoSQLServer
         Try
-            'NO IMPLEMENTADO
+            'TODO NO IMPLEMENTADO BUSCAR_TIPO_ENVIO_SP
             repository.crearComando("BUSCAR_TIPO_ENVIO_SP")
             repository.addParam("@idIdioma", idIdioma)
             table = New DataTable

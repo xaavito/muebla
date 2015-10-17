@@ -42,7 +42,7 @@ Public Class GestorPedidoBLL
 
     Public Shared Sub generarPedido(ByVal pedido As PedidoBE)
         DAL.GestorPedidoDAL.generarPedido(pedido)
-        'SACAR ESTO HARDCODEADO HORRIBLE!!
+        'TODO SACAR ESTO HARDCODEADO HORRIBLE!! mails
         Util.Mailer.sendMail(pedido.usr.mail, "Pedido generado", "A PAGAR MACHOOOO")
     End Sub
 

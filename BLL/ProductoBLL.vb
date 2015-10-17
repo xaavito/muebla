@@ -55,6 +55,10 @@ Public Class ProductoBLL
         Return DAL.ProductoDAL.getImagenProducto(idInt)
     End Function
 
+    Shared Function buscarProductoCompuesto(id As Integer) As List(Of ProductoBE)
+        Return DAL.ProductoDAL.buscarProductoCompuesto(id)
+    End Function
+
 
 End Class ' ProductoBLL
 

@@ -63,12 +63,12 @@ Public Class MasterPage
                 Next
             End If
         End If
-        If TypeOf con Is TreeView Then
-            For Each c As TreeNode In CType(con, TreeView).Nodes
+        If TypeOf con Is Menu Then
+            For Each c As MenuItem In CType(con, Menu).Items
                 If c.Value.Equals(comp.nombre) Then
                     c.Text = comp.texto
                 End If
-                For Each children As TreeNode In c.ChildNodes
+                For Each children As MenuItem In c.ChildItems
                     If children.Value.Equals(comp.nombre) Then
                         children.Text = comp.texto
                     End If

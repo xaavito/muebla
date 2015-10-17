@@ -8,7 +8,7 @@ Imports Util
 
 Public Class GestorResguardoDAL
 
-    'TODO buscar path relativo
+    'TODO buscar path relativo pasarlo al web config
     Public Shared Sub BackUp(ByVal description As String)
         Dim path As String = "C:\\Prueba"
         Dim fecha As String = DateTime.Now.Day.ToString + "-" + DateTime.Now.Month.ToString + "-" + DateTime.Now.Year.ToString + "-" +

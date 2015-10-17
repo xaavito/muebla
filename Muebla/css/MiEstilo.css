@@ -214,6 +214,11 @@ body {
     height: 200px;
 }
 
+.popupEdit {
+    width: 500px;
+    height: 200px;
+}
+
 .popup_Titlebar {
     background: url(/images/titlebar_bg.jpg);
     height: 29px;

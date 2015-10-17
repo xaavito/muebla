@@ -47,8 +47,6 @@ Public Class ProductoDAL
         Return id
     End Function
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Function bajaProducto(ByVal producto As Integer) As Integer
         Dim ret As Integer
         Dim list As New List(Of BE.ProductoBE)
@@ -83,6 +81,7 @@ Public Class ProductoDAL
                 Dim producto As New BE.ProductoBE
                 producto.id = item.Item(0)
                 producto.descripcion = item.Item(1)
+                producto.breveDescripcion = item.Item(4)
                 Dim tipoProd As New BE.TipoProductoBE
                 tipoProd.id = item.Item(2)
                 tipoProd.descripcion = item.Item(3)
@@ -112,6 +111,7 @@ Public Class ProductoDAL
             For Each item As DataRow In table.Rows
                 producto.id = item.Item(0)
                 producto.descripcion = item.Item(1)
+                producto.breveDescripcion = item.Item(4)
                 Dim tipoProd As New BE.TipoProductoBE
                 tipoProd.id = item.Item(2)
                 tipoProd.descripcion = item.Item(3)
@@ -211,6 +211,34 @@ Public Class ProductoDAL
             End If
             For Each item As DataRow In table.Rows
                 Dim producto As New BE.TipoProductoBE
+                producto.id = item.Item(0)
+                producto.descripcion = item.Item(1)
+
+                list.Add(producto)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return list
+    End Function
+
+    Shared Function buscarProductoCompuesto(id As Integer) As List(Of ProductoBE)
+        Dim table As DataTable
+        Dim list As New List(Of BE.ProductoBE)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            'TODO FALTA IMPLEMENTAR BUSCAR_PRODUCTO_COMPUESTO_SP
+            repository.crearComando("BUSCAR_PRODUCTO_COMPUESTO_SP")
+            repository.addParam("@id", id)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Dim producto As New BE.ProductoBE
                 producto.id = item.Item(0)
                 producto.descripcion = item.Item(1)
 

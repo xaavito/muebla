@@ -4,7 +4,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Table runat="server" ID="tableAdministrarProductosCriteria" >
+    <asp:ScriptManager ID="scriptManager" runat="server" />
+
+    <asp:Table runat="server" ID="tableAdministrarProductosCriteria">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="nombreProductoLabel" Text="Nombre Producto" />
@@ -26,16 +28,21 @@
         AutoGenerateColumns="false"
         AllowPaging="true" PageSize="12"
         ItemType="BE.ProductoBE"
-        ShowFooter="false" 
-        CssClass="mGrid"  
-        PagerStyle-CssClass="pgr"  
+        ShowFooter="false"
+        CssClass="mGrid"
+        PagerStyle-CssClass="pgr"
         AlternatingRowStyle-CssClass="alt"
         OnPreRender="productosResultadosDataGrid_PreRender"
         OnPageIndexChanging="productosResultadosDataGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Imagen">
+                <ItemTemplate>
+                    <asp:Image ImageUrl='<%#"getImageHandler.ashx?id=" + Convert.ToString(Eval("id"))%>' runat="server" GenerateEmptyAlternateText="False" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Descripcion">
@@ -68,73 +75,96 @@
         <PagerSettings Mode="Numeric" PageButtonCount="5" Position="TopAndBottom" />
         <PagerStyle CssClass="grid-pager" />
     </asp:GridView>
+
+    <asp:Button ID="Button1" runat="server" Style="display: none" />
+
+    <ajaxToolkit:ModalPopupExtender
+        ID="lnkEdit_ModalPopupExtender" runat="server"
+        CancelControlID="ButtonEditCancel"
+        TargetControlID="Button1" PopupControlID="DivEditConfirmation"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupEdit" ID="DivEditConfirmation"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Titlebar" id="PopupHeader">
+                <div class="TitlebarLeft">
+                    <asp:Label Text="Edicion" ID="edicionLabel" runat="server" />
+                </div>
+            </div>
+            <div class="popup_Body">
+                <p>
+                    <asp:Table runat="server" ID="tableEditProducto">
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="descripcionLabel" Text="Descripcion" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="descripcionTextBox" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="descripcionBreveLabel" Text="Descripcion Breve" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="descripcionBreveTextBox" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="productosLabel" Text="Productos" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:ImageButton runat="server" ID="removerProductoButton" ImageUrl="/images/arrowRight.png" OnClick="removerProductoButton_Click" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:ImageButton runat="server" ID="agregarProductoButton" ImageUrl="/images/arrowLeft.png" OnClick="agregarProductoButton_Click" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="stockLabel" Text="Stock" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="stockTextBox" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="stockMinimoLabel" Text="Stock Minimo" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="stockMinimoTextBox" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="tipoProductoLabel1" Text="Tipo Producto" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:DropDownList runat="server" ID="tipoProductoDropDown" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonEditOkay" OnClick="ButtonEditOkay_Click" />
+                <asp:Button runat="server" Text="Cancelar" ID="ButtonEditCancel" />
+            </div>
+        </div>
+    </asp:Panel>
+
     <div id="editDataDiv" runat="server">
-        <asp:Table runat="server" ID="tableAltaProducto">
-            <asp:TableHeaderRow></asp:TableHeaderRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="descripcionLabel" Text="Descripcion" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="descripcionTextBox" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="proveedorLabel" Text="Proveedor" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:DropDownList runat="server" ID="proveedorDropDown" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:Button runat="server" ID="addProveedorButton" Text="Agregar Proveedor" OnClick="addProveedorButton_Click" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="precioLabel" Text="Precio" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="precioTextBox" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="stockLabel" Text="Stock" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="stockTextBox" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="stockMinimoLabel" Text="Stock Minimo" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="stockMinimoTextBox" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="Label1" Text="Tipo Producto" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:DropDownList runat="server" ID="tipoProductoDropDown" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="productosLabel" Text="Productos" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:ListBox runat="server" ID="productosListBox" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:Button runat="server" ID="addProductoButton" Text="Manejar Productos" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableFooterRow></asp:TableFooterRow>
-        </asp:Table>
+
 
         <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
     </div>
