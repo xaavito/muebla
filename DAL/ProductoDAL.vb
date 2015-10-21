@@ -11,7 +11,7 @@ Public Class ProductoDAL
 
     End Sub
 
-    Public Shared Function altaProducto(ByVal producto As ProductoBE) As Integer
+    Public Shared Sub altaProducto(ByVal producto As ProductoBE)
         Dim id As Integer
         Dim list As New List(Of BE.ProductoBE)
 
@@ -32,20 +32,9 @@ Public Class ProductoDAL
         Catch ex As Exception
             Throw ex
         End Try
-
-        For Each a As BE.ProductoBE In producto.productos
-            repository = New AccesoSQLServer
-            Try
-                repository.crearComando("ALTA_PRODUCTO_COMPUESTO_SP")
-                repository.addParam("@id", id)
-                repository.addParam("@idCompuesto", a.id)
-                repository.executeWithReturnValue()
-            Catch ex As Exception
-                Throw ex
-            End Try
-        Next
-        Return id
-    End Function
+        producto.id = id
+        altaProductoCompuesto(producto)
+    End Sub
 
     Public Shared Function bajaProducto(ByVal producto As Integer) As Integer
         Dim ret As Integer
@@ -81,7 +70,7 @@ Public Class ProductoDAL
                 Dim producto As New BE.ProductoBE
                 producto.id = item.Item(0)
                 producto.descripcion = item.Item(1)
-                'producto.breveDescripcion = item.Item(4)
+                producto.breveDescripcion = item.Item(4)
                 Dim tipoProd As New BE.TipoProductoBE
                 tipoProd.id = item.Item(2)
                 tipoProd.descripcion = item.Item(3)
@@ -137,7 +126,23 @@ Public Class ProductoDAL
     End Sub
 
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("MODIFICAR_PRODUCTO_SP")
+            repository.addParam("@id", producto.id)
+            repository.addParam("@desc", producto.descripcion)
+            repository.addParam("@descBreve", producto.breveDescripcion)
+            repository.addParam("@sto", producto.stock)
+            repository.addParam("@stomin", producto.stockMin)
+            id = repository.executeSearchWithStatus
+            If (id = 0) Then
+                Throw New Util.ModificarException
+            End If
 
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Shared Function listarProductos() As List(Of ListaPrecioDetalleBE)
@@ -229,7 +234,6 @@ Public Class ProductoDAL
 
         Dim repository As New AccesoSQLServer
         Try
-            'TODO FALTA IMPLEMENTAR BUSCAR_PRODUCTO_COMPUESTO_SP
             repository.crearComando("BUSCAR_PRODUCTO_COMPUESTO_SP")
             repository.addParam("@id", id)
             table = New DataTable
@@ -250,6 +254,35 @@ Public Class ProductoDAL
 
         Return list
     End Function
+
+    Shared Sub eliminarProductoCompuesto(producto As ProductoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ELIMINAR_PRODUCTO_COMPUESTO_SP")
+            repository.addParam("@id", producto.id)
+            id = repository.executeSearchWithStatus
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub altaProductoCompuesto(producto As ProductoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+
+        For Each a As BE.ProductoBE In producto.productos
+            repository = New AccesoSQLServer
+            Try
+                repository.crearComando("ALTA_PRODUCTO_COMPUESTO_SP")
+                repository.addParam("@id", producto.id)
+                repository.addParam("@idCompuesto", a.id)
+                id = repository.executeWithReturnValue()
+            Catch ex As Exception
+                Throw ex
+            End Try
+        Next
+    End Sub
 
 
 End Class ' ProductoDAL

@@ -107,6 +107,7 @@ Public Class UsuarioDAL
                 tDoc.id = pepe.Item(4)
                 usuario.tipoDoc = tDoc
                 usuario.dni = pepe.Item(5)
+                usuario.mail = pepe.Item(6)
                 Return usuario
             Next
         Catch ex As Exception
@@ -444,6 +445,35 @@ Public Class UsuarioDAL
                 telefono.prefijo = pepe.Item(2)
                 telefono.interno = pepe.Item(3)
                 usuario.telefono = telefono
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub llenarDatosBlandosUsuario(ByRef usuario As UsuarioBE)
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_DATOS_BLANDOS_SP")
+            repository.addParam("@id", usuario.id)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count > 1) Then
+                Throw New Util.BusquedaConMuchosResultadosException
+            End If
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                usuario.id = pepe.Item(0)
+                usuario.nombre = pepe.Item(1)
+                usuario.apellido = pepe.Item(2)
+                usuario.usuario = pepe.Item(3)
+                usuario.mail = pepe.Item(4)
+                usuario.cuil = pepe.Item(5)
+                usuario.activo = pepe.Item(6)
             Next
         Catch ex As Exception
             Throw ex

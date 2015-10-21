@@ -49,13 +49,33 @@ Public Class ConfirmarShowroom
     End Sub
 
     Protected Sub buttonDeleteOK_Click(sender As Object, e As EventArgs)
-
+        Dim id As Integer = Session("idEdicion")
+        For Each a As AsistenciaShowroomBE In Session("pedidos")
+            If a.id = id Then
+                a.fecha = Util.Util.getDate(Me.fechaSolicTextBox.Text)
+                Try
+                    If a.cumplido = Me.asitioCheckBox.Checked Then
+                        BLL.GestorShowroomBLL.modificarFechaPedido(a)
+                    Else
+                        BLL.GestorShowroomBLL.modificarPedido(a)
+                    End If
+                Catch ex As Exception
+                    logMessage(ex)
+                End Try
+                Exit For
+            End If
+        Next
+        buscarPedidos()
     End Sub
 
     Private Sub buscarPedidos()
-        Session("pedidos") = BLL.GestorShowroomBLL.getPedidos()
-        Me.showroomDataGrid.DataSource = Session("pedidos")
-        Me.showroomDataGrid.DataBind()
+        Try
+            Session("pedidos") = BLL.GestorShowroomBLL.getPedidos()
+            Me.showroomDataGrid.DataSource = Session("pedidos")
+            Me.showroomDataGrid.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
 End Class

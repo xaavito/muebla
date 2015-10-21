@@ -5,14 +5,12 @@ Imports Util
 Public Class GestorPedidoDAL
 
 
-    Public Shared Function buscarMediosPago(ByVal idIdioma As Integer) As List(Of MedioPagoBE)
+    Public Shared Function buscarMediosPago() As List(Of MedioPagoBE)
         Dim table As DataTable
         Dim componentes As New List(Of BE.MedioPagoBE)
         Dim repository As New AccesoSQLServer
         Try
-            'TODO NO IMPLEMENTADO BUSCAR_MEDIOS_PAGO_SP
             repository.crearComando("BUSCAR_MEDIOS_PAGO_SP")
-            repository.addParam("@idIdioma", idIdioma)
             table = New DataTable
             table = repository.executeSearchWithAdapter()
             If (table.Rows.Count = 0) Then
@@ -65,7 +63,6 @@ Public Class GestorPedidoDAL
             repository.addParam("@pago", pedido.medioPago.id)
             repository.addParam("@envio", pedido.tipoEnvio.id)
             repository.addParam("@estado", pedido.estado)
-            repository.addParam("@fecha", pedido.fechaCreacion)
             id = repository.executeWithReturnValue
             If (id <= 0) Then
                 Throw New CreacionException
@@ -108,7 +105,6 @@ Public Class GestorPedidoDAL
         Dim componentes As New List(Of BE.TipoEnvioBE)
         Dim repository As New AccesoSQLServer
         Try
-            'TODO NO IMPLEMENTADO BUSCAR_TIPO_ENVIO_SP
             repository.crearComando("BUSCAR_TIPO_ENVIO_SP")
             repository.addParam("@idIdioma", idIdioma)
             table = New DataTable

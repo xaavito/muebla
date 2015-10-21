@@ -20,6 +20,9 @@ Public Class GestorShowroomBLL
     Shared Sub modificarFechaPedido(pedido As AsistenciaShowroomBE)
         DAL.GestorShowroomDAL.modificarPedido(pedido)
         'TODO VER DE SACAR EL HARDCODEO DE LOS TEXTOS mails
+        If pedido.usuario.mail Is Nothing Then
+            BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usuario)
+        End If
         Util.Mailer.sendMail(pedido.usuario.mail, "Confirmacion y cambio horario", "Asistencia al showroom autorizada para " + pedido.fecha.ToString)
     End Sub
 

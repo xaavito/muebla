@@ -14,11 +14,11 @@
     </asp:UpdatePanel>
     <asp:Timer ID="Timer1" runat="server" OnTick="Timer1_Tick" Interval="3000">
     </asp:Timer>
-
+    <br />
     <asp:ImageButton PostBackUrl="https://www.facebook.com/pages/Muebla/563852150397894?ref=hl"  ImageUrl="/images/facebook.png" runat="server" CssClass="adrotator"/>
-
+    <br />
     <asp:Image ImageUrl="/images/pasosGenerales.png" runat="server" CssClass="adrotator"/>
-
+    <br />  
     <div id="formaPago">
         <asp:Image ImageUrl="/images/mercadopago.png" runat="server" />
         <asp:Image ImageUrl="/images/rapipago.png" runat="server" />

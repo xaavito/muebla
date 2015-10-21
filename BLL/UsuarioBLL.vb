@@ -90,5 +90,8 @@ Public Class UsuarioBLL
         DAL.UsuarioDAL.buscarTelefono(usuario)
     End Sub
 
+    Shared Sub llenarDatosBlandosUsuario(ByRef usuarioBE As UsuarioBE)
+        DAL.UsuarioDAL.llenarDatosBlandosUsuario(usuarioBE)
+    End Sub
 
 End Class ' UsuarioBLL

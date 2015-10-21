@@ -13,7 +13,6 @@ Public Class Ventas
         Catch ex As Exception
             logMessage(ex)
         End Try
-
     End Sub
 
     Public Function listarProductos() As List(Of BE.ListaPrecioDetalleBE)

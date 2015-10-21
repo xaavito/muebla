@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="ConfirmarShowroom.aspx.vb" Inherits="Muebla.ConfirmarShowroom" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="ConfirmarShowroom.aspx.vb" Inherits="Muebla.ConfirmarShowroom" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -31,7 +31,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Asistio">
                 <ItemTemplate>
-                    <asp:CheckBox runat="server" ID="itemAsistio" Text="<%# Item.cumplido %>" />
+                    <asp:Label runat="server" ID="itemAsistio" Text="<%# Item.cumplido %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Confirmado">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemConfirmacion" Text="<%# Item.confirmado %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
@@ -68,6 +73,7 @@
                 <p>
                     <asp:Label ID="fecgaSolicLabel" Text="Fecha" runat="server" />
                     <asp:TextBox ID="fechaSolicTextBox" runat="server" />
+                    <br />
                     <asp:Label ID="asistioLabel" Text="Asistio" runat="server" />
                     <asp:CheckBox ID="asitioCheckBox" runat="server" />
                 </p>

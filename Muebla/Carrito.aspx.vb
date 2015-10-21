@@ -123,7 +123,7 @@
 
     Private Sub loadModoPago()
         Try
-            Dim listaModoPago As List(Of BE.MedioPagoBE) = BLL.GestorPedidoBLL.buscarMediosPago(getSelectedIdioma)
+            Dim listaModoPago As List(Of BE.MedioPagoBE) = BLL.GestorPedidoBLL.buscarMediosPago()
             Me.tipoEnvio.DataSource = listaModoPago
             Me.tipoEnvio.DataTextField = "descripcion"
             Me.tipoEnvio.DataValueField = "id"

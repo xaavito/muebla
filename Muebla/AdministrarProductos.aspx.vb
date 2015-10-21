@@ -11,9 +11,9 @@ Public Class AdministrarProductos
             Return
         End If
         Try
-            Me.tipoProductoDropDownList.DataSource = BLL.ProveedorBLL.getTipoProductos
             Me.tipoProductoDropDownList.DataTextField = "descripcion"
             Me.tipoProductoDropDownList.DataValueField = "id"
+            Me.tipoProductoDropDownList.DataSource = BLL.ProveedorBLL.getTipoProductos
             Me.tipoProductoDropDownList.DataBind()
         Catch ex As Exception
             logMessage(ex)
@@ -42,18 +42,18 @@ Public Class AdministrarProductos
         'Me.editDataDiv.Visible = True
         Session("idProductoEdicion") = getItemId(sender, Me.productosResultadosDataGrid)
         Try
-            Me.tipoProductoDropDown.DataSource = BLL.ProveedorBLL.getTipoProductos
             Me.tipoProductoDropDown.DataTextField = "descripcion"
             Me.tipoProductoDropDown.DataValueField = "id"
+            Me.tipoProductoDropDown.DataSource = BLL.ProveedorBLL.getTipoProductos
             Me.tipoProductoDropDown.DataBind()
         Catch ex As Exception
             logMessage(ex)
         End Try
-        
+
         Try
-            Me.productosPropiosListBox.DataSource = BLL.ProductoBLL.buscarProductoCompuesto(Session("idProductoEdicion"))
             Me.productosPropiosListBox.DataTextField = "descripcion"
             Me.productosPropiosListBox.DataValueField = "id"
+            Me.productosPropiosListBox.DataSource = BLL.ProductoBLL.buscarProductoCompuesto(Session("idProductoEdicion"))
             Me.productosPropiosListBox.DataBind()
         Catch ex As Exception
             logMessage(ex)
@@ -61,9 +61,9 @@ Public Class AdministrarProductos
 
         Try
             Session("productosMateriaPrima") = BLL.ProductoBLL.buscarProductos(2, "")
-            Me.allProductosListBox.DataSource = Session("productosMateriaPrima")
             Me.allProductosListBox.DataTextField = "descripcion"
             Me.allProductosListBox.DataValueField = "id"
+            Me.allProductosListBox.DataSource = Session("productosMateriaPrima")
             Me.allProductosListBox.DataBind()
         Catch ex As Exception
             logMessage(ex)
@@ -109,7 +109,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
-
+        'TODO QUE MIERDA VAMOS A HACER ACA?? DETALLES DE VENTA DE ESOS PRODUCTOS QUIZAS??
     End Sub
 
     Protected Sub productosResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
@@ -129,7 +129,25 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub ButtonEditOkay_Click(sender As Object, e As EventArgs)
-
+        Try
+            Dim prod As BE.ProductoBE = Nothing
+            For Each a As BE.ProductoBE In Session("listaProductos")
+                If a.id = Session("idProductoEdicion") Then
+                    a.descripcion = Me.descripcionTextBox.Text
+                    a.breveDescripcion = Me.descripcionBreveTextBox.Text
+                    a.stockMin = Me.stockMinimoTextBox.Text
+                    a.stock = Me.stockTextBox.Text
+                    a.tipoProducto.id = Me.tipoProductoDropDown.SelectedValue
+                    a.productos = Session("productosPropios")
+                    prod = a
+                    Exit For
+                End If
+            Next
+            BLL.ProductoBLL.modificarProducto(prod)
+            Throw New Util.ModificacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub removerProductoButton_Click(sender As Object, e As ImageClickEventArgs)

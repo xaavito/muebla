@@ -7,7 +7,6 @@ Public Class GestorShowroomDAL
         Dim lista As New List(Of BE.AsistenciaShowroomBE)
         Dim repository As New AccesoSQLServer
         Try
-            'TODO NO IMPLEMENTADO BUSCAR_PEDIDOS_ASISTENCIA_SP
             repository.crearComando("BUSCAR_PEDIDOS_ASISTENCIA_SP")
             table = New DataTable
             table = repository.executeSearchWithAdapter()
@@ -37,11 +36,13 @@ Public Class GestorShowroomDAL
 
         Dim repository As New AccesoSQLServer
         Try
-            'TODO FALTA IMPLEMENTAR ALTA_PEDIDO_SHOWROOM_SP
             repository.crearComando("ALTA_PEDIDO_SHOWROOM_SP")
             repository.addParam("@id", usuario.id)
             repository.addParam("@fecha", fecha)
             id = repository.executeWithReturnValue
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
         Catch ex As Exception
             Throw ex
         End Try
@@ -51,12 +52,14 @@ Public Class GestorShowroomDAL
         Dim id As Integer
         Dim repository As New AccesoSQLServer
         Try
-            'TODO FALTA IMPLEMENTAR MODIFICAR_PEDIDO_SHOWROOM_SP
             repository.crearComando("MODIFICAR_PEDIDO_SHOWROOM_SP")
             repository.addParam("@id", pedido.id)
             repository.addParam("@fecha", pedido.fecha)
             repository.addParam("@cum", pedido.cumplido)
             id = repository.executeSearchWithStatus
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
             confirmarPedido(pedido)
         Catch ex As Exception
             Throw ex
@@ -67,10 +70,12 @@ Public Class GestorShowroomDAL
         Dim id As Integer
         Dim repository As New AccesoSQLServer
         Try
-            'TODO FALTA IMPLEMENTAR CONFIRMAR_PEDIDO_SHOWROOM_SP
             repository.crearComando("CONFIRMAR_PEDIDO_SHOWROOM_SP")
             repository.addParam("@id", pedido.id)
             id = repository.executeSearchWithStatus
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
         Catch ex As Exception
             Throw ex
         End Try

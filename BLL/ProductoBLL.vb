@@ -9,9 +9,10 @@ Public Class ProductoBLL
 
     End Sub
 
-    Public Shared Function altaProducto(ByVal producto As ProductoBE) As Integer
-        Return DAL.ProductoDAL.altaProducto(producto)
-    End Function
+    Public Shared Sub altaProducto(ByVal producto As ProductoBE)
+        DAL.ProductoDAL.altaProducto(producto)
+        DAL.ProductoDAL.altaProductoCompuesto(producto)
+    End Sub
 
     Public Shared Function bajaProducto(ByVal id As Integer) As Integer
         ' TODO VER QUE NO FORME PARTE DE UN PRODUCTO EN VENTA EN EL MOMENTO
@@ -43,7 +44,9 @@ Public Class ProductoBLL
     End Sub
 
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
-
+        DAL.ProductoDAL.modificarProducto(producto)
+        DAL.ProductoDAL.eliminarProductoCompuesto(producto)
+        DAL.ProductoDAL.altaProductoCompuesto(producto)
     End Sub
 
     Shared Function getImagenProducto(idInt As Integer) As Byte()

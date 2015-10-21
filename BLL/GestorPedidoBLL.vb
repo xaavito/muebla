@@ -2,10 +2,8 @@ Imports BE
 
 
 Public Class GestorPedidoBLL
-
-
-    Public Shared Function buscarMediosPago(ByVal idIdioma As Integer) As List(Of MedioPagoBE)
-        Return DAL.GestorPedidoDAL.buscarMediosPago(idIdioma)
+    Public Shared Function buscarMediosPago() As List(Of MedioPagoBE)
+        Return DAL.GestorPedidoDAL.buscarMediosPago()
     End Function
 
     Public Shared Function buscarPedidos(ByVal fechaDesde As Date, ByVal fechaHasta As Date, ByVal estado As EstadoPedidoBE) As List(Of PedidoBE)
