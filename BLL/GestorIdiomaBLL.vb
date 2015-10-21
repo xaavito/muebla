@@ -4,7 +4,7 @@ Public Class GestorIdiomaBLL
     Private Shared _comps As List(Of BE.IdiomaBE)
 
     Public Shared Sub altaIdioma(ByVal componentes As ComponenteBE, ByVal idioma As String)
-
+        'TODO LO HACEMOS O NO?
     End Sub
 
     Public Shared Function buscarComponentes() As List(Of ComponenteBE)
@@ -35,10 +35,6 @@ Public Class GestorIdiomaBLL
     Public Shared Function buscarIdiomas() As List(Of IdiomaBE)
         Return DAL.GestorIdiomaDAL.buscarIdiomas
     End Function
-
-    Public Shared Sub modificarIdioma(ByVal idioma As IdiomaBE)
-
-    End Sub
 
     Shared Function getTranslation(textoATraducir As String, idIdioma As Integer) As String
         Try

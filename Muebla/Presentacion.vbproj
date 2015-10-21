@@ -120,7 +120,7 @@
     <Content Include="images\banner_colorfull.jpg" />
     <Content Include="images\banner_compra.jpg" />
     <Content Include="images\banner_detalles.jpg" />
-    <Content Include="images\bigMuebla.jpg" />
+    <Content Include="images\bigMuebla.png" />
     <Content Include="images\cabal.png" />
     <Content Include="images\confirm.png" />
     <Content Include="images\cross_icon_normal.png" />
@@ -129,12 +129,14 @@
     <Content Include="images\editItem.png" />
     <Content Include="images\expand_less.png" />
     <Content Include="images\expand_more.png" />
+    <Content Include="images\facebook.png" />
     <Content Include="images\grd_alt.png" />
     <Content Include="images\grd_head.png" />
     <Content Include="images\grd_pgr.png" />
     <Content Include="images\mastercard.png" />
     <Content Include="images\mercadopago.png" />
     <Content Include="images\pagofacil.png" />
+    <Content Include="images\pasosGenerales.png" />
     <Content Include="images\rapipago.png" />
     <Content Include="images\shopping_cart.png" />
     <Content Include="images\smallMuebla.png" />
@@ -142,6 +144,7 @@
     <Content Include="images\titlebar_bg.jpg" />
     <Content Include="images\visa.png" />
     <Content Include="Login.aspx" />
+    <Content Include="quienesSomos.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
     <Content Include="NotaCredito.aspx" />
@@ -288,6 +291,13 @@
     </Compile>
     <Compile Include="Login.aspx.vb">
       <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="quienesSomos.aspx.designer.vb">
+      <DependentUpon>quienesSomos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="quienesSomos.aspx.vb">
+      <DependentUpon>quienesSomos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Main.aspx.designer.vb">

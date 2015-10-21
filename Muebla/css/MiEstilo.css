@@ -9,7 +9,7 @@ body {
     font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    background-image: url('/images/bigMuebla.jpg');
+    background-image: url('/images/bigMuebla.png');
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center;
@@ -307,4 +307,19 @@ body {
 #ContentPlaceHolder1_totalLabel, #ContentPlaceHolder1_totalMontoLabel, #ContentPlaceHolder1_pasoLabel {
     float: right;
     font-size: -webkit-xxx-large;
+}
+.adrotator{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#formaPago{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#quienesSomos {
+    font-family: trebuchet ms,helvetica,sans-serif;
 }

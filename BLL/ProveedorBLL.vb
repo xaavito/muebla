@@ -4,6 +4,7 @@ Imports BE
 Public Class ProveedorBLL
 
     Public Shared Function altaProveedor(ByVal prov As ProveedorBE) As Integer
+        'TODO CHECK PROVEEDOR POR CUIL O MAIL
         Return DAL.ProveedorDAL.altaProveedor(prov)
     End Function
 
@@ -28,6 +29,7 @@ Public Class ProveedorBLL
     End Sub
 
     Shared Sub eliminarProveedor(id As Integer)
+        'TODO CHECK QUE NO HAYA PRODUCTOS EN PROCESO DE VENTA
         DAL.ProveedorDAL.eliminarProveedor(id)
     End Sub
 

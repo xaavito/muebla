@@ -117,7 +117,7 @@
                                 <asp:Label runat="server" ID="productosLabel" Text="Productos" />
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" />
+                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" OnSelectedIndexChanged="productosPropiosListBox_SelectedIndexChanged"/>
                             </asp:TableCell>
                             <asp:TableCell>
                                 <asp:ImageButton runat="server" ID="removerProductoButton" ImageUrl="/images/arrowRight.png" OnClick="removerProductoButton_Click" />
@@ -126,7 +126,7 @@
                                 <asp:ImageButton runat="server" ID="agregarProductoButton" ImageUrl="/images/arrowLeft.png" OnClick="agregarProductoButton_Click" />
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" />
+                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" OnSelectedIndexChanged="allProductosListBox_SelectedIndexChanged"/>
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>

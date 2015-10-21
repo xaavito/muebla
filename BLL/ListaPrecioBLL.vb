@@ -2,6 +2,7 @@ Imports BE
 
 
 Public Class ListaPrecioBLL
+
     Public Shared Sub altaListaPrecio(ByVal listaPrecio As ListaPrecioBE)
 
     End Sub
@@ -23,6 +24,7 @@ Public Class ListaPrecioBLL
     End Function
 
     Shared Sub modificarListaPrecioDetalle(idLpd As Integer, precio As String)
+        ' TODO VER QUE NO ESTE VENDIENDOSE
         DAL.ListaPrecioDAL.modificarListaPrecioDetalle(idLpd, precio)
     End Sub
 

@@ -3,21 +3,18 @@ Imports BE
 
 Public Class ProductoBLL
 
+    Private Shared _prods As List(Of BE.ListaPrecioDetalleBE)
 
-    ''' 
-    ''' <param name="prod"></param>
-    ''' <param name="cant"></param>
     Public Shared Sub actualizaCantProducto(ByVal prod As ProductoBE, ByVal cant As Integer)
 
     End Sub
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Function altaProducto(ByVal producto As ProductoBE) As Integer
         Return DAL.ProductoDAL.altaProducto(producto)
     End Function
 
     Public Shared Function bajaProducto(ByVal id As Integer) As Integer
+        ' TODO VER QUE NO FORME PARTE DE UN PRODUCTO EN VENTA EN EL MOMENTO
         Return DAL.ProductoDAL.bajaProducto(id)
     End Function
 
@@ -30,23 +27,21 @@ Public Class ProductoBLL
     End Function
 
     Public Shared Function listarProductos() As List(Of ListaPrecioDetalleBE)
-        Return DAL.ProductoDAL.listarProductos()
+        If _prods Is Nothing Then
+            _prods = DAL.ProductoDAL.listarProductos()
+        End If
+        
+        Return _prods
     End Function
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Sub compararCosto(ByVal producto As ProductoBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Sub generarOrdenCompra(ByVal producto As ProductoBE)
 
     End Sub
 
-    ''' 
-    ''' <param name="producto"></param>
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
 
     End Sub

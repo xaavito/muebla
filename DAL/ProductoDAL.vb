@@ -81,7 +81,7 @@ Public Class ProductoDAL
                 Dim producto As New BE.ProductoBE
                 producto.id = item.Item(0)
                 producto.descripcion = item.Item(1)
-                producto.breveDescripcion = item.Item(4)
+                'producto.breveDescripcion = item.Item(4)
                 Dim tipoProd As New BE.TipoProductoBE
                 tipoProd.id = item.Item(2)
                 tipoProd.descripcion = item.Item(3)

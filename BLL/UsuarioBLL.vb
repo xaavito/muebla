@@ -2,6 +2,8 @@ Imports BE
 
 Public Class UsuarioBLL
     Public Shared Function altaCliente(ByVal usr As UsuarioBE)
+        'TODO CHECK EMAIL
+        'TODO ENCRIPTAR PASS? 
         usr.id = DAL.UsuarioDAL.altaCliente(usr)
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
         usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
@@ -22,6 +24,7 @@ Public Class UsuarioBLL
     End Sub
 
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
+        'TODO ENCRIPTAR PASS?
         Dim user As BE.UsuarioBE
         Try
             user = DAL.UsuarioDAL.login(pass, usr)
@@ -49,6 +52,7 @@ Public Class UsuarioBLL
     End Sub
 
     Public Shared Function solicitarContraseña(ByVal mail As String, ByVal usuario As String) As String
+        'TODO ENCRIPTAR PASS?
         Dim pass As String = DAL.UsuarioDAL.solicitarContrasena(mail, usuario)
         Util.Mailer.sendMail(mail, "Recuperar Contrasena Muebla", "Usuario su mail es " + pass)
         Throw New Util.MailEnviadoseException
