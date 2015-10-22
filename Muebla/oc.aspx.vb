@@ -1,9 +1,4 @@
-﻿Imports System.IO
-Imports iTextSharp.text
-Imports iTextSharp.text.pdf
-Imports System.Data
-
-Public Class OrdenCompra
+﻿Public Class oc
     Inherits ExtendedPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
@@ -30,4 +25,5 @@ Public Class OrdenCompra
         Response.OutputStream.Close()
         Response.End()
     End Sub
+
 End Class

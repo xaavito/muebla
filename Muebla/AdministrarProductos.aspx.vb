@@ -31,7 +31,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub generarOrdenCompraButton_Click(sender As Object, e As EventArgs)
-        Response.Redirect("OrdenCompra.aspx")
+        Response.Redirect("oc.aspx")
     End Sub
 
     Protected Sub compararCostoButton_Click(sender As Object, e As EventArgs)

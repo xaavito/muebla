@@ -43,6 +43,9 @@
     <Reference Include="AjaxControlToolkit">
       <HintPath>..\packages\AjaxControlToolkit.15.1.3.0\lib\net40\AjaxControlToolkit.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.7\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="PdfSharp">
       <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
     </Reference>
@@ -144,6 +147,7 @@
     <Content Include="images\titlebar_bg.jpg" />
     <Content Include="images\visa.png" />
     <Content Include="Login.aspx" />
+    <Content Include="oc.aspx" />
     <Content Include="quienesSomos.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
@@ -292,6 +296,13 @@
     <Compile Include="Login.aspx.vb">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="oc.aspx.designer.vb">
+      <DependentUpon>oc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="oc.aspx.vb">
+      <DependentUpon>oc.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="quienesSomos.aspx.designer.vb">
       <DependentUpon>quienesSomos.aspx</DependentUpon>
