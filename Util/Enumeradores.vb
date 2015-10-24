@@ -24,6 +24,8 @@
 
         MailFallo = 15 ' falta
 
+        TienePedidosEnProceso
+
     End Enum
 
     Enum Bitacora

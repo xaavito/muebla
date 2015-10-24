@@ -14,6 +14,7 @@
         llenarTabla()
         'End If
         Me.editDiv.Visible = False
+        'TODO PASAR A AJAX CONTROL TOOLKIT
     End Sub
 
     Protected Sub idiomaResultadosDataGrid_PreRender(sender As Object, e As EventArgs)

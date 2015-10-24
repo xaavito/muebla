@@ -3,6 +3,7 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Me.editData.Visible = False
+        'TODO PASAR A AJAX CONTROL TOOLKIT
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)

@@ -20,14 +20,6 @@
                 <asp:TextBox runat="server" ID="mailTextBox" />
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
-            <asp:TableCell>
-                <asp:Label runat="server" ID="tipoUsuarioLabel" Text="Tipo Usuario" />
-            </asp:TableCell>
-            <asp:TableCell>
-                <asp:DropDownList runat="server" ID="tipoUsuarioDropDownList" />
-            </asp:TableCell>
-        </asp:TableRow>
     </asp:Table>
     <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarUsuariosButton_Click" />
 
@@ -49,11 +41,6 @@
             <asp:TemplateField HeaderText="Usuario">
                 <ItemTemplate>
                     <asp:Label runat="server" ID="itemUser" Text="<%# Item.usuario %>" />
-                </ItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField HeaderText="Tipo Usuario">
-                <ItemTemplate>
-                    <asp:Label runat="server" ID="itemDescripcion" Text="<%# Item.tipoUsuario.descripcion %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Mail">

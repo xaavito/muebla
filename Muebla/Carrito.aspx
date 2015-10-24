@@ -88,24 +88,19 @@
         </div>
     </asp:Panel>
 
-    <asp:Button ID="confirmarCarritoButton" Text="Confirmar" runat="server" OnClick="confirmarCarritoButton_Click" />
+    <div id="confirmarStepOne" runat="server">
+        <asp:Button ID="confirmarCarritoButton" Text="Confirmar" runat="server" OnClick="confirmarCarritoButton_Click" />
+    </div>
 
     <div id="pasoEnvio" runat="server">
         <asp:Label ID="tipoEnvioLabel" Text="Tipo Envio" runat="server" />
-        <asp:DropDownList ID="tipoEnvio" runat="server">
-            <asp:ListItem Text="Lo retiro por mi cuenta" Value="1" />
-            <asp:ListItem Text="Quiero que me lo envien a mi domicilio" Value="2" />
-        </asp:DropDownList>
+        <asp:DropDownList ID="tipoEnvio" runat="server"/>
         <asp:Button ID="pasoPagoButton" Text="Confirmar Envio" runat="server" OnClick="pasoPagoButton_Click" />
     </div>
 
     <div id="pasoPago" runat="server">
         <asp:Label ID="Label2" Text="Modo de Pago" runat="server" />
-        <asp:DropDownList ID="modoPago" runat="server">
-            <asp:ListItem Text="Pago mis Cuentas" Value="1" />
-            <asp:ListItem Text="Rapi Pago" Value="2" />
-        </asp:DropDownList>
-
+        <asp:DropDownList ID="modoPago" runat="server"/>
         <asp:Button ID="pasoConfirmarButton" Text="Confirmar Pago" runat="server" OnClick="pasoConfirmarButton_Click" />
     </div>
 

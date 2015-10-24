@@ -4,6 +4,9 @@
     Dim carrito As List(Of BE.ListaPrecioDetalleBE)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Page.IsPostBack Then
+            Return
+        End If
         loadPedido()
         handleSteps()
         loadTipoEnvios()
@@ -80,6 +83,7 @@
 
     Private Sub handleSteps()
         If Me.pasoLabel.Text = "" Then
+            Me.confirmarStepOne.Visible = True
             Me.pasoLabel.Text = "Paso 1"
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = False
@@ -88,6 +92,7 @@
         End If
         If Me.pasoLabel.Text = "Paso 1" Then
             Me.pasoLabel.Text = "Paso 2"
+            Me.confirmarStepOne.Visible = False
             Me.pasoEnvio.Visible = True
             Me.pasoPago.Visible = False
             Me.pasoConfirmacion.Visible = False
@@ -95,6 +100,7 @@
         End If
         If Me.pasoLabel.Text = "Paso 2" Then
             Me.pasoLabel.Text = "Paso 3"
+            Me.confirmarStepOne.Visible = False
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = True
             Me.pasoConfirmacion.Visible = False
@@ -102,6 +108,7 @@
         End If
         If Me.pasoLabel.Text = "Paso 3" Then
             Me.pasoLabel.Text = "Paso 4"
+            Me.confirmarStepOne.Visible = False
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = False
             Me.pasoConfirmacion.Visible = True
@@ -124,10 +131,10 @@
     Private Sub loadModoPago()
         Try
             Dim listaModoPago As List(Of BE.MedioPagoBE) = BLL.GestorPedidoBLL.buscarMediosPago()
-            Me.tipoEnvio.DataSource = listaModoPago
-            Me.tipoEnvio.DataTextField = "descripcion"
-            Me.tipoEnvio.DataValueField = "id"
-            Me.tipoEnvio.DataBind()
+            Me.modoPago.DataSource = listaModoPago
+            Me.modoPago.DataTextField = "descripcion"
+            Me.modoPago.DataValueField = "id"
+            Me.modoPago.DataBind()
         Catch ex As Exception
             logMessage(ex)
         End Try

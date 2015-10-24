@@ -3,7 +3,7 @@ Imports BE
 Public Class UsuarioBLL
     Public Shared Function altaCliente(ByVal usr As UsuarioBE)
         'TODO CHECK EMAIL
-        'TODO ENCRIPTAR PASS? 
+        'TODO ENCRIPTAR PASS?
         usr.id = DAL.UsuarioDAL.altaCliente(usr)
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
         usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
@@ -12,11 +12,15 @@ Public Class UsuarioBLL
     End Function
 
     Public Shared Sub altaUsuario(ByVal usr As UsuarioBE)
-
+        'todo check email.
+        usr.id = DAL.UsuarioDAL.altaUsuario(usr)
+        For Each a As BE.RolBE In usr.roles
+            DAL.UsuarioDAL.modificarPermisoUsuario(usr.id, a)
+        Next
     End Sub
 
-    Public Shared Function buscarUsuarios(ByVal usuario As String, ByVal tipo As Int16, ByVal mail As String) As List(Of BE.UsuarioBE)
-        Return DAL.UsuarioDAL.buscarUsuarios(tipo, usuario, mail)
+    Public Shared Function buscarUsuarios(ByVal usuario As String, ByVal mail As String) As List(Of BE.UsuarioBE)
+        Return DAL.UsuarioDAL.buscarUsuarios(usuario, mail)
     End Function
 
     Public Shared Sub eliminarUsuario(ByVal usr As UsuarioBE)
@@ -47,8 +51,11 @@ Public Class UsuarioBLL
 
     End Sub
 
-    Public Shared Sub modificarUsuario(ByVal usr As UsuarioBE)
-
+    Public Shared Sub modificarUsuario(ByRef usr As UsuarioBE)
+        DAL.UsuarioDAL.modificarPass(usr)
+        DAL.UsuarioDAL.modificarDomicilio(usr)
+        DAL.UsuarioDAL.modificartelefono(usr)
+        Util.Mailer.sendMail(usr.mail, "Modificacion de datos", "Ya sabes")
     End Sub
 
     Public Shared Function solicitarContraseña(ByVal mail As String, ByVal usuario As String) As String
@@ -59,9 +66,9 @@ Public Class UsuarioBLL
         Return pass
     End Function
 
-    Shared Function getTiposUsuarios() As List(Of BE.TipoUsuarioBE)
-        Return DAL.UsuarioDAL.getTiposUsuarios()
-    End Function
+    'Shared Function getTiposUsuarios() As List(Of BE.TipoUsuarioBE)
+    '    Return DAL.UsuarioDAL.getTiposUsuarios()
+    'End Function
 
     Shared Function getTiposDocumentos() As List(Of BE.TipoDocumentoBE)
         Return DAL.UsuarioDAL.getTiposDocumentos
@@ -94,4 +101,7 @@ Public Class UsuarioBLL
         DAL.UsuarioDAL.llenarDatosBlandosUsuario(usuarioBE)
     End Sub
 
+    Shared Sub checkPreModificacion(usuarioBE As UsuarioBE)
+        DAL.UsuarioDAL.checkPreModificacion(usuarioBE)
+    End Sub
 End Class ' UsuarioBLL

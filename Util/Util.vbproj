@@ -65,6 +65,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParticularException.vb" />
     <Compile Include="PDFGenerator.vb" />
     <Compile Include="UtilException.vb" />
     <Compile Include="ModificacionException.vb" />

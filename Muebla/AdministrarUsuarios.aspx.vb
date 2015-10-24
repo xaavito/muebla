@@ -5,15 +5,6 @@
         If Page.IsPostBack Then
             Return
         End If
-        Try
-            Me.tipoUsuarioDropDownList.DataSource = BLL.UsuarioBLL.getTiposUsuarios()
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
-
-        Me.tipoUsuarioDropDownList.DataTextField = "descripcion"
-        Me.tipoUsuarioDropDownList.DataValueField = "id"
-        Me.tipoUsuarioDropDownList.DataBind()
         Me.editDataDiv.Visible = False
     End Sub
 
@@ -94,7 +85,7 @@
     Private Sub buscar()
         Dim listaUsrs As List(Of BE.UsuarioBE) = Nothing
         Try
-            listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Int16.Parse(tipoUsuarioDropDownList.SelectedValue), Me.mailTextBox.Text)
+            listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Me.mailTextBox.Text)
         Catch ex As Exception
             logMessage(ex)
         End Try

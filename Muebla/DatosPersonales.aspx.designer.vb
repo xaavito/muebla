@@ -329,11 +329,254 @@ Partial Public Class DatosPersonales
     Protected WithEvents passTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control confirmarButton.
+    '''Control editarButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents editarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Button1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control lnkEdit_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnkEdit_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivEditConfirmation.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivEditConfirmation As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control edicionLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents edicionLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control table1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents table1 As Global.System.Web.UI.WebControls.Table
+
+    '''<summary>
+    '''Control calleLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents calleLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control calleTextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents calleTextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control nroCalleLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nroCalleLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control nroCalleTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nroCalleTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control pisoLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pisoLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control pisoTextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pisoTextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control dptoLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents dptoLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control dptoTextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents dptoTextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control provinciaLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents provinciaLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control provinciaDropDownList1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents provinciaDropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control localidadLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents localidadLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control localidadDropDownList1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents localidadDropDownList1 As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control telefonoLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents telefonoLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control telefonoTextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents telefonoTextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control prefijoLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents prefijoLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control prefijoTextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents prefijoTextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control internoLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents internoLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control internoTextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents internoTextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control passLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents passLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control passTextBox1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents passTextBox1 As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control ButtonEditOkay.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonEditOkay As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control ButtonEditCancel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonEditCancel As Global.System.Web.UI.WebControls.Button
 End Class

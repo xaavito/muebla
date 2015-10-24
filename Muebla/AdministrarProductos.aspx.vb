@@ -19,7 +19,7 @@ Public Class AdministrarProductos
             logMessage(ex)
         End Try
 
-        Me.editDataDiv.Visible = False
+        'Me.editDataDiv.Visible = False
     End Sub
 
     Protected Sub buscarProductosButton_Click(sender As Object, e As EventArgs)
@@ -97,7 +97,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub cancelarEditProductoButton_Click(sender As Object, e As EventArgs)
-        Me.editDataDiv.Visible = False
+        'Me.editDataDiv.Visible = False
     End Sub
 
     Protected Sub confirmarEditProductoButton_Click(sender As Object, e As EventArgs)

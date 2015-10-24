@@ -117,7 +117,7 @@
                                 <asp:Label runat="server" ID="productosLabel" Text="Productos" />
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" OnSelectedIndexChanged="productosPropiosListBox_SelectedIndexChanged"/>
+                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="productosPropiosListBox" OnSelectedIndexChanged="productosPropiosListBox_SelectedIndexChanged" />
                             </asp:TableCell>
                             <asp:TableCell>
                                 <asp:ImageButton runat="server" ID="removerProductoButton" ImageUrl="/images/arrowRight.png" OnClick="removerProductoButton_Click" />
@@ -126,7 +126,7 @@
                                 <asp:ImageButton runat="server" ID="agregarProductoButton" ImageUrl="/images/arrowLeft.png" OnClick="agregarProductoButton_Click" />
                             </asp:TableCell>
                             <asp:TableCell>
-                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" OnSelectedIndexChanged="allProductosListBox_SelectedIndexChanged"/>
+                                <asp:ListBox SelectionMode="Single" EnableViewState="true" AutoPostBack="true" runat="server" ID="allProductosListBox" OnSelectedIndexChanged="allProductosListBox_SelectedIndexChanged" />
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>
@@ -163,11 +163,8 @@
         </div>
     </asp:Panel>
 
-    <div id="editDataDiv" runat="server">
+    <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
 
-
-        <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
-    </div>
     <asp:Button Text="Orden de Compra" ID="generarOrdenCompraButton" runat="server" OnClick="generarOrdenCompraButton_Click" />
     <asp:Button Text="Comparacion Costos" runat="server" ID="compararCostoButton" OnClick="compararCostoButton_Click" />
 </asp:Content>

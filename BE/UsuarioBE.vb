@@ -12,9 +12,7 @@ Public Class UsuarioBE
     Private _nombre As String
     Private _password As String
     Private _telefono As TelefonoBE
-    Private _tipoUsuario As TipoUsuarioBE
     Private _usuario As String
-    Public m_TipoUsuarioBE As TipoUsuarioBE
     Private _cuil As String
 
     Public Property cuil() As String
@@ -134,15 +132,6 @@ Public Class UsuarioBE
         End Get
         Set(ByVal Value As TelefonoBE)
             _telefono = Value
-        End Set
-    End Property
-
-    Public Property tipoUsuario() As TipoUsuarioBE
-        Get
-            Return _tipoUsuario
-        End Get
-        Set(ByVal Value As TipoUsuarioBE)
-            _tipoUsuario = Value
         End Set
     End Property
 

@@ -6,7 +6,7 @@ Public Class GestorPedidoBLL
         Return DAL.GestorPedidoDAL.buscarMediosPago()
     End Function
 
-    Public Shared Function buscarPedidos(ByVal fechaDesde As Date, ByVal fechaHasta As Date, ByVal estado As EstadoPedidoBE) As List(Of PedidoBE)
+    Public Shared Function buscarPedidos(ByVal fechaDesde As Date, ByVal fechaHasta As Date, ByVal estado As Integer) As List(Of PedidoBE)
         Return DAL.GestorPedidoDAL.buscarPedidos(fechaDesde, fechaHasta, estado)
     End Function
 
@@ -42,6 +42,7 @@ Public Class GestorPedidoBLL
         DAL.GestorPedidoDAL.generarPedido(pedido)
         'TODO SACAR ESTO HARDCODEADO HORRIBLE!! mails
         Util.Mailer.sendMail(pedido.usr.mail, "Pedido generado", "A PAGAR MACHOOOO")
+        'TODO ENVIAR PDF CON PAGO MIS CUENTAS O EL QUE SEA
     End Sub
 
     Public Shared Sub generarPedidoPersonalizado(ByVal pedido As PedidoBE)
@@ -62,6 +63,10 @@ Public Class GestorPedidoBLL
 
     Shared Function buscarTiposEnvios(idIdioma As Integer) As List(Of TipoEnvioBE)
         Return DAL.GestorPedidoDAL.buscarTiposEnvio(idIdioma)
+    End Function
+
+    Shared Function getEstadosPedidos() As List(Of BE.EstadoPedidoBE)
+        Return DAL.GestorPedidoDAL.getEstadosPedidos
     End Function
 
 

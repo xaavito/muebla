@@ -59,24 +59,6 @@ Partial Public Class AdministrarUsuarios
     Protected WithEvents mailTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control tipoUsuarioLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents tipoUsuarioLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control tipoUsuarioDropDownList.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents tipoUsuarioDropDownList As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Control buscarButton.
     '''</summary>
     '''<remarks>

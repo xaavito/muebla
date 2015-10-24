@@ -214,6 +214,11 @@ body {
     height: 200px;
 }
 
+.popupEditConfirmation {
+    width: 300px;
+    height: 500px;
+}
+
 .popupEdit {
     width: 500px;
     height: 200px;

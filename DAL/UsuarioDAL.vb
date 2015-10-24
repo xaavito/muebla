@@ -25,11 +25,26 @@ Public Class UsuarioDAL
         Return id
     End Function
 
-    Public Shared Sub altaUsuario(ByVal usr As UsuarioBE)
+    Public Shared Function altaUsuario(ByVal usr As UsuarioBE) As Integer
+        Dim id As Int16
 
-    End Sub
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_USUARIO_SP")
+            repository.addParam("@usr", usr.usuario)
+            repository.addParam("@mail", usr.mail)
+            repository.addParam("@nom", usr.nombre)
+            repository.addParam("@ape", usr.apellido)
+            repository.addParam("@pass", usr.password)
+            id = repository.executeWithReturnValue
+        Catch ex As Exception
+            Throw ex
+        End Try
 
-    Public Shared Function buscarUsuarios(ByVal tipo As Int16, ByVal usuario As String, ByVal mail As String) As List(Of UsuarioBE)
+        Return id
+    End Function
+
+    Public Shared Function buscarUsuarios(ByVal usuario As String, ByVal mail As String) As List(Of UsuarioBE)
         Dim table As DataTable
 
         Dim repository As New AccesoSQLServer
@@ -38,7 +53,6 @@ Public Class UsuarioDAL
             repository.crearComando("BUSCAR_USUARIOS_SP")
             repository.addParam("@usr", usuario)
             repository.addParam("@mail", mail)
-            repository.addParam("@tipo", tipo)
             table = New DataTable
             table = repository.executeSearchWithAdapter()
             If (table.Rows.Count = 0) Then
@@ -50,12 +64,8 @@ Public Class UsuarioDAL
                 user.nombre = pepe.Item(1)
                 user.apellido = pepe.Item(2)
                 user.usuario = pepe.Item(3)
-                Dim tip As New BE.TipoUsuarioBE
-                tip.id = pepe.Item(4)
-                tip.descripcion = pepe.Item(5)
-                user.tipoUsuario = tip
-                user.activo = pepe.Item(6)
-                user.mail = pepe.Item(7)
+                user.activo = pepe.Item(4)
+                user.mail = pepe.Item(5)
                 lista.Add(user)
             Next
         Catch ex As Exception
@@ -122,7 +132,7 @@ Public Class UsuarioDAL
     End Sub
 
     Public Shared Sub modificarUsuario(ByVal usr As UsuarioBE)
-
+        
     End Sub
 
     Public Shared Function solicitarContrasena(ByVal mail As String, ByVal usr As String) As String
@@ -192,35 +202,35 @@ Public Class UsuarioDAL
         Return listaComponentes
     End Function
 
-    Shared Function getTiposUsuarios() As List(Of TipoUsuarioBE)
-        Dim table As DataTable
-        Dim tipos As New List(Of BE.TipoUsuarioBE)
+    'Shared Function getTiposUsuarios() As List(Of TipoUsuarioBE)
+    '    Dim table As DataTable
+    '    Dim tipos As New List(Of BE.TipoUsuarioBE)
 
-        Dim repository As New AccesoSQLServer
-        Try
-            repository.crearComando("LISTAR_TIPOS_USUARIOS_SP")
-            table = New DataTable
-            table = repository.executeSearchWithAdapter()
-            If (table.Rows.Count = 0) Then
-                Throw New Util.BusquedaSinResultadosException
-            End If
+    '    Dim repository As New AccesoSQLServer
+    '    Try
+    '        repository.crearComando("LISTAR_TIPOS_USUARIOS_SP")
+    '        table = New DataTable
+    '        table = repository.executeSearchWithAdapter()
+    '        If (table.Rows.Count = 0) Then
+    '            Throw New Util.BusquedaSinResultadosException
+    '        End If
 
-            Dim tipo As New BE.TipoUsuarioBE
-            tipo.id = Nothing
-            tipo.descripcion = "Todos"
-            tipos.Add(tipo)
-            For Each pepe As DataRow In table.Rows
-                tipo = New BE.TipoUsuarioBE
-                tipo.id = pepe.Item(0)
-                tipo.descripcion = pepe.Item(1)
-                tipos.Add(tipo)
-            Next
-        Catch ex As Exception
-            Throw ex
-        End Try
-        
-        Return tipos
-    End Function
+    '        Dim tipo As New BE.TipoUsuarioBE
+    '        tipo.id = Nothing
+    '        tipo.descripcion = "Todos"
+    '        tipos.Add(tipo)
+    '        For Each pepe As DataRow In table.Rows
+    '            tipo = New BE.TipoUsuarioBE
+    '            tipo.id = pepe.Item(0)
+    '            tipo.descripcion = pepe.Item(1)
+    '            tipos.Add(tipo)
+    '        Next
+    '    Catch ex As Exception
+    '        Throw ex
+    '    End Try
+
+    '    Return tipos
+    'End Function
 
     Shared Function getTiposDocumentos() As List(Of TipoDocumentoBE)
         Dim table As DataTable
@@ -475,6 +485,75 @@ Public Class UsuarioDAL
                 usuario.cuil = pepe.Item(5)
                 usuario.activo = pepe.Item(6)
             Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub checkPreModificacion(usuarioBE As UsuarioBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_MODIFICACION_USUARIO_SP")
+            repository.addParam("@usr", usuarioBE.id)
+            id = repository.executeWithReturnValue
+            If id = 1 Then
+                Throw New Util.UsuarioTienePedidosEnProcesoException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub modificarPass(usr As UsuarioBE)
+        Dim id As Int16
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("MODIFICAR_PASS_USUARIO_SP")
+            repository.addParam("@id", usr.id)
+            repository.addParam("@pass", usr.password)
+            id = repository.executeSearchWithStatus
+            If id = 0 Then
+                Throw New Util.ModificarException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub modificartelefono(usr As UsuarioBE)
+        Dim id As Int16
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("MODIFICAR_TEL_USUARIO_SP")
+            repository.addParam("@id", usr.telefono.id)
+            repository.addParam("@prefijo", usr.telefono.prefijo)
+            repository.addParam("@nro", usr.telefono.numero)
+            repository.addParam("@int", usr.telefono.interno)
+            id = repository.executeSearchWithStatus
+            If id = 0 Then
+                Throw New Util.ModificarException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub modificarDomicilio(usr As UsuarioBE)
+        Dim id As Int16
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("MODIFICAR_DOMICILIO_USUARIO_SP")
+            repository.addParam("@dom", usr.domicilio.id)
+            repository.addParam("@calle", usr.domicilio.calle)
+            repository.addParam("@nro", usr.domicilio.numero)
+            repository.addParam("@piso", usr.domicilio.piso)
+            repository.addParam("@dpto", usr.domicilio.dpto)
+            repository.addParam("@loc", usr.domicilio.m_LocalidadBE.id)
+            id = repository.executeSearchWithStatus
+            If id = 0 Then
+                Throw New Util.ModificarException
+            End If
         Catch ex As Exception
             Throw ex
         End Try

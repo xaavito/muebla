@@ -7,7 +7,7 @@ Public Class PedidoBE
     Private _pagado As Boolean
     Private _tipoVenta As TipoVentaBE
     Private _productos As List(Of BE.PedidoProductoBE)
-    Private _estado As Integer
+    Private _estado As BE.EstadoPedidoBE
     Private _usr As UsuarioBE
 
     Public Property usr() As UsuarioBE
@@ -22,7 +22,6 @@ Public Class PedidoBE
 
     Public Sub New()
         productos = New List(Of PedidoProductoBE)
-        estado = EstadoPedidoBE.EstadoPedido.Pedido
         tipoEnvio = New TipoEnvioBE
         medioPago = New MedioPagoBE
         fechaCreacion = Date.Now
@@ -36,11 +35,11 @@ Public Class PedidoBE
         productos.Add(p)
     End Sub
 
-    Public Property estado() As Integer
+    Public Property estado() As BE.EstadoPedidoBE
         Get
             Return _estado
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As BE.EstadoPedidoBE)
             _estado = value
         End Set
     End Property
