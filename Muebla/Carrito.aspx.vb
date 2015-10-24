@@ -25,7 +25,7 @@
     End Sub
 
     Protected Sub detalleCarritoResultGrid_PreRender(sender As Object, e As EventArgs)
-
+        translateGrid(Me.detalleCarritoResultGrid)
     End Sub
 
     Protected Sub pasoConfirmarButton_Click(sender As Object, e As EventArgs)

@@ -1,6 +1,6 @@
 
 Public Class ListaPrecioBE
-    Private _detalles As ListaPrecioDetalleBE
+    Private _detalles As List(Of BE.ListaPrecioDetalleBE)
     Private _fechaDesde As Date
     Private _fechaHasta As Date
     Private _id As Long
@@ -27,11 +27,11 @@ Public Class ListaPrecioBE
     End Property
 
 
-    Public Property detalles() As ListaPrecioDetalleBE
+    Public Property detalles() As List(Of BE.ListaPrecioDetalleBE)
         Get
             Return _detalles
         End Get
-        Set(ByVal Value As ListaPrecioDetalleBE)
+        Set(ByVal Value As List(Of BE.ListaPrecioDetalleBE))
             _detalles = Value
         End Set
     End Property

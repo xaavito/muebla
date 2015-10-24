@@ -3,6 +3,7 @@
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Try
+            'todo mandar a traducir esto del combo
             Me.estadoListBox.DataSource = Util.Util.getEstadoCombo
             Me.estadoListBox.DataValueField = "id"
             Me.estadoListBox.DataTextField = "descripcion"
@@ -24,7 +25,7 @@
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
-
+        ' todo que podemos editar??
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
@@ -37,7 +38,7 @@
     End Sub
 
     Protected Sub listaPrecioResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
-
+        translateGrid(Me.listaPrecioResultadosDataGrid)
     End Sub
 
     Protected Sub listaPrecioResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
@@ -45,7 +46,7 @@
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PreRender(sender As Object, e As EventArgs)
-
+        translateGrid(Me.detalleListaPrecioResultGrid)
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
@@ -54,11 +55,11 @@
     End Sub
 
     Protected Sub ibtnDetailsDetail_Click(sender As Object, e As ImageClickEventArgs)
-
+        ' esto lo vamos a hacer??
     End Sub
 
     Protected Sub ibtnDeleteDetail_Click(sender As Object, e As ImageClickEventArgs)
-
+        ' todo ver esto
     End Sub
 
     Protected Sub ibtnEditDetail_Click(sender As Object, e As ImageClickEventArgs)
@@ -83,18 +84,20 @@
 
     Protected Sub ButtonDeleleOkay_Click(sender As Object, e As EventArgs)
         Debug.WriteLine("borrando!!!")
+        'todo borrado
     End Sub
 
     Protected Sub confirmarEdicionButton_Click(sender As Object, e As EventArgs)
         Try
             BLL.ListaPrecioBLL.modificarListaPrecioDetalle(Session("idListaPrecioDetalle"), Me.valorTextBox.Text)
             buscarDetalles()
+            Throw New Util.ModificacionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try
     End Sub
 
     Protected Sub ButtonEditDetailCancel_Click(sender As Object, e As EventArgs)
-
+        ' NO HAGO NADA ACA
     End Sub
 End Class

@@ -8,7 +8,7 @@ Public Class ConfirmarShowroom
     End Sub
 
     Protected Sub showroomDataGrid_PreRender(sender As Object, e As EventArgs)
-
+        translateGrid(Me.showroomDataGrid)
     End Sub
 
     Protected Sub showroomDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
