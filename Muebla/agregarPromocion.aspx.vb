@@ -1,5 +1,5 @@
-﻿Public Class NuevaPromo
-    Inherits ExtendedPage
+﻿Public Class agregarPromocion
+    Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
 

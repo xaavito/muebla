@@ -48,6 +48,11 @@
                     <asp:Label runat="server" ID="itemID" Visible="false" Text="<%# Item.id %>" />
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Comprador">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemComprador" Text="<%# Item.usr.usuario %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="fecha" Visible="false">
                 <ItemTemplate>
                     <asp:Label runat="server" ID="fecha" Visible="false" Text="<%# Item.fechaCreacion%>" />
@@ -68,11 +73,16 @@
                     <asp:Label runat="server" ID="itemEstado" Text="<%# Item.estado.descripcion %>" />
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Total">
+                <ItemTemplate>
+                    <asp:Label runat="server" ID="itemTotal" Text="<%# Item.getTotal %>" />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
-                    <asp:ImageButton ID="ibtnCancelar" runat="server"
-                        ImageUrl="/images/deleteItem.png"
-                        OnClick="ibtnCancelar_Click" />
+                    <asp:ImageButton ID="ibtnCambiarEstado" runat="server"
+                        ImageUrl="/images/editItem.png"
+                        OnClick="ibtnCambiarEstado_Click" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

@@ -110,13 +110,17 @@ Public Class UsuarioDAL
                 usuario.apellido = pepe.Item(2)
                 usuario.usuario = usr
                 usuario.password = pass
-                Dim idioma As New BE.IdiomaBE
-                idioma.id = pepe.Item(3)
-                usuario.idioma = idioma
-                Dim tDoc As New BE.TipoDocumentoBE
-                tDoc.id = pepe.Item(4)
-                usuario.tipoDoc = tDoc
-                usuario.dni = pepe.Item(5)
+                If Not IsDBNull(pepe.Item(3)) Then
+                    Dim idioma As New BE.IdiomaBE
+                    idioma.id = pepe.Item(3)
+                    usuario.idioma = idioma
+                End If
+                If Not IsDBNull(pepe.Item(4)) Then
+                    Dim tDoc As New BE.TipoDocumentoBE
+                    tDoc.id = pepe.Item(4)
+                    usuario.tipoDoc = tDoc
+                    usuario.dni = pepe.Item(5)
+                End If
                 usuario.mail = pepe.Item(6)
                 Return usuario
             Next
@@ -201,36 +205,6 @@ Public Class UsuarioDAL
 
         Return listaComponentes
     End Function
-
-    'Shared Function getTiposUsuarios() As List(Of TipoUsuarioBE)
-    '    Dim table As DataTable
-    '    Dim tipos As New List(Of BE.TipoUsuarioBE)
-
-    '    Dim repository As New AccesoSQLServer
-    '    Try
-    '        repository.crearComando("LISTAR_TIPOS_USUARIOS_SP")
-    '        table = New DataTable
-    '        table = repository.executeSearchWithAdapter()
-    '        If (table.Rows.Count = 0) Then
-    '            Throw New Util.BusquedaSinResultadosException
-    '        End If
-
-    '        Dim tipo As New BE.TipoUsuarioBE
-    '        tipo.id = Nothing
-    '        tipo.descripcion = "Todos"
-    '        tipos.Add(tipo)
-    '        For Each pepe As DataRow In table.Rows
-    '            tipo = New BE.TipoUsuarioBE
-    '            tipo.id = pepe.Item(0)
-    '            tipo.descripcion = pepe.Item(1)
-    '            tipos.Add(tipo)
-    '        Next
-    '    Catch ex As Exception
-    '        Throw ex
-    '    End Try
-
-    '    Return tipos
-    'End Function
 
     Shared Function getTiposDocumentos() As List(Of TipoDocumentoBE)
         Dim table As DataTable

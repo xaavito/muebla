@@ -44,13 +44,10 @@
         'TODO VER ESTO DEL PAGINADO...
     End Sub
 
-    Protected Sub ibtnCancelar_Click(sender As Object, e As ImageClickEventArgs)
-
-    End Sub
-
     Private Sub loadPedidos()
         Try
-            Me.detallePedidosResultGrid.DataSource = BLL.GestorPedidoBLL.buscarPedidos(Util.Util.getDate(Me.fechaDesdeTextBox.Text), Util.Util.getDate(Me.fechaHastaTextBox.Text), Me.estadoListBox.SelectedValue)
+            Me.detallePedidosResultGrid.DataSource = BLL.GestorPedidoBLL.buscarPedidos(getUsuario, Util.Util.getDate(Me.fechaDesdeTextBox.Text), Util.Util.getDate(Me.fechaHastaTextBox.Text), Me.estadoListBox.SelectedValue)
+            Me.detallePedidosResultGrid.DataBind()
         Catch ex As Exception
         End Try
     End Sub
@@ -63,6 +60,10 @@
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
+        loadPedidos()
+    End Sub
+
+    Protected Sub ibtnCambiarEstado_Click(sender As Object, e As ImageClickEventArgs)
 
     End Sub
 End Class

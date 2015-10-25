@@ -32,6 +32,8 @@
         LogueoExitoso = 1
         LogoutExitoso = 2
         ModificacionUsuario = 3
+        ' DESDE ACA FALTAN
+        PedidoRealizado = 4
     End Enum
 
     Enum ImportanciaEvento

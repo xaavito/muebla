@@ -29,16 +29,16 @@ Public Class GestorPedidoDAL
         Return componentes
     End Function
 
-    Public Shared Function buscarPedidos(ByVal fechaDesde As Date, ByVal fechaHasta As Date, ByVal estado As Integer) As List(Of PedidoBE)
+    Public Shared Function buscarPedidos(ByVal usr As BE.UsuarioBE, ByVal fechaDesde As Date, ByVal fechaHasta As Date, ByVal estado As Integer) As List(Of PedidoBE)
         Dim table As DataTable
         Dim componentes As New List(Of BE.PedidoBE)
         Dim repository As New AccesoSQLServer
         Try
-            'TODO TENGO QUE AGREGAR EL USUARIO QUE SE MANDA LA BUSQUEDA PARA VER SOLO LO COMPETENTE
             repository.crearComando("BUSCAR_PEDIDOS_SP")
             repository.addParam("@fechaDesde", fechaDesde)
             repository.addParam("@fechaHasta", fechaHasta)
             repository.addParam("@estado", estado)
+            repository.addParam("@usr", usr.id)
             table = New DataTable
             table = repository.executeSearchWithAdapter()
             If (table.Rows.Count = 0) Then
@@ -47,15 +47,24 @@ Public Class GestorPedidoDAL
             For Each pepe As DataRow In table.Rows
                 Dim evento As New PedidoBE
                 evento.id = pepe.Item(0)
-                cocococo()
                 evento.fechaCreacion = pepe.Item(1)
-                evento.fechaCreacion = pepe.Item(1)
-                evento.fechaCreacion = pepe.Item(1)
-                evento.fechaCreacion = pepe.Item(1)
-                evento.fechaCreacion = pepe.Item(1)
-                evento.fechaCreacion = pepe.Item(1)
-
-
+                Dim mp As New BE.MedioPagoBE
+                mp.id = pepe.Item(2)
+                mp.descripcion = pepe.Item(3)
+                evento.medioPago = mp
+                Dim te As New BE.TipoEnvioBE
+                te.id = pepe.Item(4)
+                te.texto = pepe.Item(5)
+                evento.tipoEnvio = te
+                Dim us As New BE.UsuarioBE
+                us.id = pepe.Item(6)
+                us.usuario = pepe.Item(7)
+                evento.usr = us
+                Dim ep As New BE.EstadoPedidoBE
+                ep.id = pepe.Item(8)
+                ep.descripcion = pepe.Item(9)
+                evento.estado = ep
+                evento.total = pepe.Item(10)
                 componentes.Add(evento)
             Next
         Catch ex As Exception

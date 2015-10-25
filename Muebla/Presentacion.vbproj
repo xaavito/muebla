@@ -98,6 +98,7 @@
     <Content Include="AdministrarProductos.aspx" />
     <Content Include="AdministrarProveedores.aspx" />
     <Content Include="AdministrarUsuarios.aspx" />
+    <Content Include="agregarPromocion.aspx" />
     <Content Include="AltaIdioma.aspx" />
     <Content Include="AltaListaPrecio.aspx" />
     <Content Include="AltaProducto.aspx" />
@@ -152,7 +153,6 @@
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
     <Content Include="NotaCredito.aspx" />
-    <Content Include="NuevaPromo.aspx" />
     <Content Include="Observaciones.aspx" />
     <Content Include="OrdenCompra.aspx" />
     <Content Include="PostVenta.aspx" />
@@ -199,6 +199,13 @@
     <Compile Include="AdministrarUsuarios.aspx.vb">
       <DependentUpon>AdministrarUsuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="agregarPromocion.aspx.designer.vb">
+      <DependentUpon>agregarPromocion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="agregarPromocion.aspx.vb">
+      <DependentUpon>agregarPromocion.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="AltaIdioma.aspx.designer.vb">
       <DependentUpon>AltaIdioma.aspx</DependentUpon>
@@ -356,13 +363,6 @@
     </Compile>
     <Compile Include="NotaCredito.aspx.vb">
       <DependentUpon>NotaCredito.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NuevaPromo.aspx.designer.vb">
-      <DependentUpon>NuevaPromo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NuevaPromo.aspx.vb">
-      <DependentUpon>NuevaPromo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Observaciones.aspx.designer.vb">

@@ -9,6 +9,17 @@ Public Class PedidoBE
     Private _productos As List(Of BE.PedidoProductoBE)
     Private _estado As BE.EstadoPedidoBE
     Private _usr As UsuarioBE
+    Private _total As Decimal
+
+    Public Property total() As Decimal
+        Get
+            Return _total
+        End Get
+        Set(ByVal value As Decimal)
+            _total = value
+        End Set
+    End Property
+
 
     Public Property usr() As UsuarioBE
         Get
@@ -119,5 +130,8 @@ Public Class PedidoBE
         End Set
     End Property
 
+    Public Function getTotal() As String
+        Return String.Format("{0:C}", total)
+    End Function
 
 End Class ' PedidoBE
