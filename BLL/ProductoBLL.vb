@@ -57,6 +57,10 @@ Public Class ProductoBLL
         Return DAL.ProductoDAL.buscarProductoCompuesto(id)
     End Function
 
+    Shared Function listarPromos() As List(Of ListaPrecioDetalleBE)
+        Return DAL.ProductoDAL.listarPromos()
+    End Function
+
 
 End Class ' ProductoBLL
 

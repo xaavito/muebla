@@ -313,13 +313,14 @@ body {
     float: right;
     font-size: -webkit-xxx-large;
 }
-.adrotator{
+
+.adrotator {
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
-#formaPago{
+#formaPago {
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -327,4 +328,29 @@ body {
 
 #quienesSomos {
     font-family: trebuchet ms,helvetica,sans-serif;
+}
+
+#promosDiv {
+    width:100%;
+    display:flex;justify-content:center;align-items:center;
+}
+
+#labelPromoDiv{
+    clear:both;
+    width:100%;
+    text-align:center;
+    color:red;
+    font-size:xx-large;
+}
+#listaPromosDiv{
+    text-align:center;
+    width:32%;
+}
+
+#ContentPlaceHolder1_promoLabel {
+    text-align:center;
+}
+.promo{
+    color:red;
+    font-size:xx-large;
 }

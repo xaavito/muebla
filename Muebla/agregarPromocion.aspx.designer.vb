@@ -23,85 +23,13 @@ Partial Public Class agregarPromocion
     Protected WithEvents scriptManager As Global.System.Web.UI.ScriptManager
 
     '''<summary>
-    '''Control tableAdministrarProveedoresCriteria.
+    '''Control detalleListaPrecioResultGrid.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents tableAdministrarProveedoresCriteria As Global.System.Web.UI.WebControls.Table
-
-    '''<summary>
-    '''Control descripcionLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents descripcionLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control descripcionTextBox.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents descripcionTextBox As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control fechaDesdeLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fechaDesdeLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control fechaDesdeTextBox.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fechaDesdeTextBox As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control fechaHastaLabel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fechaHastaLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control fechaHastaTextBox.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents fechaHastaTextBox As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control buscarButton.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents buscarButton As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control listaPrecioResultadosDataGrid.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents listaPrecioResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents detalleListaPrecioResultGrid As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''Control Button1.
@@ -113,146 +41,119 @@ Partial Public Class agregarPromocion
     Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control lnkDelete_ModalPopupExtender.
+    '''Control lnkAddPromo_ModalPopupExtender.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lnkDelete_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    Protected WithEvents lnkAddPromo_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
 
     '''<summary>
-    '''Control DivDeleteConfirmation.
+    '''Control DivAddPromoConfirmation.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DivDeleteConfirmation As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents DivAddPromoConfirmation As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control confirmarLabel.
+    '''Control addPromoLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents confirmarLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents addPromoLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control eliminarLeyendaLabel.
+    '''Control precioActualLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents eliminarLeyendaLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents precioActualLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control ButtonDeleleOkay.
+    '''Control precioActualTextBox.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ButtonDeleleOkay As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents precioActualTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control ButtonDeleteCancel.
+    '''Control precioPromoLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents ButtonDeleteCancel As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents precioPromoLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control detailsData.
+    '''Control precioPromoTextBox.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents detailsData As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents precioPromoTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control detalleListaPrecioResultGrid.
+    '''Control fechaDesdeLabel1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents detalleListaPrecioResultGrid As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents fechaDesdeLabel1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control btnShowPopup.
+    '''Control fechaDesdeTextBox1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents btnShowPopup As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents fechaDesdeTextBox1 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control lnkEditDetail_ModalPopupExtender.
+    '''Control fechaHastaLabel1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents lnkEditDetail_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+    Protected WithEvents fechaHastaLabel1 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control DivEditDetailConfirmation.
+    '''Control fechaHastaTextBox1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents DivEditDetailConfirmation As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents fechaHastaTextBox1 As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control edicionLabel.
+    '''Control ButtonConfirmarOkay.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents edicionLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents ButtonConfirmarOkay As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control valoLabel.
+    '''Control ButtonCancel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents valoLabel As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Control valorTextBox.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents valorTextBox As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Control ButtonEditDetailOkay.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ButtonEditDetailOkay As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''Control ButtonEditDetailCancel.
-    '''</summary>
-    '''<remarks>
-    '''Campo generado automáticamente.
-    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-    '''</remarks>
-    Protected WithEvents ButtonEditDetailCancel As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ButtonCancel As Global.System.Web.UI.WebControls.Button
 End Class

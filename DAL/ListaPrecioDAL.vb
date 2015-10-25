@@ -24,10 +24,6 @@ Public Class ListaPrecioDAL
         Return id
     End Function
 
-    Public Shared Sub altaPromocion(ByVal listaPrecio As ListaPrecioBE, ByVal descuento As Integer, ByVal desde As DateTime)
-
-    End Sub
-
     Public Shared Function buscarListas(ByVal estado As Integer, ByVal descripcion As String) As List(Of ListaPrecioBE)
         Dim table As DataTable
         Dim list As New List(Of BE.ListaPrecioBE)
@@ -64,10 +60,6 @@ Public Class ListaPrecioDAL
     Public Shared Function checkListaVigente(ByVal fecha As DateTime, ByVal tipoVenta As TipoVentaBE) As Boolean
         checkListaVigente = False
     End Function
-
-    Public Shared Sub modificarListaPrecio(ByVal desde As DateTime, ByVal aumento As Integer, ByVal tipoAumento As Boolean)
-
-    End Sub
 
     Shared Function getDetalleListaPrecio(id As Integer) As List(Of ListaPrecioDetalleBE)
         Dim table As DataTable
@@ -177,6 +169,25 @@ Public Class ListaPrecioDAL
             repository.addParam("@id", listaPrecio.id)
             repository.addParam("@fecha", listaPrecio.fechaDesde)
             id = repository.executeSearchWithStatus
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub altaPromocion(idProd As Integer, precio As Decimal, desde As Date, hasta As Date)
+        Dim repository As AccesoSQLServer
+        Dim id As Integer
+        repository = New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_PROMOCION_SP")
+            repository.addParam("@id", idProd)
+            repository.addParam("@precio", precio)
+            repository.addParam("@desde", desde)
+            repository.addParam("@hasta", hasta)
+            id = repository.executeSearchWithStatus
+            If (id = 0) Then
+                Throw New Util.CreacionException
+            End If
         Catch ex As Exception
             Throw ex
         End Try

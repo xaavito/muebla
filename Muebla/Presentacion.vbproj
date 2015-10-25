@@ -156,7 +156,6 @@
     <Content Include="Observaciones.aspx" />
     <Content Include="OrdenCompra.aspx" />
     <Content Include="PostVenta.aspx" />
-    <Content Include="Promociones.aspx" />
     <Content Include="RecuperarContrasena.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Remito.aspx" />
@@ -384,13 +383,6 @@
     </Compile>
     <Compile Include="PostVenta.aspx.vb">
       <DependentUpon>PostVenta.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Promociones.aspx.designer.vb">
-      <DependentUpon>Promociones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Promociones.aspx.vb">
-      <DependentUpon>Promociones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="RecuperarContrasena.aspx.designer.vb">

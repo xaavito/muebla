@@ -48,4 +48,13 @@ Partial Public Class Main
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents Timer1 As Global.System.Web.UI.Timer
+
+    '''<summary>
+    '''Control lvPromos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lvPromos As Global.System.Web.UI.WebControls.ListView
 End Class

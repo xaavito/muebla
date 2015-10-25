@@ -62,4 +62,16 @@ Public Class ListaPrecioBE
             _id = Value
         End Set
     End Property
+
+    Private _promo As Boolean
+    Public Property promo() As Boolean
+        Get
+            Return _promo
+        End Get
+        Set(ByVal value As Boolean)
+            _promo = value
+        End Set
+    End Property
+
+
 End Class

@@ -9,11 +9,7 @@ Public Class ListaPrecioBLL
         DAL.ListaPrecioDAL.cerrarVigencia(listaPrecio)
     End Sub
 
-    Public Shared Sub altaPromocion(ByVal desde As DateTime, ByVal listaPrecio As ListaPrecioBE, ByVal descuento As Integer)
-
-    End Sub
-
-    Public Shared Function buscarListas(ByVal activo As Integer, ByVal tipoVenta As String) As List(Of ListaPrecioBE)
+   Public Shared Function buscarListas(ByVal activo As Integer, ByVal tipoVenta As String) As List(Of ListaPrecioBE)
         Return DAL.ListaPrecioDAL.buscarListas(activo, tipoVenta)
     End Function
 
@@ -33,6 +29,10 @@ Public Class ListaPrecioBLL
     Shared Function getListaPrecioParaAlta() As List(Of BE.ListaPrecioDetalleBE)
         Return DAL.ListaPrecioDAL.getListaPrecioParaAlta
     End Function
+
+    Shared Sub altaPromocion(idProd As Integer, precio As Decimal, desde As Date, hasta As Date)
+        DAL.ListaPrecioDAL.altaPromocion(idProd, precio, desde, hasta)
+    End Sub
 
 
 End Class ' ListaPrecioBLL

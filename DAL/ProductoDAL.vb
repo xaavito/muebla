@@ -169,6 +169,7 @@ Public Class ProductoDAL
                 lpd.precio = item.Item(3)
                 lpd.id = item.Item(4)
                 lp.id = item.Item(5)
+                lp.promo = item.Item(7)
                 lpd.listaPrecio = lp
                 lpd.producto = producto
                 list.Add(lpd)
@@ -283,6 +284,42 @@ Public Class ProductoDAL
             End Try
         Next
     End Sub
+
+    Shared Function listarPromos() As List(Of ListaPrecioDetalleBE)
+        Dim table As DataTable
+        Dim list As New List(Of BE.ListaPrecioDetalleBE)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("LISTAR_PROMOS_SP")
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Dim producto As New BE.ProductoBE
+                Dim lpd As New BE.ListaPrecioDetalleBE
+                Dim lp As New BE.ListaPrecioBE
+                producto.id = item.Item(0)
+                producto.descripcion = item.Item(1)
+                producto.breveDescripcion = item.Item(6)
+
+                producto.image1 = (DirectCast(item.Item(2), Byte()))
+                lpd.precio = item.Item(3)
+                lpd.id = item.Item(4)
+                lp.id = item.Item(5)
+                lp.promo = item.Item(7)
+                lpd.listaPrecio = lp
+                lpd.producto = producto
+                list.Add(lpd)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return list
+    End Function
 
 
 End Class ' ProductoDAL

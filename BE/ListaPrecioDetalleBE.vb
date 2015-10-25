@@ -49,6 +49,11 @@ Public Class ListaPrecioDetalleBE
         Return String.Format("{0:C}", precio)
     End Function
 
+    Public Function esPromo() As Boolean
+        Return listaPrecio.promo
+    End Function
+
+
 
 End Class ' ListaPrecioDetalleBE
 

@@ -32,7 +32,7 @@ Public Class Ventas
         End If
         Dim ID As Integer = Integer.Parse(getItemId(sender, Me.lvProductos))
         For Each a As ListaPrecioDetalleBE In listaProductos
-            If a.producto.id = ID Then
+            If a.id = ID Then
                 carrito.addProducto(a, getSelectedCantidad(sender, Me.lvProductos))
                 Exit For
             End If

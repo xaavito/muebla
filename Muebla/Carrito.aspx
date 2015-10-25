@@ -4,7 +4,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" />
+    
     <asp:Label ID="pasoLabel" Text="" runat="server" />
+
     <asp:GridView runat="server" ID="detalleCarritoResultGrid"
         AutoGenerateColumns="false"
         AllowPaging="true" PageSize="12"
@@ -16,7 +18,7 @@
         OnPreRender="detalleCarritoResultGrid_PreRender"
         OnPageIndexChanging="detalleCarritoResultGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField visible="false" HeaderText="ID">
                 <ItemTemplate>
                     <asp:Label Visible="false" runat="server" ID="itemID" Text="<%# Item.producto.id %>" />
                 </ItemTemplate>
