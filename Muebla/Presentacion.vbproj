@@ -126,6 +126,7 @@
     <Content Include="images\banner_detalles.jpg" />
     <Content Include="images\bigMuebla.png" />
     <Content Include="images\cabal.png" />
+    <Content Include="images\comentario.png" />
     <Content Include="images\confirm.png" />
     <Content Include="images\cross_icon_normal.png" />
     <Content Include="images\deleteItem.png" />
