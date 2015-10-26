@@ -2,6 +2,7 @@
 Imports iTextSharp.text
 Imports iTextSharp.text.pdf
 Imports System.Data
+Imports System.Web
 
 Public Class PDFGenerator
 
@@ -180,10 +181,10 @@ Public Class PDFGenerator
         cb.SetTextMatrix(pageSize.GetLeft(300), 200)
         cb.ShowText("Approved by,")
         cb.EndText()
-        'Image Singature
-        'Dim logo As iTextSharp.text.Image = iTextSharp.text.Image.GetInstance(Server.MapPath("~/Images/Bill_Gates2.png"))
-        'logo.SetAbsolutePosition(pageSize.GetLeft(300), 140)
-        'document.Add(logo)
+        'Dim Singature As Image
+        Dim logo As iTextSharp.text.Image = iTextSharp.text.Image.GetInstance(Hosting.HostingEnvironment.MapPath("~/images/banelco.png"))
+        logo.SetAbsolutePosition(pageSize.GetLeft(300), 140)
+        document.Add(logo)
 
         cb = New PdfContentByte(writer)
         bf = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1250, True)

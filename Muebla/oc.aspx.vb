@@ -1,14 +1,13 @@
-﻿Public Class oc
+﻿Imports System.IO
+
+Public Class oc
     Inherits ExtendedPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'If (rdoDownload.Checked) Then
-        DownloadPDF(Util.PDFGenerator.CreatePDF())
-        'Else
-        'Dim MS As MemoryStream = CreatePDF()
-        'MS.Position = 0
-        'Dim PDFData as byte() = new byte[ms.Length]
-        'ms.Read(PDFData, 0, (int)ms.Length)
+        'TODO TESTEAR ESTO
+        Util.Mailer.sendMailWithAttachment("javiermartingonzalez@gmail.com", "test", "a ver...", Util.PDFGenerator.CreatePDF())
+        'DownloadPDF(Util.PDFGenerator.CreatePDF())
+        'Dim ms As MemoryStream = Util.PDFGenerator.CreatePDF()
     End Sub
 
     Protected Sub DownloadPDF(ByVal PDFData As System.IO.MemoryStream)

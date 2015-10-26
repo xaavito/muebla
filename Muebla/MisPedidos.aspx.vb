@@ -91,6 +91,7 @@
     Protected Sub ButtonCommentOkay_Click(sender As Object, e As EventArgs)
         Try
             Me.commentTextBox.Text
+            'todo me quede aca
         Catch ex As Exception
 
         End Try
