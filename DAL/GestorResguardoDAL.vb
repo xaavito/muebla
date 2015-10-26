@@ -1,6 +1,7 @@
 Imports System.Data.SqlClient
 Imports Microsoft.SqlServer.Management.Common
 Imports Microsoft.SqlServer.Management.Smo
+Imports System.Web.Configuration
 
 Imports BE
 Imports Util
@@ -8,16 +9,14 @@ Imports Util
 
 Public Class GestorResguardoDAL
 
-    'TODO buscar path relativo pasarlo al web config
     Public Shared Sub BackUp(ByVal description As String)
-        Dim path As String = "C:\\Prueba"
+
+        Dim path As String = WebConfigurationManager.AppSettings("Path").ToString
         Dim fecha As String = DateTime.Now.Day.ToString + "-" + DateTime.Now.Month.ToString + "-" + DateTime.Now.Year.ToString + "-" +
                 DateTime.Now.Hour.ToString + "-" + DateTime.Now.Minute.ToString + "-" + DateTime.Now.Second.ToString
 
-        'Dim connectionString As String
         Dim repo As New AccesoSQLServer
 
-        'connectionString = 
         Dim builder As New SqlConnectionStringBuilder(repo.conString)
         Dim connection As New ServerConnection(builder.DataSource)
         Dim sqlServer As New Server(connection)

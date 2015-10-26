@@ -26,6 +26,8 @@
 
         TienePedidosEnProceso
 
+        NoSePuedeCancelarPedidoEstado
+
     End Enum
 
     Enum Bitacora
@@ -34,6 +36,9 @@
         ModificacionUsuario = 3
         ' DESDE ACA FALTAN
         PedidoRealizado = 4
+
+        PedidoCancelado
+
     End Enum
 
     Enum ImportanciaEvento

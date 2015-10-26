@@ -32,6 +32,7 @@ Public Class ListaPrecioBLL
 
     Shared Sub altaPromocion(idProd As Integer, precio As Decimal, desde As Date, hasta As Date)
         DAL.ListaPrecioDAL.altaPromocion(idProd, precio, desde, hasta)
+        'TODO ACA DEBERIAMOS MANDAR UN MAIL A MUCHOS DE LOS QUE YA HAYAN COMPRADO!
     End Sub
 
 

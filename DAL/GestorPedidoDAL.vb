@@ -3,8 +3,6 @@ Imports Util
 
 
 Public Class GestorPedidoDAL
-
-
     Public Shared Function buscarMediosPago() As List(Of MedioPagoBE)
         Dim table As DataTable
         Dim componentes As New List(Of BE.MedioPagoBE)
@@ -72,10 +70,6 @@ Public Class GestorPedidoDAL
         End Try
         Return componentes
     End Function
-
-    Public Shared Sub cancelarPedido(ByVal usr As UsuarioBE)
-
-    End Sub
 
     Public Shared Function checkEstadoPedido(ByVal pedido As PedidoBE, ByVal estado As Boolean) As Boolean
         checkEstadoPedido = False
@@ -187,6 +181,17 @@ Public Class GestorPedidoDAL
         End Try
         Return componentes
     End Function
+
+    Shared Sub cancelarPedido(a As PedidoBE)
+        Dim idRet As Integer
+        Dim repository As New AccesoSQLServer
+        repository.crearComando("CANCELAR_PEDIDO_SP")
+        repository.addParam("@id", a.id)
+        idRet = repository.executeSearchWithStatus
+        If (idRet <= 0) Then
+            Throw New EliminacionException
+        End If
+    End Sub
 
 
 End Class ' GestorPedidoDAL

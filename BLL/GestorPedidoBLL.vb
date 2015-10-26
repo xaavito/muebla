@@ -10,10 +10,7 @@ Public Class GestorPedidoBLL
         Return DAL.GestorPedidoDAL.buscarPedidos(usr, fechaDesde, fechaHasta, estado)
     End Function
 
-    Public Shared Sub cancelarPedido(ByVal pedido As PedidoBE)
-
-    End Sub
-
+    
     Public Shared Sub checkEstadoPedido(ByVal pedido As PedidoBE)
 
     End Sub
@@ -23,19 +20,19 @@ Public Class GestorPedidoBLL
     End Function
 
     Public Shared Sub generarComprobantePago(ByVal pedido As PedidoBE)
-
+        'TODO
     End Sub
 
     Public Shared Sub generarFactura(ByVal pedido As PedidoBE)
-
+        'TODO
     End Sub
 
     Public Shared Sub generarHojaRuta(ByVal pedidos As PedidoBE)
-
+        'TODO
     End Sub
 
     Public Shared Sub generarNotaCredito(ByVal pedido As PedidoBE)
-
+        'TODO
     End Sub
 
     Public Shared Sub generarPedido(ByVal pedido As PedidoBE)
@@ -47,19 +44,19 @@ Public Class GestorPedidoBLL
     End Sub
 
     Public Shared Sub generarPedidoPersonalizado(ByVal pedido As PedidoBE)
-
+        'TODO
     End Sub
 
     Public Shared Sub generarRemito(ByVal pedidos As PedidoBE)
-
+        'TODO
     End Sub
 
     Public Shared Sub generarResena(ByVal comentario As String, ByVal pedido As PedidoBE)
-
+        'TODO
     End Sub
 
     Public Shared Sub solicitarServicio(ByVal arch As Object, ByVal obs As String, ByVal pedido As PedidoBE)
-
+        'TODO
     End Sub
 
     Shared Function buscarTiposEnvios(idIdioma As Integer) As List(Of TipoEnvioBE)
@@ -69,6 +66,14 @@ Public Class GestorPedidoBLL
     Shared Function getEstadosPedidos() As List(Of BE.EstadoPedidoBE)
         Return DAL.GestorPedidoDAL.getEstadosPedidos
     End Function
+
+    Shared Sub cancelarPedido(a As PedidoBE)
+        If a.estado.id = 1 Then
+            DAL.GestorPedidoDAL.cancelarPedido(a)
+        Else
+            Throw New Util.CancelarPedidoException
+        End If
+    End Sub
 
 
 End Class ' GestorPedidoBLL
