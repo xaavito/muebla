@@ -61,6 +61,10 @@ Public Class ProductoBLL
         Return DAL.ProductoDAL.listarPromos()
     End Function
 
+    Shared Function getComparacion(p1 As Integer) As List(Of ComparacionProductos)
+        Return DAL.ProductoDAL.getComparacion(p1)
+    End Function
+
 
 End Class ' ProductoBLL
 

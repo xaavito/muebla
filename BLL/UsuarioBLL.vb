@@ -2,8 +2,9 @@ Imports BE
 
 Public Class UsuarioBLL
     Public Shared Function altaCliente(ByVal usr As UsuarioBE)
-        'TODO CHECK EMAIL
         'TODO ENCRIPTAR PASS?
+        DAL.UsuarioDAL.checkUsr(usr)
+        DAL.UsuarioDAL.checkMail(usr)
         usr.id = DAL.UsuarioDAL.altaCliente(usr)
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
         usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
@@ -12,7 +13,7 @@ Public Class UsuarioBLL
     End Function
 
     Public Shared Sub altaUsuario(ByVal usr As UsuarioBE)
-        'todo check email.
+        DAL.UsuarioDAL.checkMail(usr)
         usr.id = DAL.UsuarioDAL.altaUsuario(usr)
         For Each a As BE.RolBE In usr.roles
             DAL.UsuarioDAL.modificarPermisoUsuario(usr.id, a)
@@ -66,10 +67,6 @@ Public Class UsuarioBLL
         Return pass
     End Function
 
-    'Shared Function getTiposUsuarios() As List(Of BE.TipoUsuarioBE)
-    '    Return DAL.UsuarioDAL.getTiposUsuarios()
-    'End Function
-
     Shared Function getTiposDocumentos() As List(Of BE.TipoDocumentoBE)
         Return DAL.UsuarioDAL.getTiposDocumentos
     End Function
@@ -83,6 +80,7 @@ Public Class UsuarioBLL
     End Function
 
     Shared Sub modificarUsuario(idUsuario As Integer, roles As List(Of BE.RolBE), estado As Boolean)
+        'TODO ACA ME QUEDEEEE
         DAL.UsuarioDAL.modificarUsuario(idUsuario, estado)
         DAL.UsuarioDAL.borrarPermisos(idUsuario)
         For Each rol As BE.RolBE In roles

@@ -533,5 +533,37 @@ Public Class UsuarioDAL
         End Try
     End Sub
 
+    Shared Sub checkMail(usr As UsuarioBE)
+        Dim resultado As Integer
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_MAIL_UTILIZADO_SP")
+            repository.addParam("@mail", usr.mail)
+            resultado = repository.executeWithReturnValue
+            If (resultado >= 1) Then
+                Throw New Util.MailYaEstaSiendoUtilizadoException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub checkUsr(usr As UsuarioBE)
+        Dim resultado As Integer
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_USUARIO_UTILIZADO_SP")
+            repository.addParam("@usr", usr.usuario)
+            resultado = repository.executeWithReturnValue
+            If (resultado >= 1) Then
+                Throw New Util.UsuarioYaEstaSiendoUtilizadoException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
 End Class
 

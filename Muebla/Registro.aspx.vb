@@ -60,8 +60,5 @@
         Catch ex As Exception
             logMessage(ex)
         End Try
-
-
     End Sub
-
 End Class

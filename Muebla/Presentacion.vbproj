@@ -57,6 +57,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web.DynamicData" />
@@ -107,6 +108,8 @@
     <Content Include="Backup.aspx" />
     <Content Include="Bitacora.aspx" />
     <Content Include="Carrito.aspx" />
+    <Content Include="images\price_comparison.png" />
+    <Content Include="registroCompleto.aspx" />
     <Content Include="ConfirmarShowroom.aspx" />
     <Content Include="adfile.xml" />
     <Content Include="css\MiEstilo.css" />
@@ -150,6 +153,7 @@
     <Content Include="images\visa.png" />
     <Content Include="Login.aspx" />
     <Content Include="oc.aspx" />
+    <Content Include="compraRealizada.aspx" />
     <Content Include="quienesSomos.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
@@ -263,6 +267,13 @@
       <DependentUpon>Carrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="registroCompleto.aspx.designer.vb">
+      <DependentUpon>registroCompleto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="registroCompleto.aspx.vb">
+      <DependentUpon>registroCompleto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="ConfirmarShowroom.aspx.designer.vb">
       <DependentUpon>ConfirmarShowroom.aspx</DependentUpon>
     </Compile>
@@ -310,6 +321,13 @@
     <Compile Include="oc.aspx.vb">
       <DependentUpon>oc.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="compraRealizada.aspx.designer.vb">
+      <DependentUpon>compraRealizada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="compraRealizada.aspx.vb">
+      <DependentUpon>compraRealizada.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="quienesSomos.aspx.designer.vb">
       <DependentUpon>quienesSomos.aspx</DependentUpon>

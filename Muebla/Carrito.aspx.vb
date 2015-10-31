@@ -16,6 +16,7 @@
     Protected Sub comprar_Click(sender As Object, e As EventArgs)
         Try
             BLL.GestorPedidoBLL.generarPedido(Session("carrito"))
+            Response.Redirect("compraRealizada.aspx", False)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)

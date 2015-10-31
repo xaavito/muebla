@@ -326,31 +326,39 @@ body {
     display: block;
 }
 
-#quienesSomos {
+#quienesSomos, #compraRealizada, #registroCompleto {
     font-family: trebuchet ms,helvetica,sans-serif;
 }
 
-#promosDiv {
-    width:100%;
-    display:flex;justify-content:center;align-items:center;
+#compraRealizada, #registroCompleto {
+    font-size: x-large;
 }
 
-#labelPromoDiv{
-    clear:both;
-    width:100%;
-    text-align:center;
-    color:red;
-    font-size:xx-large;
+#promosDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-#listaPromosDiv{
-    text-align:center;
-    width:32%;
+
+#labelPromoDiv {
+    clear: both;
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: xx-large;
+}
+
+#listaPromosDiv {
+    text-align: center;
+    width: 32%;
 }
 
 #ContentPlaceHolder1_promoLabel {
-    text-align:center;
+    text-align: center;
 }
-.promo{
-    color:red;
-    font-size:xx-large;
+
+.promo {
+    color: red;
+    font-size: xx-large;
 }

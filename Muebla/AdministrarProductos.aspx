@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="AdministrarProductos.aspx.vb" Inherits="Muebla.AdministrarProductos" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -10,7 +12,8 @@
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="nombreProductoLabel" Text="Nombre Producto" />
-            </asp:TableCell><asp:TableCell>
+            </asp:TableCell>
+            <asp:TableCell>
                 <asp:TextBox runat="server" ID="nombreProductoTextBox" />
             </asp:TableCell>
         </asp:TableRow>
@@ -65,6 +68,9 @@
                     <asp:ImageButton ID="ibtnDetails" runat="server"
                         ImageUrl="/images/detail.png"
                         OnClick="ibtnDetails_Click" />
+                    <asp:ImageButton ID="ibtnComparacion" runat="server"
+                        ImageUrl="/images/price_comparison.png"
+                        OnClick="ibtnComparacion_Click" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -163,8 +169,54 @@
         </div>
     </asp:Panel>
 
+    <ajaxToolkit:ModalPopupExtender
+        ID="comparacionModalPopup" runat="server"
+        CancelControlID="okButton"
+        TargetControlID="Button1" PopupControlID="DivChart"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupEdit" ID="DivChart"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Body">
+                <p>
+                    <asp:Chart ID="comparacionChart" runat="server">
+                        <Series>
+                            <asp:Series Name="Categories" ChartType="Bar" ChartArea="MainChartArea"
+                                BorderWidth="2" Color="YellowGreen">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="MainChartArea" Area3DStyle-Enable3D="true"
+                                BorderColor="64, 64, 64, 64"
+                                BorderDashStyle="Solid" BackSecondaryColor="White"
+                                BackColor="64, 165, 191, 228"
+                                ShadowColor="Transparent" BackGradientStyle="TopBottom">
+                                <Area3DStyle Rotation="10" Perspective="10" Inclination="15"
+                                    IsRightAngleAxes="False" WallWidth="0" IsClustered="False">
+
+                                </Area3DStyle>
+                                <AxisY LineColor="64, 64, 64, 64">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisY>
+                                <AxisX LineColor="64, 64, 64, 64">
+                                    <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
+                                    <MajorGrid LineColor="64, 64, 64, 64" />
+                                </AxisX>
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="OK" ID="okButton" OnClick="okButton_Click" />
+            </div>
+        </div>
+    </asp:Panel>
+
     <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
 
     <asp:Button Text="Orden de Compra" ID="generarOrdenCompraButton" runat="server" OnClick="generarOrdenCompraButton_Click" />
-    <asp:Button Text="Comparacion Costos" runat="server" ID="compararCostoButton" OnClick="compararCostoButton_Click" />
 </asp:Content>

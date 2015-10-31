@@ -1,4 +1,6 @@
 ﻿Imports System.Net.Mail
+Imports System.Net.Mime
+
 Public Class Mailer
 
     Public Sub init()
@@ -20,7 +22,7 @@ Public Class Mailer
 
             MyMailMessage.Subject = referencia
             MyMailMessage.Body = contenido
-            
+
             'Create the SMTPClient object and specify the SMTP GMail server
             Dim SMTPServer As New SmtpClient("smtp.gmail.com")
             SMTPServer.Port = 587
@@ -53,7 +55,11 @@ Public Class Mailer
 
             MyMailMessage.Subject = referencia
             MyMailMessage.Body = contenido
-            MyMailMessage.Attachments.Add(New Attachment(adjunto, "PEPE.PDF", "application/pdf"))
+            adjunto.Position = 0
+            Dim ct As New ContentType
+            ct.MediaType = MediaTypeNames.Application.Pdf
+            ct.Name = "MueblaFile.pdf"
+            MyMailMessage.Attachments.Add(New Attachment(adjunto, ct))
 
             'Create the SMTPClient object and specify the SMTP GMail server
             Dim SMTPServer As New SmtpClient("smtp.gmail.com")

@@ -54,12 +54,8 @@
         Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)
         Session("idProveedor") = id
-        Try
-            BLL.ProveedorBLL.eliminarProveedor(id)
-            Throw New Util.EliminacionExitosaException
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
+
+        lnkObservaciones_ModalPopupExtender.Show()
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
@@ -146,5 +142,14 @@
 
     Protected Sub cancelarButton_Click(sender As Object, e As EventArgs)
         Me.editData.Visible = False
+    End Sub
+
+    Protected Sub ButtonOkay_Click(sender As Object, e As EventArgs)
+        Try
+            BLL.ProveedorBLL.eliminarProveedor(Session("idProveedor"), Me.observacionesTextBox.Text)
+            Throw New Util.EliminacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 End Class

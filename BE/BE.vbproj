@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="AsistenciaShowroomBE.vb" />
     <Compile Include="BackupBE.vb" />
+    <Compile Include="ComparacionProductos.vb" />
     <Compile Include="ComponenteBE.vb" />
     <Compile Include="ComprobanteBE.vb" />
     <Compile Include="ComprobanteDetalleBE.vb" />

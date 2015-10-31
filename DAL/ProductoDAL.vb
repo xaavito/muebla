@@ -321,6 +321,33 @@ Public Class ProductoDAL
         Return list
     End Function
 
+    Shared Function getComparacion(p1 As Integer) As List(Of ComparacionProductos)
+        Dim table As DataTable
+        Dim list As New List(Of BE.ComparacionProductos)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("COMPARACION_PRODUCTO_SP")
+            repository.addParam("@id", p1)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Dim producto As New BE.ComparacionProductos
+               
+                producto.proveedor = item.Item(0)
+                producto.valor = item.Item(1)
+                list.Add(producto)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return list
+    End Function
+
 
 End Class ' ProductoDAL
 

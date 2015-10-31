@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class AltaProveedor1
 
     '''<summary>
+    '''Control scriptManager.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scriptManager As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''Control tableAltaProveedor.
     '''</summary>
     '''<remarks>
@@ -176,13 +185,49 @@ Partial Public Class AltaProveedor1
     Protected WithEvents allProductosListBox As Global.System.Web.UI.WebControls.ListBox
 
     '''<summary>
-    '''Control valorProducto.
+    '''Control Button1.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents valorProducto As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control lnkValor_ModalPopupExtender.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents lnkValor_ModalPopupExtender As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivValorConfirmation.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivValorConfirmation As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control edicionLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents edicionLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control valorLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents valorLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control valorProductoTextBox.
@@ -194,22 +239,22 @@ Partial Public Class AltaProveedor1
     Protected WithEvents valorProductoTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control confirmarValorButton.
+    '''Control ButtonOkay.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents confirmarValorButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ButtonOkay As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control cancelarValorButton.
+    '''Control ButtonCancel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents cancelarValorButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ButtonCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control confirmarButton.

@@ -199,6 +199,71 @@ Public Class ProveedorDAL
         End Try
     End Sub
 
+    Shared Sub checkCuilExistente(prov As ProveedorBE)
+        Dim resultado As Integer
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_CUIL_PROVEEDOR_SP")
+            repository.addParam("@cuit", prov.cuit)
+            repository.addParam("@id", prov.id)
+            resultado = repository.executeWithReturnValue
+            If (resultado >= 1) Then
+                Throw New Util.CuitExistenteException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub checkProveedorProductosVenta(id As Integer)
+        Dim resultado As Integer
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_PROVEEDOR_PRODUCTOS_VENTA_SP")
+            repository.addParam("@id", id)
+            resultado = repository.executeWithReturnValue
+            If (resultado >= 1) Then
+                Throw New Util.ProveedorProductosEnVentaException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub checkProveedorProductosStock(id As Integer)
+        Dim resultado As Integer
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_PROVEEDOR_PRODUCTOS_STOCK_SP")
+            repository.addParam("@id", id)
+            resultado = repository.executeWithReturnValue
+            If (resultado >= 1) Then
+                Throw New Util.ProductosEnStockException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub agregarObservacionProv(id As Integer, ob As String)
+        Dim resultado As Integer
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("AGREGAR_OBSERVACION_PROV_SP")
+            repository.addParam("@id", id)
+            repository.addParam("@ob", ob)
+            resultado = repository.executeSearchWithStatus()
+            If (resultado = 0) Then
+                Throw New Util.CreacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 
 End Class
 

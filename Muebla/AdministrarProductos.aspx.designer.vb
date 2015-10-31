@@ -284,6 +284,42 @@ Partial Public Class AdministrarProductos
     Protected WithEvents ButtonEditCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control comparacionModalPopup.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comparacionModalPopup As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivChart.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivChart As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control comparacionChart.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comparacionChart As Global.System.Web.UI.DataVisualization.Charting.Chart
+
+    '''<summary>
+    '''Control okButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents okButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control confirmarButton.
     '''</summary>
     '''<remarks>

@@ -3,11 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager id="scriptManager" runat="server" />
+
     <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria" CssClass="table">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="nombreProveedorLabel" Text="Organizacion/Nombre de fantasia" />
-            </asp:TableCell><asp:TableCell>
+            </asp:TableCell>
+            <asp:TableCell>
                 <asp:TextBox runat="server" ID="nombreProveedorTextBox" />
             </asp:TableCell>
         </asp:TableRow>
@@ -177,4 +180,34 @@
         <asp:Button Text="Modificar" ID="modificarButton" runat="server" OnClick="modificarButton_Click" />
         <asp:Button Text="Cancelar" ID="cancelarButton" runat="server" OnClick="cancelarButton_Click" />
     </div>
+
+    <asp:Button ID="Button1" runat="server" Style="display: none" />
+
+    <ajaxToolkit:ModalPopupExtender
+        ID="lnkObservaciones_ModalPopupExtender" runat="server"
+        CancelControlID="ButtonCancel"
+        TargetControlID="Button1" PopupControlID="DivObservaciones"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupConfirmation" ID="DivObservaciones"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Titlebar" id="PopupHeader">
+                <div class="TitlebarLeft">
+                    <asp:Label Text="Observaciones" ID="observacionLabel" runat="server" />
+                </div>
+            </div>
+            <div class="popup_Body">
+                <p>
+                    <asp:Label runat="server" ID="observacionesLabel" Text="Observaciones" />
+                    <asp:TextBox TextMode="MultiLine" Rows="4" ID="observacionesTextBox" runat="server" />
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonOkay" OnClick="ButtonOkay_Click" />
+                <asp:Button runat="server" Text="Cancelar" ID="ButtonCancel" />
+            </div>
+        </div>
+    </asp:Panel>
 </asp:Content>

@@ -6,7 +6,6 @@
             Return
         End If
         buscarProductosMateriaPrima()
-        Me.valorProducto.Visible = False
         Me.productosPropiosListBox.DataTextField = "descripcion"
         Me.productosPropiosListBox.DataValueField = "id"
     End Sub
@@ -25,7 +24,6 @@
         Catch ex As Exception
             logMessage(ex)
         End Try
-        Me.valorProducto.Visible = False
     End Sub
 
     Private Sub buscarProductosMateriaPrima()
@@ -43,10 +41,10 @@
     End Sub
 
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
-        Me.valorProducto.Visible = True
+        lnkValor_ModalPopupExtender.Show()
     End Sub
 
-    Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
+    Protected Sub ButtonOkay_Click(sender As Object, e As EventArgs)
         If Not allProductosListBox.SelectedItem Is Nothing Then
             Dim idToAdd As Integer = allProductosListBox.SelectedValue
             Dim found As Boolean = False
@@ -77,11 +75,5 @@
                 Session("productosPropios") = ps
             End If
         End If
-        Me.valorProducto.Visible = False
     End Sub
-
-    Protected Sub cancelarButton_Click(sender As Object, e As EventArgs)
-        Me.valorProducto.Visible = False
-    End Sub
-
 End Class

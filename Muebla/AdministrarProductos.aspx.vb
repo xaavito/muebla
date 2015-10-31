@@ -34,10 +34,6 @@ Public Class AdministrarProductos
         Response.Redirect("oc.aspx")
     End Sub
 
-    Protected Sub compararCostoButton_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
         'Me.editDataDiv.Visible = True
         Session("idProductoEdicion") = getItemId(sender, Me.productosResultadosDataGrid)
@@ -196,5 +192,23 @@ Public Class AdministrarProductos
 
     Protected Sub productosPropiosListBox_SelectedIndexChanged(sender As Object, e As EventArgs)
         Me.lnkEdit_ModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub ibtnComparacion_Click(sender As Object, e As ImageClickEventArgs)
+        Try
+            Dim lista As List(Of BE.ComparacionProductos) = BLL.ProductoBLL.getComparacion(getItemId(sender, Me.productosResultadosDataGrid))
+            Me.comparacionChart.DataSource = lista
+            Me.comparacionChart.Series("Categories").XValueMember = "proveedor"
+            Me.comparacionChart.Series("Categories").YValueMembers = "valor"
+            Me.comparacionChart.DataBind()
+            Me.comparacionModalPopup.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
+    End Sub
+
+    Protected Sub okButton_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

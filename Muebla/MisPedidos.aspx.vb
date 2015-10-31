@@ -70,7 +70,7 @@
 
     Protected Sub ibtnCancelarPedido_Click(sender As Object, e As ImageClickEventArgs)
         Try
-            Dim usr As BE.UsuarioBE
+            Dim usr As BE.UsuarioBE = Nothing
             Dim id As Integer = getItemId(sender, Me.detallePedidosResultGrid)
             For Each a As BE.PedidoBE In Session("pedidos")
                 If a.id = id Then
@@ -90,7 +90,7 @@
 
     Protected Sub ButtonCommentOkay_Click(sender As Object, e As EventArgs)
         Try
-            Me.commentTextBox.Text
+            'Me.commentTextBox.Text
             'todo me quede aca
         Catch ex As Exception
 

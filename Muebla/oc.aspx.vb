@@ -6,7 +6,7 @@ Public Class oc
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'TODO TESTEAR ESTO
         Util.Mailer.sendMailWithAttachment("javiermartingonzalez@gmail.com", "test", "a ver...", Util.PDFGenerator.CreatePDF())
-        'DownloadPDF(Util.PDFGenerator.CreatePDF())
+        DownloadPDF(Util.PDFGenerator.CreatePDF())
         'Dim ms As MemoryStream = Util.PDFGenerator.CreatePDF()
     End Sub
 
