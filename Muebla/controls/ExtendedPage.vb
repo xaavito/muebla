@@ -191,6 +191,7 @@ Public Class ExtendedPage
             Response.OutputStream.Close()
             Response.End()
         Catch ex As Exception
+            Debug.WriteLine("no se hace nada aca")
             'no hacemos nada negro!
         End Try
     End Sub

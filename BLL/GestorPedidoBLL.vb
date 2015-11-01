@@ -1,4 +1,6 @@
 Imports BE
+Imports System.IO
+Imports System.Web.Configuration
 
 
 Public Class GestorPedidoBLL
@@ -10,7 +12,7 @@ Public Class GestorPedidoBLL
         Return DAL.GestorPedidoDAL.buscarPedidos(usr, fechaDesde, fechaHasta, estado)
     End Function
 
-    
+
     Public Shared Sub checkEstadoPedido(ByVal pedido As PedidoBE)
 
     End Sub
@@ -35,13 +37,18 @@ Public Class GestorPedidoBLL
         'TODO
     End Sub
 
-    Public Shared Sub generarPedido(ByVal pedido As PedidoBE)
+    Public Shared Function generarPedido(ByVal pedido As PedidoBE) As MemoryStream
         DAL.GestorPedidoDAL.generarPedido(pedido)
         'TODO SACAR ESTO HARDCODEADO HORRIBLE!! mails
-        Util.Mailer.sendMailWithAttachment(pedido.usr.mail, "Pedido generado", "A PAGAR MACHOOOO", Util.PDFGenerator.PedidoPDF(pedido))
+        'para el usr
+        Dim ms As MemoryStream = Util.PDFGenerator.PedidoPDF(pedido)
+        Util.Mailer.sendMailWithAttachment(pedido.usr.mail, "Pedido generado", "A PAGAR MACHOOOO", ms)
+        'para nosotros
+        Util.Mailer.sendMailWithAttachment(WebConfigurationManager.AppSettings("mailVentas").ToString, "Pedido generado", "A PAGAR MACHOOOO", ms)
         'TODO ENVIAR PDF CON PAGO MIS CUENTAS O EL QUE SEA
         BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.PedidoRealizado)
-    End Sub
+        Return ms
+    End Function
 
     Public Shared Sub generarPedidoPersonalizado(ByVal pedido As PedidoBE)
         'TODO

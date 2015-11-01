@@ -1,4 +1,6 @@
-﻿Public Class Carrito
+﻿Imports System.IO
+
+Public Class Carrito
     Inherits ExtendedPage
 
     Dim carrito As List(Of BE.ListaPrecioDetalleBE)
@@ -15,8 +17,10 @@
 
     Protected Sub comprar_Click(sender As Object, e As EventArgs)
         Try
-            BLL.GestorPedidoBLL.generarPedido(Session("carrito"))
+            Dim ms As MemoryStream
+            ms = BLL.GestorPedidoBLL.generarPedido(Session("carrito"))
             Response.Redirect("compraRealizada.aspx", False)
+            DownloadPDF(ms)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)

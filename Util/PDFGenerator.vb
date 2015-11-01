@@ -318,33 +318,19 @@ Public Class PDFGenerator
 
         document.Add(itemTable)
 
+        Dim barTable As PdfPTable = New PdfPTable(1)
+        itemTable.HorizontalAlignment = 0
+        itemTable.WidthPercentage = 100
 
-        Dim transferBank As Chunk = New Chunk("Your Bank Account:", boldTableFont)
-        transferBank.SetUnderline(0.1F, -2.0F) '0.1 thick, -2 y-location
-        document.Add(transferBank)
-        document.Add(Chunk.NEWLINE)
+        Dim barCode As iTextSharp.text.Image = iTextSharp.text.Image.GetInstance(Hosting.HostingEnvironment.MapPath("~/images/bar_code.jpg"))
+        'barCode.SetAbsolutePosition(pageSize.GetLeft(300), 140)
 
-        ' Bank Account Info
-        Dim bottomTable As PdfPTable = New PdfPTable(3)
-        bottomTable.HorizontalAlignment = 0
-        bottomTable.TotalWidth = 300.0F
-        bottomTable.SetWidths(New Integer() {90, 10, 200})
-        bottomTable.LockedWidth = True
-        bottomTable.SpacingBefore = 20
-        bottomTable.DefaultCell.Border = Rectangle.NO_BORDER
-        bottomTable.AddCell(New Phrase("Account No", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("1", bodyFont))
-        bottomTable.AddCell(New Phrase("Account Name", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("pepe", bodyFont))
-        bottomTable.AddCell(New Phrase("Branch", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("coco", bodyFont))
-        bottomTable.AddCell(New Phrase("Bank", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("lolo", bodyFont))
-        document.Add(bottomTable)
+        Dim barcell As PdfPCell = New PdfPCell(barCode)
+        barcell.Rowspan = 4
+        barcell.Padding = 0.0F
+        barTable.AddCell(barcell)
+
+        document.Add(barTable)
 
         writer.CloseStream = False 'set the closestream property
         ' Close the Document without closing the underlying stream

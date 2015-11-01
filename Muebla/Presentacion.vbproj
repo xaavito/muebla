@@ -108,6 +108,7 @@
     <Content Include="Backup.aspx" />
     <Content Include="Bitacora.aspx" />
     <Content Include="Carrito.aspx" />
+    <Content Include="images\bar_code.jpg" />
     <Content Include="images\price_comparison.png" />
     <Content Include="images\purchaseOrder.png" />
     <Content Include="registroCompleto.aspx" />
