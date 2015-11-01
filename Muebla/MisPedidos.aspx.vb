@@ -90,15 +90,16 @@
 
     Protected Sub ButtonCommentOkay_Click(sender As Object, e As EventArgs)
         Try
-            'Me.commentTextBox.Text
-            'todo me quede aca
+            BLL.GestorPedidoBLL.generarComentario(Session("idComentario"), Me.commentTextBox.Text)
+            Throw New Util.CreacionExitosaException
         Catch ex As Exception
-
+            logMessage(ex)
         End Try
 
     End Sub
 
     Protected Sub ibtnCommentarioButton_Click(sender As Object, e As ImageClickEventArgs)
+        Session("idComentario") = getItemId(sender, Me.detallePedidosResultGrid)
         Me.lnkComment_ModalPopupExtender.Show()
     End Sub
 End Class

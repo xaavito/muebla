@@ -25,7 +25,6 @@ Public Class PDFGenerator
         document.Open()
         'Add elements to the document here
 
-
         ' Create the header table 
         Dim headertable As PdfPTable = New PdfPTable(3)
         headertable.HorizontalAlignment = 0
@@ -157,40 +156,11 @@ Public Class PDFGenerator
         totalAmtStrCell.Border = Rectangle.TOP_BORDER   'Rectangle.NO_BORDER 'Rectangle.TOP_BORDER
         totalAmtStrCell.HorizontalAlignment = 1
         itemTable.AddCell(totalAmtStrCell)
-        'Dim totalAmtCell As PdfPCell = New PdfPCell(New Phrase("100".ToString("#,###.00"), boldTableFont))
         Dim totalAmtCell As PdfPCell = New PdfPCell(New Phrase(String.Format("{0:C}", "$15000"), boldTableFont))
         totalAmtCell.HorizontalAlignment = 1
         itemTable.AddCell(totalAmtCell)
 
         document.Add(itemTable)
-
-
-        Dim transferBank As Chunk = New Chunk("Your Bank Account:", boldTableFont)
-        transferBank.SetUnderline(0.1F, -2.0F) '0.1 thick, -2 y-location
-        document.Add(transferBank)
-        document.Add(Chunk.NEWLINE)
-
-        ' Bank Account Info
-        Dim bottomTable As PdfPTable = New PdfPTable(3)
-        bottomTable.HorizontalAlignment = 0
-        bottomTable.TotalWidth = 300.0F
-        bottomTable.SetWidths(New Integer() {90, 10, 200})
-        bottomTable.LockedWidth = True
-        bottomTable.SpacingBefore = 20
-        bottomTable.DefaultCell.Border = Rectangle.NO_BORDER
-        bottomTable.AddCell(New Phrase("Account No", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("1", bodyFont))
-        bottomTable.AddCell(New Phrase("Account Name", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("pepe", bodyFont))
-        bottomTable.AddCell(New Phrase("Branch", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("coco", bodyFont))
-        bottomTable.AddCell(New Phrase("Bank", bodyFont))
-        bottomTable.AddCell(":")
-        bottomTable.AddCell(New Phrase("lolo", bodyFont))
-        document.Add(bottomTable)
 
         writer.CloseStream = False 'set the closestream property
         ' Close the Document without closing the underlying stream
@@ -216,7 +186,6 @@ Public Class PDFGenerator
         ' Open the Document for writing
         document.Open()
         'Add elements to the document here
-
 
         ' Create the header table 
         Dim headertable As PdfPTable = New PdfPTable(3)
@@ -376,6 +345,163 @@ Public Class PDFGenerator
         bottomTable.AddCell(":")
         bottomTable.AddCell(New Phrase("lolo", bodyFont))
         document.Add(bottomTable)
+
+        writer.CloseStream = False 'set the closestream property
+        ' Close the Document without closing the underlying stream
+        document.Close()
+        Return PDFData
+    End Function
+
+    Public Shared Function OrdenCompraPDF(ByVal oc As BE.OrdenCompraBE) As MemoryStream
+
+        ' Create a Document object
+        Dim document As Document = New Document(iTextSharp.text.PageSize.A4, 70, 70, 70, 70)
+
+        'MemoryStream
+        Dim PDFData As MemoryStream = New MemoryStream()
+        Dim writer As PdfWriter = PdfWriter.GetInstance(document, PDFData)
+
+        ' First, create our fonts
+        Dim titleFont = FontFactory.GetFont("Arial", 14, Font.BOLD)
+        Dim boldTableFont = FontFactory.GetFont("Arial", 10, Font.BOLD)
+        Dim bodyFont = FontFactory.GetFont("Arial", 10, Font.NORMAL)
+        Dim pageSize As Rectangle = writer.PageSize
+
+        ' Open the Document for writing
+        document.Open()
+        'Add elements to the document here
+
+
+        ' Create the header table 
+        Dim headertable As PdfPTable = New PdfPTable(3)
+        headertable.HorizontalAlignment = 0
+        headertable.WidthPercentage = 100
+        headertable.SetWidths(New Integer() {4, 2, 4})
+        ' then set the column's __relative__ widths
+        headertable.DefaultCell.Border = Rectangle.NO_BORDER
+        headertable.DefaultCell.Border = Rectangle.BOX
+        'for testing
+        headertable.SpacingAfter = 30
+        Dim nested As PdfPTable = New PdfPTable(1)
+        nested.DefaultCell.Border = Rectangle.BOX
+
+        Dim logo As iTextSharp.text.Image = iTextSharp.text.Image.GetInstance(Hosting.HostingEnvironment.MapPath("~/images/smallMuebla.png"))
+        logo.SetAbsolutePosition(pageSize.GetLeft(300), 140)
+
+        Dim nesthousing As PdfPCell = New PdfPCell(logo)
+        nesthousing.Rowspan = 4
+        nesthousing.Padding = 0.0F
+        headertable.AddCell(nesthousing)
+
+        Dim emptyCell As PdfPCell = New PdfPCell(New Phrase("", titleFont))
+        emptyCell.HorizontalAlignment = 2
+        emptyCell.Border = Rectangle.NO_BORDER
+        headertable.AddCell(emptyCell)
+
+        Dim invoiceCell As PdfPCell = New PdfPCell(New Phrase("ORDEN DE COMPRA", titleFont))
+        invoiceCell.HorizontalAlignment = 2
+        invoiceCell.Border = Rectangle.NO_BORDER
+        headertable.AddCell(invoiceCell)
+
+        Dim noCell As PdfPCell = New PdfPCell(New Phrase("Nro :", bodyFont))
+        noCell.HorizontalAlignment = 2
+        noCell.Border = Rectangle.NO_BORDER
+        headertable.AddCell(noCell)
+
+        Dim nroDato As PdfPCell = New PdfPCell(New Phrase(oc.id, titleFont))
+        nroDato.HorizontalAlignment = 2
+        nroDato.Border = Rectangle.NO_BORDER
+        headertable.AddCell(nroDato)
+
+        Dim dateCell As PdfPCell = New PdfPCell(New Phrase("Fecha :", bodyFont))
+        dateCell.HorizontalAlignment = 2
+        dateCell.Border = Rectangle.NO_BORDER
+        headertable.AddCell(dateCell)
+
+        Dim fechaDato As PdfPCell = New PdfPCell(New Phrase(oc.fecha, titleFont))
+        fechaDato.HorizontalAlignment = 2
+        fechaDato.Border = Rectangle.NO_BORDER
+        headertable.AddCell(fechaDato)
+
+
+        Dim billCell As PdfPCell = New PdfPCell(New Phrase("Para :", bodyFont))
+        billCell.HorizontalAlignment = 2
+        billCell.Border = Rectangle.NO_BORDER
+        headertable.AddCell(billCell)
+
+        Dim paraDato As PdfPCell = New PdfPCell(New Phrase(oc.proveedor.razonSocial + " " + oc.proveedor.direccion.ToString + " " + oc.proveedor.cuit.ToString))
+        paraDato.HorizontalAlignment = 2
+        paraDato.Border = Rectangle.NO_BORDER
+        headertable.AddCell(paraDato)
+
+        document.Add(headertable)
+
+        'Create body table
+        Dim itemTable As PdfPTable = New PdfPTable(4)
+        itemTable.HorizontalAlignment = 0
+        itemTable.WidthPercentage = 100
+        itemTable.SetWidths(New Integer() {10, 40, 20, 30})
+        ' then set the column's __relative__ widths
+        itemTable.SpacingAfter = 40
+        itemTable.DefaultCell.Border = Rectangle.BOX
+        Dim cell1 As PdfPCell = New PdfPCell(New Phrase("NRO", boldTableFont))
+        cell1.HorizontalAlignment = 1
+        itemTable.AddCell(cell1)
+        Dim cell2 As PdfPCell = New PdfPCell(New Phrase("ITEM", boldTableFont))
+        cell2.HorizontalAlignment = 1
+        itemTable.AddCell(cell2)
+        Dim cell3 As PdfPCell = New PdfPCell(New Phrase("CANTIDAD", boldTableFont))
+        cell3.HorizontalAlignment = 1
+        itemTable.AddCell(cell3)
+        Dim cell4 As PdfPCell = New PdfPCell(New Phrase("PRECIO", boldTableFont))
+        cell4.HorizontalAlignment = 1
+        itemTable.AddCell(cell4)
+
+        Dim numberCell As PdfPCell
+        Dim descCell As PdfPCell
+        Dim qtyCell As PdfPCell
+        Dim amtCell As PdfPCell
+
+        Dim id As Integer = 0
+        For Each pp As BE.OrdenCompraDetalleBE In oc.detalle
+            id = id + 1
+            numberCell = New PdfPCell(New Phrase(id, bodyFont))
+            numberCell.HorizontalAlignment = 0
+            numberCell.PaddingLeft = 10.0F
+            itemTable.AddCell(numberCell)
+
+            descCell = New PdfPCell(New Phrase(pp.producto.descripcion, bodyFont))
+            descCell.HorizontalAlignment = 0
+            descCell.PaddingLeft = 10.0F
+            itemTable.AddCell(descCell)
+
+            qtyCell = New PdfPCell(New Phrase(pp.cantidad, bodyFont))
+            qtyCell.HorizontalAlignment = 0
+            qtyCell.PaddingLeft = 10.0F
+            itemTable.AddCell(qtyCell)
+
+            amtCell = New PdfPCell(New Phrase(pp.precioUnitario, bodyFont))
+            amtCell.HorizontalAlignment = 1
+            itemTable.AddCell(amtCell)
+        Next
+
+
+        ' Table footer
+        Dim totalAmtCell1 As PdfPCell = New PdfPCell(New Phrase(""))
+        totalAmtCell1.Border = Rectangle.LEFT_BORDER And Rectangle.TOP_BORDER
+        itemTable.AddCell(totalAmtCell1)
+        Dim totalAmtCell2 As PdfPCell = New PdfPCell(New Phrase(""))
+        totalAmtCell2.Border = Rectangle.TOP_BORDER
+        itemTable.AddCell(totalAmtCell2)
+        Dim totalAmtStrCell As PdfPCell = New PdfPCell(New Phrase("Total", boldTableFont))
+        totalAmtStrCell.Border = Rectangle.TOP_BORDER
+        totalAmtStrCell.HorizontalAlignment = 1
+        itemTable.AddCell(totalAmtStrCell)
+        Dim totalAmtCell As PdfPCell = New PdfPCell(New Phrase(String.Format("{0:C}", oc.getTotal()), boldTableFont))
+        totalAmtCell.HorizontalAlignment = 1
+        itemTable.AddCell(totalAmtCell)
+
+        document.Add(itemTable)
 
         writer.CloseStream = False 'set the closestream property
         ' Close the Document without closing the underlying stream

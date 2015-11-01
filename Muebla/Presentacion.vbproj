@@ -109,6 +109,7 @@
     <Content Include="Bitacora.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="images\price_comparison.png" />
+    <Content Include="images\purchaseOrder.png" />
     <Content Include="registroCompleto.aspx" />
     <Content Include="ConfirmarShowroom.aspx" />
     <Content Include="adfile.xml" />
@@ -152,14 +153,12 @@
     <Content Include="images\titlebar_bg.jpg" />
     <Content Include="images\visa.png" />
     <Content Include="Login.aspx" />
-    <Content Include="oc.aspx" />
     <Content Include="compraRealizada.aspx" />
     <Content Include="quienesSomos.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
     <Content Include="NotaCredito.aspx" />
     <Content Include="Observaciones.aspx" />
-    <Content Include="OrdenCompra.aspx" />
     <Content Include="PostVenta.aspx" />
     <Content Include="RecuperarContrasena.aspx" />
     <Content Include="Registro.aspx" />
@@ -315,13 +314,6 @@
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="oc.aspx.designer.vb">
-      <DependentUpon>oc.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="oc.aspx.vb">
-      <DependentUpon>oc.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
     <Compile Include="compraRealizada.aspx.designer.vb">
       <DependentUpon>compraRealizada.aspx</DependentUpon>
     </Compile>
@@ -388,13 +380,6 @@
     </Compile>
     <Compile Include="Observaciones.aspx.vb">
       <DependentUpon>Observaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="OrdenCompra.aspx.designer.vb">
-      <DependentUpon>OrdenCompra.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="OrdenCompra.aspx.vb">
-      <DependentUpon>OrdenCompra.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PostVenta.aspx.designer.vb">

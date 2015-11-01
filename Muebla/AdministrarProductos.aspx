@@ -70,7 +70,11 @@
                         OnClick="ibtnDetails_Click" />
                     <asp:ImageButton ID="ibtnComparacion" runat="server"
                         ImageUrl="/images/price_comparison.png"
-                        OnClick="ibtnComparacion_Click" />
+                        OnClick="ibtnComparacion_Click" Visible="<%# Item.tipoProducto.id = 2 %>" />
+                    <asp:ImageButton ID="ibtnPurchaseOrder" runat="server"
+                        ImageUrl="/images/purchaseOrder.png"
+                        OnClick="ibtnPurchaseOrder_Click"
+                        Visible="<%# Item.tipoProducto.id = 2 %>" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -194,9 +198,7 @@
                                 BackColor="64, 165, 191, 228"
                                 ShadowColor="Transparent" BackGradientStyle="TopBottom">
                                 <Area3DStyle Rotation="10" Perspective="10" Inclination="15"
-                                    IsRightAngleAxes="False" WallWidth="0" IsClustered="False">
-
-                                </Area3DStyle>
+                                    IsRightAngleAxes="False" WallWidth="0" IsClustered="False"></Area3DStyle>
                                 <AxisY LineColor="64, 64, 64, 64">
                                     <LabelStyle Font="Trebuchet MS, 8.25pt, style=Bold" />
                                     <MajorGrid LineColor="64, 64, 64, 64" />
@@ -216,7 +218,32 @@
         </div>
     </asp:Panel>
 
-    <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarEditProductoButton_Click" />
+    <ajaxToolkit:ModalPopupExtender
+        ID="ordenCompraModal" runat="server"
+        CancelControlID="ocCancelButton"
+        TargetControlID="Button1" PopupControlID="DivOC"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
 
-    <asp:Button Text="Orden de Compra" ID="generarOrdenCompraButton" runat="server" OnClick="generarOrdenCompraButton_Click" />
+    <asp:Panel class="popupEdit" ID="DivOC"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Body">
+                <p>
+                    <asp:Label runat="server" ID="proveedorLabel" Text="Proveedor" />
+                    <asp:DropDownList AutoPostBack="true" ID="proveedorDropDown" runat="server" OnSelectedIndexChanged="proveedorDropDown_SelectedIndexChanged"/>
+                    <br />
+                    <asp:Label ID="precioLabel" text="Precio" runat="server" />
+                    <asp:Label ID="precioProducto" runat="server" />
+                    <br />
+                    <asp:Label ID="cantidadLabel" Text="Cantidad" runat="server" />
+                    <asp:TextBox ID="cantidadTextBox" runat="server" />
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ocOkButton" OnClick="ocOkButton_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Cancelar" ID="ocCancelButton" />
+            </div>
+        </div>
+    </asp:Panel>
 </asp:Content>

@@ -265,5 +265,61 @@ Public Class ProveedorDAL
         End Try
     End Sub
 
+    Shared Function getProveedoresPorProducto(p1 As Integer) As List(Of ProveedorBE)
+        Dim table As DataTable
+        Dim list As New List(Of BE.ProveedorBE)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_PROVEEDORES_PROD_SP")
+            repository.addParam("@idProd", p1)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Dim prov As New BE.ProveedorBE
+                't.id, t.razonSocial, t.contacto, t.cuil, t.telefono, t.direccion
+                prov.id = item.Item(0)
+                prov.razonSocial = item.Item(1)
+                prov.contacto = item.Item(2)
+                prov.cuit = item.Item(3)
+                prov.telefono = item.Item(4)
+                prov.direccion = item.Item(5)
+                prov.mail = item.Item(6)
+
+                list.Add(prov)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return list
+    End Function
+
+    Shared Function getPrecioProductoProveedor(idProd As Integer, idProv As Integer) As Decimal
+        Dim table As DataTable
+        Dim list As New List(Of BE.ProveedorBE)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_PRECIO_PROVEEDORES_PROD_SP")
+            repository.addParam("@idProd", idProd)
+            repository.addParam("@idProv", idProv)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                Return item.Item(0)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        Return Nothing
+    End Function
+
 End Class
 

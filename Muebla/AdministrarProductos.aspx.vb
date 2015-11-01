@@ -1,4 +1,5 @@
 ﻿Imports Util
+Imports System.IO
 
 Public Class AdministrarProductos
     Inherits ExtendedPage
@@ -28,10 +29,6 @@ Public Class AdministrarProductos
 
     Protected Sub verDetalleButton_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Protected Sub generarOrdenCompraButton_Click(sender As Object, e As EventArgs)
-        Response.Redirect("oc.aspx")
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
@@ -93,11 +90,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub cancelarEditProductoButton_Click(sender As Object, e As EventArgs)
-        'Me.editDataDiv.Visible = False
-    End Sub
-
-    Protected Sub confirmarEditProductoButton_Click(sender As Object, e As EventArgs)
-
+        'DO NOTHING
     End Sub
 
     Protected Sub productosResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
@@ -205,10 +198,71 @@ Public Class AdministrarProductos
         Catch ex As Exception
             logMessage(ex)
         End Try
-        
+
     End Sub
 
     Protected Sub okButton_Click(sender As Object, e As EventArgs)
+        'do nothing es solo para cerrar este boton
+    End Sub
 
+    Protected Sub ibtnPurchaseOrder_Click(sender As Object, e As ImageClickEventArgs)
+        Try
+            Session("idProductoOC") = getItemId(sender, Me.productosResultadosDataGrid)
+            Session("proveedores") = BLL.ProveedorBLL.getProveedoresPorProducto(Session("idProductoOC"))
+            Me.proveedorDropDown.DataSource = Session("proveedores")
+            Me.proveedorDropDown.DataTextField = "razonSocial"
+            Me.proveedorDropDown.DataValueField = "id"
+
+            Me.proveedorDropDown.DataBind()
+            buscarPrecio()
+            ordenCompraModal.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub ocOkButton_Click(sender As Object, e As EventArgs)
+        Try
+            Dim oc As New BE.OrdenCompraBE
+            Dim lista As New List(Of BE.OrdenCompraDetalleBE)
+            Dim ocd As New BE.OrdenCompraDetalleBE
+            For Each prov As BE.ProveedorBE In Session("proveedores")
+                If prov.id = proveedorDropDown.SelectedValue Then
+                    oc.proveedor = prov
+                    Exit For
+                End If
+            Next
+            oc.fecha = Date.Now
+            oc.entregada = 0
+            ocd.cabecera = oc
+            For Each p As BE.ProductoBE In Session("listaProductos")
+                If p.id = Session("idProductoOC") Then
+                    ocd.producto = p
+                    ocd.cantidad = Integer.Parse(Me.cantidadTextBox.Text)
+                    ocd.precioUnitario = Decimal.Parse(Me.precioProducto.Text)
+                    Exit For
+                End If
+            Next
+            lista.Add(ocd)
+            oc.detalle = lista
+            Dim ms As MemoryStream = BLL.ProductoBLL.generarOrdenCompra(oc)
+            DownloadPDF(ms)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub proveedorDropDown_SelectedIndexChanged(sender As Object, e As EventArgs)
+        buscarPrecio()
+    End Sub
+
+    Private Sub buscarPrecio()
+        Try
+            Me.precioProducto.Text = BLL.ProveedorBLL.getPrecioProductoProveedor(Session("idProductoOC"), proveedorDropDown.SelectedValue)
+            ordenCompraModal.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 End Class

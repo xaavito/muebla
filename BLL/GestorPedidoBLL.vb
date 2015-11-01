@@ -38,7 +38,6 @@ Public Class GestorPedidoBLL
     Public Shared Sub generarPedido(ByVal pedido As PedidoBE)
         DAL.GestorPedidoDAL.generarPedido(pedido)
         'TODO SACAR ESTO HARDCODEADO HORRIBLE!! mails
-        Util.PDFGenerator.PedidoPDF(pedido)
         Util.Mailer.sendMailWithAttachment(pedido.usr.mail, "Pedido generado", "A PAGAR MACHOOOO", Util.PDFGenerator.PedidoPDF(pedido))
         'TODO ENVIAR PDF CON PAGO MIS CUENTAS O EL QUE SEA
         BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.PedidoRealizado)
@@ -74,6 +73,10 @@ Public Class GestorPedidoBLL
         Else
             Throw New Util.CancelarPedidoException
         End If
+    End Sub
+
+    Shared Sub generarComentario(idPedido As Integer, comentario As String)
+        DAL.GestorPedidoDAL.generarComentario(idPedido, comentario)
     End Sub
 
 

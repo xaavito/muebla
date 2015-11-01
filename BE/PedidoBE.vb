@@ -130,6 +130,14 @@ Public Class PedidoBE
         End Set
     End Property
 
+    Public Function getTotalCalculado() As String
+        Dim tot As Decimal = 0
+        For Each p As PedidoProductoBE In Me.productos
+            tot = tot + (p.cantidad * p.producto.precio)
+        Next
+        Return String.Format("{0:C}", tot)
+    End Function
+
     Public Function getTotal() As String
         Return String.Format("{0:C}", total)
     End Function

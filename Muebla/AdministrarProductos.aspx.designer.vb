@@ -320,29 +320,92 @@ Partial Public Class AdministrarProductos
     Protected WithEvents okButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control confirmarButton.
+    '''Control ordenCompraModal.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents ordenCompraModal As Global.AjaxControlToolkit.ModalPopupExtender
 
     '''<summary>
-    '''Control generarOrdenCompraButton.
+    '''Control DivOC.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents generarOrdenCompraButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents DivOC As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control compararCostoButton.
+    '''Control proveedorLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents compararCostoButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents proveedorLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control proveedorDropDown.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents proveedorDropDown As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control precioLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents precioLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control precioProducto.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents precioProducto As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control cantidadLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cantidadLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control cantidadTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cantidadTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control ocOkButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ocOkButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control ocCancelButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ocCancelButton As Global.System.Web.UI.WebControls.Button
 End Class

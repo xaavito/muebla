@@ -105,7 +105,7 @@
         BackgroundCssClass="ModalPopupBG">
     </ajaxToolkit:ModalPopupExtender>
 
-    <asp:Panel class="popupConfirmation" ID="DivComment"
+    <asp:Panel class="popupComment" ID="DivComment"
         Style="display: none" runat="server">
         <div class="popup_Container">
             <div class="popup_Titlebar" id="PopupHeader">

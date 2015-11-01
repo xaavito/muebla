@@ -8,7 +8,7 @@ Public Class ProductoDAL
 
 
     Public Shared Sub actualizaCantProducto(ByVal prod As ProductoBE, ByVal cant As Integer)
-
+        'WHO KNOWS!
     End Sub
 
     Public Shared Sub altaProducto(ByVal producto As ProductoBE)
@@ -116,14 +116,6 @@ Public Class ProductoDAL
     Public Shared Function checkProductoEnPedidos(ByVal producto As ProductoBE) As Boolean
         checkProductoEnPedidos = False
     End Function
-
-    Public Sub compararCosto(ByVal prod As ProductoBE)
-
-    End Sub
-
-    Public Shared Sub generarOrdenCompra(ByVal prod As ProductoBE)
-
-    End Sub
 
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
         Dim id As Integer
@@ -348,6 +340,49 @@ Public Class ProductoDAL
         Return list
     End Function
 
+    Shared Function generarOrdenCompra(oc As OrdenCompraBE) As Integer
+        Dim id As Integer
+        Dim list As New List(Of BE.ProductoBE)
 
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_ORDEN_COMPRA_SP")
+            repository.addParam("@prov", oc.proveedor.id)
+            repository.addParam("@fecha", oc.fecha)
+            id = repository.executeWithReturnValue
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+        Return id
+    End Function
+
+    Shared Sub generarOrdenCompraDetalles(oc As OrdenCompraBE)
+        Dim id As Integer
+        Dim list As New List(Of BE.ProductoBE)
+
+
+        Try
+            For Each ocd As OrdenCompraDetalleBE In oc.detalle
+                Dim repository As New AccesoSQLServer
+                repository.crearComando("ALTA_ORDEN_COMPRA_DETALLE_SP")
+
+                repository.addParam("@id", oc.id)
+                repository.addParam("@prod", ocd.producto.id)
+                repository.addParam("@precio", ocd.precioUnitario)
+                repository.addParam("@cant", ocd.cantidad)
+
+                id = repository.executeSearchWithStatus
+            Next
+            
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
 End Class ' ProductoDAL
 

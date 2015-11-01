@@ -193,6 +193,18 @@ Public Class GestorPedidoDAL
         End If
     End Sub
 
+    Shared Sub generarComentario(idPedido As Integer, comentario As String)
+        Dim idRet As Integer
+        Dim repository As New AccesoSQLServer
+        repository.crearComando("ALTA_COMENTARIO_PEDIDO_SP")
+        repository.addParam("@id", idPedido)
+        repository.addParam("@com", comentario)
+        idRet = repository.executeSearchWithStatus
+        If (idRet <= 0) Then
+            Throw New CreacionException
+        End If
+    End Sub
+
 
 End Class ' GestorPedidoDAL
 

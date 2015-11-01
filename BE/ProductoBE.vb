@@ -14,6 +14,7 @@ Public Class ProductoBE
     Private _tipoProducto As TipoProductoBE
     Private _stock As Integer
     Private _stockMin As Integer
+    'este precio es del del proveedor
     Private _precio As Decimal
 
     Public Property precio() As Decimal

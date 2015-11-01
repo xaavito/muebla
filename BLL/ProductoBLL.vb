@@ -1,12 +1,13 @@
 Imports BE
-
+Imports System.IO
+Imports System.Web.Configuration
 
 Public Class ProductoBLL
 
     Private Shared _prods As List(Of BE.ListaPrecioDetalleBE)
 
     Public Shared Sub actualizaCantProducto(ByVal prod As ProductoBE, ByVal cant As Integer)
-
+        'TODO NO SE SI VAMOS A HACER ESTO.. NO ESTA NI EN LOS CU
     End Sub
 
     Public Shared Sub altaProducto(ByVal producto As ProductoBE)
@@ -31,17 +32,9 @@ Public Class ProductoBLL
         If _prods Is Nothing Then
             _prods = DAL.ProductoDAL.listarProductos()
         End If
-        
+
         Return _prods
     End Function
-
-    Public Shared Sub compararCosto(ByVal producto As ProductoBE)
-
-    End Sub
-
-    Public Shared Sub generarOrdenCompra(ByVal producto As ProductoBE)
-
-    End Sub
 
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
         DAL.ProductoDAL.modificarProducto(producto)
@@ -63,6 +56,18 @@ Public Class ProductoBLL
 
     Shared Function getComparacion(p1 As Integer) As List(Of ComparacionProductos)
         Return DAL.ProductoDAL.getComparacion(p1)
+    End Function
+
+    Shared Function generarOrdenCompra(oc As OrdenCompraBE) As MemoryStream
+        oc.id = DAL.ProductoDAL.generarOrdenCompra(oc)
+        DAL.ProductoDAL.generarOrdenCompraDetalles(oc)
+        Dim ms As MemoryStream = Util.PDFGenerator.OrdenCompraPDF(oc)
+        'proveedor
+        Util.Mailer.sendMailWithAttachment(oc.proveedor.mail, "Orden de Compra Muebla", "Ver Adjunto", ms)
+        'nosotros
+        Util.Mailer.sendMailWithAttachment(WebConfigurationManager.AppSettings("mailCompras").ToString, "Orden de Compra Muebla", "Ver Adjunto", ms)
+
+        Return ms
     End Function
 
 

@@ -176,4 +176,22 @@ Public Class ExtendedPage
         End Try
         Return Nothing
     End Function
+
+    Protected Sub DownloadPDF(ByVal PDFData As System.IO.MemoryStream)
+        Try
+            Response.Clear()
+            Response.ClearContent()
+            Response.ClearHeaders()
+            Response.ContentType = "application/pdf"
+            Response.Charset = String.Empty
+            Response.Cache.SetCacheability(System.Web.HttpCacheability.Public)
+            Response.AddHeader("Content-Disposition", String.Format("attachment;filename=MueblaMuebleComprobante.pdf", "1"))
+            Response.OutputStream.Write(PDFData.GetBuffer(), 0, PDFData.GetBuffer().Length)
+            Response.OutputStream.Flush()
+            Response.OutputStream.Close()
+            Response.End()
+        Catch ex As Exception
+            'no hacemos nada negro!
+        End Try
+    End Sub
 End Class
