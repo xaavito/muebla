@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server" />
-    
+
     <asp:Label ID="pasoLabel" Text="" runat="server" />
 
     <asp:GridView runat="server" ID="detalleCarritoResultGrid"
@@ -18,7 +18,7 @@
         OnPreRender="detalleCarritoResultGrid_PreRender"
         OnPageIndexChanging="detalleCarritoResultGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField visible="false" HeaderText="ID">
+            <asp:TemplateField Visible="false" HeaderText="ID">
                 <ItemTemplate>
                     <asp:Label Visible="false" runat="server" ID="itemID" Text="<%# Item.producto.id %>" />
                 </ItemTemplate>
@@ -96,17 +96,23 @@
 
     <div id="pasoEnvio" runat="server">
         <asp:Label ID="tipoEnvioLabel" Text="Tipo Envio" runat="server" />
-        <asp:DropDownList ID="tipoEnvio" runat="server"/>
+        <asp:DropDownList ID="tipoEnvio" runat="server" />
         <asp:Button ID="pasoPagoButton" Text="Confirmar Envio" runat="server" OnClick="pasoPagoButton_Click" />
     </div>
 
     <div id="pasoPago" runat="server">
         <asp:Label ID="Label2" Text="Modo de Pago" runat="server" />
-        <asp:DropDownList ID="modoPago" runat="server"/>
+        <asp:DropDownList ID="modoPago" runat="server" />
         <asp:Button ID="pasoConfirmarButton" Text="Confirmar Pago" runat="server" OnClick="pasoConfirmarButton_Click" />
     </div>
-
+    <script>
+        function thanks() {
+            setTimeout(function () {
+                document.location.pathname = "compraRealizada.aspx";
+            }, 5000);
+        }
+    </script>
     <div id="pasoConfirmacion" runat="server">
-        <asp:Button ID="confirmarPedidoCompra" Text="Comprar" runat="server" OnClick="comprar_Click" />
+        <asp:Button ID="confirmarPedidoCompra" Text="Comprar" runat="server" OnClick="comprar_Click" OnClientClick="thanks()" />
     </div>
 </asp:Content>

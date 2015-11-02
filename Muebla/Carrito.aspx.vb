@@ -19,7 +19,6 @@ Public Class Carrito
         Try
             Dim ms As MemoryStream
             ms = BLL.GestorPedidoBLL.generarPedido(Session("carrito"))
-            Response.Redirect("compraRealizada.aspx", False)
             DownloadPDF(ms)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
