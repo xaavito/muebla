@@ -197,26 +197,4 @@ Public Class ExtendedPage
             'no hacemos nada negro!
         End Try
     End Sub
-
-    Protected Sub DownloadPDFAndRedirect(ByVal PDFData As System.IO.MemoryStream, ByVal uri As String)
-        Try
-            Response.Clear()
-            Response.ClearContent()
-            Response.ClearHeaders()
-            Response.ContentType = "application/pdf"
-            Response.Charset = String.Empty
-            Response.Cache.SetCacheability(System.Web.HttpCacheability.Public)
-            Response.AddHeader("Content-Disposition", String.Format("attachment;filename=MueblaMuebleComprobante.pdf", "1"))
-            Response.AddHeader("Refresh", "5;URL=" + uri)
-            Response.OutputStream.Write(PDFData.GetBuffer(), 0, PDFData.GetBuffer().Length)
-            Response.OutputStream.Flush()
-            Response.OutputStream.Close()
-            Response.Flush()
-            Response.SuppressContent = True
-            HttpContext.Current.ApplicationInstance.CompleteRequest()
-        Catch ex As Exception
-            Debug.WriteLine("no se hace nada aca")
-            'no hacemos nada negro!
-        End Try
-    End Sub
 End Class
