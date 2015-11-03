@@ -231,9 +231,9 @@
             <div class="popup_Body">
                 <p>
                     <asp:Label runat="server" ID="proveedorLabel" Text="Proveedor" />
-                    <asp:DropDownList AutoPostBack="true" ID="proveedorDropDown" runat="server" OnSelectedIndexChanged="proveedorDropDown_SelectedIndexChanged"/>
+                    <asp:DropDownList AutoPostBack="true" ID="proveedorDropDown" runat="server" OnSelectedIndexChanged="proveedorDropDown_SelectedIndexChanged" />
                     <br />
-                    <asp:Label ID="precioLabel" text="Precio" runat="server" />
+                    <asp:Label ID="precioLabel" Text="Precio" runat="server" />
                     <asp:Label ID="precioProducto" runat="server" />
                     <br />
                     <asp:Label ID="cantidadLabel" Text="Cantidad" runat="server" />
@@ -241,7 +241,7 @@
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ocOkButton" OnClick="ocOkButton_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ocOkButton" OnClick="ocOkButton_Click"/>
                 <asp:Button runat="server" UseSubmitBehavior="false" Text="Cancelar" ID="ocCancelButton" />
             </div>
         </div>

@@ -56,7 +56,7 @@
         usr.telefono = tel
         Try
             usr = BLL.UsuarioBLL.altaCliente(usr)
-            Throw New Util.AltaUsuarioExitosaException
+            Response.Redirect("registroCompleto.aspx", False)
         Catch ex As Exception
             logMessage(ex)
         End Try
