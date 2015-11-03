@@ -189,7 +189,9 @@ Public Class ExtendedPage
             Response.OutputStream.Write(PDFData.GetBuffer(), 0, PDFData.GetBuffer().Length)
             Response.OutputStream.Flush()
             Response.OutputStream.Close()
-            Response.End()
+            Response.Flush()
+            Response.SuppressContent = True
+            HttpContext.Current.ApplicationInstance.CompleteRequest()
         Catch ex As Exception
             Debug.WriteLine("no se hace nada aca")
             'no hacemos nada negro!
