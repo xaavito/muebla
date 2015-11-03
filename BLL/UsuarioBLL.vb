@@ -8,7 +8,7 @@ Public Class UsuarioBLL
         usr.id = DAL.UsuarioDAL.altaCliente(usr)
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
         usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
-        Util.Mailer.sendMail(usr.mail, "Alta de Usuario en el sistema", "Bienvenido/a" + usr.usuario + " ya puede empezar a operar con Muebla")
+        Util.Mailer.enviarMail(usr.mail, "Alta de Usuario en el sistema", "Bienvenido/a" + usr.usuario + " ya puede empezar a operar con Muebla")
         Return usr
     End Function
 
@@ -56,13 +56,13 @@ Public Class UsuarioBLL
         DAL.UsuarioDAL.modificarPass(usr)
         DAL.UsuarioDAL.modificarDomicilio(usr)
         DAL.UsuarioDAL.modificartelefono(usr)
-        Util.Mailer.sendMail(usr.mail, "Modificacion de datos", "Ya sabes")
+        Util.Mailer.enviarMail(usr.mail, "Modificacion de datos", "Ya sabes")
     End Sub
 
     Public Shared Function solicitarContraseña(ByVal mail As String, ByVal usuario As String) As String
         'TODO ENCRIPTAR PASS?
         Dim pass As String = DAL.UsuarioDAL.solicitarContrasena(mail, usuario)
-        Util.Mailer.sendMail(mail, "Recuperar Contrasena Muebla", "Usuario su mail es " + pass)
+        Util.Mailer.enviarMail(mail, "Recuperar Contrasena Muebla", "Usuario su mail es " + pass)
         Throw New Util.MailEnviadoseException
         Return pass
     End Function

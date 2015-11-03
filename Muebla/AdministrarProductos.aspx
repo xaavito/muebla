@@ -70,7 +70,7 @@
                         OnClick="ibtnDetails_Click" />
                     <asp:ImageButton ID="ibtnComparacion" runat="server"
                         ImageUrl="/images/price_comparison.png"
-                        OnClick="ibtnComparacion_Click" Visible="<%# Item.tipoProducto.id = 2 %>" />
+                        OnClick="ibtnComparacion_Click" Visible="<%# Item.tipoProducto.id = 1 %>" />
                     <asp:ImageButton ID="ibtnPurchaseOrder" runat="server"
                         ImageUrl="/images/purchaseOrder.png"
                         OnClick="ibtnPurchaseOrder_Click"
@@ -222,7 +222,8 @@
         ID="ordenCompraModal" runat="server"
         CancelControlID="ocCancelButton"
         TargetControlID="Button1" PopupControlID="DivOC"
-        BackgroundCssClass="ModalPopupBG">
+        BackgroundCssClass="ModalPopupBG"
+        BehaviorID="pepe">
     </ajaxToolkit:ModalPopupExtender>
 
     <asp:Panel class="popupEdit" ID="DivOC"
@@ -241,7 +242,13 @@
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ocOkButton" OnClick="ocOkButton_Click"/>
+                <script>
+                    function closePop() {
+                        var modalPopupBehavior = $find('pepe');
+                        modalPopupBehavior.hide();
+                    }
+                </script>
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ocOkButton" OnClick="ocOkButton_Click" OnClientClick="closePop()" />
                 <asp:Button runat="server" UseSubmitBehavior="false" Text="Cancelar" ID="ocCancelButton" />
             </div>
         </div>

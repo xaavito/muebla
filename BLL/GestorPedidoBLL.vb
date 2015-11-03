@@ -42,9 +42,9 @@ Public Class GestorPedidoBLL
         'TODO SACAR ESTO HARDCODEADO HORRIBLE!! mails
         'para el usr
         Dim ms As MemoryStream = Util.PDFGenerator.PedidoPDF(pedido)
-        Util.Mailer.sendMailWithAttachment(pedido.usr.mail, "Pedido generado", "A PAGAR MACHOOOO", ms)
+        Util.Mailer.enviarMailConAdjunto(pedido.usr.mail, "Pedido generado", "A PAGAR MACHOOOO", ms)
         'para nosotros
-        Util.Mailer.sendMailWithAttachment(WebConfigurationManager.AppSettings("mailVentas").ToString, "Pedido generado", "A PAGAR MACHOOOO", ms)
+        Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, "Pedido generado", "A PAGAR MACHOOOO", ms)
         'TODO ENVIAR PDF CON PAGO MIS CUENTAS O EL QUE SEA
         BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.PedidoRealizado)
         Return ms

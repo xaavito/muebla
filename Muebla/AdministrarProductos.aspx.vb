@@ -222,6 +222,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub ocOkButton_Click(sender As Object, e As EventArgs)
+        ordenCompraModal.Hide()
         Try
             Dim oc As New BE.OrdenCompraBE
             Dim lista As New List(Of BE.OrdenCompraDetalleBE)

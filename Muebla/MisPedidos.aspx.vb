@@ -81,7 +81,7 @@
             Next
             BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.PedidoCancelado)
             'TODO TRADUCIR
-            Util.Mailer.sendMail(usr.mail, "Pedido Cancelado", "Su pedido ha sido cancelado")
+            Util.Mailer.enviarMail(usr.mail, "Pedido Cancelado", "Su pedido ha sido cancelado")
             Throw New Util.EliminacionExitosaException
         Catch ex As Exception
             logMessage(ex)

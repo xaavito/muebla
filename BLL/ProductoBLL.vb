@@ -63,9 +63,9 @@ Public Class ProductoBLL
         DAL.ProductoDAL.generarOrdenCompraDetalles(oc)
         Dim ms As MemoryStream = Util.PDFGenerator.OrdenCompraPDF(oc)
         'proveedor
-        Util.Mailer.sendMailWithAttachment(oc.proveedor.mail, "Orden de Compra Muebla", "Ver Adjunto", ms)
+        Util.Mailer.enviarMailConAdjunto(oc.proveedor.mail, "Orden de Compra Muebla", "Ver Adjunto", ms)
         'nosotros
-        Util.Mailer.sendMailWithAttachment(WebConfigurationManager.AppSettings("mailCompras").ToString, "Orden de Compra Muebla", "Ver Adjunto", ms)
+        Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailCompras").ToString, "Orden de Compra Muebla", "Ver Adjunto", ms)
 
         Return ms
     End Function

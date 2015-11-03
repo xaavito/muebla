@@ -1,10 +1,18 @@
 ﻿Imports System.Net.Mail
 Imports System.Net.Mime
+Imports System.Threading
 
 Public Class Mailer
-
     Public Sub init()
 
+    End Sub
+
+    Public Shared Sub enviarMail(ByVal para As String,
+                               ByVal referencia As String,
+                               ByVal contenido As String)
+        Dim thread As Thread = New Thread(Sub() sendMail(para, referencia, contenido))
+        thread.IsBackground = True
+        thread.Start()
     End Sub
 
     Public Shared Sub sendMail(ByVal para As String,
@@ -39,6 +47,15 @@ Public Class Mailer
         End Try
     End Sub
 
+    Public Shared Sub enviarMailConAdjunto(ByVal para As String,
+                               ByVal referencia As String,
+                               ByVal contenido As String,
+                               ByVal adjunto As System.IO.Stream)
+        Dim thread As Thread = New Thread(Sub() sendMailWithAttachment(para, referencia, contenido, adjunto))
+        thread.IsBackground = True
+        thread.Start()
+    End Sub
+
     Public Shared Sub sendMailWithAttachment(ByVal para As String,
                                ByVal referencia As String,
                                ByVal contenido As String,
@@ -71,7 +88,7 @@ Public Class Mailer
             SMTPServer.Send(MyMailMessage)
 
         Catch ex As SmtpException
-            Throw New MailFalloException
+            'Throw New MailFalloException
         Catch ex As Exception
             Throw ex
         End Try
