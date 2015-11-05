@@ -79,7 +79,7 @@
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="buttonDeleteOK" OnClick="buttonDeleteOK_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="buttonEditOK" OnClick="buttonEditOK_Click" />
                 <asp:Button runat="server" Text="Cancelar" ID="ButtonDeleteCancel" />
             </div>
         </div>

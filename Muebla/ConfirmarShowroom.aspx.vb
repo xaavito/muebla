@@ -33,33 +33,8 @@ Public Class ConfirmarShowroom
         Dim id As Integer = getItemId(sender, Me.showroomDataGrid)
         For Each a As AsistenciaShowroomBE In Session("pedidos")
             If a.id = id Then
-                a.fecha = Util.Util.getDate(Me.fechaSolicTextBox.Text)
                 Try
-                    If a.cumplido = Me.asitioCheckBox.Checked Then
-                        BLL.GestorShowroomBLL.modificarFechaPedido(a)
-                    Else
-                        BLL.GestorShowroomBLL.modificarPedido(a)
-                    End If
-                Catch ex As Exception
-                    logMessage(ex)
-                End Try
-                Exit For
-            End If
-        Next
-        buscarPedidos()
-    End Sub
-
-    Protected Sub buttonDeleteOK_Click(sender As Object, e As EventArgs)
-        Dim id As Integer = Session("idEdicion")
-        For Each a As AsistenciaShowroomBE In Session("pedidos")
-            If a.id = id Then
-                a.fecha = Util.Util.getDate(Me.fechaSolicTextBox.Text)
-                Try
-                    If a.cumplido = Me.asitioCheckBox.Checked Then
-                        BLL.GestorShowroomBLL.modificarFechaPedido(a)
-                    Else
-                        BLL.GestorShowroomBLL.modificarPedido(a)
-                    End If
+                    BLL.GestorShowroomBLL.confirmarPedido(a)
                 Catch ex As Exception
                     logMessage(ex)
                 End Try
@@ -79,4 +54,23 @@ Public Class ConfirmarShowroom
         End Try
     End Sub
 
+    Protected Sub buttonEditOK_Click(sender As Object, e As EventArgs)
+        Dim id As Integer = Session("idEdicion")
+        For Each a As AsistenciaShowroomBE In Session("pedidos")
+            If a.id = id Then
+                a.fecha = Util.Util.getDate(Me.fechaSolicTextBox.Text)
+                Try
+                    If a.cumplido = Me.asitioCheckBox.Checked Then
+                        BLL.GestorShowroomBLL.modificarFechaPedido(a)
+                    Else
+                        BLL.GestorShowroomBLL.modificarPedido(a)
+                    End If
+                Catch ex As Exception
+                    logMessage(ex)
+                End Try
+                Exit For
+            End If
+        Next
+        buscarPedidos()
+    End Sub
 End Class
