@@ -43,6 +43,7 @@ Public Class UsuarioBLL
                 rol.componentes = DAL.UsuarioDAL.buscarPermisos(rol)
             Next
             user.idioma.componentes = BLL.GestorIdiomaBLL.buscarComponentes(user.idioma)
+            user.idioma.mensajes = BLL.GestorIdiomaBLL.buscarMensajes(user.idioma)
             BLL.GestorBitacoraBLL.registrarEvento(user, Util.Enumeradores.Bitacora.LogueoExitoso)
         End If
         Return user

@@ -58,4 +58,11 @@
         Warning = 3
         Info = 4
     End Enum
+
+    Enum CodigoMensaje
+        ConfirmarAsistShow = 1
+        MensajeConfirmarAsist = 2
+        CambioHorario = 3
+        Info = 4
+    End Enum
 End Class

@@ -458,6 +458,9 @@ Public Class UsuarioDAL
                 usuario.mail = pepe.Item(4)
                 usuario.cuil = pepe.Item(5)
                 usuario.activo = pepe.Item(6)
+                Dim idioma As New BE.IdiomaBE
+                idioma.id = pepe.Item(7)
+                usuario.idioma = idioma
             Next
         Catch ex As Exception
             Throw ex

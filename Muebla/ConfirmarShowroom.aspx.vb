@@ -29,7 +29,8 @@ Public Class ConfirmarShowroom
     End Sub
 
     Protected Sub ibtnConfirm_Click(sender As Object, e As ImageClickEventArgs)
-        Dim id As Integer = Session("idEdicion")
+        'TODO REVISAR UN TOQUE EL TEMA DE LA EDICION Y EL CHECKED QUE NO ME GUSTA NADA...
+        Dim id As Integer = getItemId(sender, Me.showroomDataGrid)
         For Each a As AsistenciaShowroomBE In Session("pedidos")
             If a.id = id Then
                 a.fecha = Util.Util.getDate(Me.fechaSolicTextBox.Text)

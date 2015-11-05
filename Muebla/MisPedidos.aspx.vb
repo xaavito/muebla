@@ -1,5 +1,6 @@
 ﻿Public Class MisPedidos
     Inherits ExtendedPage
+    Dim selectedPedidos As New List(Of BE.PedidoBE)
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Page.IsPostBack Then
@@ -14,10 +15,6 @@
 
     Protected Sub hojaDeRuta(sender As Object, e As EventArgs)
         Response.Redirect("HojadeRuta.aspx")
-    End Sub
-
-    Protected Sub factura(sender As Object, e As EventArgs)
-        Response.Redirect("Factura.aspx")
     End Sub
 
     Protected Sub remito(sender As Object, e As EventArgs)
@@ -101,5 +98,24 @@
     Protected Sub ibtnCommentarioButton_Click(sender As Object, e As ImageClickEventArgs)
         Session("idComentario") = getItemId(sender, Me.detallePedidosResultGrid)
         Me.lnkComment_ModalPopupExtender.Show()
+    End Sub
+
+    Protected Sub generarFacturaButton_Click(sender As Object, e As EventArgs)
+        Dim id As Integer
+        For Each gvr As GridViewRow In Me.detallePedidosResultGrid.Rows
+            If CType(gvr.Cells(0).FindControl("itemSelected"), CheckBox).Checked Then
+                id = Integer.Parse(CType(gvr.Cells(0).FindControl("itemID"), Label).Text)
+                For Each p As BE.PedidoBE In Session("pedidos")
+                    If p.id = id Then
+                        selectedPedidos.Add(p)
+                        Exit For
+                    End If
+                Next
+            End If
+        Next
+        Debug.WriteLine("+++++++++++++Pedidos Seleccionados+++++++++++++++++++++")
+        For Each pp As BE.PedidoBE In selectedPedidos
+            Debug.WriteLine("ID " + pp.id.ToString)
+        Next
     End Sub
 End Class

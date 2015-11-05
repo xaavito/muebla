@@ -1,14 +1,9 @@
-
-
-
-
 Public Class IdiomaBE
-
-
     Private _descripcion As String
     Private _id As Long
     Private _componentes As List(Of ComponenteBE)
-    
+    Private _mensajes As List(Of MensajeBE)
+
     Public Property descripcion() As String
         Get
             Return _descripcion
@@ -36,7 +31,14 @@ Public Class IdiomaBE
         End Set
     End Property
 
-
+    Public Property mensajes() As List(Of MensajeBE)
+        Get
+            Return _mensajes
+        End Get
+        Set(ByVal Value As List(Of MensajeBE))
+            _mensajes = Value
+        End Set
+    End Property
 
 End Class ' IdiomaBE
 

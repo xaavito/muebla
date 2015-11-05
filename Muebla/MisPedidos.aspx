@@ -45,6 +45,11 @@
         OnPreRender="detallePedidosResultGrid_PreRender"
         OnPageIndexChanging="detallePedidosResultGrid_PageIndexChanging">
         <Columns>
+            <asp:TemplateField HeaderText="">
+                <ItemTemplate>
+                    <asp:CheckBox runat="server" ID="itemSelected" />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
                     <asp:Label runat="server" ID="itemID" Visible="false" Text="<%# Item.id %>" />
@@ -127,7 +132,7 @@
 
     <asp:Button Text="Generar Hoja de ruta" runat="server" OnClick="hojaDeRuta" />
     <asp:Button Text="Generar Remito" runat="server" OnClick="remito" />
-    <asp:Button Text="Generar Factura" runat="server" OnClick="factura" />
+    <asp:Button Text="Generar Factura" id="generarFacturaButton" runat="server" OnClick="generarFacturaButton_Click" />
     <asp:Button Text="Generar Nota de Credito" runat="server" OnClick="notaCredito" />
     <asp:Button Text="Servicio Post Venta" runat="server" OnClick="postVenta" />
 </asp:Content>

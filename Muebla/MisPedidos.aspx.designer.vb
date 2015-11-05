@@ -165,4 +165,13 @@ Partial Public Class MisPedidos
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ButtonCommentCancel As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control generarFacturaButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents generarFacturaButton As Global.System.Web.UI.WebControls.Button
 End Class

@@ -3,15 +3,9 @@ Imports Util
 
 
 Public Class GestorIdiomaDAL
-
-
     Public Shared Sub altaIdioma(ByVal componentes As ComponenteBE, ByVal idioma As String)
 
     End Sub
-
-    Public Shared Function buscarComponentes() As List(Of ComponenteBE)
-        buscarComponentes = Nothing
-    End Function
 
     Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
         Dim table As DataTable
@@ -117,6 +111,57 @@ Public Class GestorIdiomaDAL
         End Try
     End Sub
 
+    Shared Function getMensajeTraducion(codigo As Enumeradores.CodigoMensaje, idIdioma As Integer) As String
+        Dim table As DataTable
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_MENSAJE_TRADUCCION_SP")
+            repository.addParam("@codigo", codigo)
+            repository.addParam("@idioma", idIdioma)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count <> 1) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                Dim traduccion As String
+                traduccion = pepe.Item(0)
+
+                Return traduccion
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return Nothing
+    End Function
+
+    Shared Function buscarMensajes(nuevoIdioma As IdiomaBE) As List(Of MensajeBE)
+        Dim table As DataTable
+        Dim mensajes As New List(Of BE.MensajeBE)
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_IDIOMA_MENSAJE_SP")
+            repository.addParam("@idioma", nuevoIdioma.id)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                Dim mensaje As New BE.MensajeBE
+                mensaje.id = pepe.Item(0)
+                mensaje.codigo = pepe.Item(1)
+                mensaje.mensaje = pepe.Item(2)
+
+                mensajes.Add(mensaje)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        Return mensajes
+    End Function
 
 End Class ' GestorIdiomaDAL
 

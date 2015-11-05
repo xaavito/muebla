@@ -7,10 +7,6 @@ Public Class GestorIdiomaBLL
         'TODO LO HACEMOS O NO?
     End Sub
 
-    Public Shared Function buscarComponentes() As List(Of ComponenteBE)
-        buscarComponentes = Nothing
-    End Function
-
     Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
         If idioma.id = 0 Then
             Return Nothing
@@ -26,7 +22,7 @@ Public Class GestorIdiomaBLL
             nuevoIdioma.componentes = DAL.GestorIdiomaDAL.buscarComponentes(nuevoIdioma)
             _comps.Add(nuevoIdioma)
         Catch ex As Exception
-            Throw New Exception
+            Throw ex
         End Try
 
         Return nuevoIdioma.componentes
@@ -37,32 +33,31 @@ Public Class GestorIdiomaBLL
     End Function
 
     Shared Function getTranslation(textoATraducir As String, idIdioma As Integer) As String
-        Try
-            Dim idAbuscar As Integer
-            For Each id As BE.IdiomaBE In getComponentesIdiomaticos()
-                If idIdioma <> id.id Then
-                    For Each comp As BE.ComponenteBE In id.componentes
-                        If comp.texto = textoATraducir Then
-                            idAbuscar = comp.id
-                        End If
-                    Next
-                End If
-            Next
-            For Each id As BE.IdiomaBE In getComponentesIdiomaticos()
-                If idIdioma = id.id Then
-                    For Each comp As BE.ComponenteBE In id.componentes
-                        If comp.id = idAbuscar Then
-                            Return comp.texto
-                        End If
-                    Next
-                End If
-            Next
+        Dim idAbuscar As Integer
+        For Each id As BE.IdiomaBE In getComponentesIdiomaticos()
+            If idIdioma <> id.id Then
+                For Each comp As BE.ComponenteBE In id.componentes
+                    If comp.texto = textoATraducir Then
+                        idAbuscar = comp.id
+                    End If
+                Next
+            End If
+        Next
+        For Each id As BE.IdiomaBE In getComponentesIdiomaticos()
+            If idIdioma = id.id Then
+                For Each comp As BE.ComponenteBE In id.componentes
+                    If comp.id = idAbuscar Then
+                        Return comp.texto
+                    End If
+                Next
+            End If
+        Next
 
-            Return DAL.GestorIdiomaDAL.getTranslation(textoATraducir, idIdioma)
-        Catch ex As Util.BusquedaSinResultadosException
-            Return Nothing
-        End Try
-        
+        Return DAL.GestorIdiomaDAL.getTranslation(textoATraducir, idIdioma)
+    End Function
+
+    Shared Function getMensajeTraduccion(codigo As Util.Enumeradores.CodigoMensaje, idIdioma As Integer) As String
+        Return DAL.GestorIdiomaDAL.getMensajeTraducion(codigo, idIdioma)
     End Function
 
     Shared Function getComponentesIdiomaticos()
@@ -76,5 +71,26 @@ Public Class GestorIdiomaBLL
         DAL.GestorIdiomaDAL.modificarComponente(id, nuevoTexto, idIdioma)
         _comps = New List(Of IdiomaBE)
     End Sub
+
+    Shared Function buscarMensajes(idioma As IdiomaBE) As List(Of MensajeBE)
+        If idioma.id = 0 Then
+            Return Nothing
+        End If
+        For Each id As BE.IdiomaBE In getComponentesIdiomaticos()
+            If id.id = idioma.id Then
+                Return id.mensajes
+            End If
+        Next
+        Dim nuevoIdioma = New BE.IdiomaBE
+        nuevoIdioma.id = idioma.id
+        Try
+            nuevoIdioma.mensajes = DAL.GestorIdiomaDAL.buscarMensajes(nuevoIdioma)
+            _comps.Add(nuevoIdioma)
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return nuevoIdioma.mensajes
+    End Function
 
 End Class
