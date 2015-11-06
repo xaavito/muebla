@@ -105,6 +105,6 @@
         </asp:Table>
 
         <asp:Button runat="server" ID="confirmarButton" Text="Confirmar" OnClick="confirmarButton_Click" />
-        <asp:Button runat="server" ID="cancelarButton" Text="Confirmar" OnClick="cancelarButton_Click" />
+        <asp:Button runat="server" ID="cancelarButton" Text="Cancelar" OnClick="cancelarButton_Click" />
     </div>
 </asp:Content>

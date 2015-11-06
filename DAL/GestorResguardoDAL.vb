@@ -34,7 +34,7 @@ Public Class GestorResguardoDAL
         Try
             bk.SqlBackup(sqlServer)
         Catch ex As Exception
-            MsgBox(ex.Message)
+            Throw ex
         End Try
 
         Dim result As Integer
@@ -50,10 +50,8 @@ Public Class GestorResguardoDAL
                 Throw New CreacionException
             End If
 
-        Catch ex As CreacionException
-            Throw New CreacionException
-        Catch ex As ConexionImposibleExcepcion
-            Throw New ConexionImposibleExcepcion
+        Catch ex As Exception
+            Throw ex
         End Try
     End Sub
 
@@ -76,7 +74,7 @@ Public Class GestorResguardoDAL
         Try
             rs.SqlRestore(sqlServer)
         Catch ex As Exception
-            Throw New CreacionException
+            Throw ex
         End Try
     End Sub
 
@@ -103,10 +101,8 @@ Public Class GestorResguardoDAL
                 backups.Add(bu)
             Next
 
-        Catch ex As EliminarException
-            Throw New EliminarException
-        Catch ex As ConexionImposibleExcepcion
-            Throw New ConexionImposibleExcepcion
+        Catch ex As Exception
+            Throw ex
         End Try
 
         Return backups
@@ -124,10 +120,8 @@ Public Class GestorResguardoDAL
                 Throw New EliminarException
             End If
 
-        Catch ex As EliminarException
-            Throw New EliminarException
-        Catch ex As ConexionImposibleExcepcion
-            Throw New ConexionImposibleExcepcion
+        Catch ex As Exception
+            Throw ex
         End Try
 
         Return resultado
