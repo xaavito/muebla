@@ -116,9 +116,7 @@
     <Content Include="adfile.xml" />
     <Content Include="css\MiEstilo.css" />
     <Content Include="DatosPersonales.aspx" />
-    <Content Include="Factura.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="HojaDeRuta.aspx" />
     <Content Include="images\addImage.png" />
     <Content Include="images\addToCart.png" />
     <Content Include="images\amex.png" />
@@ -158,12 +156,10 @@
     <Content Include="quienesSomos.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
-    <Content Include="NotaCredito.aspx" />
     <Content Include="Observaciones.aspx" />
     <Content Include="PostVenta.aspx" />
     <Content Include="RecuperarContrasena.aspx" />
     <Content Include="Registro.aspx" />
-    <Content Include="Remito.aspx" />
     <Content Include="solicitarShowroom.aspx" />
     <Content Include="Ventas.aspx" />
     <Content Include="Web.config" />
@@ -291,22 +287,8 @@
     <Compile Include="controls\ExtendedPage.vb">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Factura.aspx.designer.vb">
-      <DependentUpon>Factura.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Factura.aspx.vb">
-      <DependentUpon>Factura.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="getImageHandler.ashx.vb">
       <DependentUpon>getImageHandler.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="HojaDeRuta.aspx.designer.vb">
-      <DependentUpon>HojaDeRuta.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="HojaDeRuta.aspx.vb">
-      <DependentUpon>HojaDeRuta.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.vb">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -369,13 +351,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="NotaCredito.aspx.designer.vb">
-      <DependentUpon>NotaCredito.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="NotaCredito.aspx.vb">
-      <DependentUpon>NotaCredito.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Observaciones.aspx.designer.vb">
       <DependentUpon>Observaciones.aspx</DependentUpon>
     </Compile>
@@ -402,13 +377,6 @@
     </Compile>
     <Compile Include="Registro.aspx.vb">
       <DependentUpon>Registro.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Remito.aspx.designer.vb">
-      <DependentUpon>Remito.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Remito.aspx.vb">
-      <DependentUpon>Remito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="solicitarShowroom.aspx.designer.vb">

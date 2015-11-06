@@ -13,10 +13,6 @@ Public Class ListaPrecioBLL
         Return DAL.ListaPrecioDAL.buscarListas(activo, tipoVenta)
     End Function
 
-    Public Shared Sub modificarListaPrecio(ByVal desde As DateTime, ByVal aumento As Integer, ByVal tipoAumento As Boolean)
-
-    End Sub
-
     Shared Function getDetalleListaPrecio(id As Integer) As List(Of BE.ListaPrecioDetalleBE)
         Return DAL.ListaPrecioDAL.getDetalleListaPrecio(id)
     End Function
@@ -33,6 +29,7 @@ Public Class ListaPrecioBLL
     Shared Sub altaPromocion(idProd As Integer, precio As Decimal, desde As Date, hasta As Date)
         DAL.ListaPrecioDAL.altaPromocion(idProd, precio, desde, hasta)
         'TODO ACA DEBERIAMOS MANDAR UN MAIL A MUCHOS DE LOS QUE YA HAYAN COMPRADO!
+        BLL.ProductoBLL.limpiarProds()
     End Sub
 
 

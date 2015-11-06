@@ -70,6 +70,8 @@ Public Class ProductoBLL
         Return ms
     End Function
 
-
+    Shared Sub limpiarProds()
+        _prods = Nothing
+    End Sub
 End Class ' ProductoBLL
 
