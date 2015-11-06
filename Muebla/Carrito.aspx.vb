@@ -68,7 +68,7 @@ Public Class Carrito
     End Sub
 
     Protected Sub detalleCarritoResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-
+        ' todo pagex index
     End Sub
 
     Private Sub loadPedido()

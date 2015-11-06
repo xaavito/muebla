@@ -59,6 +59,7 @@
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
+        'TODO FALTA IMPLEMENTAR DETALLES DEL PROVEEDOR
         Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
         Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)

@@ -39,7 +39,7 @@
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-
+        'TODO INDEX CHANGE
     End Sub
 
     Protected Sub itemPrecio_TextChanged(sender As Object, e As EventArgs)
@@ -69,7 +69,7 @@
     End Sub
 
     Protected Sub ButtonEditDetailCancel_Click(sender As Object, e As EventArgs)
-
+        ' NO SE HACE NADA
     End Sub
 
     Private Sub loadListaPrecio()

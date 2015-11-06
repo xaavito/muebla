@@ -28,7 +28,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub verDetalleButton_Click(sender As Object, e As EventArgs)
-
+        'TODO FALTA IMPLEMENTAR VER DETALLES DEL PRODUCTO
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
@@ -86,7 +86,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub addProveedorButton_Click(sender As Object, e As EventArgs)
-
+        'TODO FALTA IMPLEMENTAR ADD PROVEEDOR
     End Sub
 
     Protected Sub cancelarEditProductoButton_Click(sender As Object, e As EventArgs)
@@ -98,7 +98,7 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
-        'TODO QUE MIERDA VAMOS A HACER ACA?? DETALLES DE VENTA DE ESOS PRODUCTOS QUIZAS??
+        'TODO VER DETALLE DE PRODUCTO
     End Sub
 
     Protected Sub productosResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)

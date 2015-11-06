@@ -25,7 +25,7 @@
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
-        ' todo que podemos editar??
+        'TODO EDITAR LISTA DE PRECIO
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
@@ -42,7 +42,7 @@
     End Sub
 
     Protected Sub listaPrecioResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-
+        'TODO INDEX PARA SELECCION DE PAGINA
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PreRender(sender As Object, e As EventArgs)
@@ -55,11 +55,11 @@
     End Sub
 
     Protected Sub ibtnDetailsDetail_Click(sender As Object, e As ImageClickEventArgs)
-        ' esto lo vamos a hacer??
+        ' TODO DETALLE DEL DETALLE DE lp
     End Sub
 
     Protected Sub ibtnDeleteDetail_Click(sender As Object, e As ImageClickEventArgs)
-        ' todo ver esto
+        ' TODO BORRAR DETALLE?
     End Sub
 
     Protected Sub ibtnEditDetail_Click(sender As Object, e As ImageClickEventArgs)
@@ -84,7 +84,7 @@
 
     Protected Sub ButtonDeleleOkay_Click(sender As Object, e As EventArgs)
         Debug.WriteLine("borrando!!!")
-        'todo borrado
+        'todo BORRADO LP
     End Sub
 
     Protected Sub confirmarEdicionButton_Click(sender As Object, e As EventArgs)

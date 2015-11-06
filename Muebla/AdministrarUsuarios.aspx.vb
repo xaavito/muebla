@@ -17,6 +17,7 @@
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
+        'TODO LO PASAMOS AL AJAXCONTROLTOOLKIT?
         Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
         Dim con As Label = CType(Me.usuariosResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
         Dim id As Integer = Integer.Parse(con.Text.ToString)
@@ -61,11 +62,11 @@
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-        'todo hacer algo..
+        'todo FALTA IMPLEMENTAR EL DELETE USUARIO
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
-
+        'TODO FALTAIMPLEMENTAR EL DETALLE USUARIO
     End Sub
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)

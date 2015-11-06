@@ -62,7 +62,7 @@
     End Sub
 
     Protected Sub ibtnCambiarEstado_Click(sender As Object, e As ImageClickEventArgs)
-
+        'todo cambiar de estado
     End Sub
 
     Protected Sub ibtnCancelarPedido_Click(sender As Object, e As ImageClickEventArgs)
