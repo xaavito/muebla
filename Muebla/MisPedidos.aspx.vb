@@ -147,7 +147,11 @@ Public Class MisPedidos
     End Function
 
     Protected Sub ibtnVerComentarios_Click(sender As Object, e As ImageClickEventArgs)
-        Me.comentariosResultGrid.DataSource = BLL.GestorPedidoBLL.buscarComentarios(getItemId(sender, Me.comentariosResultGrid))
-        Me.comentariosResultGrid.DataBind()
+        Try
+            Me.comentariosResultGrid.DataSource = BLL.GestorPedidoBLL.buscarComentarios(getItemId(sender, Me.comentariosResultGrid))
+            Me.comentariosResultGrid.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 End Class
