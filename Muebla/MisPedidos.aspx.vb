@@ -9,6 +9,7 @@ Public Class MisPedidos
             Return
         End If
         loadEstadosPedidos()
+        DataBind()
     End Sub
 
     Protected Sub cancelarVenta(sender As Object, e As EventArgs)
@@ -16,7 +17,13 @@ Public Class MisPedidos
     End Sub
 
     Protected Sub hojaDeRuta(sender As Object, e As EventArgs)
-        Response.Redirect("HojadeRuta.aspx")
+        Try
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarHojaRuta(getSelected)
+            DownloadPDF(ms)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub remito(sender As Object, e As EventArgs)
@@ -30,15 +37,16 @@ Public Class MisPedidos
     End Sub
 
     Protected Sub notaCredito(sender As Object, e As EventArgs)
-        Response.Redirect("NotaCredito.aspx")
-    End Sub
-
-    Protected Sub comentario(sender As Object, e As EventArgs)
-        Response.Redirect("Observaciones.aspx")
-    End Sub
-
-    Protected Sub postVenta(sender As Object, e As EventArgs)
-        Response.Redirect("PostVenta.aspx")
+        Try
+            If getSelected.Count <> 1 Then
+                Throw New Util.SeleccionMultiple
+            End If
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarNotaCredito(getSelected.Item(0))
+            DownloadPDF(ms)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub detallePedidosResultGrid_PreRender(sender As Object, e As EventArgs)
@@ -75,16 +83,10 @@ Public Class MisPedidos
 
     Protected Sub ibtnCancelarPedido_Click(sender As Object, e As ImageClickEventArgs)
         Try
-            Dim usr As BE.UsuarioBE
             If getSelected.Count <> 1 Then
                 Throw New Util.SeleccionMultiple
             End If
             BLL.GestorPedidoBLL.cancelarPedido(getSelected.Item(0))
-            usr = getSelected.Item(0).usr
-
-            BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.PedidoCancelado)
-            'TODO TRADUCIR
-            Util.Mailer.enviarMail(usr.mail, "Pedido Cancelado", "Su pedido ha sido cancelado")
             Throw New Util.EliminacionExitosaException
         Catch ex As Exception
             logMessage(ex)
@@ -93,7 +95,7 @@ Public Class MisPedidos
 
     Protected Sub ButtonCommentOkay_Click(sender As Object, e As EventArgs)
         Try
-            BLL.GestorPedidoBLL.generarComentario(Session("idComentario"), Me.commentTextBox.Text)
+            BLL.GestorPedidoBLL.generarComentario(getUsuario, Session("selectedPedido"), Me.commentTextBox.Text)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)
@@ -102,6 +104,12 @@ Public Class MisPedidos
 
     Protected Sub ibtnCommentarioButton_Click(sender As Object, e As ImageClickEventArgs)
         Session("idComentario") = getItemId(sender, Me.detallePedidosResultGrid)
+        For Each p As BE.PedidoBE In Session("pedidos")
+            If p.id = Session("idComentario") Then
+                Session("selectedPedido") = p
+                Exit For
+            End If
+        Next
         Me.lnkComment_ModalPopupExtender.Show()
     End Sub
 
@@ -137,4 +145,9 @@ Public Class MisPedidos
         Next
         Return selectedPedidos
     End Function
+
+    Protected Sub ibtnVerComentarios_Click(sender As Object, e As ImageClickEventArgs)
+        Me.comentariosResultGrid.DataSource = BLL.GestorPedidoBLL.buscarComentarios(getItemId(sender, Me.comentariosResultGrid))
+        Me.comentariosResultGrid.DataBind()
+    End Sub
 End Class

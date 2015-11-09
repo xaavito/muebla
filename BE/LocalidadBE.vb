@@ -6,7 +6,15 @@ Public Class LocalidadBE
     Private _id As Long
     Private _provincia As ProvinciaBE
     Private _usr As UsuarioBE
-    Public m_ProvinciaBE As ProvinciaBE
+
+    Public Property provincia() As BE.ProvinciaBE
+        Get
+            Return _provincia
+        End Get
+        Set(ByVal Value As BE.ProvinciaBE)
+            _provincia = Value
+        End Set
+    End Property
 
     Public Property descripcion() As String
         Get

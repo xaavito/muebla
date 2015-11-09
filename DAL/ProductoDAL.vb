@@ -363,7 +363,6 @@ Public Class ProductoDAL
         Dim id As Integer
         Dim list As New List(Of BE.ProductoBE)
 
-
         Try
             For Each ocd As OrdenCompraDetalleBE In oc.detalle
                 Dim repository As New AccesoSQLServer

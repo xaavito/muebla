@@ -3,6 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:Button ID="compraPersonalizadaButton" Text="Compra Personalizada" OnClick="compraPersonalizadaButton_Click" runat="server" Visible='<%# Not getUsuario() Is Nothing%>' />
     <asp:ListView runat="server" ID="lvProductos"
         ItemType="BE.ListaPrecioDetalleBE" SelectMethod="listarProductos">
         <LayoutTemplate>
@@ -27,7 +28,7 @@
             </div>
         </ItemTemplate>
         <EmptyDataTemplate>
-            <asp:Label id="nothingToShowLabel" Text="No hay nada para mostrar" runat="server" />
+            <asp:Label ID="nothingToShowLabel" Text="No hay nada para mostrar" runat="server" />
         </EmptyDataTemplate>
     </asp:ListView>
 </asp:Content>

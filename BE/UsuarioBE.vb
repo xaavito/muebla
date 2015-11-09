@@ -144,5 +144,12 @@ Public Class UsuarioBE
         End Set
     End Property
 
-
+    Public Function isAdmin() As Boolean
+        For Each rol As BE.RolBE In roles
+            If rol.id = 1 Then
+                Return True
+            End If
+        Next
+        Return False
+    End Function
 End Class

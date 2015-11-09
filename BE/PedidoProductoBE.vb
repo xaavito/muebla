@@ -43,4 +43,8 @@
     Public Function getPrecio() As String
         Return String.Format("{0:C}", cantidad * producto.precio)
     End Function
+
+    Public Function getPrecioSinFormato() As Decimal
+        Return cantidad * producto.precio
+    End Function
 End Class

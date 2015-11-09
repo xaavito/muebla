@@ -46,8 +46,8 @@
         loc.id = Integer.Parse(Me.localidadDropDownList.SelectedValue)
         Dim prov As New BE.ProvinciaBE
         prov.id = Integer.Parse(Me.provinciaDropDownList.SelectedValue)
-        loc.m_ProvinciaBE = prov
-        reg.m_LocalidadBE = loc
+        loc.provincia = prov
+        reg.localidad = loc
         usr.domicilio = reg
         Dim tel As New BE.TelefonoBE
         tel.numero = Me.telefonoTextBox.Text

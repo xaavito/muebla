@@ -36,8 +36,8 @@
                 Me.nroTextBox.Text = getUsuario.domicilio.numero
                 Me.pisoTextBox.Text = getUsuario().domicilio.piso
                 Me.dptoTextBox.Text = getUsuario().domicilio.dpto
-                Me.localidadDropDownList.SelectedValue = getUsuario().domicilio.m_LocalidadBE.id
-                Me.provinciaDropDownList.SelectedValue = getUsuario().domicilio.m_LocalidadBE.m_ProvinciaBE.id
+                Me.localidadDropDownList.SelectedValue = getUsuario().domicilio.id
+                Me.provinciaDropDownList.SelectedValue = getUsuario().domicilio.localidad.provincia.id
             End If
             If Not getUsuario().telefono Is Nothing Then
                 Me.telefonoTextBox.Text = getUsuario().telefono.numero
@@ -95,7 +95,7 @@
             getUsuario.domicilio.numero = Me.nroCalleTextBox.Text
             getUsuario.domicilio.piso = Me.pisoTextBox1.Text
             getUsuario.domicilio.dpto = Me.dptoTextBox1.Text
-            getUsuario.domicilio.m_LocalidadBE.id = Me.localidadDropDownList1.SelectedValue
+            getUsuario.domicilio.localidad.id = Me.localidadDropDownList1.SelectedValue
 
             getUsuario.telefono.numero = Me.telefonoTextBox1.Text
             getUsuario.telefono.interno = Me.internoTextBox1.Text

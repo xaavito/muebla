@@ -104,12 +104,62 @@ Public Class GestorPedidoDAL
         End Try
     End Sub
 
-    Public Shared Sub generarHojaRuta(ByVal pedidos As PedidoBE)
+    Public Shared Function generarHojaRuta(ByVal pedidos As List(Of PedidoBE))
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_HR_SP")
+            id = repository.executeWithReturnValue
+            If (id <= 0) Then
+                Throw New CreacionException
+            End If
 
-    End Sub
+            Dim idDet As Integer
+            For Each ped As PedidoBE In pedidos
+                For Each pp As PedidoProductoBE In ped.productos
+                    repository.crearComando("ALTA_HR_DETALLE_SP")
+                    repository.addParam("@idCabecera", id)
+                    repository.addParam("@desc", ped.usr.domicilio.formatedLine)
+                    idDet = repository.executeSearchWithStatus
+                    If (idDet <= 0) Then
+                        Throw New CreacionException
+                    End If
+                Next
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return id
+    End Function
 
     Public Shared Sub generarNotaCredito(ByVal pedido As PedidoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_NC_SP")
+            repository.addParam("@fecha", pedido.fechaCreacion)
+            repository.addParam("@idPedido", pedido.id)
+            repository.addParam("@total", pedido.total)
+            id = repository.executeWithReturnValue
+            If (id <= 0) Then
+                Throw New CreacionException
+            End If
 
+            Dim idDet As Integer
+            For Each prod As PedidoProductoBE In pedido.productos
+                repository.crearComando("ALTA_NC_DETALLE_SP")
+                repository.addParam("@idCabecera", id)
+                repository.addParam("@desc", prod.producto.producto.descripcion)
+                repository.addParam("@val", prod.getPrecioSinFormato)
+                idDet = repository.executeSearchWithStatus
+                If (idDet <= 0) Then
+                    Throw New CreacionException
+                End If
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Public Shared Sub generarPedido(ByVal pedido As PedidoBE)
@@ -214,12 +264,13 @@ Public Class GestorPedidoDAL
         End If
     End Sub
 
-    Shared Sub generarComentario(idPedido As Integer, comentario As String)
+    Shared Sub generarComentario(usuario As UsuarioBE, pedido As BE.PedidoBE, comentario As String)
         Dim idRet As Integer
         Dim repository As New AccesoSQLServer
         repository.crearComando("ALTA_COMENTARIO_PEDIDO_SP")
-        repository.addParam("@id", idPedido)
+        repository.addParam("@id", pedido.id)
         repository.addParam("@com", comentario)
+        repository.addParam("@usr", usuario.id)
         idRet = repository.executeSearchWithStatus
         If (idRet <= 0) Then
             Throw New CreacionException
@@ -364,6 +415,11 @@ Public Class GestorPedidoDAL
                 comp.letra = pepe.Item(1)
                 comp.sucursal = pepe.Item(2)
                 comp.fecha = pepe.Item(3)
+                Dim prov As New BE.ProveedorBE
+                prov.id = pepe.Item(4)
+                prov.razonSocial = pepe.Item(5)
+                prov.mail = pepe.Item(6)
+                comp.prov = prov
             Next
 
             repository.crearComando("BUSCAR_REMITO_DETALLE_SP")
@@ -389,6 +445,167 @@ Public Class GestorPedidoDAL
         End Try
         comp.detalles = lista
         Return comp
+    End Function
+
+    Shared Sub asociarComprobantePedido(nroComprobante As Integer, pedidos As List(Of PedidoBE))
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            For Each p As BE.PedidoBE In pedidos
+                repository.crearComando("ALTA_ASOCIACION_COMP_PED_SP")
+                repository.addParam("@idPedido", p.id)
+                repository.addParam("@nroComp", nroComprobante)
+                id = repository.executeSearchWithStatus
+                If (id <= 0) Then
+                    Throw New CreacionException
+                End If
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Function getHojaRuta(nroComprobante As Integer) As HojaRutaBE
+        Dim table As DataTable
+        Dim repository As New AccesoSQLServer
+        Dim comp As New HojaRutaBE
+        Dim lista As New List(Of BE.HojaRutaDetalleBE)
+        Try
+            repository.crearComando("BUSCAR_HR_COMPROBANTE_SP")
+            repository.addParam("@nro", nroComprobante)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                comp.nro = pepe.Item(0)
+                comp.letra = pepe.Item(1)
+                comp.sucursal = pepe.Item(2)
+                comp.fecha = pepe.Item(3)
+                Dim prov As New BE.ProveedorBE
+                prov.id = pepe.Item(4)
+                prov.razonSocial = pepe.Item(5)
+                prov.mail = pepe.Item(6)
+                comp.prov = prov
+            Next
+
+            repository.crearComando("BUSCAR_HR_DETALLE_SP")
+            repository.addParam("@nro", comp.nro)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                Dim det As New BE.HojaRutaDetalleBE
+                det.descripcion = pepe.Item(0)
+
+                lista.Add(det)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        comp.detalles = lista
+        Return comp
+    End Function
+
+    Shared Function getNotaCredito(pedido As PedidoBE) As NotaCreditoBE
+        Dim table As DataTable
+        Dim repository As New AccesoSQLServer
+        Dim comp As New NotaCreditoBE
+        Dim lista As New List(Of BE.NotaCreditoDetalleBE)
+        Try
+            repository.crearComando("BUSCAR_NC_PEDIDO_SP")
+            repository.addParam("@id", pedido.id)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                comp.nro = pepe.Item(0)
+                comp.letra = pepe.Item(1)
+                comp.sucursal = pepe.Item(2)
+                comp.total = pepe.Item(3)
+                comp.fecha = pepe.Item(8)
+                Dim usr As New BE.UsuarioBE
+                usr.id = pepe.Item(4)
+                usr.nombre = pepe.Item(5)
+                usr.apellido = pepe.Item(6)
+                usr.cuil = pepe.Item(7)
+                comp.usr = usr
+                Exit For
+            Next
+
+            repository.crearComando("BUSCAR_NC_DETALLE_PEDIDO_SP")
+            repository.addParam("@nro", comp.nro)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                Dim det As New BE.NotaCreditoDetalleBE
+                det.texto = pepe.Item(0)
+                det.valor = pepe.Item(1)
+                det.iva = pepe.Item(2)
+
+                lista.Add(det)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        comp.detalles = lista
+        Return comp
+    End Function
+
+    Shared Sub generarPedidoPersonalizado(pedido As PedidoPersonalizado)
+        Dim id As Integer
+        Dim list As New List(Of BE.ProductoBE)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_PEDIDO_PERSONALIZADO_SP")
+            repository.addParam("@des", pedido.descripcion)
+            repository.addParam("@usr", pedido.usr.id)
+            repository.addParam("@imagen", pedido.imagen)
+            id = repository.executeWithReturnValue
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+        pedido.id = id
+    End Sub
+
+    Shared Function buscarComentarios(p1 As Integer) As List(Of Comentario)
+        Dim table As DataTable
+        Dim repository As New AccesoSQLServer
+        Dim lista As New List(Of BE.Comentario)
+        Try
+            repository.crearComando("BUSCAR_COMENTARIOS_SP")
+            repository.addParam("@id", p1)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                Dim com As New BE.Comentario
+                com.id = pepe.Item(0)
+                com.texto = pepe.Item(1)
+                Dim usr As New BE.UsuarioBE
+                usr.id = pepe.Item(2)
+                usr.usuario = pepe.Item(3)
+                usr.mail = pepe.Item(4)
+                com.usuario = usr
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Function
 
 

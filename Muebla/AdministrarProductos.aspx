@@ -20,7 +20,8 @@
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="tipoProductoLabel" Text="Tipo Producto" />
-            </asp:TableCell><asp:TableCell>
+            </asp:TableCell>
+            <asp:TableCell>
                 <asp:DropDownList runat="server" ID="tipoProductoDropDownList" />
             </asp:TableCell>
         </asp:TableRow>
@@ -70,7 +71,8 @@
                         OnClick="ibtnDetails_Click" />
                     <asp:ImageButton ID="ibtnComparacion" runat="server"
                         ImageUrl="/images/price_comparison.png"
-                        OnClick="ibtnComparacion_Click" Visible="<%# Item.tipoProducto.id = 1 %>" />
+                        OnClick="ibtnComparacion_Click" 
+                        Visible="<%# Item.tipoProducto.id = 1 %>" />
                     <asp:ImageButton ID="ibtnPurchaseOrder" runat="server"
                         ImageUrl="/images/purchaseOrder.png"
                         OnClick="ibtnPurchaseOrder_Click"

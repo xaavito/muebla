@@ -167,11 +167,83 @@ Partial Public Class MisPedidos
     Protected WithEvents ButtonCommentCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control generarFacturaButton.
+    '''Control viewComments.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents generarFacturaButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents viewComments As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control panelComentario.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents panelComentario As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control comentarioLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comentarioLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control comentariosResultGrid.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents comentariosResultGrid As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control okButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents okButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control hojaRutaButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents hojaRutaButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control remitoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents remitoButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control facturaButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents facturaButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control ncButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ncButton As Global.System.Web.UI.WebControls.Button
 End Class

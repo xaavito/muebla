@@ -1,6 +1,5 @@
 ﻿Public Class UsuarioTienePedidosEnProcesoException
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.TienePedidosEnProceso
@@ -11,7 +10,6 @@ End Class
 
 Public Class CancelarPedidoException
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.NoSePuedeCancelarPedidoEstado
@@ -22,7 +20,6 @@ End Class
 
 Public Class CuitExistenteException
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.CuitExistente
@@ -33,7 +30,6 @@ End Class
 
 Public Class ProveedorProductosEnVentaException
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.ProveedorProductosEnVenta
@@ -44,7 +40,6 @@ End Class
 
 Public Class ProductosEnStockException
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.ProveedorProductosEnStock
@@ -56,7 +51,6 @@ End Class
 
 Public Class MailYaEstaSiendoUtilizadoException
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.MailYaEstaUtilizado
@@ -67,7 +61,6 @@ End Class
 
 Public Class UsuarioYaEstaSiendoUtilizadoException
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.UsuarioYaEstaUtilizado
@@ -78,11 +71,20 @@ End Class
 
 Public Class SeleccionMultiple
     Inherits ExceptionManager
-    'TODO
     Public Sub New()
         MyBase.New("Sin resultados")
         Me.codigo = Enumeradores.Excepeciones.MasDeUnaSeleccion
         Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class PedidoPersonalizadoExitosoException
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.PedidoPersonalizado
+        Me.tipo = Enumeradores.ImportanciaEvento.Exito
         Me.mensaje = "Sin resultados"
     End Sub
 End Class

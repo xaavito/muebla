@@ -63,10 +63,11 @@ Public Class ProductoBLL
         DAL.ProductoDAL.generarOrdenCompraDetalles(oc)
         Dim ms As MemoryStream = Util.PDFGenerator.OrdenCompraPDF(oc)
         'proveedor
-        Util.Mailer.enviarMailConAdjunto(oc.proveedor.mail, "Orden de Compra Muebla", "Ver Adjunto", ms)
+        Util.Mailer.enviarMailConAdjunto(oc.proveedor.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms)
         'nosotros
-        Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailCompras").ToString, "Orden de Compra Muebla", "Ver Adjunto", ms)
-
+        ms = Util.PDFGenerator.OrdenCompraPDF(oc)
+        Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailCompras").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms)
+        ms.Position = 0
         Return ms
     End Function
 

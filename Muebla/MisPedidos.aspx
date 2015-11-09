@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager id="scriptManager" runat="server" />
+    <asp:ScriptManager ID="scriptManager" runat="server" />
 
     <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria" CssClass="table">
         <asp:TableRow>
@@ -32,7 +32,7 @@
         </asp:TableRow>
     </asp:Table>
 
-    <asp:Button Text="Buscar" id="buscarButton" runat="server" OnClick="buscarButton_Click" />
+    <asp:Button Text="Buscar" ID="buscarButton" runat="server" OnClick="buscarButton_Click" />
 
     <asp:GridView runat="server" ID="detallePedidosResultGrid"
         AutoGenerateColumns="false"
@@ -96,6 +96,9 @@
                     <asp:ImageButton ID="ibtnCommentarioButton" runat="server"
                         ImageUrl="/images/comentario.png"
                         OnClick="ibtnCommentarioButton_Click" />
+                    <asp:ImageButton ID="ibtnVerComentarios" runat="server"
+                        ImageUrl="/images/view.png"
+                        OnClick="ibtnVerComentarios_Click" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -130,9 +133,53 @@
         </div>
     </asp:Panel>
 
-    <asp:Button Text="Generar Hoja de ruta" runat="server" OnClick="hojaDeRuta" />
-    <asp:Button Text="Generar Remito" runat="server" OnClick="remito" />
-    <asp:Button Text="Generar Factura" id="generarFacturaButton" runat="server" OnClick="generarFacturaButton_Click" />
-    <asp:Button Text="Generar Nota de Credito" runat="server" OnClick="notaCredito" />
-    <asp:Button Text="Servicio Post Venta" runat="server" OnClick="postVenta" />
+    <ajaxToolkit:ModalPopupExtender
+        ID="viewComments" runat="server"
+        CancelControlID="okButton"
+        TargetControlID="Button1" PopupControlID="panelComentario"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupComment" ID="panelComentario"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Titlebar" id="PopupHeader1">
+                <div class="TitlebarLeft">
+                    <asp:Label Text="Comentarios" ID="comentarioLabel" runat="server" />
+                </div>
+            </div>
+            <div class="popup_Body">
+                <asp:GridView runat="server" ID="comentariosResultGrid"
+                    AutoGenerateColumns="false"
+                    AllowPaging="false" PageSize="12"
+                    ItemType="BE.Comentario">
+                    <Columns>
+                        <asp:TemplateField HeaderText="" Visible="false">
+                            <ItemTemplate>
+                                <asp:Label runat="server" ID="itemID" visible="false" Text="<%# Item.id %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Usuario">
+                            <ItemTemplate>
+                                <asp:Label runat="server" ID="itemUsuario" Text="<%# Item.usuario.usuario %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Comentario">
+                            <ItemTemplate>
+                                <asp:Label runat="server" ID="itemComentario" Text="<%# Item.texto %>" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" Text="OK" ID="okButton" />
+            </div>
+        </div>
+    </asp:Panel>
+
+    <asp:Button Text="Generar Hoja de ruta" ID="hojaRutaButton" runat="server" OnClick="hojaDeRuta" Visible="<%# Not getUsuario is Nothing and getUsuario.isAdmin = True %>" />
+    <asp:Button Text="Generar Remito" ID="remitoButton" runat="server" OnClick="remito" Visible="<%# Not getUsuario() Is Nothing And getUsuario.isAdmin = True%>" />
+    <asp:Button Text="Generar Factura" ID="facturaButton" runat="server" OnClick="generarFacturaButton_Click" Visible="<%# Not getUsuario() Is Nothing And getUsuario.isAdmin = True%>" />
+    <asp:Button Text="Generar Nota de Credito" ID="ncButton" runat="server" OnClick="notaCredito" Visible="<%# Not getUsuario is Nothing and getUsuario.isAdmin = True%>" />
 </asp:Content>

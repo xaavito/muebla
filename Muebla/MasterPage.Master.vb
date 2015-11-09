@@ -195,7 +195,7 @@ Public Class MasterPage
 
     Protected Sub logout_Click(sender As Object, e As EventArgs)
         Me.mainTree.Items.Clear()
-        BLL.GestorBitacoraBLL.registrarEvento(Session("Usuario"), Util.Enumeradores.Bitacora.LogoutExitoso)
+        BLL.GestorBitacoraBLL.registrarEvento(CType(Session("Usuario"), BE.UsuarioBE), Util.Enumeradores.Bitacora.LogoutExitoso)
         Session("Usuario") = Nothing
         usr = Nothing
         loadBasic()
@@ -221,7 +221,7 @@ Public Class MasterPage
     Private Sub checkPermisoPaginaActual()
         Dim paginaActual As String = Path.GetFileName(Request.PhysicalPath)
         Dim permisoPaginaActual = False
-        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Or paginaActual = "Registro.aspx" Or paginaActual = "RecuperarContrasena.aspx" Or paginaActual = "Carrito.aspx" Or paginaActual = "quienesSomos.aspx" Or paginaActual = "registroCompleto.aspx" Or paginaActual = "compraRealizada.aspx" Then
+        If paginaActual = "Login.aspx" Or paginaActual = "Main.aspx" Or paginaActual = "Ventas.aspx" Or paginaActual = "Registro.aspx" Or paginaActual = "RecuperarContrasena.aspx" Or paginaActual = "Carrito.aspx" Or paginaActual = "quienesSomos.aspx" Or paginaActual = "registroCompleto.aspx" Or paginaActual = "compraRealizada.aspx" Or paginaActual = "compraPersonalizada.aspx" Then
             permisoPaginaActual = True
         Else
             If Not usr Is Nothing Then

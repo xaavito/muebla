@@ -142,6 +142,18 @@ Public Class PedidoBE
         Return String.Format("{0:C}", tot)
     End Function
 
+    Public Function getTotalCalculadoSinFormato() As Decimal
+        Dim tot As Decimal = 0
+        If total = 0 Then
+            For Each p As PedidoProductoBE In Me.productos
+                tot = tot + (p.cantidad * p.producto.precio)
+            Next
+        Else
+            tot = total
+        End If
+        Return tot
+    End Function
+
     Public Function getTotal() As String
         Return String.Format("{0:C}", total)
     End Function

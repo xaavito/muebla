@@ -51,4 +51,8 @@ Public Class Ventas
         End Try
         Return Nothing
     End Function
+
+    Protected Sub compraPersonalizadaButton_Click(sender As Object, e As EventArgs)
+        Response.Redirect("compraPersonalizada.aspx", False)
+    End Sub
 End Class

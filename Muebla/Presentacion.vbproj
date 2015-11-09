@@ -108,9 +108,11 @@
     <Content Include="Backup.aspx" />
     <Content Include="Bitacora.aspx" />
     <Content Include="Carrito.aspx" />
+    <Content Include="compraPersonalizada.aspx" />
     <Content Include="images\bar_code.jpg" />
     <Content Include="images\price_comparison.png" />
     <Content Include="images\purchaseOrder.png" />
+    <Content Include="images\view.png" />
     <Content Include="registroCompleto.aspx" />
     <Content Include="ConfirmarShowroom.aspx" />
     <Content Include="adfile.xml" />
@@ -262,6 +264,13 @@
     <Compile Include="Carrito.aspx.vb">
       <DependentUpon>Carrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="compraPersonalizada.aspx.designer.vb">
+      <DependentUpon>compraPersonalizada.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="compraPersonalizada.aspx.vb">
+      <DependentUpon>compraPersonalizada.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="registroCompleto.aspx.designer.vb">
       <DependentUpon>registroCompleto.aspx</DependentUpon>

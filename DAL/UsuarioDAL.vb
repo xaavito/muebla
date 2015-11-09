@@ -299,7 +299,7 @@ Public Class UsuarioDAL
             repository.addParam("@nro", usr.domicilio.numero)
             repository.addParam("@piso", usr.domicilio.piso)
             repository.addParam("@dpto", usr.domicilio.dpto)
-            repository.addParam("@loc", usr.domicilio.m_LocalidadBE.id)
+            repository.addParam("@loc", usr.domicilio.localidad.id)
             id = repository.executeWithReturnValue
         Catch ex As Exception
             Throw ex
@@ -398,8 +398,8 @@ Public Class UsuarioDAL
                 Dim prov As New BE.ProvinciaBE
                 prov.id = pepe.Item(7)
                 prov.descripcion = pepe.Item(8)
-                loc.m_ProvinciaBE = prov
-                dom.m_LocalidadBE = loc
+                loc.provincia = prov
+                dom.localidad = loc
                 usuario.domicilio = dom
             Next
         Catch ex As Exception
@@ -526,7 +526,7 @@ Public Class UsuarioDAL
             repository.addParam("@nro", usr.domicilio.numero)
             repository.addParam("@piso", usr.domicilio.piso)
             repository.addParam("@dpto", usr.domicilio.dpto)
-            repository.addParam("@loc", usr.domicilio.m_LocalidadBE.id)
+            repository.addParam("@loc", usr.domicilio.localidad.id)
             id = repository.executeSearchWithStatus
             If id = 0 Then
                 Throw New Util.ModificarException

@@ -19,28 +19,18 @@
         RestauracionExitosa = 11
         'Recuperar Pass
         MailEnviandose = 12
-
-        ErrorBizarro = 13 ' falta
-        BusquedaConMuchosResultados = 14 ' falta
-
-        MailFallo = 15 ' falta
-
-        TienePedidosEnProceso
-
-        NoSePuedeCancelarPedidoEstado
-
-        CuitExistente
-
-        ProveedorProductosEnVenta
-
-        ProveedorProductosEnStock
-
-        MailYaEstaUtilizado
-
-        UsuarioYaEstaUtilizado
-
-        MasDeUnaSeleccion
-
+        ErrorBizarro = 13
+        BusquedaConMuchosResultados = 14
+        MailFallo = 15
+        TienePedidosEnProceso = 16
+        NoSePuedeCancelarPedidoEstado = 17
+        CuitExistente = 18
+        ProveedorProductosEnVenta = 19
+        ProveedorProductosEnStock = 20
+        MailYaEstaUtilizado = 21
+        UsuarioYaEstaUtilizado = 22
+        MasDeUnaSeleccion = 23
+        PedidoPersonalizado = 24
     End Enum
 
     Enum Bitacora
@@ -50,6 +40,9 @@
         PedidoRealizado = 4
         PedidoCancelado = 5
         FacturaRealizada = 6
+        NCRealizada = 7
+        OCRealizada = 8
+        PedidoPersonalizado = 9
     End Enum
 
     Enum ImportanciaEvento
@@ -68,14 +61,19 @@
         FacturaMensaje = 6
         Pedido = 7
         PedidoMensaje = 8
-
-        PedidoCancelado
-
-        PedidoCanceladoMensaje
-
-        RemitoMensaje
-
-        Remito
-
+        PedidoCancelado = 9
+        PedidoCanceladoMensaje = 10
+        RemitoMensaje = 11
+        Remito = 12
+        HojaRuta = 13
+        HojaRutaMensaje = 14
+        NC = 15
+        NCMensaje = 16
+        OC = 17
+        OCMensaje = 18
+        PedidoPersonalizado = 19
+        PedidoPersonalizadoMensaje = 20
+        PedidoComentario = 21
+        PedidoComentarioMensaje = 22
     End Enum
 End Class

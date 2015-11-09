@@ -44,5 +44,8 @@ Public Class TelefonoBE
         End Set
     End Property
 
+    Public Function formatedLine()
+        Return numero.ToString + " " + prefijo.ToString + " " + interno.ToString
+    End Function
 
 End Class ' TelefonoBE

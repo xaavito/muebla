@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="AsistenciaShowroomBE.vb" />
     <Compile Include="BackupBE.vb" />
+    <Compile Include="Comentario.vb" />
     <Compile Include="ComparacionProductos.vb" />
     <Compile Include="ComponenteBE.vb" />
     <Compile Include="ComprobanteBE.vb" />
@@ -73,8 +74,12 @@
     <Compile Include="EstadoPedidoBE.vb" />
     <Compile Include="EstadoProveedorBE.vb" />
     <Compile Include="EventoBE.vb" />
+    <Compile Include="NotaCreditoBE.vb" />
     <Compile Include="FacturaBE.vb" />
+    <Compile Include="NotaCreditoDetalleBE.vb" />
     <Compile Include="FacturaDetalleBE.vb" />
+    <Compile Include="HojaRutaBE.vb" />
+    <Compile Include="HojaRutaDetalleBE.vb" />
     <Compile Include="IdiomaBE.vb" />
     <Compile Include="ListaPrecioBE.vb" />
     <Compile Include="ListaPrecioDetalleBE.vb" />
@@ -101,6 +106,7 @@
     <Compile Include="PedidoBE.vb" />
     <Compile Include="PedidoProductoBE.vb" />
     <Compile Include="ProductoBE.vb" />
+    <Compile Include="PedidoPersonalizado.vb" />
     <Compile Include="PromocionBE.vb" />
     <Compile Include="ProveedorBE.vb" />
     <Compile Include="ProvinciaBE.vb" />

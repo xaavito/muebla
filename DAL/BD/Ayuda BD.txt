@@ -1,0 +1,13 @@
+﻿--
+delete from RemitoDetalle
+delete from Remito
+delete from NDNCDetalle
+delete from HojaRutaDetalle
+delete from HojaRuta
+delete from OrdenCompraDetalle
+delete from OrdenCompra
+delete from PedidoProducto
+delete from FacturaDetalle
+delete from ComprobanteInterno
+delete from Comprobante
+--
