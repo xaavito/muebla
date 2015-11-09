@@ -60,6 +60,10 @@ Public Class GestorIdiomaBLL
         Return DAL.GestorIdiomaDAL.getMensajeTraducion(codigo, idIdioma)
     End Function
 
+    Shared Function getMensajeTraduccion(codigo As Util.Enumeradores.CodigoMensaje) As String
+        Return DAL.GestorIdiomaDAL.getMensajeTraducion(codigo, 1)
+    End Function
+
     Shared Function getComponentesIdiomaticos()
         If _comps Is Nothing Then
             _comps = New List(Of IdiomaBE)

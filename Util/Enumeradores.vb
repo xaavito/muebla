@@ -39,17 +39,17 @@
 
         UsuarioYaEstaUtilizado
 
+        MasDeUnaSeleccion
+
     End Enum
 
     Enum Bitacora
         LogueoExitoso = 1
         LogoutExitoso = 2
         ModificacionUsuario = 3
-        ' DESDE ACA FALTAN
         PedidoRealizado = 4
-
-        PedidoCancelado
-
+        PedidoCancelado = 5
+        FacturaRealizada = 6
     End Enum
 
     Enum ImportanciaEvento
@@ -64,5 +64,18 @@
         MensajeConfirmarAsist = 2
         CambioHorario = 3
         Info = 4
+        Factura = 5
+        FacturaMensaje = 6
+        Pedido = 7
+        PedidoMensaje = 8
+
+        PedidoCancelado
+
+        PedidoCanceladoMensaje
+
+        RemitoMensaje
+
+        Remito
+
     End Enum
 End Class

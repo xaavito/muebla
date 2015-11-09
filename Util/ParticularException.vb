@@ -75,3 +75,14 @@ Public Class UsuarioYaEstaSiendoUtilizadoException
         Me.mensaje = "Sin resultados"
     End Sub
 End Class
+
+Public Class SeleccionMultiple
+    Inherits ExceptionManager
+    'TODO
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.MasDeUnaSeleccion
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class

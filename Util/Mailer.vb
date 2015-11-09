@@ -15,7 +15,7 @@ Public Class Mailer
         thread.Start()
     End Sub
 
-    Public Shared Sub sendMail(ByVal para As String,
+    Private Shared Sub sendMail(ByVal para As String,
                                ByVal referencia As String,
                                ByVal contenido As String)
 
@@ -56,7 +56,7 @@ Public Class Mailer
         thread.Start()
     End Sub
 
-    Public Shared Sub sendMailWithAttachment(ByVal para As String,
+    Private Shared Sub sendMailWithAttachment(ByVal para As String,
                                ByVal referencia As String,
                                ByVal contenido As String,
                                ByVal adjunto As System.IO.Stream)

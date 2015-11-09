@@ -73,6 +73,8 @@
     <Compile Include="EstadoPedidoBE.vb" />
     <Compile Include="EstadoProveedorBE.vb" />
     <Compile Include="EventoBE.vb" />
+    <Compile Include="FacturaBE.vb" />
+    <Compile Include="FacturaDetalleBE.vb" />
     <Compile Include="IdiomaBE.vb" />
     <Compile Include="ListaPrecioBE.vb" />
     <Compile Include="ListaPrecioDetalleBE.vb" />
@@ -102,6 +104,8 @@
     <Compile Include="PromocionBE.vb" />
     <Compile Include="ProveedorBE.vb" />
     <Compile Include="ProvinciaBE.vb" />
+    <Compile Include="RemitoBE.vb" />
+    <Compile Include="RemitoDetalleBE.vb" />
     <Compile Include="RolBE.vb" />
     <Compile Include="TelefonoBE.vb" />
     <Compile Include="TipoComprobanteBE.vb" />

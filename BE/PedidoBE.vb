@@ -132,9 +132,13 @@ Public Class PedidoBE
 
     Public Function getTotalCalculado() As String
         Dim tot As Decimal = 0
-        For Each p As PedidoProductoBE In Me.productos
-            tot = tot + (p.cantidad * p.producto.precio)
-        Next
+        If total = 0 Then
+            For Each p As PedidoProductoBE In Me.productos
+                tot = tot + (p.cantidad * p.producto.precio)
+            Next
+        Else
+            tot = total
+        End If
         Return String.Format("{0:C}", tot)
     End Function
 

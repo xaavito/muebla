@@ -1,4 +1,6 @@
-﻿Public Class MisPedidos
+﻿Imports System.IO
+
+Public Class MisPedidos
     Inherits ExtendedPage
     Dim selectedPedidos As New List(Of BE.PedidoBE)
 
@@ -18,7 +20,13 @@
     End Sub
 
     Protected Sub remito(sender As Object, e As EventArgs)
-        Response.Redirect("Remito.aspx")
+        Try
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarRemito(getSelected)
+            DownloadPDF(ms)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub notaCredito(sender As Object, e As EventArgs)
@@ -67,15 +75,13 @@
 
     Protected Sub ibtnCancelarPedido_Click(sender As Object, e As ImageClickEventArgs)
         Try
-            Dim usr As BE.UsuarioBE = Nothing
-            Dim id As Integer = getItemId(sender, Me.detallePedidosResultGrid)
-            For Each a As BE.PedidoBE In Session("pedidos")
-                If a.id = id Then
-                    BLL.GestorPedidoBLL.cancelarPedido(a)
-                    usr = a.usr
-                    Exit For
-                End If
-            Next
+            Dim usr As BE.UsuarioBE
+            If getSelected.Count <> 1 Then
+                Throw New Util.SeleccionMultiple
+            End If
+            BLL.GestorPedidoBLL.cancelarPedido(getSelected.Item(0))
+            usr = getSelected.Item(0).usr
+
             BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.PedidoCancelado)
             'TODO TRADUCIR
             Util.Mailer.enviarMail(usr.mail, "Pedido Cancelado", "Su pedido ha sido cancelado")
@@ -92,7 +98,6 @@
         Catch ex As Exception
             logMessage(ex)
         End Try
-
     End Sub
 
     Protected Sub ibtnCommentarioButton_Click(sender As Object, e As ImageClickEventArgs)
@@ -101,6 +106,19 @@
     End Sub
 
     Protected Sub generarFacturaButton_Click(sender As Object, e As EventArgs)
+        Try
+            If getSelected.Count <> 1 Then
+                Throw New Util.SeleccionMultiple
+            End If
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarFactura(getSelected.Item(0))
+            DownloadPDF(ms)
+            Throw New Util.CreacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Function getSelected() As List(Of BE.PedidoBE)
         Dim id As Integer
         For Each gvr As GridViewRow In Me.detallePedidosResultGrid.Rows
             If CType(gvr.Cells(0).FindControl("itemSelected"), CheckBox).Checked Then
@@ -117,5 +135,6 @@
         For Each pp As BE.PedidoBE In selectedPedidos
             Debug.WriteLine("ID " + pp.id.ToString)
         Next
-    End Sub
+        Return selectedPedidos
+    End Function
 End Class
