@@ -109,9 +109,10 @@ Public Class GestorPedidoBLL
 
         Dim ms As MemoryStream = Util.PDFGenerator.RemitoPDF(remito)
         ' MAIL PARA EL PROVEEDOR
-        Util.Mailer.enviarMailConAdjunto(remito.prov.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Remito, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RemitoMensaje, 1), ms)
+        'Util.Mailer.enviarMailConAdjunto(remito.prov.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Remito, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RemitoMensaje, 1), ms)
         'para nosotros
         ms = Util.PDFGenerator.RemitoPDF(remito)
+        'todo pincha aca por traducciones
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Remito), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RemitoMensaje), ms)
         ms.Position = 0
         Return ms

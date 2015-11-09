@@ -320,7 +320,6 @@ Public Class GestorPedidoDAL
         Dim id As Integer
         Dim repository As New AccesoSQLServer
         Try
-            'todo no est aimplementado esto... ACA ME QUEDE!!!
             repository.crearComando("ALTA_REMITO_SP")
             id = repository.executeWithReturnValue
             If (id <= 0) Then
@@ -332,8 +331,8 @@ Public Class GestorPedidoDAL
                 For Each pp As PedidoProductoBE In ped.productos
                     repository.crearComando("ALTA_REMITO_DETALLE_SP")
                     repository.addParam("@idCabecera", id)
-                    repository.addParam("@idLpd", pp.producto.id)
-                    repository.addParam("@cant", pp.producto.producto.descripcion)
+                    repository.addParam("@idProd", pp.producto.producto.id)
+                    repository.addParam("@cant", pp.cantidad)
                     idDet = repository.executeSearchWithStatus
                     If (idDet <= 0) Then
                         Throw New CreacionException
@@ -345,6 +344,51 @@ Public Class GestorPedidoDAL
         End Try
 
         Return id
+    End Function
+
+    Shared Function getRemito(nro As Integer) As RemitoBE
+        Dim table As DataTable
+        Dim repository As New AccesoSQLServer
+        Dim comp As New RemitoBE
+        Dim lista As New List(Of BE.RemitoDetalleBE)
+        Try
+            repository.crearComando("BUSCAR_REMITO_COMPROBANTE_SP")
+            repository.addParam("@nro", nro)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                comp.nro = pepe.Item(0)
+                comp.letra = pepe.Item(1)
+                comp.sucursal = pepe.Item(2)
+                comp.fecha = pepe.Item(3)
+            Next
+
+            repository.crearComando("BUSCAR_REMITO_DETALLE_SP")
+            repository.addParam("@nro", comp.nro)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                Dim det As New BE.RemitoDetalleBE
+                det.cantidad = pepe.Item(0)
+
+                Dim prod As New BE.ProductoBE
+                prod.id = pepe.Item(1)
+                prod.descripcion = pepe.Item(2)
+                det.producto = prod
+
+                lista.Add(det)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        comp.detalles = lista
+        Return comp
     End Function
 
 
