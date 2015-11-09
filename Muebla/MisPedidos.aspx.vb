@@ -148,8 +148,21 @@ Public Class MisPedidos
 
     Protected Sub ibtnVerComentarios_Click(sender As Object, e As ImageClickEventArgs)
         Try
-            Me.comentariosResultGrid.DataSource = BLL.GestorPedidoBLL.buscarComentarios(getItemId(sender, Me.comentariosResultGrid))
+            Me.comentariosResultGrid.DataSource = BLL.GestorPedidoBLL.buscarComentarios(getItemId(sender, Me.detallePedidosResultGrid))
             Me.comentariosResultGrid.DataBind()
+            viewComments.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub anularVentaButton_Click(sender As Object, e As EventArgs)
+        Try
+            If getSelected.Count <> 1 Then
+                Throw New Util.SeleccionMultiple
+            End If
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.anularVenta(getSelected.Item(0))
+            Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try

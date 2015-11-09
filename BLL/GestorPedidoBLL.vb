@@ -77,14 +77,6 @@ Public Class GestorPedidoBLL
         Return ms
     End Function
 
-    Public Shared Sub generarResena(ByVal comentario As String, ByVal pedido As PedidoBE)
-        'TODO
-    End Sub
-
-    Public Shared Sub solicitarServicio(ByVal arch As Object, ByVal obs As String, ByVal pedido As PedidoBE)
-        'TODO
-    End Sub
-
     Shared Function buscarTiposEnvios(idIdioma As Integer) As List(Of TipoEnvioBE)
         Return DAL.GestorPedidoDAL.buscarTiposEnvio(idIdioma)
     End Function
@@ -94,6 +86,7 @@ Public Class GestorPedidoBLL
     End Function
 
     Shared Sub cancelarPedido(a As PedidoBE)
+        'todo check estado
         If a.estado.id = 1 Then
             DAL.GestorPedidoDAL.cancelarPedido(a)
             Util.Mailer.enviarMail(a.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCancelado, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCanceladoMensaje, 1) + " " + a.id)
@@ -169,5 +162,18 @@ Public Class GestorPedidoBLL
     Shared Function buscarComentarios(p1 As Integer) As List(Of BE.Comentario)
         Return DAL.GestorPedidoDAL.buscarComentarios(p1)
     End Function
+
+    Shared Sub anularVenta(pedido As PedidoBE)
+        'todo check estado
+        coco()
+        DAL.GestorPedidoDAL.anularVenta(pedido)
+        BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
+        'USR
+        Util.Mailer.enviarMail(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizado), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizadoMensaje))
+        'NOS
+        Util.Mailer.enviarMail(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizado), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizadoMensaje))
+        'EVENTO
+        BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.PedidoPersonalizado)
+    End Sub
 
 End Class ' GestorPedidoBLL

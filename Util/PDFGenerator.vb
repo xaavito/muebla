@@ -296,7 +296,7 @@ Public Class PDFGenerator
             amtCell.HorizontalAlignment = 1
             itemTable.AddCell(amtCell)
         Next
-        
+
 
         ' Table footer
         Dim totalAmtCell1 As PdfPCell = New PdfPCell(New Phrase(""))
@@ -776,7 +776,7 @@ Public Class PDFGenerator
         Dim numberCell As PdfPCell
         Dim descCell As PdfPCell
         Dim qtyCell As PdfPCell
-        
+
         For Each pp As BE.RemitoDetalleBE In remito.detalles
             numberCell = New PdfPCell(New Phrase(pp.producto.id, bodyFont))
             numberCell.HorizontalAlignment = 0

@@ -182,4 +182,5 @@
     <asp:Button Text="Generar Remito" ID="remitoButton" runat="server" OnClick="remito" Visible="<%# Not getUsuario() Is Nothing And getUsuario.isAdmin = True%>" />
     <asp:Button Text="Generar Factura" ID="facturaButton" runat="server" OnClick="generarFacturaButton_Click" Visible="<%# Not getUsuario() Is Nothing And getUsuario.isAdmin = True%>" />
     <asp:Button Text="Generar Nota de Credito" ID="ncButton" runat="server" OnClick="notaCredito" Visible="<%# Not getUsuario is Nothing and getUsuario.isAdmin = True%>" />
+    <asp:Button Text="Anular Venta" ID="anularVentaButton" runat="server" OnClick="anularVentaButton_Click" Visible="<%# Not getUsuario is Nothing and getUsuario.isAdmin = True%>" />
 </asp:Content>

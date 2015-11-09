@@ -601,13 +601,18 @@ Public Class GestorPedidoDAL
                 usr.usuario = pepe.Item(3)
                 usr.mail = pepe.Item(4)
                 com.usuario = usr
+
+                lista.Add(com)
             Next
         Catch ex As Exception
             Throw ex
         End Try
-
+        Return lista
     End Function
 
+    Shared Sub anularVenta(p1 As Object)
+        Throw New NotImplementedException
+    End Sub
 
 End Class ' GestorPedidoDAL
 
