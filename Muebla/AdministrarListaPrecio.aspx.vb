@@ -42,7 +42,7 @@
     End Sub
 
     Protected Sub listaPrecioResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-        'TODO INDEX PARA SELECCION DE PAGINA
+        Me.listaPrecioResultadosDataGrid.PageIndex = e.NewPageIndex
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PreRender(sender As Object, e As EventArgs)

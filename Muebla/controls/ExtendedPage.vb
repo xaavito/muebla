@@ -83,8 +83,10 @@ Public Class ExtendedPage
 
     Public Sub logMessage(ByVal ex As Exception)
         Dim messageLogger As Label = CType(Me.Master.FindControl("errorMessageLogger"), Label)
+        borrarMensajes()
         If (TypeOf ex Is ExceptionManager) Then
             Dim excep = DirectCast(ex, ExceptionManager)
+
             If excep.tipo = Enumeradores.ImportanciaEvento.Err Then
                 messageLogger = CType(Me.Master.FindControl("errorMessageLogger"), Label)
             ElseIf excep.tipo = Enumeradores.ImportanciaEvento.Info Then
@@ -196,4 +198,12 @@ Public Class ExtendedPage
             'no hacemos nada negro!
         End Try
     End Sub
+
+    Private Sub borrarMensajes()
+        CType(Me.Master.FindControl("errorMessageLogger"), Label).Text = ""
+        CType(Me.Master.FindControl("infoMessageLogger"), Label).Text = ""
+        CType(Me.Master.FindControl("warningMessageLogger"), Label).Text = ""
+        CType(Me.Master.FindControl("exitoMessageLogger"), Label).Text = ""
+    End Sub
+
 End Class

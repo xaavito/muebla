@@ -54,7 +54,7 @@ Public Class MisPedidos
     End Sub
 
     Protected Sub detallePedidosResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-        'TODO VER ESTO DEL PAGINADO...
+        Me.detallePedidosResultGrid.PageIndex = e.NewPageIndex
     End Sub
 
     Private Sub loadPedidos()
@@ -71,6 +71,11 @@ Public Class MisPedidos
         Me.estadoListBox.DataTextField = "descripcion"
         Me.estadoListBox.DataValueField = "id"
         Me.estadoListBox.DataBind()
+
+        Me.estadoPedidoDropDown.DataSource = BLL.GestorPedidoBLL.getEstadosPedidos()
+        Me.estadoPedidoDropDown.DataTextField = "descripcion"
+        Me.estadoPedidoDropDown.DataValueField = "id"
+        Me.estadoPedidoDropDown.DataBind()
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
@@ -78,7 +83,16 @@ Public Class MisPedidos
     End Sub
 
     Protected Sub ibtnCambiarEstado_Click(sender As Object, e As ImageClickEventArgs)
-        'todo cambiar de estado
+        Session("idPedidoEdicion") = getItemId(sender, Me.detallePedidosResultGrid)
+        For Each p As BE.PedidoBE In Session("pedidos")
+            If p.id = Session("idPedidoEdicion") Then
+                Session("pedidoEdicion") = p
+                Exit For
+            End If
+        Next
+        Me.estadoPedidoDropDown.SelectedValue = CType(Session("pedidoEdicion"), BE.PedidoBE).estado.id
+        Me.estadoPedidoDropDown.DataBind()
+        cambiarEstadoPopup.Show()
     End Sub
 
     Protected Sub ibtnCancelarPedido_Click(sender As Object, e As ImageClickEventArgs)
@@ -161,10 +175,31 @@ Public Class MisPedidos
             If getSelected.Count <> 1 Then
                 Throw New Util.SeleccionMultiple
             End If
-            Dim ms As MemoryStream = BLL.GestorPedidoBLL.anularVenta(getSelected.Item(0))
+            anularPopup.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub anularButton_Click(sender As Object, e As EventArgs)
+        Try
+            If getSelected.Count <> 1 Then
+                Throw New Util.SeleccionMultiple
+            End If
+            BLL.GestorPedidoBLL.anularVenta(getSelected.Item(0), Me.anularCommentTextBox.Text, getUsuario)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try
+    End Sub
+
+    Protected Sub confirmarCambioEstadoButton_Click(sender As Object, e As EventArgs)
+        Try
+            'Debug.WriteLine("+++++++++++++++" + Me.estadoPedidoDropDown.SelectedValue)
+            BLL.GestorPedidoBLL.cambiarEstadoPedido(Session("pedidoEdicion"), Integer.Parse(Me.estadoPedidoDropDown.SelectedValue))
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+
     End Sub
 End Class

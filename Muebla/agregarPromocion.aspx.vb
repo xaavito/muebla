@@ -39,10 +39,10 @@
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PreRender(sender As Object, e As EventArgs)
-        'TODO PRE RENDER
+        translateGrid(detalleListaPrecioResultGrid)
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-        'TODO INDEX CHNAGE
+        Me.detalleListaPrecioResultGrid.PageIndex = e.NewPageIndex
     End Sub
 End Class

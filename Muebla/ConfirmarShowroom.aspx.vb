@@ -12,7 +12,7 @@ Public Class ConfirmarShowroom
     End Sub
 
     Protected Sub showroomDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-        ' todo index change
+        Me.showroomDataGrid.PageIndex = e.NewPageIndex
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
@@ -29,19 +29,19 @@ Public Class ConfirmarShowroom
     End Sub
 
     Protected Sub ibtnConfirm_Click(sender As Object, e As ImageClickEventArgs)
-        'TODO REVISAR UN TOQUE EL TEMA DE LA EDICION Y EL CHECKED QUE NO ME GUSTA NADA...
         Dim id As Integer = getItemId(sender, Me.showroomDataGrid)
         For Each a As AsistenciaShowroomBE In Session("pedidos")
             If a.id = id Then
                 Try
                     BLL.GestorShowroomBLL.confirmarPedido(a)
+                    buscarPedidos()
+                    Throw New Util.ModificacionExitosaException
                 Catch ex As Exception
                     logMessage(ex)
                 End Try
                 Exit For
             End If
         Next
-        buscarPedidos()
     End Sub
 
     Private Sub buscarPedidos()
@@ -62,8 +62,12 @@ Public Class ConfirmarShowroom
                 Try
                     If a.cumplido = Me.asitioCheckBox.Checked Then
                         BLL.GestorShowroomBLL.modificarFechaPedido(a)
+                        buscarPedidos()
+                        Throw New Util.ModificacionExitosaException
                     Else
                         BLL.GestorShowroomBLL.modificarPedido(a)
+                        buscarPedidos()
+                        Throw New Util.ModificacionExitosaException
                     End If
                 Catch ex As Exception
                     logMessage(ex)
@@ -71,6 +75,5 @@ Public Class ConfirmarShowroom
                 Exit For
             End If
         Next
-        buscarPedidos()
     End Sub
 End Class

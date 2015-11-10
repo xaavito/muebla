@@ -212,6 +212,105 @@ Partial Public Class MisPedidos
     Protected WithEvents okButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control anularPopup.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents anularPopup As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivAnularComment.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivAnularComment As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control Label1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control anularCommentTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents anularCommentTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control anularButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents anularButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control cancelarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cancelarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control cambiarEstadoPopup.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cambiarEstadoPopup As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivEstadoPedido.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivEstadoPedido As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control estadoPedidoDropDown.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents estadoPedidoDropDown As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control confirmarCambioEstadoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarCambioEstadoButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control Button3.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control hojaRutaButton.
     '''</summary>
     '''<remarks>

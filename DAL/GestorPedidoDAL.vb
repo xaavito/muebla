@@ -610,8 +610,69 @@ Public Class GestorPedidoDAL
         Return lista
     End Function
 
-    Shared Sub anularVenta(p1 As Object)
-        Throw New NotImplementedException
+    Shared Sub anularVenta(pedido As BE.PedidoBE)
+        Dim id As Integer
+        Dim list As New List(Of BE.ProductoBE)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ANULAR_VENTA_SP")
+            repository.addParam("@id", pedido.id)
+            id = repository.executeSearchWithStatus
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub cambiarEstadoPedido(pedido As PedidoBE, idNuevoEstado As Integer)
+        Dim id As Integer
+        Dim list As New List(Of BE.ProductoBE)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CAMBIAR_ESTADO_PEDIDO_SP")
+            repository.addParam("@id", pedido.id)
+            repository.addParam("@idEstado", idNuevoEstado)
+            id = repository.executeSearchWithStatus
+            If id = 0 Then
+                Throw New Util.CreacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub checkPedidoFacturado(p As PedidoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_PEDIDO_FACTURADO_SP")
+            repository.addParam("@id", p.id)
+            id = repository.executeWithReturnValue
+            If id = 0 Then
+                Throw New Util.PedidoNoFacturado
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub checkPedidoNoFacturado(pedido As PedidoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_PEDIDO_FACTURADO_SP")
+            repository.addParam("@id", pedido.id)
+            id = repository.executeWithReturnValue
+            If id <> 0 Then
+                Throw New Util.PedidoFacturado
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
 End Class ' GestorPedidoDAL

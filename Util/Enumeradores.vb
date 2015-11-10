@@ -31,6 +31,11 @@
         UsuarioYaEstaUtilizado = 22
         MasDeUnaSeleccion = 23
         PedidoPersonalizado = 24
+        ProveedorInactivo = 25
+        ProveedorDeudor = 26
+        PedidoNoFacturado = 27
+        PedidoNoFinalizado = 28
+        PedidoFacturado = 29
     End Enum
 
     Enum Bitacora
@@ -43,6 +48,7 @@
         NCRealizada = 7
         OCRealizada = 8
         PedidoPersonalizado = 9
+        VentaAnulada = 10
     End Enum
 
     Enum ImportanciaEvento
@@ -75,5 +81,7 @@
         PedidoPersonalizadoMensaje = 20
         PedidoComentario = 21
         PedidoComentarioMensaje = 22
+        AnulacionVentaMensaje = 23
+        AnulacionVenta = 24
     End Enum
 End Class

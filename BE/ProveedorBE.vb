@@ -7,7 +7,7 @@ Public Class ProveedorBE
     Private _mail As String
     Private _razonSocial As String
     Private _productos As List(Of BE.ProductoBE)
-    Private _estado As Boolean
+    Private _activo As Boolean
     Private _telefono As String
     Private _contacto As String
 
@@ -30,12 +30,12 @@ Public Class ProveedorBE
         End Set
     End Property
 
-    Public Property estado() As Boolean
+    Public Property activo() As Boolean
         Get
-            Return _estado
+            Return _activo
         End Get
         Set(ByVal value As Boolean)
-            _estado = value
+            _activo = value
         End Set
     End Property
 

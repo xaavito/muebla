@@ -19,8 +19,6 @@ Public Class AdministrarProductos
         Catch ex As Exception
             logMessage(ex)
         End Try
-
-        'Me.editDataDiv.Visible = False
     End Sub
 
     Protected Sub buscarProductosButton_Click(sender As Object, e As EventArgs)
@@ -32,7 +30,6 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
-        'Me.editDataDiv.Visible = True
         Session("idProductoEdicion") = getItemId(sender, Me.productosResultadosDataGrid)
         Try
             Me.tipoProductoDropDown.DataTextField = "descripcion"

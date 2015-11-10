@@ -26,6 +26,7 @@ Public Class GestorPedidoBLL
         For Each p As BE.PedidoBE In pedidos
             DAL.GestorPedidoDAL.loadDatosPedido(p)
             BLL.UsuarioBLL.llenarDatosUsuario(p.usr)
+            DAL.GestorPedidoDAL.checkPedidoFacturado(p)
         Next
 
         Dim id As Integer = DAL.GestorPedidoDAL.generarHojaRuta(pedidos)
@@ -39,7 +40,6 @@ Public Class GestorPedidoBLL
         Util.Mailer.enviarMailConAdjunto(hr.prov.mail.ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.HojaRuta), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.HojaRutaMensaje), ms)
         'para nosotros
         ms = Util.PDFGenerator.HojaRutaPDF(hr)
-        'todo pincha aca por traducciones
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.HojaRuta), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.HojaRutaMensaje), ms)
         ms.Position = 0
         Return ms
@@ -48,8 +48,10 @@ Public Class GestorPedidoBLL
     Public Shared Function generarNotaCredito(ByVal pedido As PedidoBE) As MemoryStream
         'TODO CHECK QUE NO ESTE YA GENERADO
         DAL.GestorPedidoDAL.loadDatosPedido(pedido)
+        DAL.GestorPedidoDAL.checkPedidoFacturado(pedido)
         DAL.GestorPedidoDAL.generarNotaCredito(pedido)
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
+
 
         Dim nc As BE.NotaCreditoBE = DAL.GestorPedidoDAL.getNotaCredito(pedido)
         Dim ms As MemoryStream = Util.PDFGenerator.NotaCreditoPDF(nc)
@@ -57,7 +59,6 @@ Public Class GestorPedidoBLL
         'para nosotros
         ms = Util.PDFGenerator.NotaCreditoPDF(nc)
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.NC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.NCMensaje), ms)
-        'TODO ENVIAR PDF CON PAGO MIS CUENTAS O EL QUE SEA
         BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.NCRealizada)
         ms.Position = 0
         Return ms
@@ -65,14 +66,12 @@ Public Class GestorPedidoBLL
 
     Public Shared Function generarPedido(ByVal pedido As PedidoBE) As MemoryStream
         DAL.GestorPedidoDAL.generarPedido(pedido)
-        'TODO SACAR ESTO HARDCODEADO HORRIBLE!! mails
         'para el usr
         Dim ms As MemoryStream = Util.PDFGenerator.PedidoPDF(pedido)
         Util.Mailer.enviarMailConAdjunto(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Pedido, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoMensaje, 1), ms)
         'para nosotros
         ms = Util.PDFGenerator.PedidoPDF(pedido)
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Pedido, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoMensaje, 1), ms)
-        'TODO ENVIAR PDF CON PAGO MIS CUENTAS O EL QUE SEA
         BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.PedidoRealizado)
         Return ms
     End Function
@@ -110,16 +109,17 @@ Public Class GestorPedidoBLL
     Shared Function generarFactura(pedido As PedidoBE) As MemoryStream
         'TODO CHECK QUE NO ESTE YA GENERADO
         DAL.GestorPedidoDAL.loadDatosPedido(pedido)
+        DAL.GestorPedidoDAL.checkPedidoNoFacturado(pedido)
         DAL.GestorPedidoDAL.generarFactura(pedido)
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
 
         Dim fact As BE.FacturaBE = DAL.GestorPedidoDAL.getFactura(pedido)
         Dim ms As MemoryStream = Util.PDFGenerator.FacturaPDF(fact)
+        'PARA EL USUARIO
         Util.Mailer.enviarMailConAdjunto(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Factura, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.FacturaMensaje, 1), ms)
         'para nosotros
         ms = Util.PDFGenerator.FacturaPDF(fact)
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Factura), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.FacturaMensaje), ms)
-        'TODO ENVIAR PDF CON PAGO MIS CUENTAS O EL QUE SEA
         BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.FacturaRealizada)
         ms.Position = 0
         Return ms
@@ -129,6 +129,7 @@ Public Class GestorPedidoBLL
         'TODO CHECK QUE NO ESTE GENERADO
         For Each p As BE.PedidoBE In pedidos
             DAL.GestorPedidoDAL.loadDatosPedido(p)
+            DAL.GestorPedidoDAL.checkPedidoFacturado(p)
         Next
 
         Dim id As Integer = DAL.GestorPedidoDAL.generarRemito(pedidos)
@@ -163,17 +164,29 @@ Public Class GestorPedidoBLL
         Return DAL.GestorPedidoDAL.buscarComentarios(p1)
     End Function
 
-    Shared Sub anularVenta(pedido As PedidoBE)
+    Shared Sub anularVenta(pedido As PedidoBE, ByVal comentario As String, ByVal usr As BE.UsuarioBE)
         'todo check estado
-        coco()
+        Try
+            DAL.GestorPedidoDAL.checkPedidoFacturado(pedido)
+        Catch ex As Util.PedidoFacturado
+            generarNotaCredito(pedido)
+        End Try
+
         DAL.GestorPedidoDAL.anularVenta(pedido)
+        DAL.GestorPedidoDAL.generarComentario(usr, pedido, comentario)
+        ' si estaba facturada hay que generar NC
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
         'USR
-        Util.Mailer.enviarMail(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizado), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizadoMensaje))
+        Util.Mailer.enviarMail(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.AnulacionVenta), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.AnulacionVentaMensaje))
         'NOS
-        Util.Mailer.enviarMail(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizado), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoPersonalizadoMensaje))
+        Util.Mailer.enviarMail(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.AnulacionVenta), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.AnulacionVentaMensaje))
         'EVENTO
-        BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.PedidoPersonalizado)
+        BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.VentaAnulada)
+    End Sub
+
+    Shared Sub cambiarEstadoPedido(pedido As BE.PedidoBE, idNuevoEstado As Integer)
+        'todo check el tema de los cambios no se puede hacer cualquier cosa
+        DAL.GestorPedidoDAL.cambiarEstadoPedido(pedido, idNuevoEstado)
     End Sub
 
 End Class ' GestorPedidoBLL

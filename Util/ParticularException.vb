@@ -88,3 +88,53 @@ Public Class PedidoPersonalizadoExitosoException
         Me.mensaje = "Sin resultados"
     End Sub
 End Class
+
+Public Class ProveedorInactivo
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.ProveedorInactivo
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class ProveedorDeudor
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.ProveedorDeudor
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class PedidoNoFacturado
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.PedidoNoFacturado
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class PedidoNoFinalizado
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.PedidoNoFinalizado
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class PedidoFacturado
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.PedidoFacturado
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class

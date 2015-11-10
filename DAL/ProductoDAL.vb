@@ -383,5 +383,21 @@ Public Class ProductoDAL
             Throw ex
         End Try
     End Sub
+
+    Shared Sub checkProveedorAlDia(proveedor As ProveedorBE)
+        Dim id As Integer
+        Try
+            Dim repository As New AccesoSQLServer
+            repository.crearComando("CHECK_PROV_AL_DIA_SP")
+            repository.addParam("@id", proveedor.id)
+            id = repository.executeWithReturnValue
+            If id = 1 Then
+                Throw New Util.ProveedorDeudor
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
 End Class ' ProductoDAL
 

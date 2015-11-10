@@ -39,7 +39,7 @@
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-        'TODO INDEX CHANGE
+        Me.detalleListaPrecioResultGrid.PageIndex = e.NewPageIndex
     End Sub
 
     Protected Sub itemPrecio_TextChanged(sender As Object, e As EventArgs)

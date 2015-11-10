@@ -68,8 +68,7 @@ Public Class Carrito
     End Sub
 
     Protected Sub detalleCarritoResultGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)
-        'Me.detalleCarritoResultGrid.
-        ' todo tema del index
+        Me.detalleCarritoResultGrid.PageIndex = e.NewPageIndex
     End Sub
 
     Private Sub loadPedido()

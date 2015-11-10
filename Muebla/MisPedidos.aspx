@@ -178,6 +178,57 @@
         </div>
     </asp:Panel>
 
+    <ajaxToolkit:ModalPopupExtender
+        ID="anularPopup" runat="server"
+        CancelControlID="ButtonCommentCancel"
+        TargetControlID="Button1" PopupControlID="DivAnularComment"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupComment" ID="DivAnularComment"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Titlebar" id="PopupHeader2">
+                <div class="TitlebarLeft">
+                    <asp:Label Text="Comentario" ID="Label1" runat="server" />
+                </div>
+            </div>
+            <div class="popup_Body">
+                <p>
+                    <asp:TextBox ID="anularCommentTextBox" TextMode="multiline" Columns="50" Rows="5" runat="server" />
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Anular" ID="anularButton" OnClick="anularButton_Click" />
+                <asp:Button runat="server" Text="Cancelar" ID="cancelarButton" />
+            </div>
+        </div>
+    </asp:Panel>
+    
+    <ajaxToolkit:ModalPopupExtender
+        ID="cambiarEstadoPopup" runat="server"
+        CancelControlID="ButtonCommentCancel"
+        TargetControlID="Button1" PopupControlID="DivEstadoPedido"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupComment" ID="DivEstadoPedido"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Titlebar" id="PopupHeader3">
+            </div>
+            <div class="popup_Body">
+                <p>
+                    <asp:DropDownList ID="estadoPedidoDropDown" runat="server" />
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="confirmarCambioEstadoButton" OnClick="confirmarCambioEstadoButton_Click" />
+                <asp:Button runat="server" Text="Cancelar" ID="Button3" />
+            </div>
+        </div>
+    </asp:Panel>
+
     <asp:Button Text="Generar Hoja de ruta" ID="hojaRutaButton" runat="server" OnClick="hojaDeRuta" Visible="<%# Not getUsuario is Nothing and getUsuario.isAdmin = True %>" />
     <asp:Button Text="Generar Remito" ID="remitoButton" runat="server" OnClick="remito" Visible="<%# Not getUsuario() Is Nothing And getUsuario.isAdmin = True%>" />
     <asp:Button Text="Generar Factura" ID="facturaButton" runat="server" OnClick="generarFacturaButton_Click" Visible="<%# Not getUsuario() Is Nothing And getUsuario.isAdmin = True%>" />

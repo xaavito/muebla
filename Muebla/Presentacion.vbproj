@@ -158,7 +158,6 @@
     <Content Include="quienesSomos.aspx" />
     <Content Include="Main.aspx" />
     <Content Include="MisPedidos.aspx" />
-    <Content Include="Observaciones.aspx" />
     <Content Include="PostVenta.aspx" />
     <Content Include="RecuperarContrasena.aspx" />
     <Content Include="Registro.aspx" />
@@ -359,13 +358,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Observaciones.aspx.designer.vb">
-      <DependentUpon>Observaciones.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Observaciones.aspx.vb">
-      <DependentUpon>Observaciones.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="PostVenta.aspx.designer.vb">
       <DependentUpon>PostVenta.aspx</DependentUpon>

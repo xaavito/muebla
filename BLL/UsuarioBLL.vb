@@ -81,7 +81,6 @@ Public Class UsuarioBLL
     End Function
 
     Shared Sub modificarUsuario(idUsuario As Integer, roles As List(Of BE.RolBE), estado As Boolean)
-        'TODO ACA ME QUEDEEEE
         DAL.UsuarioDAL.modificarUsuario(idUsuario, estado)
         DAL.UsuarioDAL.borrarPermisos(idUsuario)
         For Each rol As BE.RolBE In roles

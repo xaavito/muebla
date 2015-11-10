@@ -59,12 +59,18 @@ Public Class ProductoBLL
     End Function
 
     Shared Function generarOrdenCompra(oc As OrdenCompraBE) As MemoryStream
+        'CHECK ACTIVO
+        If oc.proveedor.activo = False Then
+            Throw New Util.ProveedorInactivo
+        End If
+        'CHECK OC NO ENTREGADA PARA EL PROVEEDOR
+        DAL.ProductoDAL.checkProveedorAlDia(oc.proveedor)
         oc.id = DAL.ProductoDAL.generarOrdenCompra(oc)
         DAL.ProductoDAL.generarOrdenCompraDetalles(oc)
         Dim ms As MemoryStream = Util.PDFGenerator.OrdenCompraPDF(oc)
-        'proveedor
+        'PARA PROVEEDOR
         Util.Mailer.enviarMailConAdjunto(oc.proveedor.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms)
-        'nosotros
+        'PARA NOSOTROS
         ms = Util.PDFGenerator.OrdenCompraPDF(oc)
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailCompras").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms)
         ms.Position = 0

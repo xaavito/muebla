@@ -41,7 +41,7 @@ Public Class Mailer
             SMTPServer.Send(MyMailMessage)
 
         Catch ex As SmtpException
-            Throw New MailFalloException
+            'do shit
         Catch ex As Exception
             Throw ex
         End Try

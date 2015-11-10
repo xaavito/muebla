@@ -141,7 +141,7 @@ Public Class ProveedorDAL
                 prov.mail = item.Item(3)
                 prov.telefono = item.Item(4)
                 prov.direccion = item.Item(5)
-                prov.estado = item.Item(6)
+                prov.activo = item.Item(6)
                 prov.contacto = item.Item(7)
 
                 list.Add(prov)
@@ -288,6 +288,7 @@ Public Class ProveedorDAL
                 prov.telefono = item.Item(4)
                 prov.direccion = item.Item(5)
                 prov.mail = item.Item(6)
+                prov.activo = item.Item(7)
 
                 list.Add(prov)
             Next
