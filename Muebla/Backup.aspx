@@ -35,12 +35,9 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
-                    <asp:ImageButton ID="ibtnDelete" runat="server"
-                        ImageUrl="/images/deleteItem.png"
-                        OnClick="ibtnDelete_Click"   />
                     <asp:ImageButton ID="ibtnRestore" runat="server"
                         ImageUrl="/images/backup-restore.png"
-                        OnClick="ibtnRestore_Click"   />
+                        OnClick="ibtnRestore_Click"/>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>

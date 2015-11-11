@@ -66,9 +66,6 @@
                     <asp:ImageButton ID="ibtnEdit" runat="server"
                         ImageUrl="/images/editItem.png"
                         OnClick="ibtnEdit_Click" />
-                    <asp:ImageButton ID="ibtnDelete" runat="server"
-                        ImageUrl="/images/deleteItem.png"
-                        OnClick="ibtnDelete_Click" />
                     <asp:ImageButton ID="ibtnDetails" runat="server"
                         ImageUrl="/images/detail.png"
                         OnClick="ibtnDetails_Click" />
@@ -78,32 +75,6 @@
     </asp:GridView>
     <asp:Button ID="Button1" runat="server" Style="display: none" />
 
-    <ajaxToolkit:ModalPopupExtender
-        ID="lnkDelete_ModalPopupExtender" runat="server"
-        CancelControlID="ButtonDeleteCancel"
-        TargetControlID="Button1" PopupControlID="DivDeleteConfirmation"
-        BackgroundCssClass="ModalPopupBG">
-    </ajaxToolkit:ModalPopupExtender>
-
-    <asp:Panel class="popupConfirmation" ID="DivDeleteConfirmation"
-        Style="display: none" runat="server">
-        <div class="popup_Container">
-            <div class="popup_Titlebar" id="PopupHeader">
-                <div class="TitlebarLeft">
-                    <asp:Label Text="Confirmacion" ID="confirmarLabel" runat="server" />
-                </div>
-            </div>
-            <div class="popup_Body">
-                <p>
-                    <asp:Label ID="eliminarLeyendaLabel" Text="Desea Eliminar?" runat="server" />
-                </p>
-            </div>
-            <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonDeleleOkay" OnClick="ButtonDeleleOkay_Click" />
-                <asp:Button runat="server" Text="Cancelar" ID="ButtonDeleteCancel" />
-            </div>
-        </div>
-    </asp:Panel>
     <div id="detailsData" runat="server">
         <asp:GridView runat="server" ID="detalleListaPrecioResultGrid"
             AutoGenerateColumns="false"

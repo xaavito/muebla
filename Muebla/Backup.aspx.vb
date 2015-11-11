@@ -26,16 +26,7 @@ Public Class Backup
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
-        Dim con As Label = CType(Me.backupDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
-        Dim id As Integer = Integer.Parse(con.Text.ToString)
-        Try
-            BLL.ProductoBLL.bajaProducto(id)
-            gvRow.Visible = False
-            logMessage(New EliminacionExitosaException)
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
+
     End Sub
 
     Protected Sub backupDataGrid_PreRender(sender As Object, e As EventArgs)

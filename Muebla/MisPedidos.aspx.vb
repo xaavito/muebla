@@ -153,10 +153,10 @@ Public Class MisPedidos
                 Next
             End If
         Next
-        Debug.WriteLine("+++++++++++++Pedidos Seleccionados+++++++++++++++++++++")
-        For Each pp As BE.PedidoBE In selectedPedidos
-            Debug.WriteLine("ID " + pp.id.ToString)
-        Next
+        'Debug.WriteLine("+++++++++++++Pedidos Seleccionados+++++++++++++++++++++")
+        'For Each pp As BE.PedidoBE In selectedPedidos
+        'Debug.WriteLine("ID " + pp.id.ToString)
+        'Next
         Return selectedPedidos
     End Function
 
@@ -195,11 +195,9 @@ Public Class MisPedidos
 
     Protected Sub confirmarCambioEstadoButton_Click(sender As Object, e As EventArgs)
         Try
-            'Debug.WriteLine("+++++++++++++++" + Me.estadoPedidoDropDown.SelectedValue)
             BLL.GestorPedidoBLL.cambiarEstadoPedido(Session("pedidoEdicion"), Integer.Parse(Me.estadoPedidoDropDown.SelectedValue))
         Catch ex As Exception
             logMessage(ex)
         End Try
-
     End Sub
 End Class

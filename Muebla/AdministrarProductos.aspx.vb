@@ -74,7 +74,11 @@ Public Class AdministrarProductos
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
         Try
-            BLL.ProductoBLL.bajaProducto(getItemId(sender, Me.productosResultadosDataGrid))
+            For Each p As BE.ProductoBE In Session("listaProductos")
+                If p.id = getItemId(sender, Me.productosResultadosDataGrid) Then
+                    BLL.ProductoBLL.bajaProducto(p)
+                End If
+            Next
             buscar()
             Throw New EliminacionExitosaException
         Catch ex As Exception
@@ -105,7 +109,7 @@ Public Class AdministrarProductos
 
     Private Sub buscar()
         Try
-            Session("listaProductos") = BLL.ProductoBLL.buscarProductos(Int16.Parse(tipoProductoDropDownList.SelectedValue), Me.nombreProductoTextBox.Text)
+            Session("listaProductos") = BLL.ProductoBLL.buscarProductos(Integer.Parse(tipoProductoDropDownList.SelectedValue), Me.nombreProductoTextBox.Text)
 
             Me.productosResultadosDataGrid.DataSource = Session("listaProductos")
             Me.productosResultadosDataGrid.DataBind()

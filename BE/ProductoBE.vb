@@ -3,7 +3,6 @@ Imports System.Drawing
 Public Class ProductoBE
 
 
-    Private _baja As Boolean
     Private _descripcion As String
     Private _breveDescripcion As String
     Private _id As Long
@@ -16,6 +15,17 @@ Public Class ProductoBE
     Private _stockMin As Integer
     'este precio es del del proveedor
     Private _precio As Decimal
+
+    Private _baja As Boolean
+    Public Property baja() As Boolean
+        Get
+            Return _baja
+        End Get
+        Set(ByVal value As Boolean)
+            _baja = value
+        End Set
+    End Property
+
 
     Public Property precio() As Decimal
         Get

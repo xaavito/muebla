@@ -36,6 +36,17 @@
         PedidoNoFacturado = 27
         PedidoNoFinalizado = 28
         PedidoFacturado = 29
+        PedidoEnviado = 30
+        MasDeUnPedido = 31
+        FechaHastaMenorIgualDesde = 32
+        PedidosEnProceso = 33
+
+        ProductoBaja = 34
+
+        UsuarioInactivo = 35
+
+        UsuarioAdmin = 36
+
     End Enum
 
     Enum Bitacora
@@ -56,6 +67,17 @@
         Exito = 2
         Warning = 3
         Info = 4
+    End Enum
+
+    Enum EstadoPedido
+        ProcesoDePago = 1
+        Produccion = 2
+        Enviando = 3
+        Enviado = 4
+        Devuelto = 5
+        Cancelado = 6
+        Construido = 7
+        Finalizado = 8
     End Enum
 
     Enum CodigoMensaje

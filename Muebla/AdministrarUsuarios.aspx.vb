@@ -18,10 +18,7 @@
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
         'TODO LO PASAMOS AL AJAXCONTROLTOOLKIT?
-        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
-        Dim con As Label = CType(Me.usuariosResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
-        Dim id As Integer = Integer.Parse(con.Text.ToString)
-        Session("idUsuario") = id
+        Session("idUsuario") = getItemId(sender, Me.usuariosResultadosDataGrid)
         Dim listaUsuarios As List(Of BE.UsuarioBE) = Session("listaUsuarios")
         For Each usr As BE.UsuarioBE In listaUsuarios
             If usr.id = id Then
@@ -62,7 +59,11 @@
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-        'todo FALTA IMPLEMENTAR EL DELETE USUARIO
+        For Each u As BE.UsuarioBE In Session("listaUsuarios")
+            If u.id = getItemId(sender, Me.usuariosResultadosDataGrid) Then
+                BLL.UsuarioBLL.eliminarUsuario(u)
+            End If
+        Next
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
@@ -84,16 +85,14 @@
     End Sub
 
     Private Sub buscar()
-        Dim listaUsrs As List(Of BE.UsuarioBE) = Nothing
         Try
-            listaUsrs = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Me.mailTextBox.Text)
+            Session("listaUsuarios") = BLL.UsuarioBLL.buscarUsuarios(Me.usrTextBox.Text, Me.mailTextBox.Text)
+
+            usuariosResultadosDataGrid.DataSource = Session("listaUsuarios")
+            usuariosResultadosDataGrid.DataBind()
         Catch ex As Exception
             logMessage(ex)
         End Try
-
-        Session("listaUsuarios") = listaUsrs
-        usuariosResultadosDataGrid.DataSource = listaUsrs
-        usuariosResultadosDataGrid.DataBind()
     End Sub
 
     Protected Sub agregarPermisoButton_Click(sender As Object, e As ImageClickEventArgs)
@@ -129,9 +128,14 @@
     End Sub
 
     Protected Sub removerPermisoButton_Click(sender As Object, e As ImageClickEventArgs)
-        If Not permisosPropiosListBox.SelectedItem Is Nothing Then
-            permisosPropiosListBox.Items.RemoveAt(permisosPropiosListBox.SelectedIndex)
-        End If
+        Try
+            If Not permisosPropiosListBox.SelectedItem Is Nothing Then
+                BLL.UsuarioBLL.checkAdminPermiso(permisosPropiosListBox.SelectedValue)
+                permisosPropiosListBox.Items.RemoveAt(permisosPropiosListBox.SelectedIndex)
+            End If
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub usuariosResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)

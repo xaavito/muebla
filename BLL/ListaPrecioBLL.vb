@@ -27,9 +27,16 @@ Public Class ListaPrecioBLL
     End Function
 
     Shared Sub altaPromocion(idProd As Integer, precio As Decimal, desde As Date, hasta As Date)
+        BLL.ListaPrecioBLL.checkFechas(desde, hasta)
         DAL.ListaPrecioDAL.altaPromocion(idProd, precio, desde, hasta)
         'TODO ACA DEBERIAMOS MANDAR UN MAIL A MUCHOS DE LOS QUE YA HAYAN COMPRADO!
         BLL.ProductoBLL.limpiarProds()
+    End Sub
+
+    Private Shared Sub checkFechas(desde As Date, hasta As Date)
+        If desde >= hasta Then
+            Throw New Util.FechaHastaMenorIgualDesde
+        End If
     End Sub
 
 

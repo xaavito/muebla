@@ -138,3 +138,76 @@ Public Class PedidoFacturado
         Me.mensaje = "Sin resultados"
     End Sub
 End Class
+
+Public Class PedidoEnviado
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.PedidoEnviado
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class MasDeUnPedido
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.MasDeUnPedido
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class FechaHastaMenorIgualDesde
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.FechaHastaMenorIgualDesde
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class PedidosEnProceso
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.PedidosEnProceso
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class ProductoBaja
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.ProductoBaja
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class UsuarioInactivo
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.UsuarioInactivo
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+Public Class UsuarioAdmin
+    Inherits ExceptionManager
+    Public Sub New()
+        MyBase.New("Sin resultados")
+        Me.codigo = Enumeradores.Excepeciones.UsuarioAdmin
+        Me.tipo = Enumeradores.ImportanciaEvento.Err
+        Me.mensaje = "Sin resultados"
+    End Sub
+End Class
+
+
+

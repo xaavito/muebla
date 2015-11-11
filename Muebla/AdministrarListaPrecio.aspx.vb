@@ -24,14 +24,6 @@
         End Try
     End Sub
 
-    Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
-        'TODO EDITAR LISTA DE PRECIO
-    End Sub
-
-    Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-        Me.lnkDelete_ModalPopupExtender.Show()
-    End Sub
-
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
         Session("idListaPrecio") = getItemId(sender, Me.listaPrecioResultadosDataGrid)
         buscarDetalles()
@@ -58,10 +50,6 @@
         ' TODO DETALLE DEL DETALLE DE lp
     End Sub
 
-    Protected Sub ibtnDeleteDetail_Click(sender As Object, e As ImageClickEventArgs)
-        ' TODO BORRAR DETALLE?
-    End Sub
-
     Protected Sub ibtnEditDetail_Click(sender As Object, e As ImageClickEventArgs)
         Session("idListaPrecioDetalle") = getItemId(sender, Me.detalleListaPrecioResultGrid)
         For Each a As BE.ListaPrecioDetalleBE In Session("detallesListaPrecio")
@@ -80,11 +68,6 @@
         Catch ex As Exception
             logMessage(ex)
         End Try
-    End Sub
-
-    Protected Sub ButtonDeleleOkay_Click(sender As Object, e As EventArgs)
-        Debug.WriteLine("borrando!!!")
-        'todo BORRADO LP
     End Sub
 
     Protected Sub confirmarEdicionButton_Click(sender As Object, e As EventArgs)

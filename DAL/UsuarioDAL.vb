@@ -75,16 +75,20 @@ Public Class UsuarioDAL
         Return lista
     End Function
 
-    Public Shared Sub checkMailValido(ByVal mail As String)
-
-    End Sub
-
-    Public Shared Function checkUsuarioYaRegistrado(ByVal usr As UsuarioBE) As Boolean
-        checkUsuarioYaRegistrado = False
-    End Function
-
     Public Shared Sub eliminarUsuario(ByVal usr As UsuarioBE)
+        Dim id As Int16
 
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ELIMINAR_USUARIO_SP")
+            repository.addParam("@usr", usr.id)
+            id = repository.executeSearchWithStatus
+            If id <> 0 Then
+                Throw New Util.EliminacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
@@ -130,14 +134,6 @@ Public Class UsuarioDAL
 
         Return Nothing
     End Function
-
-    Public Shared Sub modificarCliente(ByVal usr As UsuarioBE)
-
-    End Sub
-
-    Public Shared Sub modificarUsuario(ByVal usr As UsuarioBE)
-        
-    End Sub
 
     Public Shared Function solicitarContrasena(ByVal mail As String, ByVal usr As String) As String
         Dim table As DataTable

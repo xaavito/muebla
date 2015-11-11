@@ -12,11 +12,6 @@ Public Class GestorPedidoBLL
         Return DAL.GestorPedidoDAL.buscarPedidos(usr, fechaDesde, fechaHasta, estado)
     End Function
 
-
-    Public Shared Sub checkEstadoPedido(ByVal pedido As PedidoBE)
-
-    End Sub
-
     Public Shared Function checkPedidosMismoCliente(ByVal pedidos As PedidoBE) As Boolean
         checkPedidosMismoCliente = False
     End Function
@@ -27,6 +22,7 @@ Public Class GestorPedidoBLL
             DAL.GestorPedidoDAL.loadDatosPedido(p)
             BLL.UsuarioBLL.llenarDatosUsuario(p.usr)
             DAL.GestorPedidoDAL.checkPedidoFacturado(p)
+            BLL.GestorPedidoBLL.checkPedidoFinalizado(p)
         Next
 
         Dim id As Integer = DAL.GestorPedidoDAL.generarHojaRuta(pedidos)
@@ -52,6 +48,7 @@ Public Class GestorPedidoBLL
         DAL.GestorPedidoDAL.generarNotaCredito(pedido)
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
 
+        'TODO ACTUALIZAR STOCK
 
         Dim nc As BE.NotaCreditoBE = DAL.GestorPedidoDAL.getNotaCredito(pedido)
         Dim ms As MemoryStream = Util.PDFGenerator.NotaCreditoPDF(nc)
@@ -65,6 +62,7 @@ Public Class GestorPedidoBLL
     End Function
 
     Public Shared Function generarPedido(ByVal pedido As PedidoBE) As MemoryStream
+        BLL.GestorPedidoBLL.checkMasDeUnPedido(pedido)
         DAL.GestorPedidoDAL.generarPedido(pedido)
         'para el usr
         Dim ms As MemoryStream = Util.PDFGenerator.PedidoPDF(pedido)
@@ -84,17 +82,15 @@ Public Class GestorPedidoBLL
         Return DAL.GestorPedidoDAL.getEstadosPedidos
     End Function
 
-    Shared Sub cancelarPedido(a As PedidoBE)
-        'todo check estado
-        If a.estado.id = 1 Then
-            DAL.GestorPedidoDAL.cancelarPedido(a)
-            Util.Mailer.enviarMail(a.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCancelado, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCanceladoMensaje, 1) + " " + a.id)
-            'para nosotros
-            Util.Mailer.enviarMail(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCancelado, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCanceladoMensaje, 1) + " " + a.id)
-            BLL.GestorBitacoraBLL.registrarEvento(a.usr.id, Util.Enumeradores.Bitacora.PedidoCancelado)
-        Else
-            Throw New Util.CancelarPedidoException
-        End If
+    Shared Sub cancelarPedido(pedido As PedidoBE)
+        BLL.GestorPedidoBLL.checkEstadoEnPago(pedido)
+        DAL.GestorPedidoDAL.cancelarPedido(pedido)
+        BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
+        ' para el usr
+        Util.Mailer.enviarMail(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCancelado, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCanceladoMensaje, 1) + " " + pedido.id)
+        'para nosotros
+        Util.Mailer.enviarMail(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCancelado, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoCanceladoMensaje, 1) + " " + pedido.id)
+        BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.PedidoCancelado)
     End Sub
 
     Shared Sub generarComentario(usuario As UsuarioBE, pedido As BE.PedidoBE, comentario As String)
@@ -110,6 +106,7 @@ Public Class GestorPedidoBLL
         'TODO CHECK QUE NO ESTE YA GENERADO
         DAL.GestorPedidoDAL.loadDatosPedido(pedido)
         DAL.GestorPedidoDAL.checkPedidoNoFacturado(pedido)
+        BLL.GestorPedidoBLL.checkPedidoFinalizado(pedido)
         DAL.GestorPedidoDAL.generarFactura(pedido)
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
 
@@ -126,10 +123,10 @@ Public Class GestorPedidoBLL
     End Function
 
     Shared Function generarRemito(pedidos As List(Of PedidoBE)) As MemoryStream
-        'TODO CHECK QUE NO ESTE GENERADO
         For Each p As BE.PedidoBE In pedidos
             DAL.GestorPedidoDAL.loadDatosPedido(p)
             DAL.GestorPedidoDAL.checkPedidoFacturado(p)
+            BLL.GestorPedidoBLL.checkPedidoFinalizado(p)
         Next
 
         Dim id As Integer = DAL.GestorPedidoDAL.generarRemito(pedidos)
@@ -140,7 +137,7 @@ Public Class GestorPedidoBLL
 
         Dim ms As MemoryStream = Util.PDFGenerator.RemitoPDF(remito)
         ' MAIL PARA EL PROVEEDOR
-        'Util.Mailer.enviarMailConAdjunto(remito.prov.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Remito, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RemitoMensaje, 1), ms)
+        Util.Mailer.enviarMailConAdjunto(remito.prov.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Remito), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RemitoMensaje), ms)
         'para nosotros
         ms = Util.PDFGenerator.RemitoPDF(remito)
         'todo pincha aca por traducciones
@@ -165,16 +162,15 @@ Public Class GestorPedidoBLL
     End Function
 
     Shared Sub anularVenta(pedido As PedidoBE, ByVal comentario As String, ByVal usr As BE.UsuarioBE)
-        'todo check estado
         Try
             DAL.GestorPedidoDAL.checkPedidoFacturado(pedido)
+            BLL.GestorPedidoBLL.checkEstadoPedidoNoEnviado(pedido)
         Catch ex As Util.PedidoFacturado
             generarNotaCredito(pedido)
         End Try
 
         DAL.GestorPedidoDAL.anularVenta(pedido)
         DAL.GestorPedidoDAL.generarComentario(usr, pedido, comentario)
-        ' si estaba facturada hay que generar NC
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
         'USR
         Util.Mailer.enviarMail(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.AnulacionVenta), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.AnulacionVentaMensaje))
@@ -187,6 +183,28 @@ Public Class GestorPedidoBLL
     Shared Sub cambiarEstadoPedido(pedido As BE.PedidoBE, idNuevoEstado As Integer)
         'todo check el tema de los cambios no se puede hacer cualquier cosa
         DAL.GestorPedidoDAL.cambiarEstadoPedido(pedido, idNuevoEstado)
+    End Sub
+
+    Private Shared Sub checkPedidoFinalizado(pedido As PedidoBE)
+        If pedido.estado.id <> Util.Enumeradores.EstadoPedido.Construido Then
+            Throw New Util.PedidoNoFinalizado
+        End If
+    End Sub
+
+    Private Shared Sub checkEstadoPedidoNoEnviado(pedido As PedidoBE)
+        If pedido.estado.id = Util.Enumeradores.EstadoPedido.Enviado Then
+            Throw New Util.PedidoEnviado
+        End If
+    End Sub
+
+    Private Shared Sub checkEstadoEnPago(pedido As PedidoBE)
+        If pedido.estado.id <> Util.Enumeradores.EstadoPedido.ProcesoDePago Then
+            Throw New Util.CancelarPedidoException
+        End If
+    End Sub
+
+    Private Shared Sub checkMasDeUnPedido(pedido As PedidoBE)
+        DAL.GestorPedidoDAL.checkMasDeUnPedido(pedido)
     End Sub
 
 End Class ' GestorPedidoBLL

@@ -675,5 +675,20 @@ Public Class GestorPedidoDAL
         End Try
     End Sub
 
+    Shared Sub checkMasDeUnPedido(pedido As PedidoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("CHECK_MAS_DE_UN_PEDIDO_SP")
+            repository.addParam("@id", pedido.usr.id)
+            id = repository.executeWithReturnValue
+            If id <> 0 Then
+                Throw New Util.MasDeUnPedido
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
 End Class ' GestorPedidoDAL
 

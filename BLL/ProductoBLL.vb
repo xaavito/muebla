@@ -15,9 +15,11 @@ Public Class ProductoBLL
         DAL.ProductoDAL.altaProductoCompuesto(producto)
     End Sub
 
-    Public Shared Function bajaProducto(ByVal id As Integer) As Integer
+    Public Shared Function bajaProducto(ByVal producto As BE.ProductoBE) As Integer
         ' TODO VER QUE NO FORME PARTE DE UN PRODUCTO EN VENTA EN EL MOMENTO
-        Return DAL.ProductoDAL.bajaProducto(id)
+        BLL.ProductoBLL.checkEstadoActivo(producto)
+        BLL.ProductoBLL.checkProductosEnPedidos(producto)
+        Return DAL.ProductoDAL.bajaProducto(producto)
     End Function
 
     Public Shared Function buscarProducto(ByVal id As Integer) As BE.ProductoBE
@@ -37,6 +39,8 @@ Public Class ProductoBLL
     End Function
 
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
+        BLL.ProductoBLL.checkEstadoActivo(producto)
+        BLL.ProductoBLL.checkProductosEnPedidos(producto)
         DAL.ProductoDAL.modificarProducto(producto)
         DAL.ProductoDAL.eliminarProductoCompuesto(producto)
         DAL.ProductoDAL.altaProductoCompuesto(producto)
@@ -80,5 +84,16 @@ Public Class ProductoBLL
     Shared Sub limpiarProds()
         _prods = Nothing
     End Sub
+
+    Private Shared Sub checkProductosEnPedidos(ByVal producto As BE.ProductoBE)
+        DAL.ProductoDAL.checkProductoEnPedidos(producto)
+    End Sub
+
+    Private Shared Sub checkEstadoActivo(producto As ProductoBE)
+        If producto.baja = True Then
+            Throw New Util.ProductoBaja
+        End If
+    End Sub
+
 End Class ' ProductoBLL
 

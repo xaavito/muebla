@@ -25,7 +25,9 @@ Public Class UsuarioBLL
     End Function
 
     Public Shared Sub eliminarUsuario(ByVal usr As UsuarioBE)
-
+        BLL.UsuarioBLL.checkEstadoActivo(usr)
+        BLL.UsuarioBLL.checkNoEsAdmin(usr)
+        DAL.UsuarioDAL.eliminarUsuario(usr)
     End Sub
 
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
@@ -50,7 +52,7 @@ Public Class UsuarioBLL
     End Function
 
     Public Shared Sub modificarCliente(ByVal usr As UsuarioBE)
-
+        'Y ESTO??? NO FALTA ALGO ACA???
     End Sub
 
     Public Shared Sub modificarUsuario(ByRef usr As UsuarioBE)
@@ -102,4 +104,24 @@ Public Class UsuarioBLL
     Shared Sub checkPreModificacion(usuarioBE As UsuarioBE)
         DAL.UsuarioDAL.checkPreModificacion(usuarioBE)
     End Sub
+
+    Private Shared Sub checkEstadoActivo(usr As UsuarioBE)
+        If usr.activo = False Then
+            Throw New Util.UsuarioInactivo
+        End If
+    End Sub
+
+    Private Shared Sub checkNoEsAdmin(usr As UsuarioBE)
+        usr.roles = DAL.GestorRolesDAL.getRoles(usr)
+        If usr.isAdmin Then
+            Throw New Util.UsuarioAdmin
+        End If
+    End Sub
+
+    Shared Sub checkAdminPermiso(p1 As String)
+        If Integer.Parse(p1) = 1 Then
+            Throw New Util.UsuarioAdmin
+        End If
+    End Sub
+
 End Class ' UsuarioBLL

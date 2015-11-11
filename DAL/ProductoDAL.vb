@@ -36,14 +36,14 @@ Public Class ProductoDAL
         altaProductoCompuesto(producto)
     End Sub
 
-    Public Shared Function bajaProducto(ByVal producto As Integer) As Integer
+    Public Shared Function bajaProducto(ByVal producto As BE.ProductoBE) As Integer
         Dim ret As Integer
         Dim list As New List(Of BE.ProductoBE)
 
         Dim repository As New AccesoSQLServer
         Try
             repository.crearComando("BAJA_PRODUCTO_SP")
-            repository.addParam("@id", producto)
+            repository.addParam("@id", producto.id)
             ret = repository.executeSearchWithStatus
         Catch ex As Exception
             Throw ex
@@ -75,6 +75,7 @@ Public Class ProductoDAL
                 tipoProd.id = item.Item(2)
                 tipoProd.descripcion = item.Item(3)
                 producto.tipoProducto = tipoProd
+                producto.baja = item.Item(5)
                 list.Add(producto)
             Next
         Catch ex As Exception
@@ -114,7 +115,18 @@ Public Class ProductoDAL
     End Function
 
     Public Shared Function checkProductoEnPedidos(ByVal producto As ProductoBE) As Boolean
-        checkProductoEnPedidos = False
+        Dim ret As Integer
+        Try
+            Dim repository As New AccesoSQLServer
+            repository.crearComando("CHECK_PRODUCTO_PEDIDO_SP")
+            repository.addParam("@id", producto.id)
+            ret = repository.executeWithReturnValue
+            If ret = 1 Then
+                Throw New Util.PedidosEnProceso
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Function
 
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
@@ -398,6 +410,5 @@ Public Class ProductoDAL
             Throw ex
         End Try
     End Sub
-
 End Class ' ProductoDAL
 
