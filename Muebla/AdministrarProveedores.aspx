@@ -37,9 +37,9 @@
         OnPreRender="proveedoresResultadosDataGrid_PreRender"
         OnPageIndexChanging="proveedoresResultadosDataGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Razon Social">

@@ -58,7 +58,11 @@ Public Class GestorIdiomaBLL
             End If
         Next
 
-        Return DAL.GestorIdiomaDAL.getTranslation(textoATraducir, idIdioma)
+        Try
+            Return DAL.GestorIdiomaDAL.getTranslation(textoATraducir, idIdioma)
+        Catch ex As Util.BusquedaSinResultadosException
+            Return textoATraducir
+        End Try
     End Function
 
     Shared Function getMensajeTraduccion(codigo As Util.Enumeradores.CodigoMensaje, idIdioma As Integer) As String

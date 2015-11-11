@@ -126,6 +126,8 @@ Public Class ExtendedPage
                     Dim traduccion As String = BLL.GestorIdiomaBLL.getTranslation(grid.HeaderRow.Cells(index).Text, id)
                     If (Not traduccion Is Nothing) Then
                         grid.HeaderRow.Cells(index).Text = traduccion
+                    Else
+                        Debug.WriteLine("SIN TRADUCCION: " + grid.HeaderRow.Cells(index).Text)
                     End If
                 Next
             End If
