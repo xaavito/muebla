@@ -266,13 +266,13 @@ Partial Public Class MisPedidos
     Protected WithEvents DivAnularComment As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
-    '''Control Label1.
+    '''Control comentarioAnularLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents comentarioAnularLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control anularCommentTextBox.
@@ -338,13 +338,13 @@ Partial Public Class MisPedidos
     Protected WithEvents confirmarCambioEstadoButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''Control Button3.
+    '''Control cancelarCambioEstadoButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Button3 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents cancelarCambioEstadoButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control hojaRutaButton.

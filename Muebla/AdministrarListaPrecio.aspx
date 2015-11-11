@@ -36,9 +36,9 @@
         OnPreRender="listaPrecioResultadosDataGrid_PreRender"
         OnPageIndexChanging="listaPrecioResultadosDataGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Descripcion">
@@ -63,9 +63,6 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
                 <ItemTemplate>
-                    <asp:ImageButton ID="ibtnEdit" runat="server"
-                        ImageUrl="/images/editItem.png"
-                        OnClick="ibtnEdit_Click" />
                     <asp:ImageButton ID="ibtnDetails" runat="server"
                         ImageUrl="/images/detail.png"
                         OnClick="ibtnDetails_Click" />

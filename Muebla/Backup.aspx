@@ -13,24 +13,24 @@
         AlternatingRowStyle-CssClass="alt"
         OnPreRender="backupDataGrid_PreRender">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" class="pull-right" Text="<%# Item.id%>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id%>" Visible="false"/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Descripcion">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemDescripcion" class="pull-right" Text="<%# Item.descripcion%>" />
+                    <asp:Label runat="server" ID="itemDescripcion" Text="<%# Item.descripcion%>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Path">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemPath" class="pull-right" Text="<%# Item.path %>" />
+                    <asp:Label runat="server" ID="itemPath" Text="<%# Item.path %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Fecha">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemFecha" class="pull-right" Text="<%# Item.fecha %>" />
+                    <asp:Label runat="server" ID="itemFecha"  Text="<%# Item.fecha %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">

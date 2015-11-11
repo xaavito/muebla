@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="scriptManager" runat="server" />
 
-    <asp:Table runat="server" ID="tableAdministrarUsuariosCriteria">
+    <asp:Table runat="server" ID="tableAdministrarUsuariosCriteria" CssClass="table">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />

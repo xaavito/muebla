@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:Table runat="server" ID="tableLogin">
+    <asp:Table runat="server" ID="tableLogin" CssClass="table">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />

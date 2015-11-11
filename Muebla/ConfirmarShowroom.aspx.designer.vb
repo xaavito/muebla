@@ -68,13 +68,13 @@ Partial Public Class ConfirmarShowroom
     Protected WithEvents cambiosLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control fecgaSolicLabel.
+    '''Control fechaSolicLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents fecgaSolicLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents fechaSolicLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control fechaSolicTextBox.

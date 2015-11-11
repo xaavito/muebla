@@ -55,5 +55,8 @@ select * from Componente
 where id not in (select idComponente from IdiomaComponente)
 ----------------------------------------------------------------------------------------------
 
-select 'INSERT INTO IdiomaComponente (1 , ' + CAST(id as varchar) + ', ' + texto + ');'from Componente
-where id not in (select idComponente from IdiomaComponente)
+select 'INSERT INTO IdiomaComponente (idIdioma, idComponente, texto) values (1 , ' + CAST(id as varchar) + ', ''' + texto + ''')'from Componente
+where id not in (select idComponente from IdiomaComponente where idIdioma = 1)
+
+select 'INSERT INTO IdiomaComponente (idIdioma, idComponente, texto) values (2 , ' + CAST(id as varchar) + ', ''' + texto + '_ING'')'from Componente
+where id not in (select idComponente from IdiomaComponente where idIdioma = 2)

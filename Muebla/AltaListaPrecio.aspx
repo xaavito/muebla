@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager id="scriptManager" runat="server" />
+    <asp:ScriptManager ID="scriptManager" runat="server" />
 
     <asp:Table runat="server" ID="tableAltaListaPrecioCriteria" CssClass="table">
         <asp:TableRow>
@@ -39,12 +39,12 @@
         <Columns>
             <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Visible="false" text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Visible="false" Text="<%# Item.id %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="productoID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemProductoID" Visible="false" text="<%# Item.producto.id %>" />
+                    <asp:Label runat="server" ID="itemProductoID" Visible="false" Text="<%# Item.producto.id %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Imagen">
@@ -78,32 +78,32 @@
     </asp:GridView>
     <asp:Button ID="btnShowPopup" runat="server" Style="display: none" />
 
-        <ajaxToolkit:ModalPopupExtender
-            ID="lnkEditDetail_ModalPopupExtender" runat="server"
-            CancelControlID="ButtonEditDetailCancel"
-            TargetControlID="btnShowPopup" PopupControlID="DivEditDetailConfirmation"
-            BackgroundCssClass="ModalPopupBG">
-        </ajaxToolkit:ModalPopupExtender>
+    <ajaxToolkit:ModalPopupExtender
+        ID="lnkEditDetail_ModalPopupExtender" runat="server"
+        CancelControlID="ButtonEditDetailCancel"
+        TargetControlID="btnShowPopup" PopupControlID="DivEditDetailConfirmation"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
 
-        <asp:Panel class="popupConfirmation" ID="DivEditDetailConfirmation"
-            Style="display: none" runat="server">
-            <div class="popup_Container">
-                <div class="popup_Titlebar" id="PopupDetailHeader">
-                    <div class="TitlebarLeft">
-                        <asp:Label Text="Edicion" ID="edicionLabel" runat="server" />
-                    </div>
-                </div>
-                <div class="popup_Body">
-                    <p>
-                        <asp:Label ID="valoLabel" runat="server" />
-                        <asp:TextBox ID="valorTextBox" runat="server" />
-                    </p>
-                </div>
-                <div class="popup_Buttons">
-                    <asp:Button runat="server" Text="Confirmar" ID="ButtonEditDetailOkay" OnClick="ButtonEditDetailOkay_Click" />
-                    <asp:Button runat="server" Text="Cancelar" ID="ButtonEditDetailCancel" OnClick="ButtonEditDetailCancel_Click" />
+    <asp:Panel class="popupConfirmation" ID="DivEditDetailConfirmation"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Titlebar" id="PopupDetailHeader">
+                <div class="TitlebarLeft">
+                    <asp:Label Text="Edicion" ID="edicionLabel" runat="server" />
                 </div>
             </div>
-        </asp:Panel>
-    <asp:Button ID="confirmarButton" Text="Confirmar" runat="server" OnClick="confirmarButton_Click" ValidationGroup="altaListaPrecio"/>
+            <div class="popup_Body">
+                <p>
+                    <asp:Label ID="valoLabel" runat="server" />
+                    <asp:TextBox ID="valorTextBox" runat="server" />
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" Text="Confirmar" ID="ButtonEditDetailOkay" OnClick="ButtonEditDetailOkay_Click" />
+                <asp:Button runat="server" Text="Cancelar" ID="ButtonEditDetailCancel" OnClick="ButtonEditDetailCancel_Click" />
+            </div>
+        </div>
+    </asp:Panel>
+    <asp:Button ID="confirmarButton" Text="Confirmar" runat="server" OnClick="confirmarButton_Click" ValidationGroup="altaListaPrecio" />
 </asp:Content>

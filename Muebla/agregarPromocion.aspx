@@ -16,9 +16,9 @@
         OnPreRender="detalleListaPrecioResultGrid_PreRender"
         OnPageIndexChanging="detalleListaPrecioResultGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Imagen">

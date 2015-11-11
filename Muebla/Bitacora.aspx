@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <asp:Table runat="server" ID="tableSearchBitacoraCriteria">
+    <asp:Table runat="server" ID="tableSearchBitacoraCriteria" CssClass="table">
         <asp:TableRow>
             <asp:TableCell>
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />
@@ -50,9 +50,9 @@
         OnPreRender="bitacoraResultadosDataGrid_PreRender"
         OnPageIndexChanging="bitacoraResultadosDataGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID"  Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID"  Text="<%# Item.id %>" Visible="false"/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Usuario">

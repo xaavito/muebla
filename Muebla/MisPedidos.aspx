@@ -215,7 +215,7 @@
         <div class="popup_Container">
             <div class="popup_Titlebar" id="PopupHeader2">
                 <div class="TitlebarLeft">
-                    <asp:Label Text="Comentario" ID="Label1" runat="server" />
+                    <asp:Label Text="Comentario" ID="comentarioAnularLabel" runat="server" />
                 </div>
             </div>
             <div class="popup_Body">
@@ -249,7 +249,7 @@
             </div>
             <div class="popup_Buttons">
                 <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="confirmarCambioEstadoButton" OnClick="confirmarCambioEstadoButton_Click" />
-                <asp:Button runat="server" Text="Cancelar" ID="Button3" />
+                <asp:Button runat="server" Text="Cancelar" ID="cancelarCambioEstadoButton" />
             </div>
         </div>
     </asp:Panel>

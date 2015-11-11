@@ -18,9 +18,9 @@
         OnPreRender="detalleCarritoResultGrid_PreRender"
         OnPageIndexChanging="detalleCarritoResultGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField Visible="false" HeaderText="ID">
+            <asp:TemplateField Visible="false" HeaderText="ID" >
                 <ItemTemplate>
-                    <asp:Label Visible="false" runat="server" ID="itemID" Text="<%# Item.producto.id %>" />
+                    <asp:Label Visible="false" runat="server" ID="itemID" Text="<%# Item.producto.id %>"/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Cantidad">
@@ -101,7 +101,7 @@
     </div>
 
     <div id="pasoPago" runat="server">
-        <asp:Label ID="Label2" Text="Modo de Pago" runat="server" />
+        <asp:Label ID="modoPagoLabel" Text="Modo de Pago" runat="server" />
         <asp:DropDownList ID="modoPago" runat="server" />
         <asp:Button ID="pasoConfirmarButton" Text="Confirmar Pago" runat="server" OnClick="pasoConfirmarButton_Click" />
     </div>

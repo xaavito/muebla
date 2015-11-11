@@ -176,13 +176,13 @@ Partial Public Class Carrito
     Protected WithEvents pasoPago As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''Control Label2.
+    '''Control modoPagoLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents modoPagoLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Control modoPago.

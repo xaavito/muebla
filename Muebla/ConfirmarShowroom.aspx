@@ -71,7 +71,7 @@
             </div>
             <div class="popup_Body">
                 <p>
-                    <asp:Label ID="fecgaSolicLabel" Text="Fecha" runat="server" />
+                    <asp:Label ID="fechaSolicLabel" Text="Fecha" runat="server" />
                     <asp:TextBox ID="fechaSolicTextBox" runat="server" />
                     <br />
                     <asp:Label ID="asistioLabel" Text="Asistio" runat="server" />

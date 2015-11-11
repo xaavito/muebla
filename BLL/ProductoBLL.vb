@@ -16,7 +16,6 @@ Public Class ProductoBLL
     End Sub
 
     Public Shared Function bajaProducto(ByVal producto As BE.ProductoBE) As Integer
-        ' TODO VER QUE NO FORME PARTE DE UN PRODUCTO EN VENTA EN EL MOMENTO
         BLL.ProductoBLL.checkEstadoActivo(producto)
         BLL.ProductoBLL.checkProductosEnPedidos(producto)
         Return DAL.ProductoDAL.bajaProducto(producto)
