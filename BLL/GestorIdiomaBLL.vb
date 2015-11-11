@@ -1,4 +1,5 @@
 Imports BE
+Imports System.Web.Configuration
 
 Public Class GestorIdiomaBLL
     Private Shared _comps As List(Of BE.IdiomaBE)
@@ -11,11 +12,15 @@ Public Class GestorIdiomaBLL
         If idioma.id = 0 Then
             Return Nothing
         End If
+
+        'If WebConfigurationManager.AppSettings("cacheIdioma").ToString().Equals("true") Then
         For Each id As BE.IdiomaBE In getComponentesIdiomaticos()
             If id.id = idioma.id Then
                 Return id.componentes
             End If
         Next
+        'End If
+
         Dim nuevoIdioma = New BE.IdiomaBE
         nuevoIdioma.id = idioma.id
         Try

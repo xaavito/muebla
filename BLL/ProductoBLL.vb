@@ -95,5 +95,9 @@ Public Class ProductoBLL
         End If
     End Sub
 
+    Shared Function getDetalleProducto(idProducto As Integer) As DataTable
+        Return DAL.ProductoDAL.getDetalleProducto(idProducto)
+    End Function
+
 End Class ' ProductoBLL
 

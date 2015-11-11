@@ -99,7 +99,13 @@ Public Class AdministrarProductos
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
-        'TODO VER DETALLE DE PRODUCTO
+        Try
+            Me.detailsPedidos.DataSource = BLL.ProductoBLL.getDetalleProducto(getItemId(sender, Me.productosResultadosDataGrid))
+            Me.detailsPedidos.DataBind()
+            detailPopup.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub productosResultadosDataGrid_PageIndexChanging(sender As Object, e As GridViewPageEventArgs)

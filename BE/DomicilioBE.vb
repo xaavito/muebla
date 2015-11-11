@@ -19,6 +19,9 @@ Public Class DomicilioBE
 
     Public Property localidad() As BE.LocalidadBE
         Get
+            If _localidad Is Nothing Then
+                _localidad = New BE.LocalidadBE
+            End If
             Return _localidad
         End Get
         Set(ByVal Value As BE.LocalidadBE)

@@ -413,7 +413,7 @@ Public Class PDFGenerator
         billCell.Border = Rectangle.NO_BORDER
         headertable.AddCell(billCell)
 
-        Dim paraDato As PdfPCell = New PdfPCell(New Phrase(oc.proveedor.razonSocial + " " + oc.proveedor.direccion.ToString + " " + oc.proveedor.cuit.ToString))
+        Dim paraDato As PdfPCell = New PdfPCell(New Phrase((oc.proveedor.razonSocial + " " + oc.proveedor.dom.formatedLine() + " " + oc.proveedor.cuit.ToString).ToString))
         paraDato.HorizontalAlignment = 2
         paraDato.Border = Rectangle.NO_BORDER
         headertable.AddCell(paraDato)

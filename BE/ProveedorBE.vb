@@ -2,14 +2,38 @@
 
 Public Class ProveedorBE
     Private _cuit As Long
-    Private _direccion As String
     Private _id As Long
     Private _mail As String
     Private _razonSocial As String
     Private _productos As List(Of BE.ProductoBE)
     Private _activo As Boolean
-    Private _telefono As String
     Private _contacto As String
+    Private _tel As BE.TelefonoBE
+    Private _dom As BE.DomicilioBE
+
+    Public Property dom() As BE.DomicilioBE
+        Get
+            If _dom Is Nothing Then
+                _dom = New BE.DomicilioBE
+            End If
+            Return _dom
+        End Get
+        Set(ByVal value As BE.DomicilioBE)
+            _dom = value
+        End Set
+    End Property
+
+    Public Property tel() As BE.TelefonoBE
+        Get
+            If _tel Is Nothing Then
+                _tel = New BE.TelefonoBE
+            End If
+            Return _tel
+        End Get
+        Set(ByVal value As BE.TelefonoBE)
+            _tel = value
+        End Set
+    End Property
 
     Public Property contacto() As String
         Get
@@ -17,16 +41,6 @@ Public Class ProveedorBE
         End Get
         Set(ByVal value As String)
             _contacto = value
-        End Set
-    End Property
-
-
-    Public Property telefono() As String
-        Get
-            Return _telefono
-        End Get
-        Set(ByVal value As String)
-            _telefono = value
         End Set
     End Property
 
@@ -57,15 +71,6 @@ Public Class ProveedorBE
         End Set
     End Property
 
-    Public Property direccion() As String
-        Get
-            Return _direccion
-        End Get
-        Set(ByVal Value As String)
-            _direccion = Value
-        End Set
-    End Property
-
     Public Property id() As Long
         Get
             Return _id
@@ -92,6 +97,4 @@ Public Class ProveedorBE
             _razonSocial = Value
         End Set
     End Property
-
-
 End Class

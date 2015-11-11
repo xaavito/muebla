@@ -40,13 +40,9 @@
         MasDeUnPedido = 31
         FechaHastaMenorIgualDesde = 32
         PedidosEnProceso = 33
-
         ProductoBaja = 34
-
         UsuarioInactivo = 35
-
         UsuarioAdmin = 36
-
     End Enum
 
     Enum Bitacora
@@ -60,6 +56,7 @@
         OCRealizada = 8
         PedidoPersonalizado = 9
         VentaAnulada = 10
+        RegistroExistoso = 11
     End Enum
 
     Enum ImportanciaEvento

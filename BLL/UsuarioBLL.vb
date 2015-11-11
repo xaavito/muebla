@@ -9,6 +9,7 @@ Public Class UsuarioBLL
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
         usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
         Util.Mailer.enviarMail(usr.mail, "Alta de Usuario en el sistema", "Bienvenido/a" + usr.usuario + " ya puede empezar a operar con Muebla")
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.RegistroExistoso)
         Return usr
     End Function
 

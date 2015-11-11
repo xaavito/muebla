@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager id="scriptManager" runat="server" />
+    <asp:ScriptManager ID="scriptManager" runat="server" />
 
     <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria" CssClass="table">
         <asp:TableRow>
@@ -54,7 +54,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Telefono">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemTelefoni" Text="<%# Item.telefono%>" />
+                    <asp:Label runat="server" ID="itemTelefono" Text="<%# Item.tel.formatedLine%>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Mail">
@@ -64,7 +64,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Activo">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemEstado" Text="<%# Item.estado %>" />
+                    <asp:Label runat="server" ID="itemEstado" Text="<%# Item.activo %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
@@ -75,9 +75,6 @@
                     <asp:ImageButton ID="ibtnDelete" runat="server"
                         ImageUrl="/images/deleteItem.png"
                         OnClick="ibtnDelete_Click" />
-                    <asp:ImageButton ID="ibtnDetails" runat="server"
-                        ImageUrl="/images/detail.png"
-                        OnClick="ibtnDetails_Click" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -126,6 +123,32 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell>
+                    <asp:Label runat="server" ID="internoLabel" Text="Telefono" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="internoTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="internoTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="internoTextBox"
+                        ValidationExpression="^[0-9]*$" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="prefijoLabel" Text="Telefono" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="prefijoTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="prefijoTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="prefijoTextBox"
+                        ValidationExpression="^[0-9]*$" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
                     <asp:Label runat="server" ID="contactoLabel" Text="Contacto" />
                 </asp:TableCell>
                 <asp:TableCell>
@@ -144,6 +167,49 @@
                 <asp:TableCell>
                     <asp:TextBox runat="server" ID="direccionTextBox" />
                     <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="direccionTextBox" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="nroCalleLabel" Text="Nro" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="nroCalleTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="nroCalleTextBox" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="pisoLabel" Text="Piso" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="pisoTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="pisoTextBox" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="dptoLabel" Text="Dpto" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:TextBox runat="server" ID="dptoTextBox" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="dptoTextBox" runat="server" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="provinciaLabel" Text="Provincia" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:DropDownList EnableViewState="True" runat="server" ID="provinciaDropDownList" OnSelectedIndexChanged="provinciaDropDownList_SelectedIndexChanged" AutoPostBack="true" />
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server" ID="localidadLabel" Text="Localidad" />
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:DropDownList AutoPostBack="true" EnableViewState="True" runat="server" ID="localidadDropDownList" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

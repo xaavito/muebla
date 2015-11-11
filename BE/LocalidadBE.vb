@@ -9,6 +9,9 @@ Public Class LocalidadBE
 
     Public Property provincia() As BE.ProvinciaBE
         Get
+            If _provincia Is Nothing Then
+                _provincia = New BE.ProvinciaBE
+            End If
             Return _provincia
         End Get
         Set(ByVal Value As BE.ProvinciaBE)

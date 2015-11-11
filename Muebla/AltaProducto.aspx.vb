@@ -5,23 +5,34 @@
         If Page.IsPostBack Then
             Return
         End If
-        Me.tipoProductoDropDown.DataSource = BLL.ProveedorBLL.getTipoProductos
-        Me.tipoProductoDropDown.DataTextField = "descripcion"
-        Me.tipoProductoDropDown.DataValueField = "id"
-        Me.tipoProductoDropDown.DataBind()
+        Try
+            Me.tipoProductoDropDown.DataSource = BLL.ProveedorBLL.getTipoProductos
+            Me.tipoProductoDropDown.DataTextField = "descripcion"
+            Me.tipoProductoDropDown.DataValueField = "id"
+            Me.tipoProductoDropDown.DataBind()
 
-        buscarProveedores()
+            buscarProveedores()
 
-        Session("productosMateriaPrima") = BLL.ProductoBLL.buscarProductos(2, "")
-        Me.allProductosListBox.DataSource = Session("productosMateriaPrima")
-        Me.allProductosListBox.DataTextField = "descripcion"
-        Me.allProductosListBox.DataValueField = "id"
-        Me.allProductosListBox.DataBind()
+            Session("productosMateriaPrima") = BLL.ProductoBLL.buscarProductos(2, "")
+            Me.allProductosListBox.DataSource = Session("productosMateriaPrima")
+            Me.allProductosListBox.DataTextField = "descripcion"
+            Me.allProductosListBox.DataValueField = "id"
+            Me.allProductosListBox.DataBind()
 
-        Me.productosPropiosListBox.DataTextField = "descripcion"
-        Me.productosPropiosListBox.DataValueField = "id"
+            Me.productosPropiosListBox.DataTextField = "descripcion"
+            Me.productosPropiosListBox.DataValueField = "id"
 
-        Me.altaProveedor.Visible = False
+            Me.altaProveedor.Visible = False
+
+            Me.provinciaDropDownList.DataSource = BLL.UsuarioBLL.getProvincias()
+            Me.provinciaDropDownList.DataTextField = "descripcion"
+            Me.provinciaDropDownList.DataValueField = "id"
+            Me.provinciaDropDownList.DataBind()
+
+            provinciaDropDownList_SelectedIndexChanged(sender, e)
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub confirmarAltaProductoButton_Click(sender As Object, e As EventArgs)
@@ -76,12 +87,20 @@
     Protected Sub confirmarAltaProveedorButton_Click(sender As Object, e As EventArgs)
         Dim prov As New BE.ProveedorBE
         prov.cuit = Me.cuitTextBox.Text
-        prov.direccion = Me.direccionTextBox.Text
+        prov.dom.calle = Me.direccionTextBox.Text
+        prov.dom.numero = Me.nroCalleTextBox.Text
+        prov.dom.piso = Me.pisoTextBox.Text
+        prov.dom.dpto = Me.dptoTextBox.Text
+        prov.dom.localidad.id = Integer.Parse(Me.localidadDropDownList.SelectedValue)
+
         prov.mail = Me.emailTextBox.Text
         prov.razonSocial = Me.nombreTextBox.Text
-        prov.telefono = Me.telefonoTextBox.Text
+        prov.tel.numero = Me.telefonoTextBox.Text
+        prov.tel.prefijo = Me.prefijoTextBox.Text
+        prov.tel.interno = Me.internoTextBox.Text
+
         Try
-            prov.id = BLL.ProveedorBLL.altaProveedor(prov)
+            BLL.ProveedorBLL.altaProveedor(prov)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)
@@ -91,10 +110,14 @@
     End Sub
 
     Private Sub buscarProveedores()
-        Me.proveedorDropDown.DataSource = BLL.ProveedorBLL.listarProveedores
-        Me.proveedorDropDown.DataTextField = "razonSocial"
-        Me.proveedorDropDown.DataValueField = "id"
-        Me.proveedorDropDown.DataBind()
+        Try
+            Me.proveedorDropDown.DataSource = BLL.ProveedorBLL.listarProveedores
+            Me.proveedorDropDown.DataTextField = "razonSocial"
+            Me.proveedorDropDown.DataValueField = "id"
+            Me.proveedorDropDown.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
@@ -127,5 +150,16 @@
                 Session("productosPropios") = ps
             End If
         End If
+    End Sub
+
+    Protected Sub provinciaDropDownList_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Try
+            Me.localidadDropDownList.DataSource = BLL.UsuarioBLL.getTiposLocalidades(Integer.Parse(Me.provinciaDropDownList.SelectedValue))
+            Me.localidadDropDownList.DataTextField = "descripcion"
+            Me.localidadDropDownList.DataValueField = "id"
+            Me.localidadDropDownList.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 End Class

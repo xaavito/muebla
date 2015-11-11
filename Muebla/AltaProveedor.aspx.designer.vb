@@ -11,7 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class AltaProveedor1
+Partial Public Class AltaProveedor
 
     '''<summary>
     '''Control scriptManager.
@@ -86,6 +86,42 @@ Partial Public Class AltaProveedor1
     Protected WithEvents telefonoTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''Control internoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents internoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control internoTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents internoTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control prefijoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents prefijoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control prefijoTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents prefijoTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Control contactoLabel.
     '''</summary>
     '''<remarks>
@@ -104,22 +140,112 @@ Partial Public Class AltaProveedor1
     Protected WithEvents contactoTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control direccionLabel.
+    '''Control calleLabel.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents direccionLabel As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents calleLabel As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Control direccionTextBox.
+    '''Control calleTextBox.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents direccionTextBox As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents calleTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control nroCalleLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nroCalleLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control nroCalleTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents nroCalleTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control pisoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pisoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control pisoTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents pisoTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control dptoLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents dptoLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control dptoTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents dptoTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control provinciaLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents provinciaLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control provinciaDropDownList.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents provinciaDropDownList As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Control localidadLabel.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents localidadLabel As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control localidadDropDownList.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents localidadDropDownList As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Control emailLabel.

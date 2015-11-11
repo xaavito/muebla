@@ -690,5 +690,23 @@ Public Class GestorPedidoDAL
         End Try
     End Sub
 
+    Shared Function getDetallePedido(idPedido As Integer) As DataTable
+        Dim table As DataTable
+        Dim repository As New AccesoSQLServer
+        Dim lista As New List(Of BE.Comentario)
+        Try
+            repository.crearComando("BUSCAR_DETALLE_PEDIDO_SP")
+            repository.addParam("@id", idPedido)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New BusquedaSinResultadosException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+        Return table
+    End Function
+
 End Class ' GestorPedidoDAL
 

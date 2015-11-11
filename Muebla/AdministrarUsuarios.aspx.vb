@@ -21,7 +21,7 @@
         Session("idUsuario") = getItemId(sender, Me.usuariosResultadosDataGrid)
         Dim listaUsuarios As List(Of BE.UsuarioBE) = Session("listaUsuarios")
         For Each usr As BE.UsuarioBE In listaUsuarios
-            If usr.id = id Then
+            If usr.id = Session("idUsuario") Then
                 Debug.WriteLine(usr.nombre)
                 Me.userTextBox.Text = usr.usuario
                 Me.estadoUsuarioCheck.Checked = usr.activo

@@ -2,8 +2,18 @@
     Inherits ExtendedPage
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Page.IsPostBack Then
+            Return
+        End If
         Me.editData.Visible = False
         'TODO PASAR A AJAX CONTROL TOOLKIT
+
+        Me.provinciaDropDownList.DataSource = BLL.UsuarioBLL.getProvincias()
+        Me.provinciaDropDownList.DataTextField = "descripcion"
+        Me.provinciaDropDownList.DataValueField = "id"
+        Me.provinciaDropDownList.DataBind()
+
+        provinciaDropDownList_SelectedIndexChanged(sender, e)
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
@@ -11,59 +21,60 @@
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
-        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
-        Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
-        Dim id As Integer = Integer.Parse(con.Text.ToString)
-        Session("idProveedor") = id
-        Dim listaProvs As List(Of BE.ProveedorBE) = Session("proveedores")
-        For Each prov As BE.ProveedorBE In listaProvs
-            If prov.id = id Then
-                Me.nombreTextBox.Text = prov.razonSocial
-                Me.contactoTextBox.Text = prov.contacto
-                Me.cuitTextBox.Text = prov.cuit
-                Me.telefonoTextBox.Text = prov.telefono
-                Me.direccionTextBox.Text = prov.direccion
-                Me.emailTextBox.Text = prov.mail
+        Try
+            Session("idProveedor") = getItemId(sender, Me.proveedoresResultadosDataGrid)
+            Dim listaProvs As List(Of BE.ProveedorBE) = Session("proveedores")
+            For Each prov As BE.ProveedorBE In listaProvs
+                If prov.id = Session("idProveedor") Then
+                    Me.nombreTextBox.Text = prov.razonSocial
+                    Me.contactoTextBox.Text = prov.contacto
+                    Me.cuitTextBox.Text = prov.cuit
+                    Me.telefonoTextBox.Text = prov.tel.numero
+                    Me.prefijoTextBox.Text = prov.tel.prefijo
+                    Me.internoTextBox.Text = prov.tel.interno
+                    Me.direccionTextBox.Text = prov.dom.calle
+                    Me.nroCalleTextBox.Text = prov.dom.numero
+                    Me.pisoTextBox.Text = prov.dom.piso
+                    Me.dptoTextBox.Text = prov.dom.dpto
+                    Me.provinciaDropDownList.SelectedValue = prov.dom.localidad.provincia.id
 
-                If prov.productos Is Nothing Then
-                    Try
-                        prov.productos = BLL.ProveedorBLL.getProductos(prov)
-                    Catch ex As Exception
-                        logMessage(ex)
-                    End Try
+                    provinciaDropDownList_SelectedIndexChanged(sender, e)
 
+                    Me.localidadDropDownList.SelectedValue = prov.dom.localidad.id
+
+                    Me.emailTextBox.Text = prov.mail
+
+                    If prov.productos Is Nothing Then
+                        Try
+                            prov.productos = BLL.ProveedorBLL.getProductos(prov)
+                        Catch ex As Exception
+                            logMessage(ex)
+                        End Try
+
+                    End If
+                    Session("MyProductos") = prov.productos
+                    Me.productosPropiosListBox.DataSource = Session("MyProductos")
+                    Me.productosPropiosListBox.DataTextField = "descripcion"
+                    Me.productosPropiosListBox.DataValueField = "id"
+                    Me.productosPropiosListBox.DataBind()
+
+                    Session("AllProductos") = BLL.ProductoBLL.buscarProductos(2, "")
+                    Me.allProductosListBox.DataSource = Session("AllProductos")
+                    Me.allProductosListBox.DataTextField = "descripcion"
+                    Me.allProductosListBox.DataValueField = "id"
+                    Me.allProductosListBox.DataBind()
                 End If
-                Session("MyProductos") = prov.productos
-                Me.productosPropiosListBox.DataSource = Session("MyProductos")
-                Me.productosPropiosListBox.DataTextField = "descripcion"
-                Me.productosPropiosListBox.DataValueField = "id"
-                Me.productosPropiosListBox.DataBind()
+            Next
+            Me.editData.Visible = True
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
 
-                Session("AllProductos") = BLL.ProductoBLL.buscarProductos(2, "")
-                Me.allProductosListBox.DataSource = Session("AllProductos")
-                Me.allProductosListBox.DataTextField = "descripcion"
-                Me.allProductosListBox.DataValueField = "id"
-                Me.allProductosListBox.DataBind()
-            End If
-        Next
-        Me.editData.Visible = True
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
-        Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
-        Dim id As Integer = Integer.Parse(con.Text.ToString)
-        Session("idProveedor") = id
-
+        Session("idProveedor") = getItemId(sender, Me.proveedoresResultadosDataGrid)
         lnkObservaciones_ModalPopupExtender.Show()
-    End Sub
-
-    Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
-        'TODO FALTA IMPLEMENTAR DETALLES DEL PROVEEDOR
-        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
-        Dim con As Label = CType(Me.proveedoresResultadosDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
-        Dim id As Integer = Integer.Parse(con.Text.ToString)
-        Session("idProveedor") = id
     End Sub
 
     Protected Sub proveedoresResultadosDataGrid_PreRender(sender As Object, e As EventArgs)
@@ -124,15 +135,24 @@
     End Sub
 
     Protected Sub modificarButton_Click(sender As Object, e As EventArgs)
-        Dim prov As New BE.ProveedorBE
-        prov.id = Session("idProveedor")
-        prov.cuit = Me.cuitTextBox.Text
-        prov.direccion = Me.direccionTextBox.Text
-        prov.mail = Me.emailTextBox.Text
-        prov.razonSocial = Me.nombreTextBox.Text
-        prov.telefono = Me.telefonoTextBox.Text
-        prov.productos = Session("productosPropios")
+
         Try
+            Dim prov As New BE.ProveedorBE
+            prov.id = Session("idProveedor")
+            prov.cuit = Me.cuitTextBox.Text
+            prov.dom.calle = Me.direccionTextBox.Text
+            prov.dom.numero = Me.nroCalleTextBox.Text
+            prov.dom.piso = Me.pisoTextBox.Text
+            prov.dom.dpto = Me.dptoTextBox.Text
+            prov.dom.localidad.id = Me.localidadDropDownList.SelectedValue
+
+            prov.mail = Me.emailTextBox.Text
+            prov.razonSocial = Me.nombreTextBox.Text
+            prov.tel.numero = Me.telefonoTextBox.Text
+            prov.tel.interno = Me.internoTextBox.Text
+            prov.tel.prefijo = Me.prefijoTextBox.Text
+            prov.productos = Session("productosPropios")
+
             BLL.ProveedorBLL.modificarProveedor(prov)
             Throw New Util.ModificacionExitosaException
         Catch ex As Exception
@@ -149,6 +169,17 @@
         Try
             BLL.ProveedorBLL.eliminarProveedor(Session("idProveedor"), Me.observacionesTextBox.Text)
             Throw New Util.EliminacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub provinciaDropDownList_SelectedIndexChanged(sender As Object, e As EventArgs)
+        Try
+            Me.localidadDropDownList.DataSource = BLL.UsuarioBLL.getTiposLocalidades(Integer.Parse(Me.provinciaDropDownList.SelectedValue))
+            Me.localidadDropDownList.DataTextField = "descripcion"
+            Me.localidadDropDownList.DataValueField = "id"
+            Me.localidadDropDownList.DataBind()
         Catch ex As Exception
             logMessage(ex)
         End Try

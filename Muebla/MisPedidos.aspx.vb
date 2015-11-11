@@ -67,15 +67,19 @@ Public Class MisPedidos
     End Sub
 
     Private Sub loadEstadosPedidos()
-        Me.estadoListBox.DataSource = BLL.GestorPedidoBLL.getEstadosPedidos()
-        Me.estadoListBox.DataTextField = "descripcion"
-        Me.estadoListBox.DataValueField = "id"
-        Me.estadoListBox.DataBind()
+        Try
+            Me.estadoListBox.DataSource = BLL.GestorPedidoBLL.getEstadosPedidos()
+            Me.estadoListBox.DataTextField = "descripcion"
+            Me.estadoListBox.DataValueField = "id"
+            Me.estadoListBox.DataBind()
 
-        Me.estadoPedidoDropDown.DataSource = BLL.GestorPedidoBLL.getEstadosPedidos()
-        Me.estadoPedidoDropDown.DataTextField = "descripcion"
-        Me.estadoPedidoDropDown.DataValueField = "id"
-        Me.estadoPedidoDropDown.DataBind()
+            Me.estadoPedidoDropDown.DataSource = BLL.GestorPedidoBLL.getEstadosPedidos()
+            Me.estadoPedidoDropDown.DataTextField = "descripcion"
+            Me.estadoPedidoDropDown.DataValueField = "id"
+            Me.estadoPedidoDropDown.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)
@@ -196,6 +200,16 @@ Public Class MisPedidos
     Protected Sub confirmarCambioEstadoButton_Click(sender As Object, e As EventArgs)
         Try
             BLL.GestorPedidoBLL.cambiarEstadoPedido(Session("pedidoEdicion"), Integer.Parse(Me.estadoPedidoDropDown.SelectedValue))
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub ibtnVerDetalle_Click(sender As Object, e As ImageClickEventArgs)
+        Try
+            Me.detailsPedidos.DataSource = BLL.GestorPedidoBLL.getDetallePedido(getItemId(sender, Me.detallePedidosResultGrid))
+            Me.detailsPedidos.DataBind()
+            detailPopup.Show()
         Catch ex As Exception
             logMessage(ex)
         End Try

@@ -3,10 +3,12 @@ Imports BE
 
 Public Class ProveedorBLL
 
-    Public Shared Function altaProveedor(ByVal prov As ProveedorBE) As Integer
+    Public Shared Sub altaProveedor(ByRef prov As ProveedorBE)
         DAL.ProveedorDAL.checkCuilExistente(prov)
-        Return DAL.ProveedorDAL.altaProveedor(prov)
-    End Function
+        DAL.ProveedorDAL.altaProveedor(prov)
+        DAL.ProveedorDAL.altaDomicilio(prov)
+        DAL.ProveedorDAL.altaTelefono(prov)
+    End Sub
 
     Public Shared Function buscarProveedores(ByVal nom As String, ByVal contacto As String) As List(Of ProveedorBE)
         Return DAL.ProveedorDAL.buscarProveedores(nom, contacto)

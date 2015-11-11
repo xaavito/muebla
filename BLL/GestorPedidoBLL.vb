@@ -207,4 +207,8 @@ Public Class GestorPedidoBLL
         DAL.GestorPedidoDAL.checkMasDeUnPedido(pedido)
     End Sub
 
+    Shared Function getDetallePedido(idPedido As Integer) As DataTable
+        Return DAL.GestorPedidoDAL.getDetallePedido(idPedido)
+    End Function
+
 End Class ' GestorPedidoBLL

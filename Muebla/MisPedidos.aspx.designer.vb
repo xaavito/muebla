@@ -113,6 +113,42 @@ Partial Public Class MisPedidos
     Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control detailPopup.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents detailPopup As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivDetail.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivDetail As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control detailsPedidos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents detailsPedidos As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control ButtonDetailOK.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonDetailOK As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control lnkComment_ModalPopupExtender.
     '''</summary>
     '''<remarks>

@@ -410,5 +410,26 @@ Public Class ProductoDAL
             Throw ex
         End Try
     End Sub
+
+    Shared Function getDetalleProducto(idProducto As Integer) As DataTable
+        Dim table As DataTable
+        Dim list As New List(Of BE.ComparacionProductos)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_DETALLE_PRODUCTO_SP")
+            repository.addParam("@id", idProducto)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return table
+    End Function
+
 End Class ' ProductoDAL
 

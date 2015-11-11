@@ -91,6 +91,28 @@
     <asp:Button ID="Button1" runat="server" Style="display: none" />
 
     <ajaxToolkit:ModalPopupExtender
+        ID="detailPopup" runat="server"
+        CancelControlID="ButtonDetailOK"
+        TargetControlID="Button1" PopupControlID="DivDetail"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupComment" ID="DivDetail"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Body">
+                <p>
+                    <asp:GridView runat="server" ID="detailsPedidos" AutoGenerateColumns="true" ShowHeader="False">
+                    </asp:GridView>
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="OK" ID="ButtonDetailOK"/>
+            </div>
+        </div>
+    </asp:Panel>
+
+    <ajaxToolkit:ModalPopupExtender
         ID="lnkEdit_ModalPopupExtender" runat="server"
         CancelControlID="ButtonEditCancel"
         TargetControlID="Button1" PopupControlID="DivEditConfirmation"
