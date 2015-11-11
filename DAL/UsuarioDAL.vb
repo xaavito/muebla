@@ -564,5 +564,29 @@ Public Class UsuarioDAL
         End Try
     End Sub
 
+    Shared Function getConsumidores() As List(Of UsuarioBE)
+        Dim table As DataTable
+        Dim lista As New List(Of BE.UsuarioBE)
+        Dim usr As BE.UsuarioBE
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_CONSUMIDORES_SP")
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each pepe As DataRow In table.Rows
+                usr = New BE.UsuarioBE
+                usr.id = pepe.Item(0)
+                usr.mail = pepe.Item(1)
+                lista.Add(usr)
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        Return lista
+    End Function
+
 End Class
 

@@ -99,5 +99,9 @@ Public Class ProductoBLL
         Return DAL.ProductoDAL.getDetalleProducto(idProducto)
     End Function
 
+    Shared Function getDetalleUsuario(p1 As Integer) As Object
+        Throw New NotImplementedException
+    End Function
+
 End Class ' ProductoBLL
 

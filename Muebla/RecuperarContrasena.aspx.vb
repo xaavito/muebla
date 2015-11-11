@@ -7,7 +7,8 @@
 
     Protected Sub recuperarPassButton_Click(sender As Object, e As EventArgs)
         Try
-            Dim pass As String = BLL.UsuarioBLL.solicitarContraseña(Me.mailTextBox.Text, Me.usrTextBox.Text)
+            BLL.UsuarioBLL.solicitarContraseña(Me.mailTextBox.Text, Me.usrTextBox.Text)
+            Throw New Util.MailEnviadoseException
         Catch ex As Exception
             logMessage(ex)
         End Try

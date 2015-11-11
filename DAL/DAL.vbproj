@@ -145,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BD\Ayuda BD.txt" />
+    <Content Include="BD\BDMuebla20151111-2.sql" />
     <Content Include="BD\BDMuebla20151111.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

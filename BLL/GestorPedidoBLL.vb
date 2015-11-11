@@ -17,7 +17,6 @@ Public Class GestorPedidoBLL
     End Function
 
     Public Shared Function generarHojaRuta(ByVal pedidos As List(Of BE.PedidoBE)) As MemoryStream
-        'TODO CHECK QUE NO ESTE GENERADO
         For Each p As BE.PedidoBE In pedidos
             DAL.GestorPedidoDAL.loadDatosPedido(p)
             BLL.UsuarioBLL.llenarDatosUsuario(p.usr)
@@ -42,7 +41,6 @@ Public Class GestorPedidoBLL
     End Function
 
     Public Shared Function generarNotaCredito(ByVal pedido As PedidoBE) As MemoryStream
-        'TODO CHECK QUE NO ESTE YA GENERADO
         DAL.GestorPedidoDAL.loadDatosPedido(pedido)
         DAL.GestorPedidoDAL.checkPedidoFacturado(pedido)
         DAL.GestorPedidoDAL.generarNotaCredito(pedido)
@@ -103,7 +101,6 @@ Public Class GestorPedidoBLL
     End Sub
 
     Shared Function generarFactura(pedido As PedidoBE) As MemoryStream
-        'TODO CHECK QUE NO ESTE YA GENERADO
         DAL.GestorPedidoDAL.loadDatosPedido(pedido)
         DAL.GestorPedidoDAL.checkPedidoNoFacturado(pedido)
         BLL.GestorPedidoBLL.checkPedidoFinalizado(pedido)

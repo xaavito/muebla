@@ -57,6 +57,9 @@
         PedidoPersonalizado = 9
         VentaAnulada = 10
         RegistroExistoso = 11
+
+        SolicitudContrasena = 12
+
     End Enum
 
     Enum ImportanciaEvento
@@ -102,5 +105,22 @@
         PedidoComentarioMensaje = 22
         AnulacionVentaMensaje = 23
         AnulacionVenta = 24
+
+        NuevaPromoMensaje = 25
+
+        NuevaPromo = 26
+
+        RecuperarContrasena = 27
+
+        ModificacionDatos = 28
+
+        RecuperarContrasenaMensaje = 29
+
+        ModificacionDatosMensaje = 30
+
+        RegistroExitosoMensaje = 31
+
+        RegistroExitoso = 32
+
     End Enum
 End Class

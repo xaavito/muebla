@@ -25,10 +25,6 @@ Public Class AdministrarProductos
         buscar()
     End Sub
 
-    Protected Sub verDetalleButton_Click(sender As Object, e As EventArgs)
-        'TODO FALTA IMPLEMENTAR VER DETALLES DEL PRODUCTO
-    End Sub
-
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
         Session("idProductoEdicion") = getItemId(sender, Me.productosResultadosDataGrid)
         Try
@@ -84,10 +80,6 @@ Public Class AdministrarProductos
         Catch ex As Exception
             logMessage(ex)
         End Try
-    End Sub
-
-    Protected Sub addProveedorButton_Click(sender As Object, e As EventArgs)
-        'TODO FALTA IMPLEMENTAR ADD PROVEEDOR
     End Sub
 
     Protected Sub cancelarEditProductoButton_Click(sender As Object, e As EventArgs)

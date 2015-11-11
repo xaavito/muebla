@@ -113,9 +113,6 @@
                         <asp:ImageButton ID="ibtnEditDetail" runat="server"
                             ImageUrl="/images/editItem.png"
                             OnClick="ibtnEditDetail_Click" />
-                        <asp:ImageButton ID="ibtnDetailsDetail" runat="server"
-                            ImageUrl="/images/detail.png"
-                            OnClick="ibtnDetailsDetail_Click" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

@@ -67,7 +67,18 @@
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
-        'TODO FALTAIMPLEMENTAR EL DETALLE USUARIO
+        Try
+            For Each u As BE.UsuarioBE In Session("listaUsuarios")
+                If u.id = getItemId(sender, Me.usuariosResultadosDataGrid) Then
+                    Me.detailsPedidos.DataSource = BLL.GestorRolesBLL.getRoles(u)
+                    Me.detailsPedidos.DataBind()
+                    detailPopup.Show()
+                    Exit For
+                End If
+            Next
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)

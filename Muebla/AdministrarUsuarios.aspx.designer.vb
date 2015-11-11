@@ -14,6 +14,15 @@ Option Explicit On
 Partial Public Class AdministrarUsuarios
 
     '''<summary>
+    '''Control scriptManager.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents scriptManager As Global.System.Web.UI.ScriptManager
+
+    '''<summary>
     '''Control tableAdministrarUsuariosCriteria.
     '''</summary>
     '''<remarks>
@@ -75,6 +84,51 @@ Partial Public Class AdministrarUsuarios
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents usuariosResultadosDataGrid As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control Button1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control detailPopup.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents detailPopup As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivDetail.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivDetail As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control detailsPedidos.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents detailsPedidos As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control ButtonDetailOK.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ButtonDetailOK As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control editDataDiv.

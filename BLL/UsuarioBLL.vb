@@ -8,7 +8,7 @@ Public Class UsuarioBLL
         usr.id = DAL.UsuarioDAL.altaCliente(usr)
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
         usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
-        Util.Mailer.enviarMail(usr.mail, "Alta de Usuario en el sistema", "Bienvenido/a" + usr.usuario + " ya puede empezar a operar con Muebla")
+        Util.Mailer.enviarMail(usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RegistroExitoso), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RegistroExitosoMensaje))
         BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.RegistroExistoso)
         Return usr
     End Function
@@ -52,24 +52,20 @@ Public Class UsuarioBLL
         Return user
     End Function
 
-    Public Shared Sub modificarCliente(ByVal usr As UsuarioBE)
-        'Y ESTO??? NO FALTA ALGO ACA???
-    End Sub
-
     Public Shared Sub modificarUsuario(ByRef usr As UsuarioBE)
         DAL.UsuarioDAL.modificarPass(usr)
         DAL.UsuarioDAL.modificarDomicilio(usr)
         DAL.UsuarioDAL.modificartelefono(usr)
-        Util.Mailer.enviarMail(usr.mail, "Modificacion de datos", "Ya sabes")
+        Util.Mailer.enviarMail(usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.ModificacionDatos), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.ModificacionDatosMensaje))
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.ModificacionUsuario)
     End Sub
 
-    Public Shared Function solicitarContraseña(ByVal mail As String, ByVal usuario As String) As String
+    Public Shared Sub solicitarContraseña(ByVal mail As String, ByVal usuario As String)
         'TODO ENCRIPTAR PASS?
         Dim pass As String = DAL.UsuarioDAL.solicitarContrasena(mail, usuario)
-        Util.Mailer.enviarMail(mail, "Recuperar Contrasena Muebla", "Usuario su mail es " + pass)
-        Throw New Util.MailEnviadoseException
-        Return pass
-    End Function
+        Util.Mailer.enviarMail(mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RecuperarContrasena), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RecuperarContrasenaMensaje) + " " + pass)
+        'BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.SolicitudContrasena)
+    End Sub
 
     Shared Function getTiposDocumentos() As List(Of BE.TipoDocumentoBE)
         Return DAL.UsuarioDAL.getTiposDocumentos
@@ -123,6 +119,20 @@ Public Class UsuarioBLL
         If Integer.Parse(p1) = 1 Then
             Throw New Util.UsuarioAdmin
         End If
+    End Sub
+
+    Shared Function getRoles(p1 As Integer) As Object
+        Throw New NotImplementedException
+    End Function
+
+    Shared Sub notificarClientesPromocion(idProd As Integer, precio As Decimal, desde As Date, hasta As Date)
+        Dim lista As List(Of BE.UsuarioBE)
+        Dim prod As BE.ProductoBE
+        prod = BLL.ProductoBLL.buscarProducto(idProd)
+        lista = DAL.UsuarioDAL.getConsumidores()
+        For Each usr As BE.UsuarioBE In lista
+            Util.Mailer.enviarMail(usr.mail, Util.Enumeradores.CodigoMensaje.NuevaPromo, Util.Enumeradores.CodigoMensaje.NuevaPromoMensaje + "Producto: " + prod.descripcion + " Precio Promocional: " + precio + "Desde " + desde.ToString + " Hasta " + hasta.ToString)
+        Next
     End Sub
 
 End Class ' UsuarioBLL

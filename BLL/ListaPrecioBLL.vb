@@ -29,7 +29,7 @@ Public Class ListaPrecioBLL
     Shared Sub altaPromocion(idProd As Integer, precio As Decimal, desde As Date, hasta As Date)
         BLL.ListaPrecioBLL.checkFechas(desde, hasta)
         DAL.ListaPrecioDAL.altaPromocion(idProd, precio, desde, hasta)
-        'TODO ACA DEBERIAMOS MANDAR UN MAIL A MUCHOS DE LOS QUE YA HAYAN COMPRADO!
+        BLL.UsuarioBLL.notificarClientesPromocion(idProd, precio, desde, hasta)
         BLL.ProductoBLL.limpiarProds()
     End Sub
 

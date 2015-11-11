@@ -46,10 +46,6 @@
         buscarDetalles()
     End Sub
 
-    Protected Sub ibtnDetailsDetail_Click(sender As Object, e As ImageClickEventArgs)
-        ' TODO DETALLE DEL DETALLE DE lp
-    End Sub
-
     Protected Sub ibtnEditDetail_Click(sender As Object, e As ImageClickEventArgs)
         Session("idListaPrecioDetalle") = getItemId(sender, Me.detalleListaPrecioResultGrid)
         For Each a As BE.ListaPrecioDetalleBE In Session("detallesListaPrecio")
