@@ -708,5 +708,44 @@ Public Class GestorPedidoDAL
         Return table
     End Function
 
+    Shared Sub devolverPedido(pedido As PedidoBE)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            For Each p As BE.PedidoProductoBE In pedido.productos
+                repository.crearComando("DEVOLVER_PEDIDO_SP")
+                repository.addParam("@idPedido", p.id)
+                repository.addParam("@prod", p.producto.producto.id)
+                repository.addParam("@cant", p.cantidad)
+                id = repository.executeSearchWithStatus
+                If (id <= 0) Then
+                    Throw New CreacionException
+                End If
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
+    Shared Sub ajustarVarianza(nroComprobante As Integer, pedido As PedidoBE, incrementa As Boolean)
+        Dim id As Integer
+        Dim repository As New AccesoSQLServer
+        Try
+            For Each p As BE.PedidoProductoBE In pedido.productos
+                repository.crearComando("AJUSTAR_VARIANZA_SP")
+                repository.addParam("@nroComp", nroComprobante)
+                repository.addParam("@prod", p.producto.producto.id)
+                repository.addParam("@cant", p.cantidad)
+                repository.addParam("@inc", IIf(incrementa = True, 1, -1))
+                id = repository.executeSearchWithStatus
+                If (id <= 0) Then
+                    Throw New CreacionException
+                End If
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+    End Sub
+
 End Class ' GestorPedidoDAL
 

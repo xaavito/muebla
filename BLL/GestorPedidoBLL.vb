@@ -46,9 +46,12 @@ Public Class GestorPedidoBLL
         DAL.GestorPedidoDAL.generarNotaCredito(pedido)
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
 
-        'TODO ACTUALIZAR STOCK
+        BLL.GestorPedidoBLL.devolverPedido(pedido)
 
         Dim nc As BE.NotaCreditoBE = DAL.GestorPedidoDAL.getNotaCredito(pedido)
+
+        DAL.GestorPedidoDAL.ajustarVarianza(nc.nro, pedido, False)
+
         Dim ms As MemoryStream = Util.PDFGenerator.NotaCreditoPDF(nc)
         Util.Mailer.enviarMailConAdjunto(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.NC, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.NCMensaje, 1), ms)
         'para nosotros
@@ -108,6 +111,7 @@ Public Class GestorPedidoBLL
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
 
         Dim fact As BE.FacturaBE = DAL.GestorPedidoDAL.getFactura(pedido)
+        DAL.GestorPedidoDAL.ajustarVarianza(fact.nro, pedido, True)
         Dim ms As MemoryStream = Util.PDFGenerator.FacturaPDF(fact)
         'PARA EL USUARIO
         Util.Mailer.enviarMailConAdjunto(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Factura, 1), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.FacturaMensaje, 1), ms)
@@ -167,6 +171,7 @@ Public Class GestorPedidoBLL
         End Try
 
         DAL.GestorPedidoDAL.anularVenta(pedido)
+        BLL.GestorPedidoBLL.devolverPedido(pedido)
         DAL.GestorPedidoDAL.generarComentario(usr, pedido, comentario)
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
         'USR
@@ -207,5 +212,9 @@ Public Class GestorPedidoBLL
     Shared Function getDetallePedido(idPedido As Integer) As DataTable
         Return DAL.GestorPedidoDAL.getDetallePedido(idPedido)
     End Function
+
+    Private Shared Sub devolverPedido(pedido As PedidoBE)
+        DAL.GestorPedidoDAL.devolverPedido(pedido)
+    End Sub
 
 End Class ' GestorPedidoBLL
