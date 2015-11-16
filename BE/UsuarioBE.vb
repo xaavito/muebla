@@ -152,4 +152,12 @@ Public Class UsuarioBE
         Next
         Return False
     End Function
+
+    Public Function getActivo() As String
+        If activo Then
+            Return "Si"
+        Else
+            Return "No"
+        End If
+    End Function
 End Class

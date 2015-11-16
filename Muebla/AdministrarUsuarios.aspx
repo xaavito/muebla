@@ -35,9 +35,9 @@
         OnPreRender="usuariosResultadosDataGrid_PreRender"
         OnPageIndexChanging="usuariosResultadosDataGrid_PageIndexChanging">
         <Columns>
-            <asp:TemplateField HeaderText="ID">
+            <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Usuario">
@@ -52,7 +52,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Activo">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemActivo" Text="<%# Item.activo %>" />
+                    <asp:Label runat="server" ID="itemActivo" Text="<%# Item.getActivo %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">

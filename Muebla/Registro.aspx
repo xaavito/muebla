@@ -49,7 +49,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
                     ErrorMessage="Solo Numeros"
                     ControlToValidate="documentoTextBox"
-                    ValidationExpression="^[0-9]*$"/>
+                    ValidationExpression="^[0-9]{6,8}$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -62,7 +62,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
                     ErrorMessage="Solo Numeros"
                     ControlToValidate="cuilTextBox"
-                    ValidationExpression="^[0-9]*$"/>
+                    ValidationExpression="^[0-9]{10,11}$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -75,7 +75,7 @@
                 <asp:RegularExpressionValidator runat="server"
                     ErrorMessage="Email Invalido"
                     ControlToValidate="mailTextBox"
-                    ValidationExpression="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b" ValidationGroup="registrarse" />
+                    ValidationExpression="\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b" ValidationGroup="registrarse" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -135,6 +135,10 @@
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="telefonoTextBox" TextMode="Phone" />
                 <asp:RequiredFieldValidator ValidationGroup="registrarse" ErrorMessage="Requerido" ControlToValidate="telefonoTextBox" runat="server" />
+                <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
+                    ErrorMessage="Solo Numeros"
+                    ControlToValidate="telefonoTextBox"
+                    ValidationExpression="^[0-9]{6,8}$"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>

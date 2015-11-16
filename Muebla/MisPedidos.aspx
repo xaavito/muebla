@@ -19,7 +19,8 @@
                 <asp:Label runat="server" ID="fechaDesdeLabel" Text="Fecha Desde" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="fechaDesdeTextBox" AutoPostBack="true" />
+                <asp:TextBox runat="server" ID="fechaDesdeTextBox"  />
+                <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaDesdeTextBox" runat="server" ValidationGroup="buscarVentas" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -27,12 +28,13 @@
                 <asp:Label runat="server" ID="fechaHastaLabel" Text="Fecha Hasta" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="fechaHastaTextBox" AutoPostBack="true" />
+                <asp:TextBox runat="server" ID="fechaHastaTextBox"  />
+                <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaHastaTextBox" runat="server" ValidationGroup="buscarVentas" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
 
-    <asp:Button Text="Buscar" ID="buscarButton" runat="server" OnClick="buscarButton_Click" />
+    <asp:Button Text="Buscar" ID="buscarButton" runat="server" OnClick="buscarButton_Click" ValidationGroup="buscarVentas"/>
 
     <asp:GridView runat="server" ID="detallePedidosResultGrid"
         AutoGenerateColumns="false"
@@ -221,10 +223,11 @@
             <div class="popup_Body">
                 <p>
                     <asp:TextBox ID="anularCommentTextBox" TextMode="multiline" Columns="50" Rows="5" runat="server" />
+                    <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="anularCommentTextBox" runat="server" ValidationGroup="confirmarAnular"/>
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Anular" ID="anularButton" OnClick="anularButton_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Anular" ID="anularButton" OnClick="anularButton_Click" ValidationGroup="confirmarAnular"/>
                 <asp:Button runat="server" Text="Cancelar" ID="cancelarButton" />
             </div>
         </div>

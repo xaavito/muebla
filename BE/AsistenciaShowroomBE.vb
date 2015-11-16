@@ -63,5 +63,19 @@ Public Class AsistenciaShowroomBE
         End Set
     End Property
 
+    Public Function getCumplido()
+        If cumplido Then
+            Return "Si"
+        Else
+            Return "No"
+        End If
+    End Function
 
+    Public Function getConfirmado()
+        If confirmado Then
+            Return "Si"
+        Else
+            Return "No"
+        End If
+    End Function
 End Class ' AsistenciaShowroomBE

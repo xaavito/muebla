@@ -31,12 +31,12 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Asistio">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemAsistio" Text="<%# Item.cumplido %>" />
+                    <asp:Label runat="server" ID="itemAsistio" Text="<%# Item.getCumplido %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Confirmado">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemConfirmacion" Text="<%# Item.confirmado %>" />
+                    <asp:Label runat="server" ID="itemConfirmacion" Text="<%# Item.getConfirmado%>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
@@ -73,13 +73,15 @@
                 <p>
                     <asp:Label ID="fechaSolicLabel" Text="Fecha" runat="server" />
                     <asp:TextBox ID="fechaSolicTextBox" runat="server" />
+                    <asp:RequiredFieldValidator ValidationGroup="confirmarShowrrom" ErrorMessage="Requerido" ControlToValidate="fechaSolicTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaSolicTextBox" runat="server" ValidationGroup="confirmarShowrrom" />
                     <br />
                     <asp:Label ID="asistioLabel" Text="Asistio" runat="server" />
                     <asp:CheckBox ID="asitioCheckBox" runat="server" />
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="buttonEditOK" OnClick="buttonEditOK_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="buttonEditOK" OnClick="buttonEditOK_Click" ValidationGroup="confirmarShowrrom" />
                 <asp:Button runat="server" Text="Cancelar" ID="ButtonDeleteCancel" />
             </div>
         </div>

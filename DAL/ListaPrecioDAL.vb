@@ -193,6 +193,29 @@ Public Class ListaPrecioDAL
         End Try
     End Sub
 
+    Shared Function getUltimaFecha() As Date
+        Dim table As DataTable
+        Dim list As New List(Of BE.ListaPrecioDetalleBE)
+        Dim fecha As Date
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("GET_ULTIMA_FECHA_VIGENCIA_SP")
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+            For Each item As DataRow In table.Rows
+                fecha = item.Item(0)
+                Return fecha
+            Next
+        Catch ex As Exception
+            Throw ex
+        End Try
+        Return Nothing
+    End Function
+
 
 End Class ' ListaPrecioDAL
 

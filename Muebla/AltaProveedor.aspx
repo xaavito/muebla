@@ -190,14 +190,21 @@
                 <p>
                     <asp:Label ID="valorLabel" Text="Valor" runat="server" />
                     <asp:TextBox ID="valorProductoTextBox" runat="server" />
+                    <asp:RequiredFieldValidator ValidationGroup="altaValor" ErrorMessage="Requerido" ControlToValidate="valorProductoTextBox" runat="server" />
+                    <asp:RegularExpressionValidator ValidationGroup="altaValor" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="valorProductoTextBox"
+                        ValidationExpression="^[0-9]*$" />
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonOkay" OnClick="ButtonOkay_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonOkay" OnClick="ButtonOkay_Click" ValidationGroup="altaValor" />
                 <asp:Button runat="server" Text="Cancelar" ID="ButtonCancel" />
             </div>
         </div>
     </asp:Panel>
-
+    
+    <asp:Button id="altaProductoButton" Text="Alta Producto" runat="server" OnClick="altaProductoButton_Click"/>
+    <br />
     <asp:Button runat="server" ValidationGroup="altaProveedor" ID="confirmarButton" Text="Confirmar" OnClick="confirmarAltaProveedorButton_Click" />
 </asp:Content>

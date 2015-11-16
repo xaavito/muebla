@@ -43,6 +43,9 @@
         ProductoBaja = 34
         UsuarioInactivo = 35
         UsuarioAdmin = 36
+
+        FechaMenorAUltimaVigencia = 37
+
     End Enum
 
     Enum Bitacora

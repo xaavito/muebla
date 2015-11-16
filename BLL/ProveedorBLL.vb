@@ -31,16 +31,17 @@ Public Class ProveedorBLL
         Return DAL.ProveedorDAL.getProductos(prov)
     End Function
 
-    Shared Sub modificarProveedor(prov As ProveedorBE)
+    Shared Sub modificarProveedor(prov As ProveedorBE, obs As String, usr As UsuarioBE)
         DAL.ProveedorDAL.checkCuilExistente(prov)
         DAL.ProveedorDAL.modificarProveedor(prov)
+        DAL.ProveedorDAL.agregarObservacionProv(prov.id, obs, usr)
     End Sub
 
-    Shared Sub eliminarProveedor(id As Integer, ob As String)
+    Shared Sub eliminarProveedor(id As Integer, ob As String, usr As UsuarioBE)
         DAL.ProveedorDAL.checkProveedorProductosVenta(id)
         DAL.ProveedorDAL.checkProveedorProductosStock(id)
         DAL.ProveedorDAL.eliminarProveedor(id)
-        DAL.ProveedorDAL.agregarObservacionProv(id, ob)
+        DAL.ProveedorDAL.agregarObservacionProv(id, ob, usr)
     End Sub
 
     Shared Function getProveedoresPorProducto(p1 As Integer) As List(Of ProveedorBE)
@@ -49,6 +50,10 @@ Public Class ProveedorBLL
 
     Shared Function getPrecioProductoProveedor(idProd As Integer, idProv As Integer) As Decimal
         Return DAL.ProveedorDAL.getPrecioProductoProveedor(idProd, idProv)
+    End Function
+
+    Shared Function getObservaciones(idProveedor As Integer) As DataTable
+        Return DAL.ProveedorDAL.getObservaciones(idProveedor)
     End Function
 
 End Class ' ProveedorBLL

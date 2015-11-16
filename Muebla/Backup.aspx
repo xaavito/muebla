@@ -47,7 +47,8 @@
         <tr>
             <asp:Label ID="nombreLabel" Text="Nombre" runat="server" />
             <asp:TextBox runat="server" ID="backupTextBox" />
+            <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="backupTextBox" runat="server" ValidationGroup="backup"/>
         </tr>
     </table>
-    <asp:Button Text="Confirmar" id="confirmarButton" runat="server" OnClick="confirmarButton_Click"    />
+    <asp:Button Text="Confirmar" id="confirmarButton" runat="server" OnClick="confirmarButton_Click"  ValidationGroup="backup"/>
 </asp:Content>

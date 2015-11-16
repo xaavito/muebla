@@ -64,7 +64,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Activo">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemEstado" Text="<%# Item.activo %>" />
+                    <asp:Label runat="server" ID="itemEstado" Text="<%# Item.getActivo %>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
@@ -75,6 +75,9 @@
                     <asp:ImageButton ID="ibtnDelete" runat="server"
                         ImageUrl="/images/deleteItem.png"
                         OnClick="ibtnDelete_Click" />
+                    <asp:ImageButton ID="ibtnDetail" runat="server"
+                        ImageUrl="/images/detail.png"
+                        OnClick="ibtnDetail_Click" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -105,7 +108,7 @@
                     <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                         ErrorMessage="Solo Numeros"
                         ControlToValidate="cuitTextBox"
-                        ValidationExpression="^[0-9]*$" />
+                        ValidationExpression="^[0-9]{10,11}$" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>
@@ -273,6 +276,58 @@
             <div class="popup_Buttons">
                 <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonOkay" OnClick="ButtonOkay_Click" />
                 <asp:Button runat="server" Text="Cancelar" ID="ButtonCancel" />
+            </div>
+        </div>
+    </asp:Panel>
+
+    <ajaxToolkit:ModalPopupExtender
+        ID="ModalPopupExtender1" runat="server"
+        CancelControlID="cancelarEditObsButton"
+        TargetControlID="Button1" PopupControlID="DivObservacionesEdit"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupConfirmation" ID="DivObservacionesEdit"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Titlebar" id="PopupHeader1">
+                <div class="TitlebarLeft">
+                    <asp:Label Text="Observaciones" ID="observacionesLabel1" runat="server" />
+                </div>
+            </div>
+            <div class="popup_Body">
+                <p>
+                    <asp:Label runat="server" ID="observacionesLabel2" Text="Observaciones" />
+                    <asp:TextBox TextMode="MultiLine" Rows="4" ID="obsEditTextBox" runat="server" />
+                    <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="obsEditTextBox" runat="server" ValidationGroup="altaEdit"/>
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="confirmarEditarButton" OnClick="confirmarEditarButton_Click" ValidationGroup="altaEdit"/>
+                <asp:Button runat="server" Text="Cancelar" ID="cancelarEditObsButton" />
+            </div>
+        </div>
+    </asp:Panel>
+
+    <ajaxToolkit:ModalPopupExtender
+        ID="detailsModalPopup" runat="server"
+        CancelControlID="okButton"
+        TargetControlID="Button1" PopupControlID="DivDetalles"
+        BackgroundCssClass="ModalPopupBG">
+    </ajaxToolkit:ModalPopupExtender>
+
+    <asp:Panel class="popupConfirmation" ID="DivDetalles"
+        Style="display: none" runat="server">
+        <div class="popup_Container">
+            <div class="popup_Body">
+                <p>
+                    <asp:GridView id="detallesProveedores" runat="server" AutoGenerateColumns="true" ShowHeader="false">
+
+                    </asp:GridView>
+                </p>
+            </div>
+            <div class="popup_Buttons">
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="OK" ID="okButton" />
             </div>
         </div>
     </asp:Panel>

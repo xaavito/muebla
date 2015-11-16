@@ -17,7 +17,8 @@
                 <asp:Label runat="server" ID="fechaDesdeLabel" Text="Fecha Desde" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="fechaDesdeDate"/>       
+                <asp:TextBox runat="server" ID="fechaDesdeDate"/>
+                <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaDesdeDate" runat="server" ValidationGroup="buscarBitacora" />       
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -26,6 +27,7 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="fechaHastaDate"/> 
+                <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaHastaDate" runat="server" ValidationGroup="buscarBitacora" />       
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -38,7 +40,7 @@
         </asp:TableRow>
     </asp:Table>
 
-    <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarButton_Click"  />
+    <asp:Button runat="server" ID="buscarButton" Text="Buscar" OnClick="buscarButton_Click" ValidationGroup="buscarBitacora" />
 
     <asp:GridView runat="server" ID="bitacoraResultadosDataGrid"
         AllowPaging="true" PageSize="12"

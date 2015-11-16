@@ -47,7 +47,7 @@
         </Columns>
     </asp:GridView>
 
-    <div runat="server" id="editDiv">
+    <div runat="server" id="editDiv" class="editClass">
         <asp:Table runat="server" ID="tableEditIdioma">
             <asp:TableRow>
                 <asp:TableCell>

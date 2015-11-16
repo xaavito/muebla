@@ -392,7 +392,7 @@ Public Class PDFGenerator
         noCell.Border = Rectangle.NO_BORDER
         headertable.AddCell(noCell)
 
-        Dim nroDato As PdfPCell = New PdfPCell(New Phrase(oc.id, titleFont))
+        Dim nroDato As PdfPCell = New PdfPCell(New Phrase(oc.id.ToString().PadLeft(8, "0"), titleFont))
         nroDato.HorizontalAlignment = 2
         nroDato.Border = Rectangle.NO_BORDER
         headertable.AddCell(nroDato)
@@ -874,37 +874,30 @@ Public Class PDFGenerator
         document.Add(headertable)
 
         'Create body table
-        Dim itemTable As PdfPTable = New PdfPTable(3)
+        Dim itemTable As PdfPTable = New PdfPTable(2)
         itemTable.HorizontalAlignment = 0
         itemTable.WidthPercentage = 100
-        itemTable.SetWidths(New Integer() {10, 40, 20})
+        itemTable.SetWidths(New Integer() {10, 40})
         ' then set the column's __relative__ widths
         itemTable.SpacingAfter = 40
         itemTable.DefaultCell.Border = Rectangle.BOX
         Dim cell1 As PdfPCell = New PdfPCell(New Phrase("NRO", boldTableFont))
         cell1.HorizontalAlignment = 1
         itemTable.AddCell(cell1)
-        Dim cell2 As PdfPCell = New PdfPCell(New Phrase("ITEM", boldTableFont))
-        cell2.HorizontalAlignment = 1
-        itemTable.AddCell(cell2)
-        Dim cell3 As PdfPCell = New PdfPCell(New Phrase("CANTIDAD", boldTableFont))
+        Dim cell3 As PdfPCell = New PdfPCell(New Phrase("DESCRIPCION", boldTableFont))
         cell3.HorizontalAlignment = 1
         itemTable.AddCell(cell3)
 
         Dim numberCell As PdfPCell
-        Dim descCell As PdfPCell
         Dim qtyCell As PdfPCell
 
+        Dim row As Integer = 0
         For Each pp As BE.HojaRutaDetalleBE In hr.detalles
-            numberCell = New PdfPCell(New Phrase("", bodyFont))
+            row = row + 1
+            numberCell = New PdfPCell(New Phrase(row.ToString, bodyFont))
             numberCell.HorizontalAlignment = 0
             numberCell.PaddingLeft = 10.0F
             itemTable.AddCell(numberCell)
-
-            descCell = New PdfPCell(New Phrase("", bodyFont))
-            descCell.HorizontalAlignment = 0
-            descCell.PaddingLeft = 10.0F
-            itemTable.AddCell(descCell)
 
             qtyCell = New PdfPCell(New Phrase(pp.descripcion, bodyFont))
             qtyCell.HorizontalAlignment = 0

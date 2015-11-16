@@ -234,7 +234,7 @@ Public Class ProveedorDAL
         End Try
     End Sub
 
-    Shared Sub agregarObservacionProv(id As Integer, ob As String)
+    Shared Sub agregarObservacionProv(id As Integer, ob As String, usr As UsuarioBE)
         Dim resultado As Integer
 
         Dim repository As New AccesoSQLServer
@@ -242,6 +242,7 @@ Public Class ProveedorDAL
             repository.crearComando("AGREGAR_OBSERVACION_PROV_SP")
             repository.addParam("@id", id)
             repository.addParam("@ob", ob)
+            repository.addParam("@usr", usr.id)
             resultado = repository.executeSearchWithStatus()
             If (resultado = 0) Then
                 Throw New Util.CreacionException
@@ -271,8 +272,17 @@ Public Class ProveedorDAL
                 prov.razonSocial = item.Item(1)
                 prov.contacto = item.Item(2)
                 prov.cuit = item.Item(3)
-                prov.mail = item.Item(6)
-                prov.activo = item.Item(7)
+                prov.mail = item.Item(4)
+                prov.activo = item.Item(5)
+
+                prov.dom.id = item.Item(6)
+                prov.dom.calle = item.Item(7)
+                prov.dom.numero = item.Item(8)
+                prov.dom.dpto = item.Item(9)
+                prov.dom.piso = item.Item(10)
+                prov.dom.localidad.id = item.Item(11)
+                prov.dom.localidad.descripcion = item.Item(12)
+                prov.dom.localidad.provincia.id = item.Item(13)
 
                 list.Add(prov)
             Next
@@ -343,6 +353,26 @@ Public Class ProveedorDAL
 
         prov.tel.id = id
     End Sub
+
+    Shared Function getObservaciones(idProveedor As Integer) As DataTable
+        Dim table As DataTable
+        Dim list As New List(Of BE.ComparacionProductos)
+
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("BUSCAR_OBS_PROV_SP")
+            repository.addParam("@id", idProveedor)
+            table = New DataTable
+            table = repository.executeSearchWithAdapter()
+            If (table.Rows.Count = 0) Then
+                Throw New Util.BusquedaSinResultadosException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+        Return table
+    End Function
 
 End Class
 

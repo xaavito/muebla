@@ -121,4 +121,8 @@
             logMessage(ex)
         End Try
     End Sub
+
+    Protected Sub altaProductoButton_Click(sender As Object, e As EventArgs)
+        Response.Redirect("AltaProducto.aspx", False)
+    End Sub
 End Class

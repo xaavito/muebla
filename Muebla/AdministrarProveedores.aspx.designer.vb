@@ -471,4 +471,103 @@ Partial Public Class AdministrarProveedores
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
     Protected WithEvents ButtonCancel As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control ModalPopupExtender1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents ModalPopupExtender1 As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivObservacionesEdit.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivObservacionesEdit As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control observacionesLabel1.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents observacionesLabel1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control observacionesLabel2.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents observacionesLabel2 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Control obsEditTextBox.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents obsEditTextBox As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Control confirmarEditarButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents confirmarEditarButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control cancelarEditObsButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents cancelarEditObsButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
+    '''Control detailsModalPopup.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents detailsModalPopup As Global.AjaxControlToolkit.ModalPopupExtender
+
+    '''<summary>
+    '''Control DivDetalles.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents DivDetalles As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''Control detallesProveedores.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents detallesProveedores As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''Control okButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents okButton As Global.System.Web.UI.WebControls.Button
 End Class

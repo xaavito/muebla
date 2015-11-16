@@ -109,7 +109,10 @@
     <Content Include="Bitacora.aspx" />
     <Content Include="Carrito.aspx" />
     <Content Include="compraPersonalizada.aspx" />
+    <Content Include="error.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="images\bar_code.jpg" />
+    <Content Include="images\Benlew1.jpeg" />
     <Content Include="images\price_comparison.png" />
     <Content Include="images\purchaseOrder.png" />
     <Content Include="images\view.png" />
@@ -270,6 +273,16 @@
     <Compile Include="compraPersonalizada.aspx.vb">
       <DependentUpon>compraPersonalizada.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.vb">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="error.aspx.vb">
+      <DependentUpon>error.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.vb">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="registroCompleto.aspx.designer.vb">
       <DependentUpon>registroCompleto.aspx</DependentUpon>

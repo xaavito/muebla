@@ -383,6 +383,15 @@ Partial Public Class AltaProveedor
     Protected WithEvents ButtonCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
+    '''Control altaProductoButton.
+    '''</summary>
+    '''<remarks>
+    '''Campo generado automáticamente.
+    '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+    '''</remarks>
+    Protected WithEvents altaProductoButton As Global.System.Web.UI.WebControls.Button
+
+    '''<summary>
     '''Control confirmarButton.
     '''</summary>
     '''<remarks>

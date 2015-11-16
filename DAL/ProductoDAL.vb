@@ -430,6 +430,5 @@ Public Class ProductoDAL
 
         Return table
     End Function
-
 End Class ' ProductoDAL
 

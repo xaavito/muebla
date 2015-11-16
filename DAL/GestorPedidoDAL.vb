@@ -119,7 +119,7 @@ Public Class GestorPedidoDAL
                 For Each pp As PedidoProductoBE In ped.productos
                     repository.crearComando("ALTA_HR_DETALLE_SP")
                     repository.addParam("@idCabecera", id)
-                    repository.addParam("@desc", ped.usr.domicilio.formatedLine)
+                    repository.addParam("@desc", "P " + pp.producto.id.ToString + " D " + ped.usr.domicilio.formatedLine.ToString)
                     idDet = repository.executeSearchWithStatus
                     If (idDet <= 0) Then
                         Throw New CreacionException
@@ -250,6 +250,10 @@ Public Class GestorPedidoDAL
         Catch ex As Exception
             Throw ex
         End Try
+        Dim est As New BE.EstadoPedidoBE
+        est.id = 0
+        est.descripcion = "Todos"
+        componentes.Add(est)
         Return componentes
     End Function
 

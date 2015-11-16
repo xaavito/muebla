@@ -97,41 +97,51 @@
     End Sub
 
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
-        If Not allProductosListBox.SelectedItem Is Nothing Then
-            Dim idToAdd As Integer = allProductosListBox.SelectedValue
-            Dim found As Boolean = False
-            If productosPropiosListBox.DataSource Is Nothing Then
-                found = False
-            Else
-                For Each prod As BE.ProductoBE In productosPropiosListBox.DataSource
-                    If prod.id = idToAdd Then
-                        found = True
-                    End If
-                Next
-            End If
-
-            If found = False Then
-                Dim ps As List(Of BE.ProductoBE) = productosPropiosListBox.DataSource
-                If ps Is Nothing Then
-                    ps = New List(Of BE.ProductoBE)
+        Try
+            If Not allProductosListBox.SelectedItem Is Nothing Then
+                Dim idToAdd As Integer = allProductosListBox.SelectedValue
+                Dim found As Boolean = False
+                If productosPropiosListBox.DataSource Is Nothing Then
+                    found = False
+                Else
+                    For Each prod As BE.ProductoBE In productosPropiosListBox.DataSource
+                        If prod.id = idToAdd Then
+                            found = True
+                        End If
+                    Next
                 End If
-                Dim prods As List(Of BE.ProductoBE) = Session("productosMateriaPrima")
-                For Each p As BE.ProductoBE In prods
-                    If p.id = idToAdd Then
-                        ps.Add(p)
+
+                If found = False Then
+                    Dim ps As List(Of BE.ProductoBE) = productosPropiosListBox.DataSource
+                    If ps Is Nothing Then
+                        ps = New List(Of BE.ProductoBE)
                     End If
-                Next
-                productosPropiosListBox.DataSource = ps
-                productosPropiosListBox.DataBind()
-                Session("productosPropios") = ps
+                    Dim prods As List(Of BE.ProductoBE) = Session("AllProductos")
+                    For Each p As BE.ProductoBE In prods
+                        If p.id = idToAdd Then
+                            ps.Add(p)
+                        End If
+                    Next
+                    productosPropiosListBox.DataSource = ps
+                    productosPropiosListBox.DataBind()
+                    Session("MyProductos") = ps
+                End If
             End If
-        End If
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub removerProductoButton_Click(sender As Object, e As ImageClickEventArgs)
-        If Not productosPropiosListBox.SelectedItem Is Nothing Then
-            productosPropiosListBox.Items.RemoveAt(productosPropiosListBox.SelectedIndex)
-        End If
+        Try
+            If Not productosPropiosListBox.SelectedItem Is Nothing Then
+                productosPropiosListBox.Items.RemoveAt(productosPropiosListBox.SelectedIndex)
+            End If
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub modificarButton_Click(sender As Object, e As EventArgs)
@@ -140,6 +150,7 @@
             Dim prov As New BE.ProveedorBE
             prov.id = Session("idProveedor")
             prov.cuit = Me.cuitTextBox.Text
+            prov.contacto = Me.contactoTextBox.Text
             prov.dom.calle = Me.direccionTextBox.Text
             prov.dom.numero = Me.nroCalleTextBox.Text
             prov.dom.piso = Me.pisoTextBox.Text
@@ -151,10 +162,12 @@
             prov.tel.numero = Me.telefonoTextBox.Text
             prov.tel.interno = Me.internoTextBox.Text
             prov.tel.prefijo = Me.prefijoTextBox.Text
-            prov.productos = Session("productosPropios")
+            prov.productos = Session("MyProductos")
 
-            BLL.ProveedorBLL.modificarProveedor(prov)
-            Throw New Util.ModificacionExitosaException
+            Session("prov") = prov
+            ModalPopupExtender1.Show()
+
+            
         Catch ex As Exception
             logMessage(ex)
         End Try
@@ -167,7 +180,7 @@
 
     Protected Sub ButtonOkay_Click(sender As Object, e As EventArgs)
         Try
-            BLL.ProveedorBLL.eliminarProveedor(Session("idProveedor"), Me.observacionesTextBox.Text)
+            BLL.ProveedorBLL.eliminarProveedor(Session("idProveedor"), Me.observacionesTextBox.Text, getUsuario)
             Throw New Util.EliminacionExitosaException
         Catch ex As Exception
             logMessage(ex)
@@ -180,6 +193,25 @@
             Me.localidadDropDownList.DataTextField = "descripcion"
             Me.localidadDropDownList.DataValueField = "id"
             Me.localidadDropDownList.DataBind()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub ibtnDetail_Click(sender As Object, e As ImageClickEventArgs)
+        Try
+            Me.detallesProveedores.DataSource = BLL.ProveedorBLL.getObservaciones(getItemId(sender, Me.proveedoresResultadosDataGrid))
+            Me.detallesProveedores.DataBind()
+            detailsModalPopup.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub confirmarEditarButton_Click(sender As Object, e As EventArgs)
+        Try
+            BLL.ProveedorBLL.modificarProveedor(Session("prov"), obsEditTextBox.Text, getUsuario)
+            Throw New Util.ModificacionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try

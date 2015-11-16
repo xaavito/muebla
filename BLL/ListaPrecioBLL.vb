@@ -4,6 +4,7 @@ Imports BE
 Public Class ListaPrecioBLL
 
     Public Shared Sub altaListaPrecio(ByVal listaPrecio As ListaPrecioBE)
+        BLL.ListaPrecioBLL.checkFechas(listaPrecio.fechaDesde)
         listaPrecio.id = DAL.ListaPrecioDAL.altaListaPrecio(listaPrecio)
         DAL.ListaPrecioDAL.altaDetallesListaPrecio(listaPrecio)
         DAL.ListaPrecioDAL.cerrarVigencia(listaPrecio)
@@ -37,6 +38,13 @@ Public Class ListaPrecioBLL
         If desde >= hasta Then
             Throw New Util.FechaHastaMenorIgualDesde
         End If
+    End Sub
+
+    Private Shared Sub checkFechas(fechaDesdeNueva As Date)
+        If DAL.ListaPrecioDAL.getUltimaFecha() >= fechaDesdeNueva Then
+            Throw New Util.FechaMenorAUltimaVigencia
+        End If
+        Throw New NotImplementedException
     End Sub
 
 

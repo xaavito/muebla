@@ -18,7 +18,7 @@
         <Columns>
             <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Imagen">
@@ -55,7 +55,7 @@
         BackgroundCssClass="ModalPopupBG">
     </ajaxToolkit:ModalPopupExtender>
 
-    <asp:Panel class="popupConfirmation" ID="DivAddPromoConfirmation"
+    <asp:Panel class="popupEdit" ID="DivAddPromoConfirmation"
         Style="display: none" runat="server">
         <div class="popup_Container">
             <div class="popup_Titlebar" id="PopupHeader">
@@ -65,42 +65,54 @@
             </div>
             <div class="popup_Body">
                 <p>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" ID="precioActualLabel" Text="Precio Actual" />
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox runat="server" ID="precioActualTextBox" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" ID="precioPromoLabel" Text="Precio Promo" />
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox runat="server" ID="precioPromoTextBox" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" ID="fechaDesdeLabel1" Text="Fecha Desde" />
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox runat="server" ID="fechaDesdeTextBox1" />
-                        </asp:TableCell>
-                    </asp:TableRow>
-                    <asp:TableRow>
-                        <asp:TableCell>
-                            <asp:Label runat="server" ID="fechaHastaLabel1" Text="Fecha Hasta" />
-                        </asp:TableCell>
-                        <asp:TableCell>
-                            <asp:TextBox runat="server" ID="fechaHastaTextBox1"  />
-                        </asp:TableCell>
-                    </asp:TableRow>
+                    <asp:Table runat="server">
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="precioActualLabel" Text="Precio Actual" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="precioActualTextBox" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="precioPromoLabel" Text="Precio Promo" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="precioPromoTextBox" />
+                                <asp:RequiredFieldValidator ValidationGroup="altaPromo" ErrorMessage="Requerido" ControlToValidate="precioPromoTextBox" runat="server" />
+                                <asp:RegularExpressionValidator ValidationGroup="altaPromo" runat="server"
+                                    ErrorMessage="Solo Numeros"
+                                    ControlToValidate="precioPromoTextBox"
+                                    ValidationExpression="^[0-9]$" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="fechaDesdeLabel1" Text="Fecha Desde" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="fechaDesdeTextBox1" />
+                                <asp:RequiredFieldValidator ValidationGroup="altaPromo" ErrorMessage="Requerido" ControlToValidate="fechaDesdeTextBox1" runat="server" />
+                                <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaDesdeTextBox1" runat="server" ValidationGroup="altaPromo" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                        <asp:TableRow>
+                            <asp:TableCell>
+                                <asp:Label runat="server" ID="fechaHastaLabel1" Text="Fecha Hasta" />
+                            </asp:TableCell>
+                            <asp:TableCell>
+                                <asp:TextBox runat="server" ID="fechaHastaTextBox1" />
+                                <asp:RequiredFieldValidator ValidationGroup="altaListaPrecio" ErrorMessage="Requerido" ControlToValidate="fechaHastaTextBox1" runat="server" />
+                                <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaHastaTextBox1" runat="server" ValidationGroup="altaPromo" />
+                            </asp:TableCell>
+                        </asp:TableRow>
+                    </asp:Table>
+
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonConfirmarOkay" OnClick="ButtonConfirmarOkay_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonConfirmarOkay" OnClick="ButtonConfirmarOkay_Click" ValidationGroup="altaPromo" />
                 <asp:Button runat="server" Text="Cancelar" ID="ButtonCancel" />
             </div>
         </div>

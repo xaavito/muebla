@@ -1,8 +1,9 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/MasterPage.Master" CodeBehind="AdministrarListaPrecio.aspx.vb" Inherits="Muebla.ModificarListaPrecio" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager id="scriptManager" runat="server" />
+    <asp:ScriptManager ID="scriptManager" runat="server" />
 
     <asp:Table runat="server" ID="tableAdministrarProveedoresCriteria" CssClass="table">
         <asp:TableRow>
@@ -38,7 +39,7 @@
         <Columns>
             <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Descripcion">
@@ -58,7 +59,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Activo">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemEstado" Text="<%# Item.activo%>" />
+                    <asp:Label runat="server" ID="itemEstado" Text="<%# Item.getActivo%>" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Acciones">
@@ -84,9 +85,9 @@
             OnPreRender="detalleListaPrecioResultGrid_PreRender"
             OnPageIndexChanging="detalleListaPrecioResultGrid_PageIndexChanging">
             <Columns>
-                <asp:TemplateField HeaderText="ID">
+                <asp:TemplateField HeaderText="ID" Visible="false">
                     <ItemTemplate>
-                        <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" />
+                        <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Imagen">
@@ -136,10 +137,15 @@
                     <p>
                         <asp:Label ID="valoLabel" runat="server" />
                         <asp:TextBox ID="valorTextBox" runat="server" />
+                        <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="valorTextBox" runat="server" ValidationGroup="confirmar" />
+                        <asp:RegularExpressionValidator ValidationGroup="confirmar" runat="server"
+                            ErrorMessage="Solo Numeros"
+                            ControlToValidate="valorTextBox"
+                            ValidationExpression="^[0-9]$" />
                     </p>
                 </div>
                 <div class="popup_Buttons">
-                    <asp:Button runat="server" Text="Confirmar" ID="ButtonEditDetailOkay" OnClick="confirmarEdicionButton_Click" />
+                    <asp:Button runat="server" Text="Confirmar" ID="ButtonEditDetailOkay" OnClick="confirmarEdicionButton_Click" ValidationGroup="confirmar" />
                     <asp:Button runat="server" Text="Cancelar" ID="ButtonEditDetailCancel" OnClick="ButtonEditDetailCancel_Click" />
                 </div>
             </div>

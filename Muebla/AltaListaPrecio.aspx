@@ -22,6 +22,7 @@
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="fechaDesdeTextBox" />
                 <asp:RequiredFieldValidator ValidationGroup="altaListaPrecio" ErrorMessage="Requerido" ControlToValidate="fechaDesdeTextBox" runat="server" />
+                <asp:RegularExpressionValidator ValidationExpression="^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$" ErrorMessage="Fecha Invalida" ControlToValidate="fechaDesdeTextBox" runat="server" ValidationGroup="altaListaPrecio" />
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
@@ -97,10 +98,15 @@
                 <p>
                     <asp:Label ID="valoLabel" runat="server" />
                     <asp:TextBox ID="valorTextBox" runat="server" />
+                    <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="valorTextBox" runat="server" ValidationGroup="confirmar" />
+                    <asp:RegularExpressionValidator ValidationGroup="confirmar" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="valorTextBox"
+                        ValidationExpression="^[0-9]$" />
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" Text="Confirmar" ID="ButtonEditDetailOkay" OnClick="ButtonEditDetailOkay_Click" />
+                <asp:Button runat="server" Text="Confirmar" ID="ButtonEditDetailOkay" OnClick="ButtonEditDetailOkay_Click" ValidationGroup="confirmar" />
                 <asp:Button runat="server" Text="Cancelar" ID="ButtonEditDetailCancel" OnClick="ButtonEditDetailCancel_Click" />
             </div>
         </div>

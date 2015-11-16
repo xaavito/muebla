@@ -64,7 +64,7 @@
     Public Function getTotal()
         Dim tot As Decimal = 0
         For Each det As BE.OrdenCompraDetalleBE In detalle
-            tot = tot * det.precioUnitario * det.cantidad
+            tot = tot + det.precioUnitario * det.cantidad
         Next
         Return tot
     End Function

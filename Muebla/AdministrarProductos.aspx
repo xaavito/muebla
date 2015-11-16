@@ -263,6 +263,7 @@
                     <br />
                     <asp:Label ID="cantidadLabel" Text="Cantidad" runat="server" />
                     <asp:TextBox ID="cantidadTextBox" runat="server" />
+                    <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="cantidadTextBox"  ValidationGroup="altaOC" runat="server" />
                 </p>
             </div>
             <div class="popup_Buttons">
@@ -272,7 +273,7 @@
                         modalPopupBehavior.hide();
                     }
                 </script>
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ocOkButton" OnClick="ocOkButton_Click" OnClientClick="closePop()" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ocOkButton" OnClick="ocOkButton_Click" OnClientClick="closePop()" ValidationGroup="altaOC"/>
                 <asp:Button runat="server" UseSubmitBehavior="false" Text="Cancelar" ID="ocCancelButton" />
             </div>
         </div>
