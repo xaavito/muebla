@@ -3,8 +3,21 @@ Imports Util
 
 
 Public Class GestorIdiomaDAL
-    Public Shared Sub altaIdioma(ByVal componentes As ComponenteBE, ByVal idioma As String)
+    Public Shared Sub altaIdioma(ByVal idioma As String)
+        Dim ret As Integer
 
+        Dim repository As New AccesoSQLServer
+        Try
+            repository.crearComando("ALTA_IDIOMA_SP")
+            repository.addParam("@idioma", idioma)
+
+            ret = repository.executeSearchWithStatus
+            If (ret = 0) Then
+                Throw New Util.CreacionException
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
     End Sub
 
     Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
@@ -61,10 +74,6 @@ Public Class GestorIdiomaDAL
         
         Return idiomas
     End Function
-
-    Public Shared Sub modificarIdioma(ByVal idioma As IdiomaBE)
-
-    End Sub
 
     Shared Function getTranslation(p1 As String, p2 As Integer) As String
         Dim table As DataTable

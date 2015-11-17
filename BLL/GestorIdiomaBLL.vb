@@ -4,8 +4,8 @@ Imports System.Web.Configuration
 Public Class GestorIdiomaBLL
     Private Shared _comps As List(Of BE.IdiomaBE)
 
-    Public Shared Sub altaIdioma(ByVal componentes As ComponenteBE, ByVal idioma As String)
-        'TODO LO HACEMOS O NO?
+    Public Shared Sub altaIdioma(ByVal idioma As String)
+        DAL.GestorIdiomaDAL.altaIdioma(idioma)
     End Sub
 
     Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
