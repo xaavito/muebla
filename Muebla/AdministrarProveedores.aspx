@@ -39,7 +39,7 @@
         <Columns>
             <asp:TemplateField HeaderText="ID" Visible="false">
                 <ItemTemplate>
-                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false"/>
+                    <asp:Label runat="server" ID="itemID" Text="<%# Item.id %>" Visible="false" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Razon Social">
@@ -84,6 +84,40 @@
     </asp:GridView>
 
     <div id="editData" runat="server">
+
+        <ajaxToolkit:ModalPopupExtender
+            ID="lnkValor_ModalPopupExtender" runat="server"
+            CancelControlID="ButtonCancel"
+            TargetControlID="Button1" PopupControlID="DivValorConfirmation"
+            BackgroundCssClass="ModalPopupBG">
+        </ajaxToolkit:ModalPopupExtender>
+
+        <asp:Panel class="popupConfirmation" ID="DivValorConfirmation"
+            Style="display: none" runat="server">
+            <div class="popup_Container">
+                <div class="popup_Titlebar" id="PopupHeader2">
+                    <div class="TitlebarLeft">
+                        <asp:Label Text="Edicion" ID="edicionLabel" runat="server" />
+                    </div>
+                </div>
+                <div class="popup_Body">
+                    <p>
+                        <asp:Label ID="valorLabel" Text="Valor" runat="server" />
+                        <asp:TextBox ID="valorProductoTextBox" runat="server" />
+                        <asp:RequiredFieldValidator ValidationGroup="altaValor" ErrorMessage="Requerido" ControlToValidate="valorProductoTextBox" runat="server" />
+                        <asp:RegularExpressionValidator ValidationGroup="altaValor" runat="server"
+                            ErrorMessage="Solo Numeros"
+                            ControlToValidate="valorProductoTextBox"
+                            ValidationExpression="^[0-9]*$" />
+                    </p>
+                </div>
+                <div class="popup_Buttons">
+                    <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="Button3" OnClick="Button3_Click" ValidationGroup="altaValor" />
+                    <asp:Button runat="server" Text="Cancelar" ID="Button4" />
+                </div>
+            </div>
+        </asp:Panel>
+
         <asp:Table runat="server" ID="tableAltaProveedor">
             <asp:TableRow>
                 <asp:TableCell>
@@ -248,6 +282,8 @@
         </asp:Table>
         <asp:Button Text="Modificar" ID="modificarButton" runat="server" OnClick="modificarButton_Click" />
         <asp:Button Text="Cancelar" ID="cancelarButton" runat="server" OnClick="cancelarButton_Click" />
+
+
     </div>
 
     <asp:Button ID="Button1" runat="server" Style="display: none" />
@@ -299,11 +335,11 @@
                 <p>
                     <asp:Label runat="server" ID="observacionesLabel2" Text="Observaciones" />
                     <asp:TextBox TextMode="MultiLine" Rows="4" ID="obsEditTextBox" runat="server" />
-                    <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="obsEditTextBox" runat="server" ValidationGroup="altaEdit"/>
+                    <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="obsEditTextBox" runat="server" ValidationGroup="altaEdit" />
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="confirmarEditarButton" OnClick="confirmarEditarButton_Click" ValidationGroup="altaEdit"/>
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="confirmarEditarButton" OnClick="confirmarEditarButton_Click" ValidationGroup="altaEdit" />
                 <asp:Button runat="server" Text="Cancelar" ID="cancelarEditObsButton" />
             </div>
         </div>
@@ -321,8 +357,7 @@
         <div class="popup_Container">
             <div class="popup_Body">
                 <p>
-                    <asp:GridView id="detallesProveedores" runat="server" AutoGenerateColumns="true" ShowHeader="false">
-
+                    <asp:GridView ID="detallesProveedores" runat="server" AutoGenerateColumns="true" ShowHeader="false">
                     </asp:GridView>
                 </p>
             </div>

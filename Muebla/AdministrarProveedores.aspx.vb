@@ -6,7 +6,6 @@
             Return
         End If
         Me.editData.Visible = False
-        'TODO PASAR A AJAX CONTROL TOOLKIT
 
         Me.provinciaDropDownList.DataSource = BLL.UsuarioBLL.getProvincias()
         Me.provinciaDropDownList.DataTextField = "descripcion"
@@ -97,40 +96,7 @@
     End Sub
 
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
-        Try
-            If Not allProductosListBox.SelectedItem Is Nothing Then
-                Dim idToAdd As Integer = allProductosListBox.SelectedValue
-                Dim found As Boolean = False
-                If productosPropiosListBox.DataSource Is Nothing Then
-                    found = False
-                Else
-                    For Each prod As BE.ProductoBE In productosPropiosListBox.DataSource
-                        If prod.id = idToAdd Then
-                            found = True
-                        End If
-                    Next
-                End If
-
-                If found = False Then
-                    Dim ps As List(Of BE.ProductoBE) = productosPropiosListBox.DataSource
-                    If ps Is Nothing Then
-                        ps = New List(Of BE.ProductoBE)
-                    End If
-                    Dim prods As List(Of BE.ProductoBE) = Session("AllProductos")
-                    For Each p As BE.ProductoBE In prods
-                        If p.id = idToAdd Then
-                            ps.Add(p)
-                        End If
-                    Next
-                    productosPropiosListBox.DataSource = ps
-                    productosPropiosListBox.DataBind()
-                    Session("MyProductos") = ps
-                End If
-            End If
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
-        
+        lnkValor_ModalPopupExtender.Show()
     End Sub
 
     Protected Sub removerProductoButton_Click(sender As Object, e As ImageClickEventArgs)
@@ -212,6 +178,43 @@
         Try
             BLL.ProveedorBLL.modificarProveedor(Session("prov"), obsEditTextBox.Text, getUsuario)
             Throw New Util.ModificacionExitosaException
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+    End Sub
+
+    Protected Sub Button3_Click(sender As Object, e As EventArgs)
+        Try
+            If Not allProductosListBox.SelectedItem Is Nothing Then
+                Dim idToAdd As Integer = allProductosListBox.SelectedValue
+                Dim found As Boolean = False
+                If Session("MyProductos") Is Nothing Then
+                    found = False
+                Else
+                    For Each prod As BE.ProductoBE In Session("MyProductos")
+                        If prod.id = idToAdd Then
+                            found = True
+                        End If
+                    Next
+                End If
+
+                If found = False Then
+                    Dim ps As List(Of BE.ProductoBE) = Session("MyProductos")
+                    If ps Is Nothing Then
+                        ps = New List(Of BE.ProductoBE)
+                    End If
+                    Dim prods As List(Of BE.ProductoBE) = Session("AllProductos")
+                    For Each p As BE.ProductoBE In prods
+                        If p.id = idToAdd Then
+                            p.precio = Decimal.Parse(Me.valorProductoTextBox.Text)
+                            ps.Add(p)
+                        End If
+                    Next
+                    productosPropiosListBox.DataSource = ps
+                    productosPropiosListBox.DataBind()
+                    Session("MyProductos") = ps
+                End If
+            End If
         Catch ex As Exception
             logMessage(ex)
         End Try
