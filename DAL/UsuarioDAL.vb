@@ -66,6 +66,7 @@ Public Class UsuarioDAL
                 user.usuario = pepe.Item(3)
                 user.activo = pepe.Item(4)
                 user.mail = pepe.Item(5)
+                user.password = pepe.Item(6)
                 lista.Add(user)
             Next
         Catch ex As Exception
@@ -587,6 +588,13 @@ Public Class UsuarioDAL
         End Try
         Return lista
     End Function
+
+    Shared Sub cifrar()
+        For Each u As BE.UsuarioBE In buscarUsuarios("", "")
+            u.password = Util.Encrypter.EncryptPasswordMD5(u.password)
+            modificarPass(u)
+        Next
+    End Sub
 
 End Class
 

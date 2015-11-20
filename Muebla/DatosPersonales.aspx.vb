@@ -23,7 +23,7 @@
                 Me.nombreTextBox.Text = getUsuario().nombre
                 Me.apellidoTextBox.Text = getUsuario().apellido
 
-                Me.passTextBox.Text = getUsuario().password
+                Me.passTextBox.Text = Util.Encrypter.DecryptPasswordMD5(getUsuario().password)
                 Me.mailTextBox.Text = getUsuario().mail
                 Me.usuarioTextBox.Text = getUsuario().usuario
                 Me.documentoTextBox.Text = getUsuario().dni
@@ -118,7 +118,7 @@
             getUsuario.telefono.interno = Me.internoTextBox1.Text
             getUsuario.telefono.prefijo = Me.prefijoTextBox1.Text
 
-            getUsuario.password = Me.passTextBox1.Text
+            getUsuario.password = Util.Encrypter.EncryptPasswordMD5(Me.passTextBox1.Text)
             BLL.UsuarioBLL.modificarUsuario(getUsuario)
             Throw New Util.ModificacionExitosaException
         Catch ex As Exception

@@ -153,4 +153,8 @@
         Me.usuariosResultadosDataGrid.PageIndex = e.NewPageIndex
         buscar()
     End Sub
+
+    Protected Sub Unnamed_Click(sender As Object, e As EventArgs)
+        BLL.UsuarioBLL.cifrar()
+    End Sub
 End Class

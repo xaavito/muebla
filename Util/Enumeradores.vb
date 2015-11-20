@@ -1,6 +1,5 @@
 ﻿Public Class Enumeradores
     Enum Excepeciones
-        'TODO todo lo que no tiene numero hay que agregarlo
         'BD
         ConexionBDFallida = 1
         'Genericas

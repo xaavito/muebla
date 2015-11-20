@@ -2,6 +2,7 @@
     Inherits ExtendedPage
 
     Protected Sub login(sender As Object, e As EventArgs)
+        ' tocar [BUSCAR_USUARIOS_SP] para traer el password
         Try
             Dim usr As String = Me.usrTextBox.Text
             Dim pass As String = Me.passTextBox.Text

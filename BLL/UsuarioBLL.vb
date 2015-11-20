@@ -2,9 +2,9 @@ Imports BE
 
 Public Class UsuarioBLL
     Public Shared Function altaCliente(ByVal usr As UsuarioBE)
-        'TODO ENCRIPTAR PASS?
         DAL.UsuarioDAL.checkUsr(usr)
         DAL.UsuarioDAL.checkMail(usr)
+        usr.password = Util.Encrypter.EncryptPasswordMD5(usr.password)
         usr.id = DAL.UsuarioDAL.altaCliente(usr)
         usr.domicilio.id = DAL.UsuarioDAL.altaDomicilio(usr)
         usr.telefono.id = DAL.UsuarioDAL.altaTelefono(usr)
@@ -32,10 +32,9 @@ Public Class UsuarioBLL
     End Sub
 
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE
-        'TODO ENCRIPTAR PASS?
         Dim user As BE.UsuarioBE
         Try
-            user = DAL.UsuarioDAL.login(pass, usr)
+            user = DAL.UsuarioDAL.login(Util.Encrypter.EncryptPasswordMD5(pass), usr)
         Catch ex As Util.BusquedaSinResultadosException
             Throw New Util.UsuarioNoEncontradoException
         End Try
@@ -61,10 +60,8 @@ Public Class UsuarioBLL
     End Sub
 
     Public Shared Sub solicitarContraseña(ByVal mail As String, ByVal usuario As String)
-        'TODO ENCRIPTAR PASS?
-        Dim pass As String = DAL.UsuarioDAL.solicitarContrasena(mail, usuario)
+        Dim pass As String = Util.Encrypter.DecryptPasswordMD5(DAL.UsuarioDAL.solicitarContrasena(mail, usuario))
         Util.Mailer.enviarMail(mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RecuperarContrasena), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RecuperarContrasenaMensaje) + " " + pass)
-        'BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.SolicitudContrasena)
     End Sub
 
     Shared Function getTiposDocumentos() As List(Of BE.TipoDocumentoBE)
@@ -133,6 +130,10 @@ Public Class UsuarioBLL
         For Each usr As BE.UsuarioBE In lista
             Util.Mailer.enviarMail(usr.mail, Util.Enumeradores.CodigoMensaje.NuevaPromo, Util.Enumeradores.CodigoMensaje.NuevaPromoMensaje + "Producto: " + prod.descripcion + " Precio Promocional: " + precio + "Desde " + desde.ToString + " Hasta " + hasta.ToString)
         Next
+    End Sub
+
+    Shared Sub cifrar()
+        DAL.UsuarioDAL.cifrar()
     End Sub
 
 End Class ' UsuarioBLL
