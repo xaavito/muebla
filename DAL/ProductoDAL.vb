@@ -127,6 +127,7 @@ Public Class ProductoDAL
         Catch ex As Exception
             Throw ex
         End Try
+        Return Nothing
     End Function
 
     Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
