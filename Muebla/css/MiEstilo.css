@@ -371,3 +371,8 @@ body {
     border-color: red;
     border:2px;
 }
+
+#error.center {
+    display: block;
+    margin: 0 auto;
+}

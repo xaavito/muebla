@@ -10,6 +10,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <p>
-        <img alt="" class="auto-style1" src="images/Benlew1.jpeg" /></p>
+        <img id="error" alt="" class="auto-style1" src="images/Benlew1.jpeg" style="text-align:center" align="middle"/></p>
 
 </asp:Content>
