@@ -5,7 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="scriptManager" runat="server" />
 
-    <asp:Button Text="cifrarTodo" runat="server" OnClick="Unnamed_Click"/>
     <asp:Table runat="server" ID="tableAdministrarUsuariosCriteria" CssClass="table">
         <asp:TableRow>
             <asp:TableCell>
