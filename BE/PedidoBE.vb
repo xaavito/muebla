@@ -5,7 +5,6 @@ Public Class PedidoBE
     Private _id As Long
     Private _medioPago As MedioPagoBE
     Private _pagado As Boolean
-    Private _tipoVenta As TipoVentaBE
     Private _productos As List(Of BE.PedidoProductoBE)
     Private _estado As BE.EstadoPedidoBE
     Private _usr As UsuarioBE
@@ -118,15 +117,6 @@ Public Class PedidoBE
         End Get
         Set(ByVal Value As Boolean)
             _pagado = Value
-        End Set
-    End Property
-
-    Public Property tipoVenta() As TipoVentaBE
-        Get
-            Return _tipoVenta
-        End Get
-        Set(ByVal Value As TipoVentaBE)
-            _tipoVenta = Value
         End Set
     End Property
 

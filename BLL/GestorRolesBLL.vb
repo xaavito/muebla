@@ -3,11 +3,6 @@ Imports BE
 
 Public Class GestorRolesBLL
 
-
-    Public Shared Sub asignarRoles(ByVal roles As RolBE, ByVal usr As UsuarioBE)
-
-    End Sub
-
     Public Shared Function buscarRoles() As List(Of RolBE)
         Return DAL.GestorRolesDAL.buscarRoles()
     End Function

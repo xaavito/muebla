@@ -72,7 +72,6 @@
     <Compile Include="ComprobanteDetalleBE.vb" />
     <Compile Include="DomicilioBE.vb" />
     <Compile Include="EstadoPedidoBE.vb" />
-    <Compile Include="EstadoProveedorBE.vb" />
     <Compile Include="EventoBE.vb" />
     <Compile Include="NotaCreditoBE.vb" />
     <Compile Include="FacturaBE.vb" />
@@ -107,7 +106,6 @@
     <Compile Include="PedidoProductoBE.vb" />
     <Compile Include="ProductoBE.vb" />
     <Compile Include="PedidoPersonalizado.vb" />
-    <Compile Include="PromocionBE.vb" />
     <Compile Include="ProveedorBE.vb" />
     <Compile Include="ProvinciaBE.vb" />
     <Compile Include="RemitoBE.vb" />
@@ -115,13 +113,11 @@
     <Compile Include="RolBE.vb" />
     <Compile Include="TelefonoBE.vb" />
     <Compile Include="TipoComprobanteBE.vb" />
-    <Compile Include="TipoPagoBE.vb" />
     <Compile Include="TipoEnvioBE.vb" />
     <Compile Include="TipoEventoBE.vb" />
     <Compile Include="TipoProductoBE.vb" />
     <Compile Include="TipoDocumentoBE.vb" />
     <Compile Include="Estado.vb" />
-    <Compile Include="TipoVentaBE.vb" />
     <Compile Include="UsuarioBE.vb" />
   </ItemGroup>
   <ItemGroup>

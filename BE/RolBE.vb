@@ -6,7 +6,6 @@ Public Class RolBE
     Private _descripcion As String
     Private _id As Long
     Private _componentes As List(Of ComponenteBE)
-    Public m_ComponenteBE As ComponenteBE
 
     Public Property descripcion() As String
         Get

@@ -6,10 +6,6 @@ Public Class ProductoBLL
 
     Private Shared _prods As List(Of BE.ListaPrecioDetalleBE)
 
-    Public Shared Sub actualizaCantProducto(ByVal prod As ProductoBE, ByVal cant As Integer)
-        'TODO NO SE SI VAMOS A HACER ESTO.. NO ESTA NI EN LOS CU
-    End Sub
-
     Public Shared Sub altaProducto(ByVal producto As ProductoBE)
         DAL.ProductoDAL.altaProducto(producto)
         DAL.ProductoDAL.altaProductoCompuesto(producto)
@@ -96,10 +92,6 @@ Public Class ProductoBLL
 
     Shared Function getDetalleProducto(idProducto As Integer) As DataTable
         Return DAL.ProductoDAL.getDetalleProducto(idProducto)
-    End Function
-
-    Shared Function getDetalleUsuario(p1 As Integer) As Object
-        Throw New NotImplementedException
     End Function
 
 End Class ' ProductoBLL

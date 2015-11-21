@@ -57,10 +57,6 @@ Public Class ListaPrecioDAL
         Return list
     End Function
 
-    Public Shared Function checkListaVigente(ByVal fecha As DateTime, ByVal tipoVenta As TipoVentaBE) As Boolean
-        checkListaVigente = False
-    End Function
-
     Shared Function getDetalleListaPrecio(id As Integer) As List(Of ListaPrecioDetalleBE)
         Dim table As DataTable
         Dim list As New List(Of BE.ListaPrecioDetalleBE)
