@@ -5,7 +5,6 @@ Public Class LocalidadBE
     Private _descripcion As String
     Private _id As Long
     Private _provincia As ProvinciaBE
-    Private _usr As UsuarioBE
 
     Public Property provincia() As BE.ProvinciaBE
         Get

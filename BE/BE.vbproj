@@ -68,8 +68,6 @@
     <Compile Include="Comentario.vb" />
     <Compile Include="ComparacionProductos.vb" />
     <Compile Include="ComponenteBE.vb" />
-    <Compile Include="ComprobanteBE.vb" />
-    <Compile Include="ComprobanteDetalleBE.vb" />
     <Compile Include="DomicilioBE.vb" />
     <Compile Include="EstadoPedidoBE.vb" />
     <Compile Include="EventoBE.vb" />
@@ -112,7 +110,6 @@
     <Compile Include="RemitoDetalleBE.vb" />
     <Compile Include="RolBE.vb" />
     <Compile Include="TelefonoBE.vb" />
-    <Compile Include="TipoComprobanteBE.vb" />
     <Compile Include="TipoEnvioBE.vb" />
     <Compile Include="TipoEventoBE.vb" />
     <Compile Include="TipoProductoBE.vb" />

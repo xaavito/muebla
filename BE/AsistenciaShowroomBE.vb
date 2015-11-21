@@ -4,7 +4,6 @@ Public Class AsistenciaShowroomBE
     Private _fecha As DateTime
     Private _id As Long
     Private _usuario As UsuarioBE
-    Private _vendedor As UsuarioBE
     Private _confirmado As Boolean
 
     Public Property confirmado() As Boolean
@@ -51,15 +50,6 @@ Public Class AsistenciaShowroomBE
         End Get
         Set(ByVal Value As UsuarioBE)
             _usuario = Value
-        End Set
-    End Property
-
-    Public Property vendedor() As UsuarioBE
-        Get
-            Return _vendedor
-        End Get
-        Set(ByVal Value As UsuarioBE)
-            _vendedor = Value
         End Set
     End Property
 

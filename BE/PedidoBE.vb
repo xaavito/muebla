@@ -1,5 +1,4 @@
 Public Class PedidoBE
-    Private _comprobantes As List(Of ComprobanteBE)
     Private _tipoEnvio As BE.TipoEnvioBE
     Private _fechaCreacion As DateTime
     Private _id As Long
@@ -61,16 +60,6 @@ Public Class PedidoBE
         End Get
         Set(ByVal value As List(Of BE.PedidoProductoBE))
             _productos = value
-        End Set
-    End Property
-
-
-    Public Property comprobantes() As List(Of ComprobanteBE)
-        Get
-            Return _comprobantes
-        End Get
-        Set(ByVal Value As List(Of ComprobanteBE))
-            _comprobantes = Value
         End Set
     End Property
 
