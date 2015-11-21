@@ -588,13 +588,5 @@ Public Class UsuarioDAL
         End Try
         Return lista
     End Function
-
-    Shared Sub cifrar()
-        For Each u As BE.UsuarioBE In buscarUsuarios("", "")
-            u.password = Util.Encrypter.EncryptPasswordMD5(u.password)
-            modificarPass(u)
-        Next
-    End Sub
-
 End Class
 

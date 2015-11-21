@@ -131,9 +131,4 @@ Public Class UsuarioBLL
             Util.Mailer.enviarMail(usr.mail, Util.Enumeradores.CodigoMensaje.NuevaPromo, Util.Enumeradores.CodigoMensaje.NuevaPromoMensaje + "Producto: " + prod.descripcion + " Precio Promocional: " + precio + "Desde " + desde.ToString + " Hasta " + hasta.ToString)
         Next
     End Sub
-
-    Shared Sub cifrar()
-        DAL.UsuarioDAL.cifrar()
-    End Sub
-
 End Class ' UsuarioBLL
