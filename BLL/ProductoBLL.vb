@@ -63,7 +63,7 @@ Public Class ProductoBLL
             Throw New Util.ProveedorInactivo
         End If
         'CHECK OC NO ENTREGADA PARA EL PROVEEDOR
-        'DAL.ProductoDAL.checkProveedorAlDia(oc.proveedor)
+        DAL.ProductoDAL.checkProveedorAlDia(oc.proveedor)
         oc.id = DAL.ProductoDAL.generarOrdenCompra(oc)
         DAL.ProductoDAL.generarOrdenCompraDetalles(oc)
         Dim ms As MemoryStream = Util.PDFGenerator.OrdenCompraPDF(oc)

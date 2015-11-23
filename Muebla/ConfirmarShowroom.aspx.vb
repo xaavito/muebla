@@ -17,7 +17,6 @@ Public Class ConfirmarShowroom
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
         Session("idEdicion") = getItemId(sender, Me.showroomDataGrid)
-        'Dim id As Integer = Session("idEdicion")
         For Each a As AsistenciaShowroomBE In Session("pedidos")
             If a.id = Session("idEdicion") Then
                 Me.fechaSolicTextBox.Text = a.fecha

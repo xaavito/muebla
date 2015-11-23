@@ -8,7 +8,7 @@ Public Class AdministrarProductos
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Page.IsPostBack Then
-            Debug.WriteLine(getPostBackCaller)
+            'Debug.WriteLine(getPostBackCaller)
             Return
         End If
         Try

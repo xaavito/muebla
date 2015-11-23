@@ -132,8 +132,6 @@
 
             Session("prov") = prov
             ModalPopupExtender1.Show()
-
-            
         Catch ex As Exception
             logMessage(ex)
         End Try

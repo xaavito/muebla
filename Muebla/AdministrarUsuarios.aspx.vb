@@ -17,12 +17,11 @@
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
-        'TODO LO PASAMOS AL AJAXCONTROLTOOLKIT?
         Session("idUsuario") = getItemId(sender, Me.usuariosResultadosDataGrid)
         Dim listaUsuarios As List(Of BE.UsuarioBE) = Session("listaUsuarios")
         For Each usr As BE.UsuarioBE In listaUsuarios
             If usr.id = Session("idUsuario") Then
-                Debug.WriteLine(usr.nombre)
+                'Debug.WriteLine(usr.nombre)
                 Me.userTextBox.Text = usr.usuario
                 Me.estadoUsuarioCheck.Checked = usr.activo
                 If usr.roles Is Nothing Then
@@ -59,11 +58,15 @@
     End Sub
 
     Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-        For Each u As BE.UsuarioBE In Session("listaUsuarios")
-            If u.id = getItemId(sender, Me.usuariosResultadosDataGrid) Then
-                BLL.UsuarioBLL.eliminarUsuario(u)
-            End If
-        Next
+        Try
+            For Each u As BE.UsuarioBE In Session("listaUsuarios")
+                If u.id = getItemId(sender, Me.usuariosResultadosDataGrid) Then
+                    BLL.UsuarioBLL.eliminarUsuario(u)
+                End If
+            Next
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub ibtnDetails_Click(sender As Object, e As ImageClickEventArgs)
@@ -107,35 +110,39 @@
     End Sub
 
     Protected Sub agregarPermisoButton_Click(sender As Object, e As ImageClickEventArgs)
-        If Not allPermisosListBox.SelectedItem Is Nothing Then
-            Dim idToAdd As Integer = allPermisosListBox.SelectedValue
-            Dim found As Boolean = False
-            If Session("MyRoles") Is Nothing Then
-                found = False
-            Else
-                For Each prod As BE.RolBE In Session("MyRoles")
-                    If prod.id = idToAdd Then
-                        found = True
-                    End If
-                Next
-            End If
-
-            If found = False Then
-                Dim ps As List(Of BE.RolBE) = Session("MyRoles")
-                If ps Is Nothing Then
-                    ps = New List(Of BE.RolBE)
+        Try
+            If Not allPermisosListBox.SelectedItem Is Nothing Then
+                Dim idToAdd As Integer = allPermisosListBox.SelectedValue
+                Dim found As Boolean = False
+                If Session("MyRoles") Is Nothing Then
+                    found = False
+                Else
+                    For Each prod As BE.RolBE In Session("MyRoles")
+                        If prod.id = idToAdd Then
+                            found = True
+                        End If
+                    Next
                 End If
-                Dim prods As List(Of BE.RolBE) = Session("AllRoles")
-                For Each p As BE.RolBE In prods
-                    If p.id = idToAdd Then
-                        ps.Add(p)
+
+                If found = False Then
+                    Dim ps As List(Of BE.RolBE) = Session("MyRoles")
+                    If ps Is Nothing Then
+                        ps = New List(Of BE.RolBE)
                     End If
-                Next
-                permisosPropiosListBox.DataSource = ps
-                permisosPropiosListBox.DataBind()
-                Session("MyRoles") = ps
+                    Dim prods As List(Of BE.RolBE) = Session("AllRoles")
+                    For Each p As BE.RolBE In prods
+                        If p.id = idToAdd Then
+                            ps.Add(p)
+                        End If
+                    Next
+                    permisosPropiosListBox.DataSource = ps
+                    permisosPropiosListBox.DataBind()
+                    Session("MyRoles") = ps
+                End If
             End If
-        End If
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
     End Sub
 
     Protected Sub removerPermisoButton_Click(sender As Object, e As ImageClickEventArgs)

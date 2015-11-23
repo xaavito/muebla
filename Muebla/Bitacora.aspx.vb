@@ -25,7 +25,7 @@ Public Class Bitacora
     End Sub
 
     Protected Sub tipoEventoDropDown_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Debug.WriteLine("Cambio el tipo log: " + Me.tipoEventoDropDown.SelectedValue)
+        'Debug.WriteLine("Cambio el tipo log: " + Me.tipoEventoDropDown.SelectedValue)
     End Sub
 
     Private Sub buscarTipoEventos()

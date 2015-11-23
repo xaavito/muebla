@@ -14,11 +14,15 @@ Public Class UsuarioBLL
     End Function
 
     Public Shared Sub altaUsuario(ByVal usr As UsuarioBE)
+        DAL.UsuarioDAL.checkUsr(usr)
         DAL.UsuarioDAL.checkMail(usr)
+        usr.password = Util.Encrypter.EncryptPasswordMD5(usr.password)
         usr.id = DAL.UsuarioDAL.altaUsuario(usr)
         For Each a As BE.RolBE In usr.roles
             DAL.UsuarioDAL.modificarPermisoUsuario(usr.id, a)
         Next
+        Util.Mailer.enviarMail(usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RegistroExitoso), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RegistroExitosoMensaje))
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.RegistroExistoso)
     End Sub
 
     Public Shared Function buscarUsuarios(ByVal usuario As String, ByVal mail As String) As List(Of BE.UsuarioBE)

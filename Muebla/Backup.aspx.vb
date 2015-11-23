@@ -25,10 +25,6 @@ Public Class Backup
 
     End Sub
 
-    Protected Sub ibtnDelete_Click(sender As Object, e As ImageClickEventArgs)
-
-    End Sub
-
     Protected Sub backupDataGrid_PreRender(sender As Object, e As EventArgs)
         translateGrid(Me.backupDataGrid)
     End Sub
