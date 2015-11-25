@@ -243,13 +243,14 @@
                             </asp:TableCell>
                             <asp:TableCell>
                                 <asp:TextBox runat="server" ID="passTextBox1" />
+                                <asp:RequiredFieldValidator ValidationGroup="editDatosPersonales" ErrorMessage="Requerido" ControlToValidate="passTextBox1" runat="server" />
                             </asp:TableCell>
                         </asp:TableRow>
                     </asp:Table>
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonEditOkay" OnClick="ButtonEditOkay_Click" />
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="ButtonEditOkay" OnClick="ButtonEditOkay_Click" ValidationGroup="editDatosPersonales"/>
                 <asp:Button runat="server" Text="Cancelar" ID="ButtonEditCancel" />
             </div>
         </div>

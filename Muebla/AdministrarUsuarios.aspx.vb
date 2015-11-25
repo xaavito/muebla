@@ -62,6 +62,7 @@
             For Each u As BE.UsuarioBE In Session("listaUsuarios")
                 If u.id = getItemId(sender, Me.usuariosResultadosDataGrid) Then
                     BLL.UsuarioBLL.eliminarUsuario(u)
+                    Throw New Util.EliminacionExitosaException
                 End If
             Next
         Catch ex As Exception
@@ -89,6 +90,7 @@
         Try
             BLL.UsuarioBLL.modificarUsuario(Session("idUsuario"), Session("MyRoles"), estadoUsuarioCheck.Checked)
             buscar()
+            Throw New Util.ModificacionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try

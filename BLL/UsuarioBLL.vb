@@ -57,8 +57,13 @@ Public Class UsuarioBLL
 
     Public Shared Sub modificarUsuario(ByRef usr As UsuarioBE)
         DAL.UsuarioDAL.modificarPass(usr)
-        DAL.UsuarioDAL.modificarDomicilio(usr)
-        DAL.UsuarioDAL.modificartelefono(usr)
+        If Not usr.domicilio Is Nothing Then
+            DAL.UsuarioDAL.modificarDomicilio(usr)
+        End If
+
+        If Not usr.telefono Is Nothing Then
+            DAL.UsuarioDAL.modificartelefono(usr)
+        End If
         Util.Mailer.enviarMail(usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.ModificacionDatos), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.ModificacionDatosMensaje))
         BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.ModificacionUsuario)
     End Sub

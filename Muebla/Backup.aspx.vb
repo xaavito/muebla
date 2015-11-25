@@ -19,6 +19,7 @@ Public Class Backup
         Try
             BLL.GestorResguardoBLL.realizarBackup(Me.backupTextBox.Text)
             buscarBackups()
+            Throw New Util.CreacionExitosaException
         Catch ex As Util.ExceptionManager
             logMessage(ex)
         End Try
@@ -35,10 +36,7 @@ Public Class Backup
     End Sub
 
     Protected Sub ibtnRestore_Click(sender As Object, e As ImageClickEventArgs)
-        Dim gvRow As GridViewRow = CType(CType(sender, ImageButton).NamingContainer, GridViewRow)
-        Dim con As Label = CType(Me.backupDataGrid.Rows(gvRow.RowIndex).Cells(0).FindControl("itemID"), Label)
-        Dim id As Integer = Integer.Parse(con.Text.ToString)
-        id = getItemId(sender, Me.backupDataGrid)
+        ID = getItemId(sender, Me.backupDataGrid)
         Try
             BLL.GestorResguardoBLL.realizarRestore(id)
             buscarBackups()
@@ -47,7 +45,4 @@ Public Class Backup
             logMessage(ex)
         End Try
     End Sub
-
-    
-
 End Class

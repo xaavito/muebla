@@ -9,10 +9,22 @@ Public Class Carrito
         If Page.IsPostBack Then
             Return
         End If
-        loadPedido()
-        handleSteps()
-        loadTipoEnvios()
-        loadModoPago()
+        Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
+
+        If pedido Is Nothing Then
+            Me.confirmarStepOne.Visible = False
+            Me.totalMontoLabel.Visible = False
+            Me.totalLabel.Visible = False
+            Me.pasoLabel.Text = "No hay pedidos en el carrito"
+            Me.pasoEnvio.Visible = False
+            Me.pasoPago.Visible = False
+            Me.pasoConfirmacion.Visible = False
+        Else
+            loadPedido()
+            handleSteps()
+            loadTipoEnvios()
+            loadModoPago()
+        End If
     End Sub
 
     Protected Sub comprar_Click(sender As Object, e As EventArgs)
@@ -86,36 +98,43 @@ Public Class Carrito
     End Sub
 
     Private Sub handleSteps()
-        If Me.pasoLabel.Text = "" Then
+        If Session("pasoCompra") Is Nothing Then
+            Session("pasoCompra") = 1
+        End If
+        If Session("pasoCompra") = 1 Then
             Me.confirmarStepOne.Visible = True
             Me.pasoLabel.Text = "Paso 1"
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = False
             Me.pasoConfirmacion.Visible = False
+            Session("pasoCompra") = 2
             Return
         End If
-        If Me.pasoLabel.Text = "Paso 1" Then
+        If Session("pasoCompra") = 2 Then
             Me.pasoLabel.Text = "Paso 2"
             Me.confirmarStepOne.Visible = False
             Me.pasoEnvio.Visible = True
             Me.pasoPago.Visible = False
             Me.pasoConfirmacion.Visible = False
+            Session("pasoCompra") = 3
             Return
         End If
-        If Me.pasoLabel.Text = "Paso 2" Then
+        If Session("pasoCompra") = 3 Then
             Me.pasoLabel.Text = "Paso 3"
             Me.confirmarStepOne.Visible = False
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = True
             Me.pasoConfirmacion.Visible = False
+            Session("pasoCompra") = 4
             Return
         End If
-        If Me.pasoLabel.Text = "Paso 3" Then
+        If Session("pasoCompra") = 4 Then
             Me.pasoLabel.Text = "Paso 4"
             Me.confirmarStepOne.Visible = False
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = False
             Me.pasoConfirmacion.Visible = True
+            Session("pasoCompra") = Nothing
             Return
         End If
     End Sub

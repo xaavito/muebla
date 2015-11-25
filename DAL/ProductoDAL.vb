@@ -263,30 +263,34 @@ Public Class ProductoDAL
     Shared Sub eliminarProductoCompuesto(producto As ProductoBE)
         Dim id As Integer
         Dim repository As New AccesoSQLServer
-        Try
-            repository.crearComando("ELIMINAR_PRODUCTO_COMPUESTO_SP")
-            repository.addParam("@id", producto.id)
-            id = repository.executeSearchWithStatus
-        Catch ex As Exception
-            Throw ex
-        End Try
+        If Not producto.productos Is Nothing Then
+            Try
+                repository.crearComando("ELIMINAR_PRODUCTO_COMPUESTO_SP")
+                repository.addParam("@id", producto.id)
+                id = repository.executeSearchWithStatus
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End If
     End Sub
 
     Shared Sub altaProductoCompuesto(producto As ProductoBE)
         Dim id As Integer
         Dim repository As New AccesoSQLServer
 
-        For Each a As BE.ProductoBE In producto.productos
-            repository = New AccesoSQLServer
-            Try
-                repository.crearComando("ALTA_PRODUCTO_COMPUESTO_SP")
-                repository.addParam("@id", producto.id)
-                repository.addParam("@idCompuesto", a.id)
-                id = repository.executeWithReturnValue()
-            Catch ex As Exception
-                Throw ex
-            End Try
-        Next
+        If Not producto.productos Is Nothing Then
+            For Each a As BE.ProductoBE In producto.productos
+                repository = New AccesoSQLServer
+                Try
+                    repository.crearComando("ALTA_PRODUCTO_COMPUESTO_SP")
+                    repository.addParam("@id", producto.id)
+                    repository.addParam("@idCompuesto", a.id)
+                    id = repository.executeWithReturnValue()
+                Catch ex As Exception
+                    Throw ex
+                End Try
+            Next
+        End If
     End Sub
 
     Shared Function listarPromos() As List(Of ListaPrecioDetalleBE)

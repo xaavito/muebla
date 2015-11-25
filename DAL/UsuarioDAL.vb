@@ -82,9 +82,9 @@ Public Class UsuarioDAL
         Dim repository As New AccesoSQLServer
         Try
             repository.crearComando("ELIMINAR_USUARIO_SP")
-            repository.addParam("@usr", usr.id)
+            repository.addParam("@id", usr.id)
             id = repository.executeSearchWithStatus
-            If id <> 0 Then
+            If id = 0 Then
                 Throw New Util.EliminacionException
             End If
         Catch ex As Exception

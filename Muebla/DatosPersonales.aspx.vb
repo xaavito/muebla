@@ -108,15 +108,19 @@
     Protected Sub ButtonEditOkay_Click(sender As Object, e As EventArgs)
         Try
             BLL.UsuarioBLL.checkPreModificacion(getUsuario)
-            getUsuario.domicilio.calle = Me.calleTextBox1.Text
-            getUsuario.domicilio.numero = Me.nroCalleTextBox.Text
-            getUsuario.domicilio.piso = Me.pisoTextBox1.Text
-            getUsuario.domicilio.dpto = Me.dptoTextBox1.Text
-            getUsuario.domicilio.localidad.id = Me.localidadDropDownList1.SelectedValue
+            If Not getUsuario.domicilio Is Nothing Then
+                getUsuario.domicilio.calle = Me.calleTextBox1.Text
+                getUsuario.domicilio.numero = Me.nroCalleTextBox.Text
+                getUsuario.domicilio.piso = Me.pisoTextBox1.Text
+                getUsuario.domicilio.dpto = Me.dptoTextBox1.Text
+                getUsuario.domicilio.localidad.id = Me.localidadDropDownList1.SelectedValue
+            End If
 
-            getUsuario.telefono.numero = Me.telefonoTextBox1.Text
-            getUsuario.telefono.interno = Me.internoTextBox1.Text
-            getUsuario.telefono.prefijo = Me.prefijoTextBox1.Text
+            If Not getUsuario.telefono Is Nothing Then
+                getUsuario.telefono.numero = Me.telefonoTextBox1.Text
+                getUsuario.telefono.interno = Me.internoTextBox1.Text
+                getUsuario.telefono.prefijo = Me.prefijoTextBox1.Text
+            End If
 
             getUsuario.password = Util.Encrypter.EncryptPasswordMD5(Me.passTextBox1.Text)
             BLL.UsuarioBLL.modificarUsuario(getUsuario)

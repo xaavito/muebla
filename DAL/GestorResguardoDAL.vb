@@ -33,6 +33,8 @@ Public Class GestorResguardoDAL
         bk.LogTruncation = BackupTruncateLogType.Truncate
         Try
             bk.SqlBackup(sqlServer)
+        Catch ex As FailedOperationException
+            'do nothing
         Catch ex As Exception
             Throw ex
         End Try

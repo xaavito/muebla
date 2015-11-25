@@ -132,6 +132,7 @@ Public Class AdministrarProductos
                 End If
             Next
             BLL.ProductoBLL.modificarProducto(prod)
+            buscar()
             Throw New Util.ModificacionExitosaException
         Catch ex As Exception
             logMessage(ex)
