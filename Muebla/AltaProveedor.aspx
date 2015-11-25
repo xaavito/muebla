@@ -28,7 +28,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                     ErrorMessage="Solo Numeros"
                     ControlToValidate="cuitTextBox"
-                    ValidationExpression="^[0-9]*$" />
+                    ValidationExpression="^[0-9]{10,11}$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -41,7 +41,7 @@
                 <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                     ErrorMessage="Solo Numeros"
                     ControlToValidate="telefonoTextBox"
-                    ValidationExpression="^[0-9]*$" />
+                    ValidationExpression="^[0-9]{6,8}$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -50,7 +50,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="internoTextBox" />
-                <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="internoTextBox" runat="server" />
                 <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                     ErrorMessage="Solo Numeros"
                     ControlToValidate="internoTextBox"
@@ -63,7 +62,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="prefijoTextBox" />
-                <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="prefijoTextBox" runat="server" />
                 <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                     ErrorMessage="Solo Numeros"
                     ControlToValidate="prefijoTextBox"
@@ -107,7 +105,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="pisoTextBox" />
-                <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="pisoTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -116,7 +113,6 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="dptoTextBox" />
-                <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="dptoTextBox" runat="server" />
             </asp:TableCell>
         </asp:TableRow>
 

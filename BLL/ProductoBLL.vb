@@ -8,7 +8,9 @@ Public Class ProductoBLL
 
     Public Shared Sub altaProducto(ByVal producto As ProductoBE)
         DAL.ProductoDAL.altaProducto(producto)
-        DAL.ProductoDAL.altaProductoCompuesto(producto)
+        If producto.tipoProducto.id = 1 Then
+            DAL.ProductoDAL.altaProductoCompuesto(producto)
+        End If
     End Sub
 
     Public Shared Function bajaProducto(ByVal producto As BE.ProductoBE) As Integer

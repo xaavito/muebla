@@ -19,7 +19,6 @@ Public Class ListaPrecioBLL
     End Function
 
     Shared Sub modificarListaPrecioDetalle(idLpd As Integer, precio As String)
-        ' TODO VER QUE NO ESTE VENDIENDOSE
         DAL.ListaPrecioDAL.modificarListaPrecioDetalle(idLpd, precio)
     End Sub
 

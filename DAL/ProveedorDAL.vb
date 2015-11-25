@@ -17,18 +17,20 @@ Public Class ProveedorDAL
 
             id = repository.executeWithReturnValue
 
-            For Each a As BE.ProductoBE In prov.productos
-                repository = New AccesoSQLServer
-                Try
-                    repository.crearComando("ALTA_PRODUCTO_PROVEEDOR_SP")
-                    repository.addParam("@id", id)
-                    repository.addParam("@idProducto", a.id)
-                    repository.addParam("@precio", a.precio)
-                    repository.executeWithReturnValue()
-                Catch ex As Exception
-                    Throw ex
-                End Try
-            Next
+            If Not prov.productos Is Nothing Then
+                For Each a As BE.ProductoBE In prov.productos
+                    repository = New AccesoSQLServer
+                    Try
+                        repository.crearComando("ALTA_PRODUCTO_PROVEEDOR_SP")
+                        repository.addParam("@id", id)
+                        repository.addParam("@idProducto", a.id)
+                        repository.addParam("@precio", a.precio)
+                        repository.executeWithReturnValue()
+                    Catch ex As Exception
+                        Throw ex
+                    End Try
+                Next
+            End If
         Catch ex As Exception
             Throw ex
         End Try

@@ -33,7 +33,6 @@ Public Class ProductoDAL
             Throw ex
         End Try
         producto.id = id
-        altaProductoCompuesto(producto)
     End Sub
 
     Public Shared Function bajaProducto(ByVal producto As BE.ProductoBE) As Integer

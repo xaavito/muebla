@@ -18,6 +18,9 @@ Public Class MisPedidos
 
     Protected Sub hojaDeRuta(sender As Object, e As EventArgs)
         Try
+            If getSelected.Count = 0 Then
+                Throw New Util.SeleccionMultiple
+            End If
             Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarHojaRuta(getSelected)
             DownloadPDF(ms)
             Throw New Util.CreacionExitosaException
@@ -28,6 +31,9 @@ Public Class MisPedidos
 
     Protected Sub remito(sender As Object, e As EventArgs)
         Try
+            If getSelected.Count = 0 Then
+                Throw New Util.SeleccionMultiple
+            End If
             Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarRemito(getSelected)
             DownloadPDF(ms)
             Throw New Util.CreacionExitosaException

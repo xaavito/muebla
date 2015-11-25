@@ -147,6 +147,10 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="prefijoTextBox" />
+                <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="prefijoTextBox"
+                        ValidationExpression="^[0-9]*$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -155,6 +159,10 @@
             </asp:TableCell>
             <asp:TableCell>
                 <asp:TextBox runat="server" ID="internoTextBox" />
+                <asp:RegularExpressionValidator ValidationGroup="registrarse" runat="server"
+                        ErrorMessage="Solo Numeros"
+                        ControlToValidate="internoTextBox"
+                        ValidationExpression="^[0-9]*$" />
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>

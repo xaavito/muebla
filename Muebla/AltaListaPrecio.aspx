@@ -102,7 +102,7 @@
                     <asp:RegularExpressionValidator ValidationGroup="confirmar" runat="server"
                         ErrorMessage="Solo Numeros"
                         ControlToValidate="valorTextBox"
-                        ValidationExpression="^[0-9]$" />
+                        ValidationExpression="^[0-9]*$" />
                 </p>
             </div>
             <div class="popup_Buttons">

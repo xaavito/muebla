@@ -43,8 +43,8 @@
 
         Dim tel As New BE.TelefonoBE
         tel.numero = Me.telefonoTextBox.Text
-        tel.interno = Me.internoTextBox.Text
-        tel.prefijo = Me.prefijoTextBox.Text
+        tel.interno = IIf(Me.internoTextBox.Text = Nothing, 0, Me.internoTextBox.Text)
+        tel.prefijo = IIf(Me.prefijoTextBox.Text = Nothing, 0, Me.prefijoTextBox.Text)
         prov.tel = tel
 
         prov.productos = Session("productosPropios")
@@ -82,10 +82,10 @@
         If Not allProductosListBox.SelectedItem Is Nothing Then
             Dim idToAdd As Integer = allProductosListBox.SelectedValue
             Dim found As Boolean = False
-            If productosPropiosListBox.DataSource Is Nothing Then
+            If Session("productosPropios") Is Nothing Then
                 found = False
             Else
-                For Each prod As BE.ProductoBE In productosPropiosListBox.DataSource
+                For Each prod As BE.ProductoBE In Session("productosPropios")
                     If prod.id = idToAdd Then
                         found = True
                     End If
@@ -93,7 +93,7 @@
             End If
 
             If found = False Then
-                Dim ps As List(Of BE.ProductoBE) = productosPropiosListBox.DataSource
+                Dim ps As List(Of BE.ProductoBE) = Session("productosPropios")
                 If ps Is Nothing Then
                     ps = New List(Of BE.ProductoBE)
                 End If

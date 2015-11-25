@@ -155,7 +155,7 @@
                     <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
                         ErrorMessage="Solo Numeros"
                         ControlToValidate="telefonoTextBox"
-                        ValidationExpression="^[0-9]*$" />
+                        ValidationExpression="^[0-9]{6,8}$" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

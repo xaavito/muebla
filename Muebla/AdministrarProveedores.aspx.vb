@@ -126,8 +126,8 @@
             prov.mail = Me.emailTextBox.Text
             prov.razonSocial = Me.nombreTextBox.Text
             prov.tel.numero = Me.telefonoTextBox.Text
-            prov.tel.interno = Me.internoTextBox.Text
-            prov.tel.prefijo = Me.prefijoTextBox.Text
+            prov.tel.interno = IIf(Me.internoTextBox.Text = Nothing, 0, Me.internoTextBox.Text)
+            prov.tel.prefijo = IIf(Me.prefijoTextBox.Text = Nothing, 0, Me.prefijoTextBox.Text)
             prov.productos = Session("MyProductos")
 
             Session("prov") = prov

@@ -10,7 +10,7 @@
                 <asp:Label runat="server" ID="nombreLabel" Text="Nombre" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="nombreTextBox" />
+                <asp:TextBox runat="server" ID="nombreTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -18,7 +18,7 @@
                 <asp:Label runat="server" ID="apellidoLabel" Text="Apellido" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="apellidoTextBox" />
+                <asp:TextBox runat="server" ID="apellidoTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -26,7 +26,7 @@
                 <asp:Label runat="server" ID="tipoDocLabel" Text="Tipo Documento" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList EnableViewState="True" runat="server" ID="tipoDocDropDownList" AutoPostBack="true" />
+                <asp:DropDownList EnableViewState="True" runat="server" ID="tipoDocDropDownList" AutoPostBack="true" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -34,15 +34,15 @@
                 <asp:Label runat="server" ID="documentoLabel" Text="Nro Documento" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="documentoTextBox" />
+                <asp:TextBox runat="server" ID="documentoTextBox" Enabled="false" />
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="cuilLabel" Text="CUIL" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="cuilTextBox" />
+                <asp:TextBox runat="server" ID="cuilTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -50,80 +50,79 @@
                 <asp:Label runat="server" ID="mailLabel" Text="Mail" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="mailTextBox" />
+                <asp:TextBox runat="server" ID="mailTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="calleLabel" Text="Calle" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="calleTextBox" />
+                <asp:TextBox runat="server" ID="calleTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="nroCalleLabel" Text="Nro" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="nroTextBox" />
+                <asp:TextBox runat="server" ID="nroTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="pisoLabel" Text="Piso" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="pisoTextBox" />
+                <asp:TextBox runat="server" ID="pisoTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="dptoLabel" Text="Dpto" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="dptoTextBox" />
+                <asp:TextBox runat="server" ID="dptoTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="provinciaLabel" Text="Provincia" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList EnableViewState="True" runat="server" ID="provinciaDropDownList" OnSelectedIndexChanged="provinciaDropDownList_SelectedIndexChanged" AutoPostBack="true" />
+                <asp:DropDownList EnableViewState="True" runat="server" ID="provinciaDropDownList" OnSelectedIndexChanged="provinciaDropDownList_SelectedIndexChanged" AutoPostBack="true"  Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="localidadLabel" Text="Localidad" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList AutoPostBack="true" EnableViewState="True" runat="server" ID="localidadDropDownList" />
+                <asp:DropDownList AutoPostBack="true" EnableViewState="True" runat="server" ID="localidadDropDownList" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="telefonoLabel" Text="Telefono" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="telefonoTextBox" TextMode="Phone" />
-
+                <asp:TextBox runat="server" ID="telefonoTextBox" TextMode="Phone" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="prefijoLabel" Text="Prefijo" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="prefijoTextBox" />
+                <asp:TextBox runat="server" ID="prefijoTextBox" Enabled="false" />
             </asp:TableCell>
         </asp:TableRow>
-        <asp:TableRow>
+        <asp:TableRow Visible='<%# Not getUsuario().isAdmin %>'>
             <asp:TableCell>
                 <asp:Label runat="server" ID="internoLabel" Text="Interno" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="internoTextBox" />
+                <asp:TextBox runat="server" ID="internoTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -131,7 +130,7 @@
                 <asp:Label runat="server" ID="usuarioLabel" Text="Usuario" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="usuarioTextBox" />
+                <asp:TextBox runat="server" ID="usuarioTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -139,7 +138,7 @@
                 <asp:Label runat="server" ID="passLabel" Text="Contraseña" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="passTextBox" />
+                <asp:TextBox runat="server" ID="passTextBox" Enabled="false"/>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>

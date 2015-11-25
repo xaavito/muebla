@@ -11,7 +11,7 @@
                 <asp:Label runat="server" ID="estadoLabel" Text="Estado" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:DropDownList runat="server" ID="estadoListBox" />
+                <asp:DropDownList runat="server" ID="estadoListBox"/>
             </asp:TableCell>
         </asp:TableRow>
         <asp:TableRow>
@@ -19,7 +19,7 @@
                 <asp:Label runat="server" ID="descripcionLabel" Text="Descripcion" />
             </asp:TableCell>
             <asp:TableCell>
-                <asp:TextBox runat="server" ID="descripcionTextBox" AutoPostBack="true" />
+                <asp:TextBox runat="server" ID="descripcionTextBox"/>
             </asp:TableCell>
         </asp:TableRow>
     </asp:Table>
@@ -141,7 +141,7 @@
                         <asp:RegularExpressionValidator ValidationGroup="confirmar" runat="server"
                             ErrorMessage="Solo Numeros"
                             ControlToValidate="valorTextBox"
-                            ValidationExpression="^[0-9]$" />
+                            ValidationExpression="^[0-9]*$" />
                     </p>
                 </div>
                 <div class="popup_Buttons">
