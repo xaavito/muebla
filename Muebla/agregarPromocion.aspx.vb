@@ -28,14 +28,19 @@
     End Sub
 
     Protected Sub ibtnAddPromo_Click(sender As Object, e As ImageClickEventArgs)
-        Session("idSeleccionado") = getItemId(sender, Me.detalleListaPrecioResultGrid)
-        For Each a As BE.ListaPrecioDetalleBE In Session("listaPrecioDetalle")
-            If a.id = Session("idSeleccionado") Then
-                Me.precioActualTextBox.Text = a.precio
-                Exit For
-            End If
-        Next
-        lnkAddPromo_ModalPopupExtender.Show()
+        Try
+            Session("idSeleccionado") = getItemId(sender, Me.detalleListaPrecioResultGrid)
+            For Each a As BE.ListaPrecioDetalleBE In Session("listaPrecioDetalle")
+                If a.id = Session("idSeleccionado") Then
+                    Me.precioActualTextBox.Text = a.precio
+                    Exit For
+                End If
+            Next
+            lnkAddPromo_ModalPopupExtender.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub detalleListaPrecioResultGrid_PreRender(sender As Object, e As EventArgs)

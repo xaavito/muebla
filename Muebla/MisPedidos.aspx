@@ -91,7 +91,7 @@
                 <ItemTemplate>
                     <asp:ImageButton ID="ibtnCambiarEstado" runat="server"
                         ImageUrl="/images/editItem.png"
-                        OnClick="ibtnCambiarEstado_Click" />
+                        OnClick="ibtnCambiarEstado_Click" Visible='<%# getUsuario.isAdmin %>'/>
                     <asp:ImageButton ID="ibtnCancelarPedido" runat="server"
                         ImageUrl="/images/deleteItem.png"
                         OnClick="ibtnCancelarPedido_Click" />

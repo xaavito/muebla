@@ -36,21 +36,23 @@
     End Sub
 
     Protected Sub confirmarAltaProductoButton_Click(sender As Object, e As EventArgs)
-        Dim prod As New BE.ProductoBE
-        prod.descripcion = Me.descripcionTextBox.Text
-        prod.breveDescripcion = Me.descripcionBreveTextBox.Text
-        Dim tipo As New BE.TipoProductoBE
-        tipo.id = Me.tipoProductoDropDown.SelectedValue
-        prod.tipoProducto = tipo
-        prod.productos = Me.productosPropiosListBox.DataSource
-        Dim prov As New BE.ProveedorBE
-        prov.id = Me.proveedorDropDown.SelectedValue
-        prod.proveedor = prov
-        prod.image1 = Me.fileUpload.FileBytes
-        prod.stock = Integer.Parse(Me.stockTextBox.Text)
-        prod.stockMin = Integer.Parse(Me.stockMinimoTextBox.Text)
-        prod.productos = Session("productosPropios")
+
         Try
+            Dim prod As New BE.ProductoBE
+            prod.descripcion = Me.descripcionTextBox.Text
+            prod.breveDescripcion = Me.descripcionBreveTextBox.Text
+            Dim tipo As New BE.TipoProductoBE
+            tipo.id = Me.tipoProductoDropDown.SelectedValue
+            prod.tipoProducto = tipo
+            prod.productos = Me.productosPropiosListBox.DataSource
+            Dim prov As New BE.ProveedorBE
+            prov.id = Me.proveedorDropDown.SelectedValue
+            prod.proveedor = prov
+            prod.image1 = Me.fileUpload.FileBytes
+            prod.stock = Integer.Parse(Me.stockTextBox.Text)
+            prod.stockMin = Integer.Parse(Me.stockMinimoTextBox.Text)
+            prod.productos = Session("productosPropios")
+
             BLL.ProductoBLL.altaProducto(prod)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
@@ -85,22 +87,24 @@
     End Sub
 
     Protected Sub confirmarAltaProveedorButton_Click(sender As Object, e As EventArgs)
-        Dim prov As New BE.ProveedorBE
-        prov.cuit = Me.cuitTextBox.Text
-        prov.dom.calle = Me.direccionTextBox.Text
-        prov.dom.numero = Me.nroCalleTextBox.Text
-        prov.dom.piso = Me.pisoTextBox.Text
-        prov.dom.dpto = Me.dptoTextBox.Text
-        prov.dom.localidad.id = Integer.Parse(Me.localidadDropDownList.SelectedValue)
-
-        prov.mail = Me.emailTextBox.Text
-        prov.razonSocial = Me.nombreTextBox.Text
-        prov.contacto = Me.contactoTextBox.Text
-        prov.tel.numero = Me.telefonoTextBox.Text
-        prov.tel.prefijo = IIf(Me.prefijoTextBox.Text.Equals(""), 0, Me.prefijoTextBox.Text)
-        prov.tel.interno = IIf(Me.internoTextBox.Text.Equals(""), 0, Me.internoTextBox.Text)
+        
 
         Try
+            Dim prov As New BE.ProveedorBE
+            prov.cuit = Me.cuitTextBox.Text
+            prov.dom.calle = Me.direccionTextBox.Text
+            prov.dom.numero = Me.nroCalleTextBox.Text
+            prov.dom.piso = Me.pisoTextBox.Text
+            prov.dom.dpto = Me.dptoTextBox.Text
+            prov.dom.localidad.id = Integer.Parse(Me.localidadDropDownList.SelectedValue)
+
+            prov.mail = Me.emailTextBox.Text
+            prov.razonSocial = Me.nombreTextBox.Text
+            prov.contacto = Me.contactoTextBox.Text
+            prov.tel.numero = Me.telefonoTextBox.Text
+            prov.tel.prefijo = IIf(Me.prefijoTextBox.Text.Equals(""), 0, Me.prefijoTextBox.Text)
+            prov.tel.interno = IIf(Me.internoTextBox.Text.Equals(""), 0, Me.internoTextBox.Text)
+
             BLL.ProveedorBLL.altaProveedor(prov)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
@@ -122,35 +126,40 @@
     End Sub
 
     Protected Sub agregarProductoButton_Click(sender As Object, e As ImageClickEventArgs)
-        If Not allProductosListBox.SelectedItem Is Nothing Then
-            Dim idToAdd As Integer = allProductosListBox.SelectedValue
-            Dim found As Boolean = False
-            If Session("productosPropios") Is Nothing Then
-                found = False
-            Else
-                For Each prod As BE.ProductoBE In Session("productosPropios")
-                    If prod.id = idToAdd Then
-                        found = True
-                    End If
-                Next
-            End If
-
-            If found = False Then
-                Dim ps As List(Of BE.ProductoBE) = Session("productosPropios")
-                If ps Is Nothing Then
-                    ps = New List(Of BE.ProductoBE)
+        Try
+            If Not allProductosListBox.SelectedItem Is Nothing Then
+                Dim idToAdd As Integer = allProductosListBox.SelectedValue
+                Dim found As Boolean = False
+                If Session("productosPropios") Is Nothing Then
+                    found = False
+                Else
+                    For Each prod As BE.ProductoBE In Session("productosPropios")
+                        If prod.id = idToAdd Then
+                            found = True
+                        End If
+                    Next
                 End If
-                Dim prods As List(Of BE.ProductoBE) = Session("productosMateriaPrima")
-                For Each p As BE.ProductoBE In prods
-                    If p.id = idToAdd Then
-                        ps.Add(p)
+
+                If found = False Then
+                    Dim ps As List(Of BE.ProductoBE) = Session("productosPropios")
+                    If ps Is Nothing Then
+                        ps = New List(Of BE.ProductoBE)
                     End If
-                Next
-                productosPropiosListBox.DataSource = ps
-                productosPropiosListBox.DataBind()
-                Session("productosPropios") = ps
+                    Dim prods As List(Of BE.ProductoBE) = Session("productosMateriaPrima")
+                    For Each p As BE.ProductoBE In prods
+                        If p.id = idToAdd Then
+                            ps.Add(p)
+                        End If
+                    Next
+                    productosPropiosListBox.DataSource = ps
+                    productosPropiosListBox.DataBind()
+                    Session("productosPropios") = ps
+                End If
             End If
-        End If
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub provinciaDropDownList_SelectedIndexChanged(sender As Object, e As EventArgs)

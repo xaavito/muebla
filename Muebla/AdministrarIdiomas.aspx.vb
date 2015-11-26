@@ -6,14 +6,18 @@
             Return
         End If
         'If Session("idiomaChange") Is Nothing Then
-        Me.idiomaDropDownList.DataSource = BLL.GestorIdiomaBLL.buscarIdiomas
-        Me.idiomaDropDownList.DataTextField = "descripcion"
-        Me.idiomaDropDownList.DataValueField = "id"
-        Me.idiomaDropDownList.DataBind()
+        Try
+            Me.idiomaDropDownList.DataSource = BLL.GestorIdiomaBLL.buscarIdiomas
+            Me.idiomaDropDownList.DataTextField = "descripcion"
+            Me.idiomaDropDownList.DataValueField = "id"
+            Me.idiomaDropDownList.DataBind()
 
-        llenarTabla()
-        'End If
-        Me.editDiv.Visible = False
+            llenarTabla()
+            'End If
+            Me.editDiv.Visible = False
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
         'TODO PASAR A AJAX CONTROL TOOLKIT
     End Sub
 

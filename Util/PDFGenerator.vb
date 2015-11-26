@@ -6,7 +6,7 @@ Imports System.Web
 
 Public Class PDFGenerator
 
-    public Shared Function CreatePDF() As MemoryStream
+    Public Shared Function CreatePDF() As MemoryStream
 
         ' Create a Document object
         Dim document As Document = New Document(iTextSharp.text.PageSize.A4, 70, 70, 70, 70)
@@ -95,7 +95,7 @@ Public Class PDFGenerator
         paraDato.HorizontalAlignment = 2
         paraDato.Border = Rectangle.NO_BORDER
         headertable.AddCell(paraDato)
-        
+
         document.Add(headertable)
 
         'Create body table
@@ -793,8 +793,10 @@ Public Class PDFGenerator
             qtyCell.PaddingLeft = 10.0F
             itemTable.AddCell(qtyCell)
 
-            document.Add(itemTable)
+
         Next
+
+        document.Add(itemTable)
 
         writer.CloseStream = False 'set the closestream property
         document.Close()
@@ -904,8 +906,10 @@ Public Class PDFGenerator
             qtyCell.PaddingLeft = 10.0F
             itemTable.AddCell(qtyCell)
 
-            document.Add(itemTable)
+
         Next
+
+        document.Add(itemTable)
 
         writer.CloseStream = False 'set the closestream property
         document.Close()

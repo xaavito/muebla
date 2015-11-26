@@ -151,6 +151,7 @@ Public Class MisPedidos
     End Sub
 
     Function getSelected() As List(Of BE.PedidoBE)
+        selectedPedidos = New List(Of BE.PedidoBE)
         Dim id As Integer
         For Each gvr As GridViewRow In Me.detallePedidosResultGrid.Rows
             If CType(gvr.Cells(0).FindControl("itemSelected"), CheckBox).Checked Then
@@ -206,6 +207,7 @@ Public Class MisPedidos
     Protected Sub confirmarCambioEstadoButton_Click(sender As Object, e As EventArgs)
         Try
             BLL.GestorPedidoBLL.cambiarEstadoPedido(Session("pedidoEdicion"), Integer.Parse(Me.estadoPedidoDropDown.SelectedValue))
+            Throw New Util.ModificacionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try

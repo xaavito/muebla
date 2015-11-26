@@ -25,19 +25,24 @@ Public Class Ventas
     End Sub
 
     Protected Sub btnAgregarAlCarrito_Click(sender As Object, e As ImageClickEventArgs)
-        carrito = Session("carrito")
-        If carrito Is Nothing Then
-            carrito = New BE.PedidoBE
-            carrito.usr = getUsuario()
-        End If
-        Dim ID As Integer = Integer.Parse(getItemId(sender, Me.lvProductos))
-        For Each a As ListaPrecioDetalleBE In listaProductos
-            If a.id = ID Then
-                carrito.addProducto(a, getSelectedCantidad(sender, Me.lvProductos))
-                Exit For
+        Try
+            carrito = Session("carrito")
+            If carrito Is Nothing Then
+                carrito = New BE.PedidoBE
+                carrito.usr = getUsuario()
             End If
-        Next
-        Session("carrito") = carrito
+            Dim ID As Integer = Integer.Parse(getItemId(sender, Me.lvProductos))
+            For Each a As ListaPrecioDetalleBE In listaProductos
+                If a.id = ID Then
+                    carrito.addProducto(a, getSelectedCantidad(sender, Me.lvProductos))
+                    Exit For
+                End If
+            Next
+            Session("carrito") = carrito
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Public Function getSelectedCantidad(sender As Object, listView As ListView) As Integer

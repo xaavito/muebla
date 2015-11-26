@@ -9,22 +9,27 @@ Public Class Carrito
         If Page.IsPostBack Then
             Return
         End If
-        Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
+        Try
+            Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
 
-        If pedido Is Nothing Then
-            Me.confirmarStepOne.Visible = False
-            Me.totalMontoLabel.Visible = False
-            Me.totalLabel.Visible = False
-            Me.pasoLabel.Text = "No hay pedidos en el carrito"
-            Me.pasoEnvio.Visible = False
-            Me.pasoPago.Visible = False
-            Me.pasoConfirmacion.Visible = False
-        Else
-            loadPedido()
-            handleSteps()
-            loadTipoEnvios()
-            loadModoPago()
-        End If
+            If pedido Is Nothing Then
+                Me.confirmarStepOne.Visible = False
+                Me.totalMontoLabel.Visible = False
+                Me.totalLabel.Visible = False
+                Me.pasoLabel.Text = "No hay pedidos en el carrito"
+                Me.pasoEnvio.Visible = False
+                Me.pasoPago.Visible = False
+                Me.pasoConfirmacion.Visible = False
+            Else
+                loadPedido()
+                handleSteps()
+                loadTipoEnvios()
+                loadModoPago()
+            End If
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub comprar_Click(sender As Object, e As EventArgs)
@@ -48,6 +53,7 @@ Public Class Carrito
     End Sub
 
     Protected Sub pasoConfirmarButton_Click(sender As Object, e As EventArgs)
+        Session("pasoCompra") = 4
         handleSteps()
         Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
 
@@ -56,6 +62,7 @@ Public Class Carrito
     End Sub
 
     Protected Sub pasoPagoButton_Click(sender As Object, e As EventArgs)
+        Session("pasoCompra") = 3
         handleSteps()
         Dim pedido As BE.PedidoBE = DirectCast(Session("carrito"), BE.PedidoBE)
 
@@ -64,6 +71,7 @@ Public Class Carrito
     End Sub
 
     Protected Sub confirmarCarritoButton_Click(sender As Object, e As EventArgs)
+        Session("pasoCompra") = 2
         handleSteps()
     End Sub
 
@@ -107,7 +115,7 @@ Public Class Carrito
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = False
             Me.pasoConfirmacion.Visible = False
-            Session("pasoCompra") = 2
+            'Session("pasoCompra") = 2
             Return
         End If
         If Session("pasoCompra") = 2 Then
@@ -116,7 +124,7 @@ Public Class Carrito
             Me.pasoEnvio.Visible = True
             Me.pasoPago.Visible = False
             Me.pasoConfirmacion.Visible = False
-            Session("pasoCompra") = 3
+            'Session("pasoCompra") = 3
             Return
         End If
         If Session("pasoCompra") = 3 Then
@@ -125,7 +133,7 @@ Public Class Carrito
             Me.pasoEnvio.Visible = False
             Me.pasoPago.Visible = True
             Me.pasoConfirmacion.Visible = False
-            Session("pasoCompra") = 4
+            'Session("pasoCompra") = 4
             Return
         End If
         If Session("pasoCompra") = 4 Then

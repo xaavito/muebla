@@ -5,14 +5,19 @@
         If Page.IsPostBack Then
             Return
         End If
-        Me.editData.Visible = False
+        Try
+            Me.editData.Visible = False
 
-        Me.provinciaDropDownList.DataSource = BLL.UsuarioBLL.getProvincias()
-        Me.provinciaDropDownList.DataTextField = "descripcion"
-        Me.provinciaDropDownList.DataValueField = "id"
-        Me.provinciaDropDownList.DataBind()
+            Me.provinciaDropDownList.DataSource = BLL.UsuarioBLL.getProvincias()
+            Me.provinciaDropDownList.DataTextField = "descripcion"
+            Me.provinciaDropDownList.DataValueField = "id"
+            Me.provinciaDropDownList.DataBind()
 
-        provinciaDropDownList_SelectedIndexChanged(sender, e)
+            provinciaDropDownList_SelectedIndexChanged(sender, e)
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub buscarButton_Click(sender As Object, e As EventArgs)

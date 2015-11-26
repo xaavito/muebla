@@ -47,25 +47,35 @@
     End Sub
 
     Protected Sub ibtnEdit_Click(sender As Object, e As ImageClickEventArgs)
-        Session("idListaPrecioDetalle") = getItemId(sender, Me.detalleListaPrecioResultGrid)
-        For Each a As BE.ListaPrecioDetalleBE In Session("altaListaPrecio")
-            If a.id = Session("idListaPrecioDetalle") Then
-                Me.valorTextBox.Text = a.precio
-            End If
-        Next
-        Me.lnkEditDetail_ModalPopupExtender.Show()
+        Try
+            Session("idListaPrecioDetalle") = getItemId(sender, Me.detalleListaPrecioResultGrid)
+            For Each a As BE.ListaPrecioDetalleBE In Session("altaListaPrecio")
+                If a.id = Session("idListaPrecioDetalle") Then
+                    Me.valorTextBox.Text = a.precio
+                End If
+            Next
+            Me.lnkEditDetail_ModalPopupExtender.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub ButtonEditDetailOkay_Click(sender As Object, e As EventArgs)
-        Dim lista As List(Of BE.ListaPrecioDetalleBE) = Session("altaListaPrecio")
-        For Each a As BE.ListaPrecioDetalleBE In lista
-            If a.id = Session("idListaPrecioDetalle") Then
-                a.precio = Me.valorTextBox.Text
-                Exit For
-            End If
-        Next
-        Session("altaListaPrecio") = lista
-        loadListaPrecio()
+        Try
+            Dim lista As List(Of BE.ListaPrecioDetalleBE) = Session("altaListaPrecio")
+            For Each a As BE.ListaPrecioDetalleBE In lista
+                If a.id = Session("idListaPrecioDetalle") Then
+                    a.precio = Me.valorTextBox.Text
+                    Exit For
+                End If
+            Next
+            Session("altaListaPrecio") = lista
+            loadListaPrecio()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Protected Sub ButtonEditDetailCancel_Click(sender As Object, e As EventArgs)

@@ -47,13 +47,18 @@
     End Sub
 
     Protected Sub ibtnEditDetail_Click(sender As Object, e As ImageClickEventArgs)
-        Session("idListaPrecioDetalle") = getItemId(sender, Me.detalleListaPrecioResultGrid)
-        For Each a As BE.ListaPrecioDetalleBE In Session("detallesListaPrecio")
-            If a.id = Session("idListaPrecioDetalle") Then
-                Me.valorTextBox.Text = a.precio
-            End If
-        Next
-        Me.lnkEditDetail_ModalPopupExtender.Show()
+        Try
+            Session("idListaPrecioDetalle") = getItemId(sender, Me.detalleListaPrecioResultGrid)
+            For Each a As BE.ListaPrecioDetalleBE In Session("detallesListaPrecio")
+                If a.id = Session("idListaPrecioDetalle") Then
+                    Me.valorTextBox.Text = a.precio
+                End If
+            Next
+            Me.lnkEditDetail_ModalPopupExtender.Show()
+        Catch ex As Exception
+            logMessage(ex)
+        End Try
+        
     End Sub
 
     Private Sub buscarDetalles()
