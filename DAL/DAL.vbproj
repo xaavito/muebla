@@ -64,9 +64,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
   </ItemGroup>
   <ItemGroup>
@@ -144,9 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BD\Ayuda BD.txt" />
-    <Content Include="BD\BDMuebla20151125-1.sql" />
-    <Content Include="BD\BDMuebla20151125.sql" />
     <Content Include="BD\BDMuebla20151126.sql" />
+    <Content Include="BD\BDMuebla20151127.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

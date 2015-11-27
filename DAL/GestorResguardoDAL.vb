@@ -12,8 +12,8 @@ Public Class GestorResguardoDAL
     Public Shared Sub BackUp(ByVal description As String)
 
         Dim path As String = WebConfigurationManager.AppSettings("Path").ToString
-        Dim fecha As String = DateTime.Now.Day.ToString + "-" + DateTime.Now.Month.ToString + "-" + DateTime.Now.Year.ToString + "-" +
-                DateTime.Now.Hour.ToString + "-" + DateTime.Now.Minute.ToString + "-" + DateTime.Now.Second.ToString
+        Dim fecha As String = DateTime.Now.Year.ToString + DateTime.Now.Month.ToString + DateTime.Now.Day.ToString +
+                DateTime.Now.Hour.ToString + DateTime.Now.Minute.ToString + DateTime.Now.Second.ToString
 
         Dim repo As New AccesoSQLServer
 
@@ -24,7 +24,7 @@ Public Class GestorResguardoDAL
         Dim bk As New Backup
         bk.Database = builder.InitialCatalog
         bk.Action = BackupActionType.Database
-        bk.BackupSetDescription = "BU " & bk.Database
+        bk.BackupSetDescription = "BDMuebla" & bk.Database
         bk.BackupSetName = bk.Database
 
         Dim fileName As String = bk.Database + fecha + ".sql"
@@ -33,8 +33,8 @@ Public Class GestorResguardoDAL
         bk.LogTruncation = BackupTruncateLogType.Truncate
         Try
             bk.SqlBackup(sqlServer)
-        Catch ex As FailedOperationException
-            'do nothing
+        Catch ex As SmoException
+            Throw New Exception(ex.Message)
         Catch ex As Exception
             Throw ex
         End Try

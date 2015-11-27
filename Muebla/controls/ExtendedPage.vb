@@ -5,6 +5,7 @@ Imports BE
 
 Public Class ExtendedPage
     Inherits System.Web.UI.Page
+    Dim sb As New StringBuilder
 
     Private _idioma As BE.IdiomaBE
     Public Property idioma() As BE.IdiomaBE
@@ -82,6 +83,8 @@ Public Class ExtendedPage
     End Sub
 
     Public Sub logMessage(ByVal ex As Exception)
+        sb.AppendLine(ex.Message)
+        Application("logger") = Application("logger") + sb.ToString
         Dim messageLogger As Label = CType(Me.Master.FindControl("errorMessageLogger"), Label)
         borrarMensajes()
         If (TypeOf ex Is ExceptionManager) Then

@@ -12,7 +12,6 @@ Public Class Backup
         Catch ex As Exception
             logMessage(ex)
         End Try
-
     End Sub
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)

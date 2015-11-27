@@ -116,6 +116,7 @@
     <Content Include="images\price_comparison.png" />
     <Content Include="images\purchaseOrder.png" />
     <Content Include="images\view.png" />
+    <Content Include="Logger.aspx" />
     <Content Include="registroCompleto.aspx" />
     <Content Include="ConfirmarShowroom.aspx" />
     <Content Include="adfile.xml" />
@@ -282,6 +283,13 @@
     </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Logger.aspx.designer.vb">
+      <DependentUpon>Logger.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Logger.aspx.vb">
+      <DependentUpon>Logger.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="registroCompleto.aspx.designer.vb">
       <DependentUpon>registroCompleto.aspx</DependentUpon>
