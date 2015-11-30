@@ -28,7 +28,6 @@ Public Class GestorResguardoDAL
         bk.Action = BackupActionType.Database
         bk.BackupSetDescription = "BDMuebla" & bk.Database
         bk.BackupSetName = bk.Database
-        'bk.
 
         Dim fileName As String = bk.Database + fecha + ".sql"
         bk.Devices.AddDevice(path + "\\" + fileName, DeviceType.File)
