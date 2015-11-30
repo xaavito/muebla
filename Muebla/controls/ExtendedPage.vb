@@ -85,12 +85,10 @@ Public Class ExtendedPage
 
     Public Sub logMessage(ByVal ex As Exception)
         excep = ex
-
-        While Not excep Is Nothing
-            sb.AppendLine(getUsuario.usuario + " " + Path.GetFileName(Request.PhysicalPath) + " " + excep.HResult.ToString + " " + excep.Message + " " + excep.StackTrace + " " + excep.Source)
-            excep = ex.InnerException
-        End While
-
+        sb.AppendLine("--------------------------------------------------------------------------------------------")
+        sb.AppendLine(getUsuario.usuario + " " + Path.GetFileName(Request.PhysicalPath) + " " + excep.HResult.ToString + " " + excep.ToString)
+        excep = ex.InnerException
+        
         Application("logger") = Application("logger") + sb.ToString
 
         Dim messageLogger As Label = CType(Me.Master.FindControl("errorMessageLogger"), Label)
