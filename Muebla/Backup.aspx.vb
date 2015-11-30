@@ -19,10 +19,9 @@ Public Class Backup
             BLL.GestorResguardoBLL.realizarBackup(Me.backupTextBox.Text)
             buscarBackups()
             Throw New Util.CreacionExitosaException
-        Catch ex As Util.ExceptionManager
+        Catch ex As Exception
             logMessage(ex)
         End Try
-
     End Sub
 
     Protected Sub backupDataGrid_PreRender(sender As Object, e As EventArgs)
