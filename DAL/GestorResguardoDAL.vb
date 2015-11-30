@@ -18,7 +18,9 @@ Public Class GestorResguardoDAL
         Dim repo As New AccesoSQLServer
 
         Dim builder As New SqlConnectionStringBuilder(repo.conString)
-        Dim connection As New ServerConnection(builder.DataSource)
+        Dim sqlConnection As SqlConnection = New SqlConnection(repo.conString)
+        Dim connection As New ServerConnection(sqlConnection)
+
         Dim sqlServer As New Server(connection)
 
         Dim bk As New Backup
@@ -26,6 +28,7 @@ Public Class GestorResguardoDAL
         bk.Action = BackupActionType.Database
         bk.BackupSetDescription = "BDMuebla" & bk.Database
         bk.BackupSetName = bk.Database
+        'bk.
 
         Dim fileName As String = bk.Database + fecha + ".sql"
         bk.Devices.AddDevice(path + "\\" + fileName, DeviceType.File)
@@ -60,7 +63,9 @@ Public Class GestorResguardoDAL
         Dim repo As New AccesoSQLServer
 
         Dim builder As New SqlConnectionStringBuilder(repo.conString)
-        Dim connection As New ServerConnection(builder.DataSource)
+        Dim sqlConnection As SqlConnection = New SqlConnection(repo.conString)
+        Dim connection As New ServerConnection(sqlConnection)
+
         Dim sqlServer As New Server(connection)
 
         Dim rs As New Restore
