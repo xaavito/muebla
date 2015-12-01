@@ -84,12 +84,18 @@ Public Class ExtendedPage
     End Sub
 
     Public Sub logMessage(ByVal ex As Exception)
-        excep = ex
-        sb.AppendLine("--------------------------------------------------------------------------------------------")
-        sb.AppendLine(getUsuario.usuario + " " + Path.GetFileName(Request.PhysicalPath) + " " + excep.HResult.ToString + " " + excep.ToString)
-        excep = ex.InnerException
+        Try
+            If Not getUsuario() Is Nothing Then
+                excep = ex
+                sb.AppendLine("--------------------------------------------------------------------------------------------")
+                sb.AppendLine(getUsuario.usuario.ToString + " " + Path.GetFileName(Request.PhysicalPath) + " " + excep.HResult.ToString + " " + excep.ToString)
+
+                Application("logger") = Application("logger") + sb.ToString
+            End If
+        Catch e As Exception
+            'do nada de nada
+        End Try
         
-        Application("logger") = Application("logger") + sb.ToString
 
         Dim messageLogger As Label = CType(Me.Master.FindControl("errorMessageLogger"), Label)
         borrarMensajes()
@@ -211,10 +217,15 @@ Public Class ExtendedPage
     End Sub
 
     Private Sub borrarMensajes()
-        CType(Me.Master.FindControl("errorMessageLogger"), Label).Text = ""
-        CType(Me.Master.FindControl("infoMessageLogger"), Label).Text = ""
-        CType(Me.Master.FindControl("warningMessageLogger"), Label).Text = ""
-        CType(Me.Master.FindControl("exitoMessageLogger"), Label).Text = ""
+        Try
+            CType(Me.Master.FindControl("errorMessageLogger"), Label).Text = ""
+            CType(Me.Master.FindControl("infoMessageLogger"), Label).Text = ""
+            CType(Me.Master.FindControl("warningMessageLogger"), Label).Text = ""
+            CType(Me.Master.FindControl("exitoMessageLogger"), Label).Text = ""
+        Catch ex As Exception
+
+        End Try
+        
     End Sub
 
 End Class

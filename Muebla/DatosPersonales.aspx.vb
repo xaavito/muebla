@@ -16,8 +16,6 @@
             Me.provinciaDropDownList.DataValueField = "id"
             Me.provinciaDropDownList.DataBind()
 
-            provinciaDropDownList_SelectedIndexChanged(sender, e)
-
             If Not getUsuario() Is Nothing Then
                 BLL.UsuarioBLL.llenarDatosUsuario(getUsuario)
                 Me.nombreTextBox.Text = getUsuario().nombre
@@ -36,8 +34,9 @@
                     Me.nroTextBox.Text = getUsuario.domicilio.numero
                     Me.pisoTextBox.Text = getUsuario().domicilio.piso
                     Me.dptoTextBox.Text = getUsuario().domicilio.dpto
-                    Me.localidadDropDownList.SelectedValue = getUsuario().domicilio.localidad.id
                     Me.provinciaDropDownList.SelectedValue = getUsuario().domicilio.localidad.provincia.id
+                    provinciaDropDownList_SelectedIndexChanged(sender, e)
+                    Me.localidadDropDownList.SelectedValue = getUsuario().domicilio.localidad.id
                 End If
                 If Not getUsuario().telefono Is Nothing Then
                     Me.telefonoTextBox.Text = getUsuario().telefono.numero

@@ -58,8 +58,8 @@
             usr.domicilio = reg
             Dim tel As New BE.TelefonoBE
             tel.numero = Me.telefonoTextBox.Text
-            tel.interno = Me.internoTextBox.Text
-            tel.prefijo = Me.prefijoTextBox.Text
+            tel.interno = IIf(Me.internoTextBox.Text.Equals(""), 0, Me.internoTextBox.Text)
+            tel.prefijo = IIf(Me.prefijoTextBox.Text.Equals(""), 0, Me.prefijoTextBox.Text)
             usr.telefono = tel
             usr = BLL.UsuarioBLL.altaCliente(usr)
             Response.Redirect("registroCompleto.aspx", False)

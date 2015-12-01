@@ -206,14 +206,17 @@ Public Class MasterPage
     Private Sub loadBasic()
         Dim t As New MenuItem
         t.Text = "Inicio"
+        t.Value = "Inicio"
         t.NavigateUrl = "Main.aspx"
         Me.mainTree.Items.Add(t)
         t = New MenuItem
         t.Text = "Quienes Somos"
+        t.Value = "Quienes Somos"
         t.NavigateUrl = "quienesSomos.aspx"
         Me.mainTree.Items.Add(t)
         t = New MenuItem
         t.Text = "Shop!"
+        t.Value = "Shop!"
         t.NavigateUrl = "Ventas.aspx"
         Me.mainTree.Items.Add(t)
     End Sub
