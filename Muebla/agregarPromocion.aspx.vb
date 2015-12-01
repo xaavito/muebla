@@ -20,7 +20,7 @@
                     Exit For
                 End If
             Next
-            BLL.ListaPrecioBLL.altaPromocion(idProd, Decimal.Parse(Me.precioPromoTextBox.Text), Util.Util.getDate(Me.fechaDesdeTextBox1.Text), Util.Util.getDate(Me.fechaHastaTextBox1.Text))
+            BLL.ListaPrecioBLL.altaPromocion(getUsuario(), idProd, Decimal.Parse(Me.precioPromoTextBox.Text), Util.Util.getDate(Me.fechaDesdeTextBox1.Text), Util.Util.getDate(Me.fechaHastaTextBox1.Text))
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)

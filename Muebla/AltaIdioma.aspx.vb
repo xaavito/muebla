@@ -9,7 +9,7 @@
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
         Try
-            BLL.GestorIdiomaBLL.altaIdioma(Me.nombreIdiomaTextBox.Text)
+            BLL.GestorIdiomaBLL.altaIdioma(getUsuario(), Me.nombreIdiomaTextBox.Text)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)

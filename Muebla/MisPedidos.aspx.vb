@@ -21,7 +21,7 @@ Public Class MisPedidos
             If getSelected.Count = 0 Then
                 Throw New Util.SeleccionMultiple
             End If
-            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarHojaRuta(getSelected)
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarHojaRuta(getUsuario(), getSelected)
             DownloadPDF(ms)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
@@ -34,7 +34,7 @@ Public Class MisPedidos
             If getSelected.Count = 0 Then
                 Throw New Util.SeleccionMultiple
             End If
-            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarRemito(getSelected)
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarRemito(getUsuario(), getSelected)
             DownloadPDF(ms)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
@@ -47,7 +47,7 @@ Public Class MisPedidos
             If getSelected.Count <> 1 Then
                 Throw New Util.SeleccionMultiple
             End If
-            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarNotaCredito(getSelected.Item(0))
+            Dim ms As MemoryStream = BLL.GestorPedidoBLL.generarNotaCredito(getUsuario(), getSelected.Item(0))
             DownloadPDF(ms)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
@@ -206,7 +206,7 @@ Public Class MisPedidos
 
     Protected Sub confirmarCambioEstadoButton_Click(sender As Object, e As EventArgs)
         Try
-            BLL.GestorPedidoBLL.cambiarEstadoPedido(Session("pedidoEdicion"), Integer.Parse(Me.estadoPedidoDropDown.SelectedValue))
+            BLL.GestorPedidoBLL.cambiarEstadoPedido(getUsuario(), Session("pedidoEdicion"), Integer.Parse(Me.estadoPedidoDropDown.SelectedValue))
             Throw New Util.ModificacionExitosaException
         Catch ex As Exception
             logMessage(ex)

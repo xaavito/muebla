@@ -51,7 +51,7 @@
 
             prov.productos = Session("productosPropios")
 
-            BLL.ProveedorBLL.altaProveedor(prov)
+            BLL.ProveedorBLL.altaProveedor(getUsuario(), prov)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)

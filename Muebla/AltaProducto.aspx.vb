@@ -53,7 +53,7 @@
             prod.stockMin = Integer.Parse(Me.stockMinimoTextBox.Text)
             prod.productos = Session("productosPropios")
 
-            BLL.ProductoBLL.altaProducto(prod)
+            BLL.ProductoBLL.altaProducto(getUsuario(), prod)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)
@@ -105,7 +105,7 @@
             prov.tel.prefijo = IIf(Me.prefijoTextBox.Text.Equals(""), 0, Me.prefijoTextBox.Text)
             prov.tel.interno = IIf(Me.internoTextBox.Text.Equals(""), 0, Me.internoTextBox.Text)
 
-            BLL.ProveedorBLL.altaProveedor(prov)
+            BLL.ProveedorBLL.altaProveedor(getUsuario(), prov)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)

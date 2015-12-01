@@ -72,7 +72,7 @@ Public Class AdministrarProductos
         Try
             For Each p As BE.ProductoBE In Session("listaProductos")
                 If p.id = getItemId(sender, Me.productosResultadosDataGrid) Then
-                    BLL.ProductoBLL.bajaProducto(p)
+                    BLL.ProductoBLL.bajaProducto(getUsuario(), p)
                 End If
             Next
             buscar()
@@ -131,7 +131,7 @@ Public Class AdministrarProductos
                     Exit For
                 End If
             Next
-            BLL.ProductoBLL.modificarProducto(prod)
+            BLL.ProductoBLL.modificarProducto(getUsuario(), prod)
             buscar()
             Throw New Util.ModificacionExitosaException
         Catch ex As Exception
@@ -256,7 +256,7 @@ Public Class AdministrarProductos
             Next
             lista.Add(ocd)
             oc.detalle = lista
-            Dim ms As MemoryStream = BLL.ProductoBLL.generarOrdenCompra(oc)
+            Dim ms As MemoryStream = BLL.ProductoBLL.generarOrdenCompra(getUsuario(), oc)
             DownloadPDF(ms)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception

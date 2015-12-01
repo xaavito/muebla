@@ -27,7 +27,7 @@
                 lista.Add(ob)
             Next
             lp.detalles = lista
-            BLL.ListaPrecioBLL.altaListaPrecio(lp)
+            BLL.ListaPrecioBLL.altaListaPrecio(getUsuario(), lp)
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
             logMessage(ex)

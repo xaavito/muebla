@@ -16,7 +16,7 @@ Public Class GestorPedidoBLL
         checkPedidosMismoCliente = False
     End Function
 
-    Public Shared Function generarHojaRuta(ByVal pedidos As List(Of BE.PedidoBE)) As MemoryStream
+    Public Shared Function generarHojaRuta(ByVal usr As BE.UsuarioBE, ByVal pedidos As List(Of BE.PedidoBE)) As MemoryStream
         For Each p As BE.PedidoBE In pedidos
             DAL.GestorPedidoDAL.loadDatosPedido(p)
             BLL.UsuarioBLL.llenarDatosUsuario(p.usr)
@@ -37,10 +37,11 @@ Public Class GestorPedidoBLL
         ms = Util.PDFGenerator.HojaRutaPDF(hr)
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.HojaRuta), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.HojaRutaMensaje), ms)
         ms.Position = 0
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.HojaRutaGenerada)
         Return ms
     End Function
 
-    Public Shared Function generarNotaCredito(ByVal pedido As PedidoBE) As MemoryStream
+    Public Shared Function generarNotaCredito(ByVal usr As BE.UsuarioBE, ByVal pedido As PedidoBE) As MemoryStream
         DAL.GestorPedidoDAL.loadDatosPedido(pedido)
         DAL.GestorPedidoDAL.checkPedidoFacturado(pedido)
         DAL.GestorPedidoDAL.generarNotaCredito(pedido)
@@ -101,6 +102,7 @@ Public Class GestorPedidoBLL
         Util.Mailer.enviarMail(pedido.usr.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoComentario), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoComentarioMensaje) + " Pedido: " + pedido.id.ToString)
         'nosotros
         Util.Mailer.enviarMail(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoComentario), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.PedidoComentarioMensaje) + " Pedido: " + pedido.id.ToString)
+        BLL.GestorBitacoraBLL.registrarEvento(usuario, Util.Enumeradores.Bitacora.ComentarioGenerado)
     End Sub
 
     Shared Function generarFactura(pedido As PedidoBE) As MemoryStream
@@ -123,7 +125,7 @@ Public Class GestorPedidoBLL
         Return ms
     End Function
 
-    Shared Function generarRemito(pedidos As List(Of PedidoBE)) As MemoryStream
+    Shared Function generarRemito(ByVal usr As BE.UsuarioBE, pedidos As List(Of PedidoBE)) As MemoryStream
         For Each p As BE.PedidoBE In pedidos
             DAL.GestorPedidoDAL.loadDatosPedido(p)
             DAL.GestorPedidoDAL.checkPedidoFacturado(p)
@@ -144,6 +146,7 @@ Public Class GestorPedidoBLL
         'todo pincha aca por traducciones
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailVentas").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.Remito), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.RemitoMensaje), ms)
         ms.Position = 0
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.RemitoGenerado)
         Return ms
     End Function
 
@@ -167,7 +170,7 @@ Public Class GestorPedidoBLL
             DAL.GestorPedidoDAL.checkPedidoFacturado(pedido)
             BLL.GestorPedidoBLL.checkEstadoPedidoNoEnviado(pedido)
         Catch ex As Util.PedidoFacturado
-            generarNotaCredito(pedido)
+            generarNotaCredito(usr, pedido)
         End Try
 
         DAL.GestorPedidoDAL.anularVenta(pedido)
@@ -182,7 +185,7 @@ Public Class GestorPedidoBLL
         BLL.GestorBitacoraBLL.registrarEvento(pedido.usr.id, Util.Enumeradores.Bitacora.VentaAnulada)
     End Sub
 
-    Shared Sub cambiarEstadoPedido(pedido As BE.PedidoBE, idNuevoEstado As Integer)
+    Shared Sub cambiarEstadoPedido(ByVal usr As BE.UsuarioBE, pedido As BE.PedidoBE, idNuevoEstado As Integer)
         'todo check el tema de los cambios no se puede hacer cualquier cosa
         DAL.GestorPedidoDAL.cambiarEstadoPedido(pedido, idNuevoEstado)
     End Sub

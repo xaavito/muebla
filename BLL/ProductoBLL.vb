@@ -6,16 +6,18 @@ Public Class ProductoBLL
 
     Private Shared _prods As List(Of BE.ListaPrecioDetalleBE)
 
-    Public Shared Sub altaProducto(ByVal producto As ProductoBE)
+    Public Shared Sub altaProducto(ByVal usr As BE.UsuarioBE, ByVal producto As ProductoBE)
         DAL.ProductoDAL.altaProducto(producto)
         If producto.tipoProducto.id = 1 Then
             DAL.ProductoDAL.altaProductoCompuesto(producto)
         End If
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.AltaProducto)
     End Sub
 
-    Public Shared Function bajaProducto(ByVal producto As BE.ProductoBE) As Integer
+    Public Shared Function bajaProducto(ByVal usr As BE.UsuarioBE, ByVal producto As BE.ProductoBE) As Integer
         BLL.ProductoBLL.checkEstadoActivo(producto)
         BLL.ProductoBLL.checkProductosEnPedidos(producto)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.BajaProducto)
         Return DAL.ProductoDAL.bajaProducto(producto)
     End Function
 
@@ -35,12 +37,13 @@ Public Class ProductoBLL
         Return _prods
     End Function
 
-    Public Shared Sub modificarProducto(ByVal producto As ProductoBE)
+    Public Shared Sub modificarProducto(ByVal usr As BE.UsuarioBE, ByVal producto As ProductoBE)
         BLL.ProductoBLL.checkEstadoActivo(producto)
         BLL.ProductoBLL.checkProductosEnPedidos(producto)
         DAL.ProductoDAL.modificarProducto(producto)
         DAL.ProductoDAL.eliminarProductoCompuesto(producto)
         DAL.ProductoDAL.altaProductoCompuesto(producto)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.ModificacionProducto)
     End Sub
 
     Shared Function getImagenProducto(idInt As Integer) As Byte()
@@ -59,7 +62,7 @@ Public Class ProductoBLL
         Return DAL.ProductoDAL.getComparacion(p1)
     End Function
 
-    Shared Function generarOrdenCompra(oc As OrdenCompraBE) As MemoryStream
+    Shared Function generarOrdenCompra(ByVal usr As BE.UsuarioBE, oc As OrdenCompraBE) As MemoryStream
         'CHECK ACTIVO
         If oc.proveedor.activo = False Then
             Throw New Util.ProveedorInactivo
@@ -75,6 +78,7 @@ Public Class ProductoBLL
         ms = Util.PDFGenerator.OrdenCompraPDF(oc)
         Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailCompras").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms)
         ms.Position = 0
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.GeneracionOrdenCompra)
         Return ms
     End Function
 

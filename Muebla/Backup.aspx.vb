@@ -16,7 +16,7 @@ Public Class Backup
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
         Try
-            BLL.GestorResguardoBLL.realizarBackup(Me.backupTextBox.Text)
+            BLL.GestorResguardoBLL.realizarBackup(getUsuario(), Me.backupTextBox.Text)
             buscarBackups()
             Throw New Util.CreacionExitosaException
         Catch ex As Exception
@@ -36,7 +36,7 @@ Public Class Backup
     Protected Sub ibtnRestore_Click(sender As Object, e As ImageClickEventArgs)
         ID = getItemId(sender, Me.backupDataGrid)
         Try
-            BLL.GestorResguardoBLL.realizarRestore(id)
+            BLL.GestorResguardoBLL.realizarRestore(getUsuario(), ID)
             buscarBackups()
             Throw New Util.RestauracionExitosaException
         Catch ex As Exception

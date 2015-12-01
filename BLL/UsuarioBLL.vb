@@ -33,6 +33,7 @@ Public Class UsuarioBLL
         BLL.UsuarioBLL.checkEstadoActivo(usr)
         BLL.UsuarioBLL.checkNoEsAdmin(usr)
         DAL.UsuarioDAL.eliminarUsuario(usr)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.EliminacionUsuario)
     End Sub
 
     Public Shared Function login(ByVal pass As String, ByVal usr As String) As UsuarioBE

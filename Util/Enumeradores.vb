@@ -59,9 +59,30 @@
         PedidoPersonalizado = 9
         VentaAnulada = 10
         RegistroExistoso = 11
-
         SolicitudContrasena = 12
-
+        'TODO FALTAN CARGARLOS A LA BD!
+        AltaIdioma = 13
+        ModificacionIdioma = 14
+        HojaRutaGenerada = 15
+        NotaCreditoGenerada = 16
+        ComentarioGenerado = 17
+        RemitoGenerado = 18
+        BackupGenerado = 13
+        BackupRestaurado = 19
+        PedidoAsistenciaShowroom = 20
+        ModificacionAsistenciaShowroom = 21
+        AltaListaPrecio = 22
+        AltaPromocion = 23
+        AltaProducto = 24
+        BajaProducto = 25
+        ModificacionProducto = 26
+        GeneracionOrdenCompra = 27
+        AltaProveedor = 28
+        ModificarProveedor = 29
+        EliminacionProveedor = 30
+        EliminacionUsuario = 31
+        ConfirmarPedidoAsistencia = 32
+        ModificacionListaPrecio = 33
     End Enum
 
     Enum ImportanciaEvento

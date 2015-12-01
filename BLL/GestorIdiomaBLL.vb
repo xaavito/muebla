@@ -4,8 +4,9 @@ Imports System.Web.Configuration
 Public Class GestorIdiomaBLL
     Private Shared _comps As List(Of BE.IdiomaBE)
 
-    Public Shared Sub altaIdioma(ByVal idioma As String)
+    Public Shared Sub altaIdioma(ByVal usr As BE.UsuarioBE, ByVal idioma As String)
         DAL.GestorIdiomaDAL.altaIdioma(idioma)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.AltaIdioma)
     End Sub
 
     Public Shared Function buscarComponentes(ByVal idioma As BE.IdiomaBE) As List(Of ComponenteBE)
@@ -80,9 +81,10 @@ Public Class GestorIdiomaBLL
         Return _comps
     End Function
 
-    Shared Sub modificarComponente(id As Integer, nuevoTexto As String, idIdioma As Integer)
+    Shared Sub modificarComponente(ByVal usr As BE.UsuarioBE, id As Integer, nuevoTexto As String, idIdioma As Integer)
         DAL.GestorIdiomaDAL.modificarComponente(id, nuevoTexto, idIdioma)
         _comps = New List(Of IdiomaBE)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.ModificacionIdioma)
     End Sub
 
     Shared Function buscarMensajes(idioma As IdiomaBE) As List(Of MensajeBE)

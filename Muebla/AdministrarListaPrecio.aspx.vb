@@ -73,7 +73,7 @@
 
     Protected Sub confirmarEdicionButton_Click(sender As Object, e As EventArgs)
         Try
-            BLL.ListaPrecioBLL.modificarListaPrecioDetalle(Session("idListaPrecioDetalle"), Me.valorTextBox.Text)
+            BLL.ListaPrecioBLL.modificarListaPrecioDetalle(getUsuario, Session("idListaPrecioDetalle"), Me.valorTextBox.Text)
             buscarDetalles()
             Throw New Util.ModificacionExitosaException
         Catch ex As Exception

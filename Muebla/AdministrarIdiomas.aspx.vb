@@ -39,7 +39,7 @@
 
     Protected Sub confirmarButton_Click(sender As Object, e As EventArgs)
         Try
-            BLL.GestorIdiomaBLL.modificarComponente(Session("idTextoIdioma"), Me.textoTextBox.Text, Session("idiomaChange"))
+            BLL.GestorIdiomaBLL.modificarComponente(getUsuario(), Session("idTextoIdioma"), Me.textoTextBox.Text, Session("idiomaChange"))
             llenarTabla()
             Me.editDiv.Visible = False
         Catch ex As Exception

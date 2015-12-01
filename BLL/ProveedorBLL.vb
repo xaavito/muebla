@@ -3,11 +3,12 @@ Imports BE
 
 Public Class ProveedorBLL
 
-    Public Shared Sub altaProveedor(ByRef prov As ProveedorBE)
+    Public Shared Sub altaProveedor(ByVal usr As BE.UsuarioBE, ByRef prov As ProveedorBE)
         DAL.ProveedorDAL.checkCuilExistente(prov)
         DAL.ProveedorDAL.altaProveedor(prov)
         DAL.ProveedorDAL.altaDomicilio(prov)
         DAL.ProveedorDAL.altaTelefono(prov)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.AltaProveedor)
     End Sub
 
     Public Shared Function buscarProveedores(ByVal nom As String, ByVal contacto As String) As List(Of ProveedorBE)
@@ -35,6 +36,7 @@ Public Class ProveedorBLL
         DAL.ProveedorDAL.checkCuilExistente(prov)
         DAL.ProveedorDAL.modificarProveedor(prov)
         DAL.ProveedorDAL.agregarObservacionProv(prov.id, obs, usr)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.ModificarProveedor)
     End Sub
 
     Shared Sub eliminarProveedor(id As Integer, ob As String, usr As UsuarioBE)
@@ -42,6 +44,7 @@ Public Class ProveedorBLL
         DAL.ProveedorDAL.checkProveedorProductosStock(id)
         DAL.ProveedorDAL.eliminarProveedor(id)
         DAL.ProveedorDAL.agregarObservacionProv(id, ob, usr)
+        BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.EliminacionProveedor)
     End Sub
 
     Shared Function getProveedoresPorProducto(p1 As Integer) As List(Of ProveedorBE)
