@@ -67,7 +67,6 @@
         NotaCreditoGenerada = 16
         ComentarioGenerado = 17
         RemitoGenerado = 18
-        BackupGenerado = 13
         BackupRestaurado = 19
         PedidoAsistenciaShowroom = 20
         ModificacionAsistenciaShowroom = 21
@@ -83,6 +82,8 @@
         EliminacionUsuario = 31
         ConfirmarPedidoAsistencia = 32
         ModificacionListaPrecio = 33
+        BackupGenerado = 34
+
     End Enum
 
     Enum ImportanciaEvento

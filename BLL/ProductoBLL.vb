@@ -72,11 +72,12 @@ Public Class ProductoBLL
         oc.id = DAL.ProductoDAL.generarOrdenCompra(oc)
         DAL.ProductoDAL.generarOrdenCompraDetalles(oc)
         Dim ms As MemoryStream = Util.PDFGenerator.OrdenCompraPDF(oc)
+        Dim ms2 As New MemoryStream(ms.ToArray())
+        Dim ms3 As New MemoryStream(ms.ToArray())
         'PARA PROVEEDOR
-        Util.Mailer.enviarMailConAdjunto(oc.proveedor.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms)
+        Util.Mailer.enviarMailConAdjunto(oc.proveedor.mail, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms3)
         'PARA NOSOTROS
-        ms = Util.PDFGenerator.OrdenCompraPDF(oc)
-        Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailCompras").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms)
+        Util.Mailer.enviarMailConAdjunto(WebConfigurationManager.AppSettings("mailCompras").ToString, BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OC), BLL.GestorIdiomaBLL.getMensajeTraduccion(Util.Enumeradores.CodigoMensaje.OCMensaje), ms2)
         ms.Position = 0
         BLL.GestorBitacoraBLL.registrarEvento(usr, Util.Enumeradores.Bitacora.GeneracionOrdenCompra)
         Return ms
