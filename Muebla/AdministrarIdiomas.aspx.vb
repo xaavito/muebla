@@ -42,6 +42,7 @@
             BLL.GestorIdiomaBLL.modificarComponente(getUsuario(), Session("idTextoIdioma"), Me.textoTextBox.Text, Session("idiomaChange"))
             llenarTabla()
             Me.editDiv.Visible = False
+            Throw New Util.ModificacionExitosaException
         Catch ex As Exception
             logMessage(ex)
         End Try

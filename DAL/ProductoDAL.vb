@@ -75,6 +75,8 @@ Public Class ProductoDAL
                 tipoProd.descripcion = item.Item(3)
                 producto.tipoProducto = tipoProd
                 producto.baja = item.Item(5)
+                producto.stock = item.Item(6)
+                producto.stockMin = item.Item(7)
                 list.Add(producto)
             Next
         Catch ex As Exception

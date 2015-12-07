@@ -84,7 +84,7 @@
                                 <asp:RegularExpressionValidator ValidationGroup="altaPromo" runat="server"
                                     ErrorMessage="Solo Numeros"
                                     ControlToValidate="precioPromoTextBox"
-                                    ValidationExpression="^[0-9]$" />
+                                    ValidationExpression="^[0-9]*$" />
                             </asp:TableCell>
                         </asp:TableRow>
                         <asp:TableRow>

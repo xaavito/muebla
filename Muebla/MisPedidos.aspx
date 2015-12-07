@@ -227,7 +227,7 @@
                 </p>
             </div>
             <div class="popup_Buttons">
-                <asp:Button runat="server" UseSubmitBehavior="false" Text="Anular" ID="anularButton" OnClick="anularButton_Click" ValidationGroup="confirmarAnular"/>
+                <asp:Button runat="server" UseSubmitBehavior="false" Text="Confirmar" ID="confirmarButton" OnClick="anularButton_Click" ValidationGroup="confirmarAnular"/>
                 <asp:Button runat="server" Text="Cancelar" ID="cancelarButton" />
             </div>
         </div>

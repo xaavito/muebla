@@ -284,13 +284,13 @@ Partial Public Class MisPedidos
     Protected WithEvents anularCommentTextBox As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Control anularButton.
+    '''Control confirmarButton.
     '''</summary>
     '''<remarks>
     '''Campo generado automáticamente.
     '''Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
     '''</remarks>
-    Protected WithEvents anularButton As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents confirmarButton As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''Control cancelarButton.

@@ -147,45 +147,6 @@
             </asp:TableRow>
             <asp:TableRow>
                 <asp:TableCell>
-                    <asp:Label runat="server" ID="telefonoLabel" Text="Telefono" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="telefonoTextBox" />
-                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="telefonoTextBox" runat="server" />
-                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
-                        ErrorMessage="Solo Numeros"
-                        ControlToValidate="telefonoTextBox"
-                        ValidationExpression="^[0-9]{6,8}$" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="internoLabel" Text="Telefono" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="internoTextBox" />
-                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="internoTextBox" runat="server" />
-                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
-                        ErrorMessage="Solo Numeros"
-                        ControlToValidate="internoTextBox"
-                        ValidationExpression="^[0-9]*$" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="prefijoLabel" Text="Telefono" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="prefijoTextBox" />
-                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="prefijoTextBox" runat="server" />
-                    <asp:RegularExpressionValidator ValidationGroup="altaProveedor" runat="server"
-                        ErrorMessage="Solo Numeros"
-                        ControlToValidate="prefijoTextBox"
-                        ValidationExpression="^[0-9]*$" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
                     <asp:Label runat="server" ID="contactoLabel" Text="Contacto" />
                 </asp:TableCell>
                 <asp:TableCell>
@@ -197,56 +158,12 @@
                         ValidationExpression="^[a-zA-Z_ ]*$" />
                 </asp:TableCell>
             </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="direccionLabel" Text="Direccion" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="direccionTextBox" />
-                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="direccionTextBox" runat="server" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="nroCalleLabel" Text="Nro" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="nroCalleTextBox" />
-                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="nroCalleTextBox" runat="server" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="pisoLabel" Text="Piso" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="pisoTextBox" />
-                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="pisoTextBox" runat="server" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="dptoLabel" Text="Dpto" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:TextBox runat="server" ID="dptoTextBox" />
-                    <asp:RequiredFieldValidator ValidationGroup="altaProveedor" ErrorMessage="Requerido" ControlToValidate="dptoTextBox" runat="server" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
+            <asp:TableRow Visible ="false">
                 <asp:TableCell>
                     <asp:Label runat="server" ID="provinciaLabel" Text="Provincia" />
                 </asp:TableCell>
                 <asp:TableCell>
-                    <asp:DropDownList EnableViewState="True" runat="server" ID="provinciaDropDownList" OnSelectedIndexChanged="provinciaDropDownList_SelectedIndexChanged" AutoPostBack="true" />
-                </asp:TableCell>
-            </asp:TableRow>
-            <asp:TableRow>
-                <asp:TableCell>
-                    <asp:Label runat="server" ID="localidadLabel" Text="Localidad" />
-                </asp:TableCell>
-                <asp:TableCell>
-                    <asp:DropDownList AutoPostBack="true" EnableViewState="True" runat="server" ID="localidadDropDownList" />
+                    <asp:DropDownList EnableViewState="True" runat="server" ID="provinciaDropDownList" AutoPostBack="true" />
                 </asp:TableCell>
             </asp:TableRow>
             <asp:TableRow>

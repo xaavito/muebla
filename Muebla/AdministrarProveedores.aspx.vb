@@ -13,7 +13,6 @@
             Me.provinciaDropDownList.DataValueField = "id"
             Me.provinciaDropDownList.DataBind()
 
-            provinciaDropDownList_SelectedIndexChanged(sender, e)
         Catch ex As Exception
             logMessage(ex)
         End Try
@@ -33,18 +32,6 @@
                     Me.nombreTextBox.Text = prov.razonSocial
                     Me.contactoTextBox.Text = prov.contacto
                     Me.cuitTextBox.Text = prov.cuit
-                    Me.telefonoTextBox.Text = prov.tel.numero
-                    Me.prefijoTextBox.Text = prov.tel.prefijo
-                    Me.internoTextBox.Text = prov.tel.interno
-                    Me.direccionTextBox.Text = prov.dom.calle
-                    Me.nroCalleTextBox.Text = prov.dom.numero
-                    Me.pisoTextBox.Text = prov.dom.piso
-                    Me.dptoTextBox.Text = prov.dom.dpto
-                    Me.provinciaDropDownList.SelectedValue = prov.dom.localidad.provincia.id
-
-                    provinciaDropDownList_SelectedIndexChanged(sender, e)
-
-                    Me.localidadDropDownList.SelectedValue = prov.dom.localidad.id
 
                     Me.emailTextBox.Text = prov.mail
 
@@ -122,17 +109,9 @@
             prov.id = Session("idProveedor")
             prov.cuit = Me.cuitTextBox.Text
             prov.contacto = Me.contactoTextBox.Text
-            prov.dom.calle = Me.direccionTextBox.Text
-            prov.dom.numero = Me.nroCalleTextBox.Text
-            prov.dom.piso = Me.pisoTextBox.Text
-            prov.dom.dpto = Me.dptoTextBox.Text
-            prov.dom.localidad.id = Me.localidadDropDownList.SelectedValue
-
+            
             prov.mail = Me.emailTextBox.Text
             prov.razonSocial = Me.nombreTextBox.Text
-            prov.tel.numero = Me.telefonoTextBox.Text
-            prov.tel.interno = IIf(Me.internoTextBox.Text = Nothing, 0, Me.internoTextBox.Text)
-            prov.tel.prefijo = IIf(Me.prefijoTextBox.Text = Nothing, 0, Me.prefijoTextBox.Text)
             prov.productos = Session("MyProductos")
 
             Session("prov") = prov
@@ -151,17 +130,6 @@
         Try
             BLL.ProveedorBLL.eliminarProveedor(Session("idProveedor"), Me.observacionesTextBox.Text, getUsuario)
             Throw New Util.EliminacionExitosaException
-        Catch ex As Exception
-            logMessage(ex)
-        End Try
-    End Sub
-
-    Protected Sub provinciaDropDownList_SelectedIndexChanged(sender As Object, e As EventArgs)
-        Try
-            Me.localidadDropDownList.DataSource = BLL.UsuarioBLL.getTiposLocalidades(Integer.Parse(Me.provinciaDropDownList.SelectedValue))
-            Me.localidadDropDownList.DataTextField = "descripcion"
-            Me.localidadDropDownList.DataValueField = "id"
-            Me.localidadDropDownList.DataBind()
         Catch ex As Exception
             logMessage(ex)
         End Try
