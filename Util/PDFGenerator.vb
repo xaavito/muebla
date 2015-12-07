@@ -6,6 +6,10 @@ Imports System.Web
 
 Public Class PDFGenerator
 
+    Shared r As New Random
+
+    'Return 1000000000 + r.Next(1000000000)
+
     Public Shared Function CreatePDF() As MemoryStream
 
         ' Create a Document object
@@ -497,6 +501,8 @@ Public Class PDFGenerator
         ' Create a Document object
         Dim document As Document = New Document(iTextSharp.text.PageSize.A4, 70, 70, 70, 70)
 
+        Dim generico As PdfPCell
+
         'MemoryStream
         Dim PDFData As MemoryStream = New MemoryStream()
         Dim writer As PdfWriter = PdfWriter.GetInstance(document, PDFData)
@@ -530,50 +536,150 @@ Public Class PDFGenerator
         Dim nesthousing As PdfPCell = New PdfPCell(logo)
         nesthousing.Rowspan = 4
         nesthousing.Padding = 0.0F
+        nesthousing.Border = Rectangle.NO_BORDER
         headertable.AddCell(nesthousing)
 
-        Dim emptyCell As PdfPCell = New PdfPCell(New Phrase("", titleFont))
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        headertable.AddCell(generico)
+
+        document.Add(headertable)
+
+        ' Create the middle table 
+
+        Dim middleTable As PdfPTable = New PdfPTable(2)
+        middleTable.HorizontalAlignment = 0
+        middleTable.WidthPercentage = 100
+        middleTable.SetWidths(New Integer() {4, 6})
+        ' then set the column's __relative__ widths
+        middleTable.DefaultCell.Border = Rectangle.BOX
+        'for testing
+        middleTable.SpacingAfter = 30
+
+        Dim emptyCell As PdfPCell = New PdfPCell(New Phrase("ORIGINAL", titleFont))
         emptyCell.HorizontalAlignment = 2
         emptyCell.Border = Rectangle.NO_BORDER
-        headertable.AddCell(emptyCell)
+        middleTable.AddCell(emptyCell)
 
         Dim invoiceCell As PdfPCell = New PdfPCell(New Phrase("Factura " + facturaBE.letra, titleFont))
         invoiceCell.HorizontalAlignment = 2
         invoiceCell.Border = Rectangle.NO_BORDER
-        headertable.AddCell(invoiceCell)
+        middleTable.AddCell(invoiceCell)
 
-        Dim noCell As PdfPCell = New PdfPCell(New Phrase("Nro :", bodyFont))
+        Dim noCell As PdfPCell = New PdfPCell(New Phrase("Nro", titleFont))
         noCell.HorizontalAlignment = 2
         noCell.Border = Rectangle.NO_BORDER
-        headertable.AddCell(noCell)
+        middleTable.AddCell(noCell)
 
         Dim nroDato As PdfPCell = New PdfPCell(New Phrase(facturaBE.sucursal.ToString().PadLeft(4, "0") + "-" + facturaBE.nro.ToString().PadLeft(8, "0"), titleFont))
         nroDato.HorizontalAlignment = 2
         nroDato.Border = Rectangle.NO_BORDER
-        headertable.AddCell(nroDato)
+        middleTable.AddCell(nroDato)
 
-        Dim dateCell As PdfPCell = New PdfPCell(New Phrase("Fecha :", bodyFont))
+        Dim dateCell As PdfPCell = New PdfPCell(New Phrase("Fecha de Emision", titleFont))
         dateCell.HorizontalAlignment = 2
         dateCell.Border = Rectangle.NO_BORDER
-        headertable.AddCell(dateCell)
+        middleTable.AddCell(dateCell)
 
         Dim fechaDato As PdfPCell = New PdfPCell(New Phrase(facturaBE.fecha, titleFont))
         fechaDato.HorizontalAlignment = 2
         fechaDato.Border = Rectangle.NO_BORDER
-        headertable.AddCell(fechaDato)
+        middleTable.AddCell(fechaDato)
+        
+        generico = New PdfPCell(New Phrase("CUIT", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(generico)
 
+        generico = New PdfPCell(New Phrase("27-2719382630-5", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(generico)
 
-        Dim billCell As PdfPCell = New PdfPCell(New Phrase("Para :", bodyFont))
+        generico = New PdfPCell(New Phrase("Domicilio Comercial", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("25 de Mayo 468 CABA", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(generico)
+
+        
+        generico = New PdfPCell(New Phrase("Condicion IVA", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(generico)
+
+        generico = New PdfPCell(New Phrase("Responsable Inscripto", titleFont))
+        generico.HorizontalAlignment = 2
+        generico.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(generico)
+
+        'DATOS CLIENTE
+        Dim billCell As PdfPCell = New PdfPCell(New Phrase("PARA", titleFont))
         billCell.HorizontalAlignment = 2
         billCell.Border = Rectangle.NO_BORDER
-        headertable.AddCell(billCell)
+        middleTable.AddCell(billCell)
 
-        Dim paraDato As PdfPCell = New PdfPCell(New Phrase(facturaBE.usr.apellido + " " + facturaBE.usr.nombre, titleFont))
-        paraDato.HorizontalAlignment = 2
-        paraDato.Border = Rectangle.NO_BORDER
-        headertable.AddCell(paraDato)
+        emptyCell = New PdfPCell(New Phrase(facturaBE.usr.apellido + " " + facturaBE.usr.nombre, titleFont))
+        emptyCell.HorizontalAlignment = 2
+        emptyCell.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(emptyCell)
 
-        document.Add(headertable)
+        Dim cuil As PdfPCell = New PdfPCell(New Phrase("CUIL", titleFont))
+        cuil.HorizontalAlignment = 2
+        cuil.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(cuil)
+
+        emptyCell = New PdfPCell(New Phrase(facturaBE.usr.cuil.ToString, titleFont))
+        emptyCell.HorizontalAlignment = 2
+        emptyCell.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(emptyCell)
+
+        Dim cons As PdfPCell = New PdfPCell(New Phrase("CONSUMIDOR FINAL", titleFont))
+        cons.HorizontalAlignment = 2
+        cons.Border = Rectangle.NO_BORDER
+        middleTable.AddCell(cons)
+
+        document.Add(middleTable)
 
         'Create body table
         Dim itemTable As PdfPTable = New PdfPTable(5)
@@ -667,6 +773,21 @@ Public Class PDFGenerator
         barTable.AddCell(barcell)
 
         document.Add(barTable)
+
+        Dim closeTable As PdfPTable = New PdfPTable(2)
+        closeTable.HorizontalAlignment = 0
+        closeTable.WidthPercentage = 100
+        closeTable.SetWidths(New Integer() {4, 4})
+        ' then set the column's __relative__ widths
+        closeTable.DefaultCell.Border = Rectangle.NO_BORDER
+        closeTable.DefaultCell.Border = Rectangle.BOX
+        'for testing
+        closeTable.SpacingAfter = 30
+
+        closeTable.AddCell(New PdfPCell(New Phrase("CAE " + (1000000000 + r.Next(1000000000)).ToString, bodyFont)))
+        closeTable.AddCell(New PdfPCell(New Phrase("VENCIMIENTO CAE 01/01/2016", bodyFont)))
+
+        document.Add(closeTable)
 
         writer.CloseStream = False 'set the closestream property
         document.Close()

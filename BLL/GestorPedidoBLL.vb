@@ -114,7 +114,7 @@ Public Class GestorPedidoBLL
 
     Shared Function generarFactura(pedido As PedidoBE) As MemoryStream
         DAL.GestorPedidoDAL.loadDatosPedido(pedido)
-        DAL.GestorPedidoDAL.checkPedidoNoFacturado(pedido)
+        'DAL.GestorPedidoDAL.checkPedidoNoFacturado(pedido)
         BLL.GestorPedidoBLL.checkPedidoFinalizado(pedido)
         DAL.GestorPedidoDAL.generarFactura(pedido)
         BLL.UsuarioBLL.llenarDatosBlandosUsuario(pedido.usr)
